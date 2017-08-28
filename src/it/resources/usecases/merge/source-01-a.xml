@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <seq id="product_list">
+    <elem id="product">
+      <str id="id" stop-sign="\t"/>
+      <str id="link" stop-sign="\t"/>
+      <str id="title" stop-sign="\t"/>
+      <str id="beschreibung" stop-sign="\t"/>
+      <str id="bildlink" stop-sign="\t"/>
+      <str id="marke" stop-sign="\t"/>
+      <formatnum id="preis" format="(-?\d+(\.\d+)?)" decimal-separator="."/>
+    </elem>
+  </seq>
+</dfasdl>

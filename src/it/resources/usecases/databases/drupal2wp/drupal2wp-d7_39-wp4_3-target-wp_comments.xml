@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        semantic="custom">
+    <seq id="wp_comments">
+        <elem id="wp_comments_row">
+            <num db-column-name="comment_id" id="wp_comments_row_comment_id" max-digits="20"/>
+            <num db-column-name="comment_post_id" defaultnum="0" id="wp_comments_row_comment_post_id" max-digits="20"/>
+            <str db-column-name="comment_author" id="wp_comments_row_comment_author" max-length="255"/>
+            <str db-column-name="comment_author_email" id="wp_comments_row_comment_author_email" max-length="100"/>
+            <str db-column-name="comment_author_url" id="wp_comments_row_comment_author_url" max-length="200"/>
+            <str db-column-name="comment_author_ip" id="wp_comments_row_comment_author_ip" max-length="100"/>
+            <datetime db-column-name="comment_date" id="wp_comments_row_comment_date"/>
+            <datetime db-column-name="comment_date_gmt" id="wp_comments_row_comment_date_gmt"/>
+            <str db-column-name="comment_content" id="wp_comments_row_comment_content" max-length="65535"/>
+            <num db-column-name="comment_karma" defaultnum="0" id="wp_comments_row_comment_karma" max-digits="11"/>
+            <str db-column-name="comment_approved" defaultstr="1" id="wp_comments_row_comment_approved" max-length="20"/>
+            <str db-column-name="comment_agent" id="wp_comments_row_comment_agent" max-length="255"/>
+            <str db-column-name="comment_type" id="wp_comments_row_comment_type" max-length="20"/>
+            <num db-column-name="comment_parent" defaultnum="0" id="wp_comments_row_comment_parent" max-digits="20"/>
+            <num db-column-name="user_id" defaultnum="0" id="wp_comments_row_user_id" max-digits="20"/>
+        </elem>
+    </seq>
+</dfasdl>

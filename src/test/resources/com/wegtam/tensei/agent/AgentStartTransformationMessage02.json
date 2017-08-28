@@ -1,0 +1,143 @@
+{
+  "sources" : [
+    {
+      "username" : "",
+      "password" : "",
+      "uri" : "",
+      "checksum" : "",
+      "dfasdlRef": {
+        "cookbook-id": "MY-COOKBOOK",
+        "dfasdl-id": "SOURCE-01"
+      }
+    }
+  ],
+  "target" : {
+    "username" : "",
+    "password" : "",
+    "uri" : "",
+    "checksum" : "",
+    "dfasdlRef": {
+      "cookbook-id": "MY-COOKBOOK",
+      "dfasdl-id": "TARGET"
+    }
+  },
+  "cookbook": {
+    "id": "MY-COOKBOOK",
+    "sources": [
+      {
+        "version": "1.0-SNAPSHOT",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><dfasdl xmlns=\"http://www.dfasdl.org/DFASDL\" semantic=\"niem\"><num id=\"source01\" stop-sign=\":\"/><elem id=\"full-name\"><str id=\"source02\" stop-sign=\",\"/><str id=\"source03\" stop-sign=\",\"/></elem></dfasdl>",
+        "id": "SOURCE-01"
+      }
+    ],
+    "target": {
+      "version": "1.0-SNAPSHOT",
+      "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><dfasdl xmlns=\"http://www.dfasdl.org/DFASDL\" semantic=\"niem\"><num id=\"target04\" stop-sign=\":\"/><elem id=\"full-name\"><str id=\"target02\" stop-sign=\",\"/><str id=\"target01\" stop-sign=\",\"/></elem><str id=\"target03\"/></dfasdl>",
+      "id": "TARGET"
+    },
+    "recipes": [
+      {
+        "id": "recipe1",
+        "mode": "MapAllToAll",
+        "mappings": [
+          {
+            "sources": [{"dfasdlId": "SOURCE-01", "elementId": "source01"}],
+            "targets": [{"dfasdlId": "TARGET", "elementId": "target03"}],
+            "transformations": [
+              {
+                "transformerClassName": "akka://transformer1",
+                "options": {
+                  "srcType": "java.lang.String",
+                  "dstType": "java.lang.String",
+                  "params": []
+                }
+              }
+            ],
+            "atomicTransformations": []
+          },
+          {
+            "sources": [{"dfasdlId": "SOURCE-01", "elementId": "source02"}],
+            "targets": [{"dfasdlId": "TARGET", "elementId": "target01"}],
+            "transformations": [
+              {
+                "transformerClassName": "akka://transformer2",
+                "options": {
+                  "srcType": "java.lang.String",
+                  "dstType": "java.lang.String",
+                  "params": []
+                }
+              }
+            ],
+            "atomicTransformations": []
+          },
+          {
+            "sources": [{"dfasdlId": "SOURCE-01", "elementId": "source03"}],
+            "targets": [{"dfasdlId": "TARGET", "elementId": "target02"}],
+            "transformations": [
+              {
+                "transformerClassName": "akka://transformer3",
+                "options": {
+                  "srcType": "java.lang.String",
+                  "dstType": "java.lang.String",
+                  "params": []
+                }
+              }
+            ],
+            "atomicTransformations": []
+          }
+        ]
+      },
+      {
+        "id": "recipe2",
+        "mode": "MapOneToOne",
+        "mappings": [
+          {
+            "sources": [{"dfasdlId": "SOURCE-01", "elementId": "source01"}, {"dfasdlId": "SOURCE-01", "elementId": "source02"}],
+            "targets": [{"dfasdlId": "TARGET", "elementId": "target01"}, {"dfasdlId": "TARGET", "elementId": "target02"}],
+            "transformations": [
+              {
+                "transformerClassName": "akka://transformer1",
+                "options": {
+                  "srcType": "java.lang.String",
+                  "dstType": "java.lang.String",
+                  "params": []
+                }
+              }
+            ],
+            "atomicTransformations": []
+          },
+          {
+            "sources": [{"dfasdlId": "SOURCE-01", "elementId": "source02"}],
+            "targets": [{"dfasdlId": "TARGET", "elementId": "target02"}],
+            "transformations": [
+              {
+                "transformerClassName": "akka://transformer2",
+                "options": {
+                  "srcType": "java.lang.String",
+                  "dstType": "java.lang.String",
+                  "params": []
+                }
+              }
+            ],
+            "atomicTransformations": []
+          },
+          {
+            "sources": [{"dfasdlId": "SOURCE-01", "elementId": "source03"}, {"dfasdlId": "SOURCE-01", "elementId": "source01"}],
+            "targets": [{"dfasdlId": "TARGET", "elementId": "target03"}, {"dfasdlId": "TARGET", "elementId": "target04"}],
+            "transformations": [
+              {
+                "transformerClassName": "akka://transformer3",
+                "options": {
+                  "srcType": "java.lang.String",
+                  "dstType": "java.lang.String",
+                  "params": []
+                }
+              }
+            ],
+            "atomicTransformations": []
+          }
+        ]
+      }
+    ]
+  }
+}

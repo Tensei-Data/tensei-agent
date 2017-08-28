@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL" semantic="custom">
+  <seq id="persons">
+    <elem id="row">
+      <str id="lastname" stop-sign=","/>
+      <str id="firstname" stop-sign=","/>
+      <formatstr format="(.*@.*\..*)" id="email" stop-sign=","/>
+      <formattime format="dd.MM.yyyy" id="birthday" stop-sign=","/>
+      <str id="phone" stop-sign=","/>
+      <str id="division"/>
+    </elem>
+  </seq>
+</dfasdl>

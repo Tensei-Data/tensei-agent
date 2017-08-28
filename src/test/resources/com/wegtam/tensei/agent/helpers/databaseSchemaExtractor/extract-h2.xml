@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL" semantic="custom">
+  <seq id="accounts">
+    <elem id="accounts_row">
+      <formatnum db-column-name="id" format="(-?\d{1,17})" id="accounts_row_id" max-digits="17"/>
+      <str db-column-name="name" id="accounts_row_name" max-length="254"/>
+      <str db-column-name="description" id="accounts_row_description" max-length="2147483647"/>
+      <date db-column-name="birthday" id="accounts_row_birthday"/>
+      <formatnum db-column-name="salary" format="(-?\d{1,17})" id="accounts_row_salary" max-digits="17"/>
+      <formatnum db-column-name="points" decimal-separator="." format="(-?\d{0,2}\.\d{0,2})" id="accounts_row_points" max-digits="4" max-precision="2"/>
+    </elem>
+  </seq>
+  <seq id="person">
+    <elem id="person_row">
+      <formatnum db-column-name="id" format="(-?\d{1,17})" id="person_row_id" max-digits="17"/>
+      <str db-column-name="name" id="person_row_name" max-length="254"/>
+      <str db-column-name="vorname" id="person_row_vorname" max-length="100"/>
+      <date db-column-name="birthday" id="person_row_birthday"/>
+    </elem>
+  </seq>
+</dfasdl>

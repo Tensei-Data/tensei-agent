@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Tensei (転成)
+  ~
+  ~ Copyright (C) 2014 - 2015 Wegtam UG
+  ~
+  ~ Unauthorized copying of this file, via any medium is strictly prohibited!
+  ~ Proprietary and confidential
+  -->
+
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        semantic="custom">
+  <seq id="persons">
+    <elem id="row">
+      <str id="name" db-column-name="name" max-length="254"/>
+      <str id="place" max-length="200" db-column-name="place"/>
+    </elem>
+  </seq>
+</dfasdl>

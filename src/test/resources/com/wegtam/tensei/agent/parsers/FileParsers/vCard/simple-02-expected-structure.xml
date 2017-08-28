@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <elem id="vcard">
+    <formatstr format=".*?:(.*)" id="start_tag" storage-path="akka://"/>
+    <formatstr format=".*?:(.*)" id="version" storage-path="akka://"/>
+    <formatstr format=".*?:(.*)" id="name" storage-path="akka://"/>
+    <formatstr format=".*?:(.*)" id="full_name" storage-path="akka://"/>
+    <formatstr format=".*?:(.*)" id="organisation" storage-path="akka://"/>
+    <formatstr format=".*?:(.*)" id="title" storage-path="akka://"/>
+    <formatstr format=".*?:(.*)" id="photo" storage-path="akka://"/>
+    <formatstr format=".*?:(.*)" id="phone_work" storage-path="akka://"/>
+    <formatstr format=".*?:(.*)" id="phone_home" storage-path="akka://"/>
+    <formatstr format=".*?:(.*)" id="address_work" storage-path="akka://"/>
+    <formatstr format=".*?:(.*)" id="label_work" storage-path="akka://"/>
+    <formatstr format=".*?:(.*)" id="address_home" storage-path="akka://"/>
+    <formatstr format=".*?:(.*)" id="label_home" storage-path="akka://"/>
+    <formatstr format=".*?:(.*)" id="email" storage-path="akka://"/>
+    <formatstr format=".*?:(.*)" id="revision" storage-path="akka://"/>
+    <formatstr format=".*?:(.*)" id="end_tag" storage-path="akka://"/>
+  </elem>
+</dfasdl>

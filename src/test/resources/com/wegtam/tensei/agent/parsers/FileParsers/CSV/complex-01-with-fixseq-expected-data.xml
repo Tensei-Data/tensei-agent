@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <fixseq id="account_list" count="3" keepID="true">
+    <elem class="id:row">
+      <str class="id:firstname" stop-sign=",">John</str>
+      <str class="id:lastname" stop-sign=",">Doe</str>
+      <str class="id:email" stop-sign=",">john.doe@example.com</str>
+      <str class="id:birthday" stop-sign=",">24.12.0000</str>
+      <str class="id:phone" stop-sign=",">+49 123 456789</str>
+      <str class="id:division">Sales</str>
+    </elem>
+    <elem class="id:row">
+      <str class="id:firstname" stop-sign=",">Jane</str>
+      <str class="id:lastname" stop-sign=",">Doe</str>
+      <str class="id:email" stop-sign=",">jane.doe@example.com</str>
+      <str class="id:birthday" stop-sign=",">23.12.1971</str>
+      <str class="id:phone" stop-sign=",">+1 555 897652</str>
+      <str class="id:division">Marketing</str>
+    </elem>
+    <elem class="id:row">
+      <str class="id:firstname" stop-sign=",">Jake</str>
+      <str class="id:lastname" stop-sign=",">Doe</str>
+      <str class="id:email" stop-sign=",">jake.doe@example.com</str>
+      <str class="id:birthday" stop-sign=",">1.1.1984</str>
+      <str class="id:phone" stop-sign=",">+23 987 123444</str>
+      <str class="id:division">Development</str>
+    </elem>
+  </fixseq>
+</dfasdl>

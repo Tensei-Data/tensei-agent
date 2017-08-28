@@ -1,0 +1,1110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<reservations>
+  <reservation>
+    <buchungsnr>4a1012198c</buchungsnr>
+    <art>eigen</art>
+    <anreise>22.10.2014</anreise>
+    <abreise>24.10.2014</abreise>
+    <preis>73.55</preis>
+    <preisaufschlag>0.00</preisaufschlag>
+    <waehrung>EURO</waehrung>
+    <ankunftszeit></ankunftszeit>
+    <provision>4.00</provision>
+    <mwst>7.00</mwst>
+    <status>b</status>
+    <erwachsene>2</erwachsene>
+    <anzahlung>50.00</anzahlung>
+    <anzahlung_datum>17.10.2014</anzahlung_datum>
+    <mwst_prov>19.00</mwst_prov>
+    <bemerkungen>ebay 1865</bemerkungen>
+    <split_prov>0.00</split_prov>
+    <buchungszeitpunkt>10.10.2014 12:19:50</buchungszeitpunkt>
+    <leistungen_vor_ort>Kurtaxe, gegebenenfalls Restzahlung vom Mietpreis</leistungen_vor_ort>
+    <kunde_nr>K14a10121902</kunde_nr>
+    <room_id>70129</room_id>
+    <verm_gebuehr>0.00</verm_gebuehr>
+    <vermittler_id>12245</vermittler_id>
+    <kinder></kinder>
+    <zusaetze>
+      <zusatz name="Frühstück" anzahl="4" einzelpreis="0.00" buchungsnr="4a1012198c" provision="0.00" provision_split="0.00" mwst_satz="19.00" kuerzel=""></zusatz>
+      <zusatz name="Parkplatz" anzahl="2" einzelpreis="0.00" buchungsnr="4a1012198c" provision="0.00" provision_split="0.00" mwst_satz="7.00" kuerzel=""></zusatz>
+    </zusaetze>
+    <v_titel>001) Paradies Rügen Urlaubs GmbH &amp; Co. KG</v_titel>
+    <v_plz>18586</v_plz>
+    <v_ort>Göhren (Ostseebad)</v_ort>
+    <v_strasse>Friedrichstrasse 5</v_strasse>
+    <v_telefon>038308 666590</v_telefon>
+    <v_fax>038308 6665920</v_fax>
+    <v_email>urlaub@paradies-ruegen.de</v_email>
+    <v_url>http://www.paradies-ruegen.de</v_url>
+    <o_id>20021</o_id>
+    <o_bezeichnung>Hotel Strandhaus Mönchgut</o_bezeichnung>
+    <o_plz>18586</o_plz>
+    <o_ort>Lobbe auf Rügen</o_ort>
+    <o_strasse>Göhrener Weg 2</o_strasse>
+    <o_url>http://www.strandhaus-moenchgut.de/</o_url>
+    <o_telefon>038308 666590</o_telefon>
+    <o_fax>038308 6665920</o_fax>
+    <o_email>urlaub@paradies-ruegen.de</o_email>
+    <o_gewerblich>y</o_gewerblich>
+    <k_bezeichnung>C22 Doppelzimmer EG</k_bezeichnung>
+    <z_bezeichnung>Hotelzimmer 22: 20 m², inkl. Frühstück (Typ C)</z_bezeichnung>
+    <restzahlung_datum>17.10.2014</restzahlung_datum>
+    <systemgebuehr>0.00</systemgebuehr>
+    <systemgebuehr_waehrung>EURO</systemgebuehr_waehrung>
+    <mietpreis>0.00</mietpreis>
+    <zm_anzahlung>50.00</zm_anzahlung>
+    <zm_restzahlung>23.55</zm_restzahlung>
+    <zm_zwischenzahlung>0.00</zm_zwischenzahlung>
+    <zm_mietzahlung>0.00</zm_mietzahlung>
+    <zm_stornogebuehr>0.00</zm_stornogebuehr>
+    <ku_name>Jensen</ku_name>
+    <ku_vorname>Atrhur</ku_vorname>
+    <ku_anrede>Sehr geehrte Familie</ku_anrede>
+    <ku_land>Deutschland</ku_land>
+    <ku_plz>24992</ku_plz>
+    <ku_ort>Wanderrup</ku_ort>
+    <ku_strasse>Flensburgerstr. 25b</ku_strasse>
+    <ku_telefon>.</ku_telefon>
+    <ku_fax></ku_fax>
+    <ku_email>artjen@t-online.de</ku_email>
+    <ku_handy>0152.53369203</ku_handy>
+    <ku_firma></ku_firma>
+    <k_id>34981</k_id>
+  </reservation>
+  <reservation>
+    <buchungsnr>48140349f6</buchungsnr>
+    <art>fremd</art>
+    <anreise>06.10.2014</anreise>
+    <abreise>10.10.2014</abreise>
+    <preis>292.00</preis>
+    <preisaufschlag>0.00</preisaufschlag>
+    <waehrung>EURO</waehrung>
+    <ankunftszeit></ankunftszeit>
+    <provision>4.00</provision>
+    <mwst>7.00</mwst>
+    <status>b</status>
+    <erwachsene>2</erwachsene>
+    <anzahlung>81.75</anzahlung>
+    <anzahlung_datum>21.08.2014</anzahlung_datum>
+    <mwst_prov>19.00</mwst_prov>
+    <bemerkungen>kommt schon am  06.10.2014- preis - 73 Euro + 8 Euro für den Hund dazu gerechnet--b.r.- 01.09.2014</bemerkungen>
+    <split_prov>0.00</split_prov>
+    <buchungszeitpunkt>14.08.2014 03:49:23</buchungszeitpunkt>
+    <leistungen_vor_ort></leistungen_vor_ort>
+    <kunde_nr>K148140337da</kunde_nr>
+    <room_id>137041</room_id>
+    <verm_gebuehr>0.00</verm_gebuehr>
+    <vermittler_id>12245</vermittler_id>
+    <kinder><alter age="14" anzahl="1"></alter></kinder>
+    <zusaetze>
+      <zusatz name="Endreinigung" anzahl="1" einzelpreis="45.00" buchungsnr="48140349f6" provision="0.00" provision_split="0.00" mwst_satz="7.00" kuerzel=""></zusatz>
+      <zusatz name="Parkplatz" anzahl="3" einzelpreis="0.00" buchungsnr="48140349f6" provision="0.00" provision_split="0.00" mwst_satz="7.00" kuerzel=""></zusatz>
+      <zusatz name="Hallenbad und Sauna" anzahl="3" einzelpreis="0.00" buchungsnr="48140349f6" provision="0.00" provision_split="0.00" mwst_satz="19.00" kuerzel="BAD"></zusatz>
+      <zusatz name="AFDR (unverb. Stornoabs.)" anzahl="1" einzelpreis="12.00" buchungsnr="48140349f6" provision="0.00" provision_split="0.00" mwst_satz="19.00" kuerzel="AFDR"></zusatz>
+      <zusatz name="Haustier" anzahl="4" einzelpreis="8.00" buchungsnr="48140349f6" provision="0.00" provision_split="0.00" mwst_satz="19.00" kuerzel=""></zusatz>
+      <zusatz name="Wäschepaket" anzahl="3" einzelpreis="9.00" buchungsnr="48140349f6" provision="0.00" provision_split="0.00" mwst_satz="19.00" kuerzel="WP"></zusatz>
+    </zusaetze>
+    <v_titel>001) Paradies Rügen Urlaubs GmbH &amp; Co. KG</v_titel>
+    <v_plz>18586</v_plz>
+    <v_ort>Göhren (Ostseebad)</v_ort>
+    <v_strasse>Friedrichstrasse 5</v_strasse>
+    <v_telefon>038308 666590</v_telefon>
+    <v_fax>038308 6665920</v_fax>
+    <v_email>urlaub@paradies-ruegen.de</v_email>
+    <v_url>http://www.paradies-ruegen.de</v_url>
+    <o_id>41930</o_id>
+    <o_bezeichnung>Meeresblick Residenzen (deluxe)</o_bezeichnung>
+    <o_plz>18586</o_plz>
+    <o_ort>Göhren (Ostseebad)</o_ort>
+    <o_strasse>Friedrichstr. 2</o_strasse>
+    <o_url>http://www.paradies-ruegen.de/ferienwohnungen/meeresblick-residenzen.html</o_url>
+    <o_telefon>038308 666590</o_telefon>
+    <o_fax>038308 6665920</o_fax>
+    <o_email>h.wille@paradies-ruegen.de</o_email>
+    <o_gewerblich>n</o_gewerblich>
+    <k_bezeichnung>Meeresblick Typ D deluxe WE40</k_bezeichnung>
+    <z_bezeichnung>D 40: 50m², 2-Raum, 4 Pers., Balkon, Meerblick (Typ D)</z_bezeichnung>
+    <restzahlung_datum>09.09.2014</restzahlung_datum>
+    <systemgebuehr>4.00</systemgebuehr>
+    <systemgebuehr_waehrung>EURO</systemgebuehr_waehrung>
+    <mietpreis>0.00</mietpreis>
+    <zm_anzahlung>81.75</zm_anzahlung>
+    <zm_restzahlung>326.25</zm_restzahlung>
+    <zm_zwischenzahlung>0.00</zm_zwischenzahlung>
+    <zm_mietzahlung>0.00</zm_mietzahlung>
+    <zm_stornogebuehr>0.00</zm_stornogebuehr>
+    <ku_name>Koch</ku_name>
+    <ku_vorname>Katrin</ku_vorname>
+    <ku_anrede>Sehr geehrte Frau</ku_anrede>
+    <ku_land>Deutschland</ku_land>
+    <ku_plz>07546</ku_plz>
+    <ku_ort>Gera</ku_ort>
+    <ku_strasse>Kurze Str.8</ku_strasse>
+    <ku_telefon>0365/22629181</ku_telefon>
+    <ku_fax></ku_fax>
+    <ku_email>katrin.2604@gmx.de</ku_email>
+    <ku_handy></ku_handy>
+    <ku_firma></ku_firma>
+    <k_id>72749</k_id>
+  </reservation>
+  <reservation>
+    <buchungsnr>48141052f9</buchungsnr>
+    <art>eigen</art>
+    <anreise>14.02.2015</anreise>
+    <abreise>21.02.2015</abreise>
+    <preis>0.00</preis>
+    <preisaufschlag>0.00</preisaufschlag>
+    <waehrung>EURO</waehrung>
+    <ankunftszeit></ankunftszeit>
+    <provision>4.00</provision>
+    <mwst>7.00</mwst>
+    <status>b</status>
+    <erwachsene>2</erwachsene>
+    <anzahlung>45.00</anzahlung>
+    <anzahlung_datum>21.08.2014</anzahlung_datum>
+    <mwst_prov>19.00</mwst_prov>
+    <bemerkungen></bemerkungen>
+    <split_prov>0.00</split_prov>
+    <buchungszeitpunkt>14.08.2014 10:52:53</buchungszeitpunkt>
+    <leistungen_vor_ort>Kurtaxe</leistungen_vor_ort>
+    <kunde_nr>K139060826be</kunde_nr>
+    <room_id>141696</room_id>
+    <verm_gebuehr>0.00</verm_gebuehr>
+    <vermittler_id>12245</vermittler_id>
+    <kinder></kinder>
+    <zusaetze>
+      <zusatz name="Hallenbad und Sauna" anzahl="4" einzelpreis="0.00" buchungsnr="48141052f9" provision="0.00" provision_split="0.00" mwst_satz="19.00" kuerzel="BAD"></zusatz>
+      <zusatz name="Parkplatz" anzahl="4" einzelpreis="0.00" buchungsnr="48141052f9" provision="0.00" provision_split="0.00" mwst_satz="7.00" kuerzel=""></zusatz>
+      <zusatz name="Endreinigung" anzahl="1" einzelpreis="45.00" buchungsnr="48141052f9" provision="0.00" provision_split="0.00" mwst_satz="7.00" kuerzel=""></zusatz>
+    </zusaetze>
+    <v_titel>001) Paradies Rügen Urlaubs GmbH &amp; Co. KG</v_titel>
+    <v_plz>18586</v_plz>
+    <v_ort>Göhren (Ostseebad)</v_ort>
+    <v_strasse>Friedrichstrasse 5</v_strasse>
+    <v_telefon>038308 666590</v_telefon>
+    <v_fax>038308 6665920</v_fax>
+    <v_email>urlaub@paradies-ruegen.de</v_email>
+    <v_url>http://www.paradies-ruegen.de</v_url>
+    <o_id>43706</o_id>
+    <o_bezeichnung>Meeresblick Residenzen (deluxe)</o_bezeichnung>
+    <o_plz>18586</o_plz>
+    <o_ort>Göhren (Ostseebad)</o_ort>
+    <o_strasse>Friedrichstraße 2</o_strasse>
+    <o_url>http://www.paradies-ruegen.de/ferienwohnungen/meeresblick-residenzen.html</o_url>
+    <o_telefon>038308 5650</o_telefon>
+    <o_fax>038308 565200</o_fax>
+    <o_email>urlaub@paradies-ruegen.de</o_email>
+    <o_gewerblich>y</o_gewerblich>
+    <k_bezeichnung>Meeresblick Typ D deluxe WE28</k_bezeichnung>
+    <z_bezeichnung>D 28: 50m², 2-Raum, 4 Pers., Balkon, Meerblick (Typ D)</z_bezeichnung>
+    <restzahlung_datum>21.01.2015</restzahlung_datum>
+    <systemgebuehr>0.00</systemgebuehr>
+    <systemgebuehr_waehrung></systemgebuehr_waehrung>
+    <mietpreis>0.00</mietpreis>
+    <zm_anzahlung>0.00</zm_anzahlung>
+    <zm_restzahlung>0.00</zm_restzahlung>
+    <zm_zwischenzahlung>0.00</zm_zwischenzahlung>
+    <zm_mietzahlung>0.00</zm_mietzahlung>
+    <zm_stornogebuehr>0.00</zm_stornogebuehr>
+    <ku_name>Hüttner</ku_name>
+    <ku_vorname>Reinhard</ku_vorname>
+    <ku_anrede>Sehr geehrte Familie</ku_anrede>
+    <ku_land>Deutschland</ku_land>
+    <ku_plz>95126</ku_plz>
+    <ku_ort>Schwarzenbach</ku_ort>
+    <ku_strasse>Seerosenweg 20</ku_strasse>
+    <ku_telefon>0172-7246720</ku_telefon>
+    <ku_fax></ku_fax>
+    <ku_email>rukhuettner@aol.com</ku_email>
+    <ku_handy></ku_handy>
+    <ku_firma></ku_firma>
+    <k_id>74751</k_id>
+  </reservation>
+  <reservation>
+    <buchungsnr>481410532c</buchungsnr>
+    <art>eigen</art>
+    <anreise>08.08.2015</anreise>
+    <abreise>22.08.2015</abreise>
+    <preis>0.00</preis>
+    <preisaufschlag>0.00</preisaufschlag>
+    <waehrung>EURO</waehrung>
+    <ankunftszeit></ankunftszeit>
+    <provision>4.00</provision>
+    <mwst>7.00</mwst>
+    <status>b</status>
+    <erwachsene>2</erwachsene>
+    <anzahlung>45.00</anzahlung>
+    <anzahlung_datum>21.08.2014</anzahlung_datum>
+    <mwst_prov>19.00</mwst_prov>
+    <bemerkungen></bemerkungen>
+    <split_prov>0.00</split_prov>
+    <buchungszeitpunkt>14.08.2014 10:53:56</buchungszeitpunkt>
+    <leistungen_vor_ort>Kurtaxe</leistungen_vor_ort>
+    <kunde_nr>K139060826be</kunde_nr>
+    <room_id>141696</room_id>
+    <verm_gebuehr>0.00</verm_gebuehr>
+    <vermittler_id>12245</vermittler_id>
+    <kinder></kinder>
+    <zusaetze>
+      <zusatz name="Parkplatz" anzahl="14" einzelpreis="0.00" buchungsnr="481410532c" provision="0.00" provision_split="0.00" mwst_satz="7.00" kuerzel=""></zusatz>
+      <zusatz name="Hallenbad und Sauna" anzahl="14" einzelpreis="0.00" buchungsnr="481410532c" provision="0.00" provision_split="0.00" mwst_satz="19.00" kuerzel="BAD"></zusatz>
+      <zusatz name="Endreinigung" anzahl="1" einzelpreis="45.00" buchungsnr="481410532c" provision="0.00" provision_split="0.00" mwst_satz="7.00" kuerzel=""></zusatz>
+    </zusaetze>
+    <v_titel>001) Paradies Rügen Urlaubs GmbH &amp; Co. KG</v_titel>
+    <v_plz>18586</v_plz>
+    <v_ort>Göhren (Ostseebad)</v_ort>
+    <v_strasse>Friedrichstrasse 5</v_strasse>
+    <v_telefon>038308 666590</v_telefon>
+    <v_fax>038308 6665920</v_fax>
+    <v_email>urlaub@paradies-ruegen.de</v_email>
+    <v_url>http://www.paradies-ruegen.de</v_url>
+    <o_id>43706</o_id>
+    <o_bezeichnung>Meeresblick Residenzen (deluxe)</o_bezeichnung>
+    <o_plz>18586</o_plz>
+    <o_ort>Göhren (Ostseebad)</o_ort>
+    <o_strasse>Friedrichstraße 2</o_strasse>
+    <o_url>http://www.paradies-ruegen.de/ferienwohnungen/meeresblick-residenzen.html</o_url>
+    <o_telefon>038308 5650</o_telefon>
+    <o_fax>038308 565200</o_fax>
+    <o_email>urlaub@paradies-ruegen.de</o_email>
+    <o_gewerblich>y</o_gewerblich>
+    <k_bezeichnung>Meeresblick Typ D deluxe WE28</k_bezeichnung>
+    <z_bezeichnung>D 28: 50m², 2-Raum, 4 Pers., Balkon, Meerblick (Typ D)</z_bezeichnung>
+    <restzahlung_datum>11.07.2015</restzahlung_datum>
+    <systemgebuehr>0.00</systemgebuehr>
+    <systemgebuehr_waehrung></systemgebuehr_waehrung>
+    <mietpreis>0.00</mietpreis>
+    <zm_anzahlung>0.00</zm_anzahlung>
+    <zm_restzahlung>0.00</zm_restzahlung>
+    <zm_zwischenzahlung>0.00</zm_zwischenzahlung>
+    <zm_mietzahlung>0.00</zm_mietzahlung>
+    <zm_stornogebuehr>0.00</zm_stornogebuehr>
+    <ku_name>Hüttner</ku_name>
+    <ku_vorname>Reinhard</ku_vorname>
+    <ku_anrede>Sehr geehrte Familie</ku_anrede>
+    <ku_land>Deutschland</ku_land>
+    <ku_plz>95126</ku_plz>
+    <ku_ort>Schwarzenbach</ku_ort>
+    <ku_strasse>Seerosenweg 20</ku_strasse>
+    <ku_telefon>0172-7246720</ku_telefon>
+    <ku_fax></ku_fax>
+    <ku_email>rukhuettner@aol.com</ku_email>
+    <ku_handy></ku_handy>
+    <ku_firma></ku_firma>
+    <k_id>74751</k_id>
+  </reservation>
+  <reservation>
+    <buchungsnr>481411017f</buchungsnr>
+    <art>eigen</art>
+    <anreise>12.07.2015</anreise>
+    <abreise>26.07.2015</abreise>
+    <preis>1792.00</preis>
+    <preisaufschlag>0.00</preisaufschlag>
+    <waehrung>EURO</waehrung>
+    <ankunftszeit></ankunftszeit>
+    <provision>4.00</provision>
+    <mwst>7.00</mwst>
+    <status>b</status>
+    <erwachsene>2</erwachsene>
+    <anzahlung>462.25</anzahlung>
+    <anzahlung_datum>21.08.2014</anzahlung_datum>
+    <mwst_prov>19.00</mwst_prov>
+    <bemerkungen></bemerkungen>
+    <split_prov>0.00</split_prov>
+    <buchungszeitpunkt>14.08.2014 11:01:45</buchungszeitpunkt>
+    <leistungen_vor_ort>Kurtaxe</leistungen_vor_ort>
+    <kunde_nr>K1371110303b</kunde_nr>
+    <room_id>141696</room_id>
+    <verm_gebuehr>0.00</verm_gebuehr>
+    <vermittler_id>12245</vermittler_id>
+    <kinder></kinder>
+    <zusaetze>
+      <zusatz name="AFDR (unverb. Stornoabs.)" anzahl="1" einzelpreis="12.00" buchungsnr="481411017f" provision="0.00" provision_split="0.00" mwst_satz="19.00" kuerzel="AFDR"></zusatz>
+      <zusatz name="Endreinigung" anzahl="1" einzelpreis="45.00" buchungsnr="481411017f" provision="0.00" provision_split="0.00" mwst_satz="7.00" kuerzel=""></zusatz>
+      <zusatz name="Parkplatz" anzahl="14" einzelpreis="0.00" buchungsnr="481411017f" provision="0.00" provision_split="0.00" mwst_satz="7.00" kuerzel=""></zusatz>
+      <zusatz name="Hallenbad und Sauna" anzahl="14" einzelpreis="0.00" buchungsnr="481411017f" provision="0.00" provision_split="0.00" mwst_satz="19.00" kuerzel="BAD"></zusatz>
+      <zusatz name="Wäschepaket" anzahl="2" einzelpreis="12.00" buchungsnr="481411017f" provision="0.00" provision_split="0.00" mwst_satz="19.00" kuerzel=""></zusatz>
+    </zusaetze>
+    <v_titel>001) Paradies Rügen Urlaubs GmbH &amp; Co. KG</v_titel>
+    <v_plz>18586</v_plz>
+    <v_ort>Göhren (Ostseebad)</v_ort>
+    <v_strasse>Friedrichstrasse 5</v_strasse>
+    <v_telefon>038308 666590</v_telefon>
+    <v_fax>038308 6665920</v_fax>
+    <v_email>urlaub@paradies-ruegen.de</v_email>
+    <v_url>http://www.paradies-ruegen.de</v_url>
+    <o_id>43706</o_id>
+    <o_bezeichnung>Meeresblick Residenzen (deluxe)</o_bezeichnung>
+    <o_plz>18586</o_plz>
+    <o_ort>Göhren (Ostseebad)</o_ort>
+    <o_strasse>Friedrichstraße 2</o_strasse>
+    <o_url>http://www.paradies-ruegen.de/ferienwohnungen/meeresblick-residenzen.html</o_url>
+    <o_telefon>038308 5650</o_telefon>
+    <o_fax>038308 565200</o_fax>
+    <o_email>urlaub@paradies-ruegen.de</o_email>
+    <o_gewerblich>y</o_gewerblich>
+    <k_bezeichnung>Meeresblick Typ D deluxe WE28</k_bezeichnung>
+    <z_bezeichnung>D 28: 50m², 2-Raum, 4 Pers., Balkon, Meerblick (Typ D)</z_bezeichnung>
+    <restzahlung_datum>14.06.2015</restzahlung_datum>
+    <systemgebuehr>0.00</systemgebuehr>
+    <systemgebuehr_waehrung></systemgebuehr_waehrung>
+    <mietpreis>0.00</mietpreis>
+    <zm_anzahlung>462.25</zm_anzahlung>
+    <zm_restzahlung>0.00</zm_restzahlung>
+    <zm_zwischenzahlung>0.00</zm_zwischenzahlung>
+    <zm_mietzahlung>0.00</zm_mietzahlung>
+    <zm_stornogebuehr>0.00</zm_stornogebuehr>
+    <ku_name>Hagemann</ku_name>
+    <ku_vorname>xxx Klaus</ku_vorname>
+    <ku_anrede>Sehr geehrter Herr</ku_anrede>
+    <ku_land>Deutschland</ku_land>
+    <ku_plz>98527</ku_plz>
+    <ku_ort>Suhl</ku_ort>
+    <ku_strasse>Fritz-Reuter-Str. 5</ku_strasse>
+    <ku_telefon>03681 722409</ku_telefon>
+    <ku_fax></ku_fax>
+    <ku_email>ik.hagemann@onlinehome.de</ku_email>
+    <ku_handy></ku_handy>
+    <ku_firma></ku_firma>
+    <k_id>74751</k_id>
+  </reservation>
+  <reservation>
+    <buchungsnr>4814113286</buchungsnr>
+    <art>eigen</art>
+    <anreise>21.12.2014</anreise>
+    <abreise>27.12.2014</abreise>
+    <preis>0.00</preis>
+    <preisaufschlag>0.00</preisaufschlag>
+    <waehrung>EURO</waehrung>
+    <ankunftszeit></ankunftszeit>
+    <provision>4.00</provision>
+    <mwst>7.00</mwst>
+    <status>b</status>
+    <erwachsene>3</erwachsene>
+    <anzahlung>45.00</anzahlung>
+    <anzahlung_datum>21.08.2014</anzahlung_datum>
+    <mwst_prov>19.00</mwst_prov>
+    <bemerkungen></bemerkungen>
+    <split_prov>0.00</split_prov>
+    <buchungszeitpunkt>14.08.2014 11:32:27</buchungszeitpunkt>
+    <leistungen_vor_ort>Kurtaxe</leistungen_vor_ort>
+    <kunde_nr>K14814113291</kunde_nr>
+    <room_id>114169</room_id>
+    <verm_gebuehr>0.00</verm_gebuehr>
+    <vermittler_id>12245</vermittler_id>
+    <kinder></kinder>
+    <zusaetze>
+      <zusatz name="Endreinigung" anzahl="1" einzelpreis="45.00" buchungsnr="4814113286" provision="0.00" provision_split="0.00" mwst_satz="7.00" kuerzel=""></zusatz>
+      <zusatz name="Parkplatz" anzahl="5" einzelpreis="0.00" buchungsnr="4814113286" provision="0.00" provision_split="0.00" mwst_satz="7.00" kuerzel=""></zusatz>
+      <zusatz name="Hallenbad und Sauna" anzahl="5" einzelpreis="0.00" buchungsnr="4814113286" provision="0.00" provision_split="0.00" mwst_satz="19.00" kuerzel="BAD"></zusatz>
+    </zusaetze>
+    <v_titel>001) Paradies Rügen Urlaubs GmbH &amp; Co. KG</v_titel>
+    <v_plz>18586</v_plz>
+    <v_ort>Göhren (Ostseebad)</v_ort>
+    <v_strasse>Friedrichstrasse 5</v_strasse>
+    <v_telefon>038308 666590</v_telefon>
+    <v_fax>038308 6665920</v_fax>
+    <v_email>urlaub@paradies-ruegen.de</v_email>
+    <v_url>http://www.paradies-ruegen.de</v_url>
+    <o_id>20020</o_id>
+    <o_bezeichnung>Meeresblick Residenzen</o_bezeichnung>
+    <o_plz>18586</o_plz>
+    <o_ort>Göhren (Ostseebad)</o_ort>
+    <o_strasse>Friedrichstraße 2</o_strasse>
+    <o_url>http://www.paradies-ruegen.de/ferienwohnungen/meeresblick-residenzen.html</o_url>
+    <o_telefon>038308 5650</o_telefon>
+    <o_fax>038308 565200</o_fax>
+    <o_email>urlaub@paradies-ruegen.de</o_email>
+    <o_gewerblich>y</o_gewerblich>
+    <k_bezeichnung>Meeresblick Typ E WE39</k_bezeichnung>
+    <z_bezeichnung>E 39: 63m², 3-Raum, 6 Pers., Balkon, Meerblick (Typ E)</z_bezeichnung>
+    <restzahlung_datum>24.11.2014</restzahlung_datum>
+    <systemgebuehr>0.00</systemgebuehr>
+    <systemgebuehr_waehrung>EURO</systemgebuehr_waehrung>
+    <mietpreis>0.00</mietpreis>
+    <zm_anzahlung>0.00</zm_anzahlung>
+    <zm_restzahlung>0.00</zm_restzahlung>
+    <zm_zwischenzahlung>0.00</zm_zwischenzahlung>
+    <zm_mietzahlung>0.00</zm_mietzahlung>
+    <zm_stornogebuehr>0.00</zm_stornogebuehr>
+    <ku_name>Homann</ku_name>
+    <ku_vorname>Dieter</ku_vorname>
+    <ku_anrede>Sehr geehrter Herr</ku_anrede>
+    <ku_land>Deutschland</ku_land>
+    <ku_plz>28357</ku_plz>
+    <ku_ort>Bremen</ku_ort>
+    <ku_strasse>Am Rüten 48</ku_strasse>
+    <ku_telefon>0172-4251841</ku_telefon>
+    <ku_fax></ku_fax>
+    <ku_email>exregio3311@t-online.de</ku_email>
+    <ku_handy></ku_handy>
+    <ku_firma></ku_firma>
+    <k_id>74761</k_id>
+  </reservation>
+  <reservation>
+    <buchungsnr>4814113331</buchungsnr>
+    <art>eigen</art>
+    <anreise>22.12.2014</anreise>
+    <abreise>28.12.2014</abreise>
+    <preis>0.00</preis>
+    <preisaufschlag>0.00</preisaufschlag>
+    <waehrung>EURO</waehrung>
+    <ankunftszeit></ankunftszeit>
+    <provision>4.00</provision>
+    <mwst>7.00</mwst>
+    <status>b</status>
+    <erwachsene>2</erwachsene>
+    <anzahlung>45.00</anzahlung>
+    <anzahlung_datum>21.08.2014</anzahlung_datum>
+    <mwst_prov>19.00</mwst_prov>
+    <bemerkungen>hat 1 Tag verl.--b.r.- 24.12.2014</bemerkungen>
+    <split_prov>0.00</split_prov>
+    <buchungszeitpunkt>14.08.2014 11:33:51</buchungszeitpunkt>
+    <leistungen_vor_ort>Kurtaxe</leistungen_vor_ort>
+    <kunde_nr>K14814113346</kunde_nr>
+    <room_id>141706</room_id>
+    <verm_gebuehr>0.00</verm_gebuehr>
+    <vermittler_id>12245</vermittler_id>
+    <kinder></kinder>
+    <zusaetze>
+      <zusatz name="Endreinigung" anzahl="1" einzelpreis="45.00" buchungsnr="4814113331" provision="0.00" provision_split="0.00" mwst_satz="7.00" kuerzel=""></zusatz>
+      <zusatz name="Parkplatz" anzahl="5" einzelpreis="0.00" buchungsnr="4814113331" provision="0.00" provision_split="0.00" mwst_satz="7.00" kuerzel=""></zusatz>
+      <zusatz name="Hallenbad und Sauna" anzahl="5" einzelpreis="0.00" buchungsnr="4814113331" provision="0.00" provision_split="0.00" mwst_satz="19.00" kuerzel="BAD"></zusatz>
+    </zusaetze>
+    <v_titel>001) Paradies Rügen Urlaubs GmbH &amp; Co. KG</v_titel>
+    <v_plz>18586</v_plz>
+    <v_ort>Göhren (Ostseebad)</v_ort>
+    <v_strasse>Friedrichstrasse 5</v_strasse>
+    <v_telefon>038308 666590</v_telefon>
+    <v_fax>038308 6665920</v_fax>
+    <v_email>urlaub@paradies-ruegen.de</v_email>
+    <v_url>http://www.paradies-ruegen.de</v_url>
+    <o_id>43706</o_id>
+    <o_bezeichnung>Meeresblick Residenzen (deluxe)</o_bezeichnung>
+    <o_plz>18586</o_plz>
+    <o_ort>Göhren (Ostseebad)</o_ort>
+    <o_strasse>Friedrichstraße 2</o_strasse>
+    <o_url>http://www.paradies-ruegen.de/ferienwohnungen/meeresblick-residenzen.html</o_url>
+    <o_telefon>038308 5650</o_telefon>
+    <o_fax>038308 565200</o_fax>
+    <o_email>urlaub@paradies-ruegen.de</o_email>
+    <o_gewerblich>y</o_gewerblich>
+    <k_bezeichnung>Meeresblick Typ D deluxe WE37</k_bezeichnung>
+    <z_bezeichnung>D 37: 50m², 2-Raum, 4 Pers., Balkon, Meerblick (Typ D)</z_bezeichnung>
+    <restzahlung_datum>24.11.2014</restzahlung_datum>
+    <systemgebuehr>0.00</systemgebuehr>
+    <systemgebuehr_waehrung>EURO</systemgebuehr_waehrung>
+    <mietpreis>0.00</mietpreis>
+    <zm_anzahlung>0.00</zm_anzahlung>
+    <zm_restzahlung>0.00</zm_restzahlung>
+    <zm_zwischenzahlung>0.00</zm_zwischenzahlung>
+    <zm_mietzahlung>0.00</zm_mietzahlung>
+    <zm_stornogebuehr>0.00</zm_stornogebuehr>
+    <ku_name>Homann</ku_name>
+    <ku_vorname>Hildegard</ku_vorname>
+    <ku_anrede>Sehr geehrte Frau</ku_anrede>
+    <ku_land>Deutschland</ku_land>
+    <ku_plz>.</ku_plz>
+    <ku_ort>.</ku_ort>
+    <ku_strasse>.</ku_strasse>
+    <ku_telefon>038308 34114</ku_telefon>
+    <ku_fax></ku_fax>
+    <ku_email>h.wille@paradies-ruegen.de</ku_email>
+    <ku_handy>0163 6029539</ku_handy>
+    <ku_firma></ku_firma>
+    <k_id>74755</k_id>
+  </reservation>
+  <reservation>
+    <buchungsnr>4814113344</buchungsnr>
+    <art>eigen</art>
+    <anreise>06.10.2014</anreise>
+    <abreise>10.10.2014</abreise>
+    <preis>185.00</preis>
+    <preisaufschlag>0.00</preisaufschlag>
+    <waehrung>EURO</waehrung>
+    <ankunftszeit></ankunftszeit>
+    <provision>4.00</provision>
+    <mwst>7.00</mwst>
+    <status>b</status>
+    <erwachsene>2</erwachsene>
+    <anzahlung>65.00</anzahlung>
+    <anzahlung_datum>21.08.2014</anzahlung_datum>
+    <mwst_prov>19.00</mwst_prov>
+    <bemerkungen>Stammgast-- Herbst- Arrangement
+      1 Flasche Wein in der FeWo
+      inklusive Endreinigung
+      inklusive Wäsche
+      inklusive Parkplatz
+      1 Nacht  Verlängerung
+      jetzt die Nov.- Buchung bereden- welche Whg. in BB er möchte??? 35;30;31 ????--b.r.</bemerkungen>
+    <split_prov>0.00</split_prov>
+    <buchungszeitpunkt>14.08.2014 11:33:55</buchungszeitpunkt>
+    <leistungen_vor_ort>Kurtaxe nach Saison</leistungen_vor_ort>
+    <kunde_nr>K11105094048</kunde_nr>
+    <room_id>55408</room_id>
+    <verm_gebuehr>0.00</verm_gebuehr>
+    <vermittler_id>12245</vermittler_id>
+    <kinder></kinder>
+    <zusaetze>
+      <zusatz name="Parkplatz" anzahl="4" einzelpreis="0.00" buchungsnr="4814113344" provision="0.00" provision_split="0.00" mwst_satz="7.00" kuerzel=""></zusatz>
+      <zusatz name="Logis Splitting B" anzahl="1" einzelpreis="78.00" buchungsnr="4814113344" provision="0.00" provision_split="0.00" mwst_satz="19.00" kuerzel=""></zusatz>
+    </zusaetze>
+    <v_titel>001) Paradies Rügen Urlaubs GmbH &amp; Co. KG</v_titel>
+    <v_plz>18586</v_plz>
+    <v_ort>Göhren (Ostseebad)</v_ort>
+    <v_strasse>Friedrichstrasse 5</v_strasse>
+    <v_telefon>038308 666590</v_telefon>
+    <v_fax>038308 6665920</v_fax>
+    <v_email>urlaub@paradies-ruegen.de</v_email>
+    <v_url>http://www.paradies-ruegen.de</v_url>
+    <o_id>14200</o_id>
+    <o_bezeichnung>Strandresidenz Brandenburg</o_bezeichnung>
+    <o_plz>18586</o_plz>
+    <o_ort>Göhren (Ostseebad)</o_ort>
+    <o_strasse>Strandstraße 7</o_strasse>
+    <o_url>http://www.paradies-ruegen.de/ferienwohnungen/strandresidenz-brandenburg.html</o_url>
+    <o_telefon>038308 666590</o_telefon>
+    <o_fax>038308 6665920</o_fax>
+    <o_email>urlaub@paradies-ruegen.de</o_email>
+    <o_gewerblich>y</o_gewerblich>
+    <k_bezeichnung>SR Brandenburg Typ D WE13</k_bezeichnung>
+    <z_bezeichnung>D 13: 54 m², 2-Raum, 4 Pers., Balkon, Gartenblick (Typ D)</z_bezeichnung>
+    <restzahlung_datum>08.09.2014</restzahlung_datum>
+    <systemgebuehr>0.00</systemgebuehr>
+    <systemgebuehr_waehrung>EURO</systemgebuehr_waehrung>
+    <mietpreis>0.00</mietpreis>
+    <zm_anzahlung>65.00</zm_anzahlung>
+    <zm_restzahlung>198.00</zm_restzahlung>
+    <zm_zwischenzahlung>0.00</zm_zwischenzahlung>
+    <zm_mietzahlung>0.00</zm_mietzahlung>
+    <zm_stornogebuehr>0.00</zm_stornogebuehr>
+    <ku_name>Boehlke</ku_name>
+    <ku_vorname>Dietmar</ku_vorname>
+    <ku_anrede>Sehr geehrter Herr</ku_anrede>
+    <ku_land>Deutschland</ku_land>
+    <ku_plz>12161</ku_plz>
+    <ku_ort>Berlin</ku_ort>
+    <ku_strasse>Fehlerstr. 7</ku_strasse>
+    <ku_telefon>.</ku_telefon>
+    <ku_fax></ku_fax>
+    <ku_email>jutta.boehlke@t-online.de</ku_email>
+    <ku_handy>.</ku_handy>
+    <ku_firma></ku_firma>
+    <k_id>71919</k_id>
+  </reservation>
+  <reservation>
+    <buchungsnr>48141135c3</buchungsnr>
+    <art>eigen</art>
+    <anreise>22.12.2014</anreise>
+    <abreise>28.12.2014</abreise>
+    <preis>0.00</preis>
+    <preisaufschlag>0.00</preisaufschlag>
+    <waehrung>EURO</waehrung>
+    <ankunftszeit></ankunftszeit>
+    <provision>4.00</provision>
+    <mwst>7.00</mwst>
+    <status>b</status>
+    <erwachsene>2</erwachsene>
+    <anzahlung>45.00</anzahlung>
+    <anzahlung_datum>21.08.2014</anzahlung_datum>
+    <mwst_prov>19.00</mwst_prov>
+    <bemerkungen></bemerkungen>
+    <split_prov>0.00</split_prov>
+    <buchungszeitpunkt>14.08.2014 11:35:46</buchungszeitpunkt>
+    <leistungen_vor_ort>Kurtaxe</leistungen_vor_ort>
+    <kunde_nr>K1481411357b</kunde_nr>
+    <room_id>138199</room_id>
+    <verm_gebuehr>0.00</verm_gebuehr>
+    <vermittler_id>12245</vermittler_id>
+    <kinder></kinder>
+    <zusaetze>
+      <zusatz name="Hallenbad und Sauna" anzahl="5" einzelpreis="0.00" buchungsnr="48141135c3" provision="0.00" provision_split="0.00" mwst_satz="19.00" kuerzel="BAD"></zusatz>
+      <zusatz name="Parkplatz" anzahl="5" einzelpreis="0.00" buchungsnr="48141135c3" provision="0.00" provision_split="0.00" mwst_satz="7.00" kuerzel=""></zusatz>
+      <zusatz name="Endreinigung" anzahl="1" einzelpreis="45.00" buchungsnr="48141135c3" provision="0.00" provision_split="0.00" mwst_satz="7.00" kuerzel=""></zusatz>
+    </zusaetze>
+    <v_titel>001) Paradies Rügen Urlaubs GmbH &amp; Co. KG</v_titel>
+    <v_plz>18586</v_plz>
+    <v_ort>Göhren (Ostseebad)</v_ort>
+    <v_strasse>Friedrichstrasse 5</v_strasse>
+    <v_telefon>038308 666590</v_telefon>
+    <v_fax>038308 6665920</v_fax>
+    <v_email>urlaub@paradies-ruegen.de</v_email>
+    <v_url>http://www.paradies-ruegen.de</v_url>
+    <o_id>20020</o_id>
+    <o_bezeichnung>Meeresblick Residenzen</o_bezeichnung>
+    <o_plz>18586</o_plz>
+    <o_ort>Göhren (Ostseebad)</o_ort>
+    <o_strasse>Friedrichstraße 2</o_strasse>
+    <o_url>http://www.paradies-ruegen.de/ferienwohnungen/meeresblick-residenzen.html</o_url>
+    <o_telefon>038308 5650</o_telefon>
+    <o_fax>038308 565200</o_fax>
+    <o_email>urlaub@paradies-ruegen.de</o_email>
+    <o_gewerblich>y</o_gewerblich>
+    <k_bezeichnung>Meeresblick Typ C WE32</k_bezeichnung>
+    <z_bezeichnung>C 32: 42m², 2-Raum, 3 Pers., Terrasse (Typ C)</z_bezeichnung>
+    <restzahlung_datum>24.11.2014</restzahlung_datum>
+    <systemgebuehr>0.00</systemgebuehr>
+    <systemgebuehr_waehrung>EURO</systemgebuehr_waehrung>
+    <mietpreis>0.00</mietpreis>
+    <zm_anzahlung>0.00</zm_anzahlung>
+    <zm_restzahlung>0.00</zm_restzahlung>
+    <zm_zwischenzahlung>0.00</zm_zwischenzahlung>
+    <zm_mietzahlung>0.00</zm_mietzahlung>
+    <zm_stornogebuehr>0.00</zm_stornogebuehr>
+    <ku_name>Malerarbeiten</ku_name>
+    <ku_vorname></ku_vorname>
+    <ku_anrede>Sehr geehrte Frau</ku_anrede>
+    <ku_land>Deutschland</ku_land>
+    <ku_plz>.</ku_plz>
+    <ku_ort>.</ku_ort>
+    <ku_strasse>.</ku_strasse>
+    <ku_telefon>038308 34114</ku_telefon>
+    <ku_fax></ku_fax>
+    <ku_email>h.wille@paradies-ruegen.de</ku_email>
+    <ku_handy>0163 6029539</ku_handy>
+    <ku_firma></ku_firma>
+    <k_id>74749</k_id>
+  </reservation>
+  <reservation>
+    <buchungsnr>481411370a</buchungsnr>
+    <art>eigen</art>
+    <anreise>22.12.2014</anreise>
+    <abreise>28.12.2014</abreise>
+    <preis>0.00</preis>
+    <preisaufschlag>0.00</preisaufschlag>
+    <waehrung>EURO</waehrung>
+    <ankunftszeit></ankunftszeit>
+    <provision>4.00</provision>
+    <mwst>7.00</mwst>
+    <status>b</status>
+    <erwachsene>2</erwachsene>
+    <anzahlung>45.00</anzahlung>
+    <anzahlung_datum>21.08.2014</anzahlung_datum>
+    <mwst_prov>19.00</mwst_prov>
+    <bemerkungen>hat auf 28.12.2014 verl.--b.r.- 24.12.2014</bemerkungen>
+    <split_prov>0.00</split_prov>
+    <buchungszeitpunkt>14.08.2014 11:37:18</buchungszeitpunkt>
+    <leistungen_vor_ort>Kurtaxe</leistungen_vor_ort>
+    <kunde_nr>K148141137af</kunde_nr>
+    <room_id>137019</room_id>
+    <verm_gebuehr>0.00</verm_gebuehr>
+    <vermittler_id>12245</vermittler_id>
+    <kinder></kinder>
+    <zusaetze>
+      <zusatz name="Schwimmbad und Sauna" anzahl="1" einzelpreis="0.00" buchungsnr="481411370a" provision="0.00" provision_split="0.00" mwst_satz="19.00" kuerzel="SS"></zusatz>
+      <zusatz name="Parkplatz" anzahl="7" einzelpreis="0.00" buchungsnr="481411370a" provision="0.00" provision_split="0.00" mwst_satz="7.00" kuerzel=""></zusatz>
+      <zusatz name="Endreinigung" anzahl="1" einzelpreis="45.00" buchungsnr="481411370a" provision="0.00" provision_split="0.00" mwst_satz="7.00" kuerzel=""></zusatz>
+    </zusaetze>
+    <v_titel>001) Paradies Rügen Urlaubs GmbH &amp; Co. KG</v_titel>
+    <v_plz>18586</v_plz>
+    <v_ort>Göhren (Ostseebad)</v_ort>
+    <v_strasse>Friedrichstrasse 5</v_strasse>
+    <v_telefon>038308 666590</v_telefon>
+    <v_fax>038308 6665920</v_fax>
+    <v_email>urlaub@paradies-ruegen.de</v_email>
+    <v_url>http://www.paradies-ruegen.de</v_url>
+    <o_id>41915</o_id>
+    <o_bezeichnung>Meeresblick Residenzen (deluxe)</o_bezeichnung>
+    <o_plz>18586</o_plz>
+    <o_ort>Göhren (Ostseebad)</o_ort>
+    <o_strasse>Friedrichstr. 2</o_strasse>
+    <o_url>http://www.paradies-ruegen.de/ferienwohnungen/meeresblick-residenzen.html</o_url>
+    <o_telefon>038308 666590</o_telefon>
+    <o_fax>038308 6665920</o_fax>
+    <o_email>k.homann@paradies-ruegen.de;kaho23@gmx.de</o_email>
+    <o_gewerblich>n</o_gewerblich>
+    <k_bezeichnung>Meeresblick Typ C deluxe WE31</k_bezeichnung>
+    <z_bezeichnung>C 31: 50m², 2-Raum, 4Pers, Terrasse, etwas Meerblick (Typ C)</z_bezeichnung>
+    <restzahlung_datum>24.11.2014</restzahlung_datum>
+    <systemgebuehr>0.00</systemgebuehr>
+    <systemgebuehr_waehrung>EURO</systemgebuehr_waehrung>
+    <mietpreis>0.00</mietpreis>
+    <zm_anzahlung>0.00</zm_anzahlung>
+    <zm_restzahlung>0.00</zm_restzahlung>
+    <zm_zwischenzahlung>0.00</zm_zwischenzahlung>
+    <zm_mietzahlung>0.00</zm_mietzahlung>
+    <zm_stornogebuehr>0.00</zm_stornogebuehr>
+    <ku_name>Homann</ku_name>
+    <ku_vorname>Katrin</ku_vorname>
+    <ku_anrede>Sehr geehrte Frau</ku_anrede>
+    <ku_land>Deutschland</ku_land>
+    <ku_plz>.</ku_plz>
+    <ku_ort>.</ku_ort>
+    <ku_strasse>.</ku_strasse>
+    <ku_telefon>038308 34114</ku_telefon>
+    <ku_fax></ku_fax>
+    <ku_email>h.wille@paradies-ruegen.de</ku_email>
+    <ku_handy>0163 6029539</ku_handy>
+    <ku_firma></ku_firma>
+    <k_id>72728</k_id>
+  </reservation>
+  <reservation>
+    <buchungsnr>4814113875</buchungsnr>
+    <art>eigen</art>
+    <anreise>22.12.2014</anreise>
+    <abreise>28.12.2014</abreise>
+    <preis>0.00</preis>
+    <preisaufschlag>0.00</preisaufschlag>
+    <waehrung>EURO</waehrung>
+    <ankunftszeit></ankunftszeit>
+    <provision>4.00</provision>
+    <mwst>7.00</mwst>
+    <status>b</status>
+    <erwachsene>2</erwachsene>
+    <anzahlung>45.00</anzahlung>
+    <anzahlung_datum>21.08.2014</anzahlung_datum>
+    <mwst_prov>19.00</mwst_prov>
+    <bemerkungen></bemerkungen>
+    <split_prov>0.00</split_prov>
+    <buchungszeitpunkt>14.08.2014 11:38:42</buchungszeitpunkt>
+    <leistungen_vor_ort></leistungen_vor_ort>
+    <kunde_nr>K148141138dd</kunde_nr>
+    <room_id>137041</room_id>
+    <verm_gebuehr>0.00</verm_gebuehr>
+    <vermittler_id>12245</vermittler_id>
+    <kinder></kinder>
+    <zusaetze>
+      <zusatz name="Endreinigung" anzahl="1" einzelpreis="45.00" buchungsnr="4814113875" provision="0.00" provision_split="0.00" mwst_satz="7.00" kuerzel=""></zusatz>
+      <zusatz name="Parkplatz" anzahl="5" einzelpreis="0.00" buchungsnr="4814113875" provision="0.00" provision_split="0.00" mwst_satz="7.00" kuerzel=""></zusatz>
+      <zusatz name="Schwimmbad und Sauna" anzahl="1" einzelpreis="0.00" buchungsnr="4814113875" provision="0.00" provision_split="0.00" mwst_satz="19.00" kuerzel="SS"></zusatz>
+    </zusaetze>
+    <v_titel>001) Paradies Rügen Urlaubs GmbH &amp; Co. KG</v_titel>
+    <v_plz>18586</v_plz>
+    <v_ort>Göhren (Ostseebad)</v_ort>
+    <v_strasse>Friedrichstrasse 5</v_strasse>
+    <v_telefon>038308 666590</v_telefon>
+    <v_fax>038308 6665920</v_fax>
+    <v_email>urlaub@paradies-ruegen.de</v_email>
+    <v_url>http://www.paradies-ruegen.de</v_url>
+    <o_id>41930</o_id>
+    <o_bezeichnung>Meeresblick Residenzen (deluxe)</o_bezeichnung>
+    <o_plz>18586</o_plz>
+    <o_ort>Göhren (Ostseebad)</o_ort>
+    <o_strasse>Friedrichstr. 2</o_strasse>
+    <o_url>http://www.paradies-ruegen.de/ferienwohnungen/meeresblick-residenzen.html</o_url>
+    <o_telefon>038308 666590</o_telefon>
+    <o_fax>038308 6665920</o_fax>
+    <o_email>h.wille@paradies-ruegen.de</o_email>
+    <o_gewerblich>n</o_gewerblich>
+    <k_bezeichnung>Meeresblick Typ D deluxe WE40</k_bezeichnung>
+    <z_bezeichnung>D 40: 50m², 2-Raum, 4 Pers., Balkon, Meerblick (Typ D)</z_bezeichnung>
+    <restzahlung_datum>24.11.2014</restzahlung_datum>
+    <systemgebuehr>0.00</systemgebuehr>
+    <systemgebuehr_waehrung>EURO</systemgebuehr_waehrung>
+    <mietpreis>0.00</mietpreis>
+    <zm_anzahlung>0.00</zm_anzahlung>
+    <zm_restzahlung>0.00</zm_restzahlung>
+    <zm_zwischenzahlung>0.00</zm_zwischenzahlung>
+    <zm_mietzahlung>0.00</zm_mietzahlung>
+    <zm_stornogebuehr>0.00</zm_stornogebuehr>
+    <ku_name>Wille</ku_name>
+    <ku_vorname>Holger</ku_vorname>
+    <ku_anrede>Sehr geehrter Herr</ku_anrede>
+    <ku_land>Deutschland</ku_land>
+    <ku_plz>.</ku_plz>
+    <ku_ort>.</ku_ort>
+    <ku_strasse>.</ku_strasse>
+    <ku_telefon>038308 34114</ku_telefon>
+    <ku_fax></ku_fax>
+    <ku_email>h.wille@paradies-ruegen.de</ku_email>
+    <ku_handy>0163 6029539</ku_handy>
+    <ku_firma></ku_firma>
+    <k_id>72749</k_id>
+  </reservation>
+  <reservation>
+    <buchungsnr>481411531f</buchungsnr>
+    <art>eigen</art>
+    <anreise>04.09.2014</anreise>
+    <abreise>11.09.2014</abreise>
+    <preis>462.00</preis>
+    <preisaufschlag>0.00</preisaufschlag>
+    <waehrung>EURO</waehrung>
+    <ankunftszeit></ankunftszeit>
+    <provision>4.00</provision>
+    <mwst>7.00</mwst>
+    <status>s</status>
+    <erwachsene>2</erwachsene>
+    <anzahlung>128.00</anzahlung>
+    <anzahlung_datum>21.08.2014</anzahlung_datum>
+    <mwst_prov>19.00</mwst_prov>
+    <bemerkungen></bemerkungen>
+    <split_prov>0.00</split_prov>
+    <buchungszeitpunkt>14.08.2014 11:53:25</buchungszeitpunkt>
+    <leistungen_vor_ort>Kurtaxe (Eine Zahlung per EC- oder Kreditkarte vor Ort ist leider nicht möglich.)</leistungen_vor_ort>
+    <kunde_nr>K14814115316</kunde_nr>
+    <room_id>87621</room_id>
+    <verm_gebuehr>0.00</verm_gebuehr>
+    <vermittler_id>12245</vermittler_id>
+    <kinder></kinder>
+    <zusaetze>
+      <zusatz name="Endreinigung" anzahl="1" einzelpreis="50.00" buchungsnr="481411531f" provision="0.00" provision_split="0.00" mwst_satz="7.00" kuerzel=""></zusatz>
+      <zusatz name="Parkplatz" anzahl="7" einzelpreis="0.00" buchungsnr="481411531f" provision="0.00" provision_split="0.00" mwst_satz="7.00" kuerzel=""></zusatz>
+    </zusaetze>
+    <v_titel>001) Paradies Rügen Urlaubs GmbH &amp; Co. KG</v_titel>
+    <v_plz>18586</v_plz>
+    <v_ort>Göhren (Ostseebad)</v_ort>
+    <v_strasse>Friedrichstrasse 5</v_strasse>
+    <v_telefon>038308 666590</v_telefon>
+    <v_fax>038308 6665920</v_fax>
+    <v_email>urlaub@paradies-ruegen.de</v_email>
+    <v_url>http://www.paradies-ruegen.de</v_url>
+    <o_id>26668</o_id>
+    <o_bezeichnung>F-1089 Haus Mecklenburg</o_bezeichnung>
+    <o_plz>18586</o_plz>
+    <o_ort>Göhren (Ostseebad)</o_ort>
+    <o_strasse>Elisenstraße 12</o_strasse>
+    <o_url>http://www.paradies-ruegen.de/ferienwohnungen/haus-mecklenburg.html</o_url>
+    <o_telefon>038308 666590</o_telefon>
+    <o_fax>038308 6665920</o_fax>
+    <o_email>service@goehren-abc.de</o_email>
+    <o_gewerblich>y</o_gewerblich>
+    <k_bezeichnung>Mecklenburg Typ A</k_bezeichnung>
+    <z_bezeichnung>A 10: 40m², 2-Raum, 4 Pers., Balkon (Typ A)</z_bezeichnung>
+    <restzahlung_datum>21.08.2014</restzahlung_datum>
+    <systemgebuehr>0.00</systemgebuehr>
+    <systemgebuehr_waehrung></systemgebuehr_waehrung>
+    <mietpreis>0.00</mietpreis>
+    <zm_anzahlung>0.00</zm_anzahlung>
+    <zm_restzahlung>0.00</zm_restzahlung>
+    <zm_zwischenzahlung>0.00</zm_zwischenzahlung>
+    <zm_mietzahlung>0.00</zm_mietzahlung>
+    <zm_stornogebuehr>0.00</zm_stornogebuehr>
+    <ku_name>Sander</ku_name>
+    <ku_vorname>.</ku_vorname>
+    <ku_anrede>Sehr geehrter Herr</ku_anrede>
+    <ku_land>Deutschland</ku_land>
+    <ku_plz>.</ku_plz>
+    <ku_ort>.</ku_ort>
+    <ku_strasse>.</ku_strasse>
+    <ku_telefon>.</ku_telefon>
+    <ku_fax></ku_fax>
+    <ku_email>urlaub@paradies-ruegen.de</ku_email>
+    <ku_handy></ku_handy>
+    <ku_firma></ku_firma>
+    <k_id>46602</k_id>
+  </reservation>
+  <reservation>
+    <buchungsnr>4814120561</buchungsnr>
+    <art>eigen</art>
+    <anreise>25.08.2014</anreise>
+    <abreise>27.08.2014</abreise>
+    <preis>144.00</preis>
+    <preisaufschlag>0.00</preisaufschlag>
+    <waehrung>EURO</waehrung>
+    <ankunftszeit></ankunftszeit>
+    <provision>4.00</provision>
+    <mwst>7.00</mwst>
+    <status>b</status>
+    <erwachsene>2</erwachsene>
+    <anzahlung>50.00</anzahlung>
+    <anzahlung_datum>21.08.2014</anzahlung_datum>
+    <mwst_prov>19.00</mwst_prov>
+    <bemerkungen>BC
+      Hund kommt mit, vor Ort zahlen, b.h.</bemerkungen>
+    <split_prov>0.00</split_prov>
+    <buchungszeitpunkt>14.08.2014 12:05:40</buchungszeitpunkt>
+    <leistungen_vor_ort>Kurtaxe, gegebenenfalls Restzahlung vom Mietpreis</leistungen_vor_ort>
+    <kunde_nr>K14814120584</kunde_nr>
+    <room_id>70215</room_id>
+    <verm_gebuehr>0.00</verm_gebuehr>
+    <vermittler_id>12245</vermittler_id>
+    <kinder></kinder>
+    <zusaetze>
+      <zusatz name="Frühstück" anzahl="4" einzelpreis="0.00" buchungsnr="4814120561" provision="0.00" provision_split="0.00" mwst_satz="19.00" kuerzel=""></zusatz>
+      <zusatz name="Parkplatz" anzahl="2" einzelpreis="0.00" buchungsnr="4814120561" provision="0.00" provision_split="0.00" mwst_satz="7.00" kuerzel=""></zusatz>
+      <zusatz name="Logis Splitting B" anzahl="1" einzelpreis="36.00" buchungsnr="4814120561" provision="0.00" provision_split="0.00" mwst_satz="19.00" kuerzel=""></zusatz>
+      <zusatz name="Haustier" anzahl="2" einzelpreis="8.00" buchungsnr="4814120561" provision="0.00" provision_split="0.00" mwst_satz="19.00" kuerzel=""></zusatz>
+    </zusaetze>
+    <v_titel>001) Paradies Rügen Urlaubs GmbH &amp; Co. KG</v_titel>
+    <v_plz>18586</v_plz>
+    <v_ort>Göhren (Ostseebad)</v_ort>
+    <v_strasse>Friedrichstrasse 5</v_strasse>
+    <v_telefon>038308 666590</v_telefon>
+    <v_fax>038308 6665920</v_fax>
+    <v_email>urlaub@paradies-ruegen.de</v_email>
+    <v_url>http://www.paradies-ruegen.de</v_url>
+    <o_id>20021</o_id>
+    <o_bezeichnung>Hotel Strandhaus Mönchgut</o_bezeichnung>
+    <o_plz>18586</o_plz>
+    <o_ort>Lobbe auf Rügen</o_ort>
+    <o_strasse>Göhrener Weg 2</o_strasse>
+    <o_url>http://www.strandhaus-moenchgut.de/</o_url>
+    <o_telefon>038308 666590</o_telefon>
+    <o_fax>038308 6665920</o_fax>
+    <o_email>urlaub@paradies-ruegen.de</o_email>
+    <o_gewerblich>y</o_gewerblich>
+    <k_bezeichnung>C29 Doppelzimmer OG</k_bezeichnung>
+    <z_bezeichnung>Hotelzimmer 29: 20 m², inkl. Frühstück (Typ C)</z_bezeichnung>
+    <restzahlung_datum>21.08.2014</restzahlung_datum>
+    <systemgebuehr>0.00</systemgebuehr>
+    <systemgebuehr_waehrung>EURO</systemgebuehr_waehrung>
+    <mietpreis>0.00</mietpreis>
+    <zm_anzahlung>50.00</zm_anzahlung>
+    <zm_restzahlung>146.00</zm_restzahlung>
+    <zm_zwischenzahlung>0.00</zm_zwischenzahlung>
+    <zm_mietzahlung>0.00</zm_mietzahlung>
+    <zm_stornogebuehr>0.00</zm_stornogebuehr>
+    <ku_name>Kaempff</ku_name>
+    <ku_vorname>Martina</ku_vorname>
+    <ku_anrede>Sehr geehrte Familie</ku_anrede>
+    <ku_land>Deutschland</ku_land>
+    <ku_plz>22927</ku_plz>
+    <ku_ort>Großhansdorf</ku_ort>
+    <ku_strasse>Haberstieg 3</ku_strasse>
+    <ku_telefon>041022173130</ku_telefon>
+    <ku_fax></ku_fax>
+    <ku_email>martinakaempff@aol.com</ku_email>
+    <ku_handy>.</ku_handy>
+    <ku_firma></ku_firma>
+    <k_id>76774</k_id>
+  </reservation>
+  <reservation>
+    <buchungsnr>4814121183</buchungsnr>
+    <art>eigen</art>
+    <anreise>26.08.2014</anreise>
+    <abreise>31.08.2014</abreise>
+    <preis>316.00</preis>
+    <preisaufschlag>0.00</preisaufschlag>
+    <waehrung>EURO</waehrung>
+    <ankunftszeit></ankunftszeit>
+    <provision>4.00</provision>
+    <mwst>7.00</mwst>
+    <status>b</status>
+    <erwachsene>2</erwachsene>
+    <anzahlung>435.00</anzahlung>
+    <anzahlung_datum>21.08.2014</anzahlung_datum>
+    <mwst_prov>19.00</mwst_prov>
+    <bemerkungen>BC 704226008</bemerkungen>
+    <split_prov>0.00</split_prov>
+    <buchungszeitpunkt>14.08.2014 12:11:43</buchungszeitpunkt>
+    <leistungen_vor_ort>Kurtaxe</leistungen_vor_ort>
+    <kunde_nr>K1481412119f</kunde_nr>
+    <room_id>87411</room_id>
+    <verm_gebuehr>0.00</verm_gebuehr>
+    <vermittler_id>12245</vermittler_id>
+    <kinder></kinder>
+    <zusaetze>
+      <zusatz name="Endreinigung" anzahl="1" einzelpreis="40.00" buchungsnr="4814121183" provision="0.00" provision_split="0.00" mwst_satz="7.00" kuerzel=""></zusatz>
+      <zusatz name="Logis Splitting B" anzahl="1" einzelpreis="79.00" buchungsnr="4814121183" provision="0.00" provision_split="0.00" mwst_satz="19.00" kuerzel=""></zusatz>
+    </zusaetze>
+    <v_titel>001) Paradies Rügen Urlaubs GmbH &amp; Co. KG</v_titel>
+    <v_plz>18586</v_plz>
+    <v_ort>Göhren (Ostseebad)</v_ort>
+    <v_strasse>Friedrichstrasse 5</v_strasse>
+    <v_telefon>038308 666590</v_telefon>
+    <v_fax>038308 6665920</v_fax>
+    <v_email>urlaub@paradies-ruegen.de</v_email>
+    <v_url>http://www.paradies-ruegen.de</v_url>
+    <o_id>26643</o_id>
+    <o_bezeichnung>Höftresidenz</o_bezeichnung>
+    <o_plz>18586</o_plz>
+    <o_ort>Alt Reddevitz</o_ort>
+    <o_strasse>Alt Reddevitz 25 a</o_strasse>
+    <o_url>http://www.paradies-ruegen.de/ferienwohnungen/hoeftresidenz.html</o_url>
+    <o_telefon>038308 666590</o_telefon>
+    <o_fax>038308 6665920</o_fax>
+    <o_email>d.partsch@hoeft-residenz.de</o_email>
+    <o_gewerblich>y</o_gewerblich>
+    <k_bezeichnung>Höftresidenz Typ B WE14</k_bezeichnung>
+    <z_bezeichnung>B 14: 43 m², 1-Raum, 2 Pers., Balkon (Typ B)</z_bezeichnung>
+    <restzahlung_datum>21.08.2014</restzahlung_datum>
+    <systemgebuehr>0.00</systemgebuehr>
+    <systemgebuehr_waehrung>EURO</systemgebuehr_waehrung>
+    <mietpreis>0.00</mietpreis>
+    <zm_anzahlung>435.00</zm_anzahlung>
+    <zm_restzahlung>0.00</zm_restzahlung>
+    <zm_zwischenzahlung>0.00</zm_zwischenzahlung>
+    <zm_mietzahlung>0.00</zm_mietzahlung>
+    <zm_stornogebuehr>0.00</zm_stornogebuehr>
+    <ku_name>Mletzko</ku_name>
+    <ku_vorname>Jan</ku_vorname>
+    <ku_anrede>Sehr geehrte Familie</ku_anrede>
+    <ku_land>Deutschland</ku_land>
+    <ku_plz>20539</ku_plz>
+    <ku_ort>Hamburg</ku_ort>
+    <ku_strasse>Veddeler Damm 10</ku_strasse>
+    <ku_telefon>.</ku_telefon>
+    <ku_fax></ku_fax>
+    <ku_email>jan.mletzko@tu-harburg.de</ku_email>
+    <ku_handy>0162-4614482</ku_handy>
+    <ku_firma></ku_firma>
+    <k_id>71951</k_id>
+  </reservation>
+  <reservation>
+    <buchungsnr>481412131e</buchungsnr>
+    <art>eigen</art>
+    <anreise>14.05.2015</anreise>
+    <abreise>30.05.2015</abreise>
+    <preis>576.37</preis>
+    <preisaufschlag>0.00</preisaufschlag>
+    <waehrung>EURO</waehrung>
+    <ankunftszeit></ankunftszeit>
+    <provision>4.00</provision>
+    <mwst>7.00</mwst>
+    <status>b</status>
+    <erwachsene>2</erwachsene>
+    <anzahlung>275.00</anzahlung>
+    <anzahlung_datum>21.08.2014</anzahlung_datum>
+    <mwst_prov>19.00</mwst_prov>
+    <bemerkungen>Stammgast
+      unbedingt Zi lassen
+      ebay: 1961- 1963-1967-1973-1982-1985-1990
+      Zahlt 75 Euro Aufpreis wegen Feiertage + 128 Euro für den Hund = 203 Euro</bemerkungen>
+    <split_prov>0.00</split_prov>
+    <buchungszeitpunkt>14.08.2014 12:13:24</buchungszeitpunkt>
+    <leistungen_vor_ort>Kurtaxe, gegebenenfalls Restzahlung vom Mietpreis</leistungen_vor_ort>
+    <kunde_nr>K10827130437</kunde_nr>
+    <room_id>70216</room_id>
+    <verm_gebuehr>0.00</verm_gebuehr>
+    <vermittler_id>12245</vermittler_id>
+    <kinder></kinder>
+    <zusaetze>
+      <zusatz name="Parkplatz" anzahl="16" einzelpreis="0.00" buchungsnr="481412131e" provision="0.00" provision_split="0.00" mwst_satz="7.00" kuerzel=""></zusatz>
+      <zusatz name="Frühstück" anzahl="32" einzelpreis="0.00" buchungsnr="481412131e" provision="0.00" provision_split="0.00" mwst_satz="19.00" kuerzel=""></zusatz>
+      <zusatz name="Haustier" anzahl="1" einzelpreis="128.00" buchungsnr="481412131e" provision="0.00" provision_split="0.00" mwst_satz="19.00" kuerzel=""></zusatz>
+    </zusaetze>
+    <v_titel>001) Paradies Rügen Urlaubs GmbH &amp; Co. KG</v_titel>
+    <v_plz>18586</v_plz>
+    <v_ort>Göhren (Ostseebad)</v_ort>
+    <v_strasse>Friedrichstrasse 5</v_strasse>
+    <v_telefon>038308 666590</v_telefon>
+    <v_fax>038308 6665920</v_fax>
+    <v_email>urlaub@paradies-ruegen.de</v_email>
+    <v_url>http://www.paradies-ruegen.de</v_url>
+    <o_id>20021</o_id>
+    <o_bezeichnung>Hotel Strandhaus Mönchgut</o_bezeichnung>
+    <o_plz>18586</o_plz>
+    <o_ort>Lobbe auf Rügen</o_ort>
+    <o_strasse>Göhrener Weg 2</o_strasse>
+    <o_url>http://www.strandhaus-moenchgut.de/</o_url>
+    <o_telefon>038308 666590</o_telefon>
+    <o_fax>038308 6665920</o_fax>
+    <o_email>urlaub@paradies-ruegen.de</o_email>
+    <o_gewerblich>y</o_gewerblich>
+    <k_bezeichnung>C30 Doppelzimmer OG</k_bezeichnung>
+    <z_bezeichnung>Hotelzimmer 30: 20 m², inkl. Frühstück (Typ C)</z_bezeichnung>
+    <restzahlung_datum>16.04.2015</restzahlung_datum>
+    <systemgebuehr>0.00</systemgebuehr>
+    <systemgebuehr_waehrung></systemgebuehr_waehrung>
+    <mietpreis>0.00</mietpreis>
+    <zm_anzahlung>275.00</zm_anzahlung>
+    <zm_restzahlung>226.37</zm_restzahlung>
+    <zm_zwischenzahlung>0.00</zm_zwischenzahlung>
+    <zm_mietzahlung>0.00</zm_mietzahlung>
+    <zm_stornogebuehr>0.00</zm_stornogebuehr>
+    <ku_name>Sehrbrock</ku_name>
+    <ku_vorname>Silke</ku_vorname>
+    <ku_anrede>Sehr geehrte Familie</ku_anrede>
+    <ku_land>Deutschland</ku_land>
+    <ku_plz>45896</ku_plz>
+    <ku_ort>Gelsenkirchen</ku_ort>
+    <ku_strasse>Lemgoerstr. 1</ku_strasse>
+    <ku_telefon>0209-98895152</ku_telefon>
+    <ku_fax></ku_fax>
+    <ku_email>s.sehrbrock@web.de</ku_email>
+    <ku_handy></ku_handy>
+    <ku_firma></ku_firma>
+    <k_id>76775</k_id>
+  </reservation>
+</reservations>

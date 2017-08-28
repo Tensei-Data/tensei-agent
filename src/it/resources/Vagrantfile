@@ -1,0 +1,12 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure(2) do |config|
+  config.vm.box = 'wegtam/db-tester'
+
+  # Forward mysql port to 13306
+  config.vm.network 'forwarded_port', guest: 3306, host: 13306
+  # Forward psql port to 15432
+  config.vm.network 'forwarded_port', guest: 5432, host: 15432
+end
+

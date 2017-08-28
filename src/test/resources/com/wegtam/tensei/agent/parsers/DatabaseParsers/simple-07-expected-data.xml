@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Tensei (転成)
+  ~
+  ~ Copyright (C) 2014 - 2015 Wegtam UG
+  ~
+  ~ Unauthorized copying of this file, via any medium is strictly prohibited!
+  ~ Proprietary and confidential
+  -->
+
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <seq id="accounts" keepID="true">
+    <elem class="id:row">
+      <num class="id:id" precision="0" db-column-name="id">1</num>
+      <str class="id:name" max-length="254" db-column-name="name">Max Mustermann</str>
+      <str class="id:description" db-column-name="description">Vorstand</str>
+      <date class="id:birthday" db-column-name="birthday">1963-01-01</date>
+      <formatnum class="id:salary" format="([-]?\d+[,?\d*?]*?\.\d{1,2})" db-column-name="salary" decimal-separator=".">1500000.83</formatnum>
+    </elem>
+    <elem class="id:row">
+      <num class="id:id" precision="0" db-column-name="id">2</num>
+      <str class="id:name" max-length="254" db-column-name="name">Eva Musterfrau</str>
+      <str class="id:description" db-column-name="description">Aufsichtsrat</str>
+      <date class="id:birthday" db-column-name="birthday">1968-01-01</date>
+      <formatnum class="id:salary" format="([-]?\d+[,?\d*?]*?\.\d{1,2})" db-column-name="salary" decimal-separator=".">2800000.0</formatnum>
+    </elem>
+  </seq>
+  <seq id="accounts3" keepID="true">
+    <elem class="id:row3">
+      <num class="id:id3" precision="0" db-column-name="id">1</num>
+      <str class="id:name3" max-length="254" db-column-name="name">Friedrich Ferdinand</str>
+      <str class="id:description3" db-column-name="description">Vorstand</str>
+      <date class="id:birthday3" db-column-name="birthday">1963-01-01</date>
+      <formatnum class="id:salary3" format="([-]?\d+[,?\d*?]*?\.\d{1,2})" db-column-name="salary" decimal-separator=".">1500000.83</formatnum>
+    </elem>
+    <elem class="id:row3">
+      <num class="id:id3" precision="0" db-column-name="id">2</num>
+      <str class="id:name3" max-length="254" db-column-name="name">Eva Musterfrau</str>
+      <str class="id:description3" db-column-name="description">Aufsichtsrat</str>
+      <date class="id:birthday3" db-column-name="birthday">1968-01-01</date>
+      <formatnum class="id:salary3" format="([-]?\d+[,?\d*?]*?\.\d{1,2})" db-column-name="salary" decimal-separator=".">2800000.0</formatnum>
+    </elem>
+  </seq>
+</dfasdl>

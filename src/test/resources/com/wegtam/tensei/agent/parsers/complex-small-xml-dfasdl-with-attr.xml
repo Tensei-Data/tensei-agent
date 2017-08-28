@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <seq id="rows">
+    <elem id="row">
+      <str id="firstname"/>
+      <str id="lastname"/>
+      <str id="email"/>
+      <str id="birthday"/>
+      <seq id="awards">
+        <elem id="award">
+          <num id="year" xml-attribute-name="year" xml-attribute-parent="award"/>
+          <str id="name" xml-attribute-name="name" xml-attribute-parent="award"/>
+        </elem>
+      </seq>
+    </elem>
+  </seq>
+</dfasdl>

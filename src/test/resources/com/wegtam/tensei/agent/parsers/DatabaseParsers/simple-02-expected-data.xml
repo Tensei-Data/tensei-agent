@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <seq id="accounts" keepID="true">
+    <elem class="id:row">
+      <num class="id:id" precision="0">1</num>
+      <str class="id:name" max-length="254">Max Mustermann</str>
+      <str class="id:description"/>
+      <date class="id:birthday">1963-01-01</date>
+      <formatnum class="id:salary" format="([-]?\d+[\.?\d*?]*?\,\d{2})" decimal-separator=",">1500000,83</formatnum>
+    </elem>
+    <elem class="id:row">
+      <num class="id:id" precision="0">2</num>
+      <str class="id:name" max-length="254">Eva Musterfrau</str>
+      <str class="id:description"/>
+      <date class="id:birthday">1968-01-01</date>
+      <formatnum class="id:salary" format="([-]?\d+[\.?\d*?]*?\,\d{2})" decimal-separator=",">2800000,00</formatnum>
+    </elem>
+  </seq>
+</dfasdl>

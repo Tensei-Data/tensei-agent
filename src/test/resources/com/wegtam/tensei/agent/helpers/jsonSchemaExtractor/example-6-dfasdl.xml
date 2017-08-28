@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL" semantic="custom">
+  <elem id="json-root">
+    <str id="query" json-attribute-name="query"/>
+    <str id="language" json-attribute-name="language"/>
+    <num id="maxresults" json-attribute-name="maxresults"/>
+    <elem id="profiles" json-attribute-name="profiles">
+      <seq id="profiles-seq" keepID="true">
+        <elem id="profiles-seq-row">
+          <str id="profiles-seq-row-element"/>
+        </elem>
+      </seq>
+    </elem>
+    <str id="mode" json-attribute-name="mode"/>
+    <elem id="filters" json-attribute-name="filters">
+      <elem id="filters-domains" json-attribute-name="domains">
+        <seq id="filters-domains-seq" keepID="true">
+          <elem id="filters-domains-seq-row"/>
+        </seq>
+      </elem>
+      <elem id="filters-engines" json-attribute-name="engines">
+        <seq id="filters-engines-seq" keepID="true">
+          <elem id="filters-engines-seq-row"/>
+        </seq>
+      </elem>
+      <elem id="filters-keywords" json-attribute-name="keywords">
+        <seq id="filters-keywords-seq" keepID="true">
+          <elem id="filters-keywords-seq-row">
+            <str id="filters-keywords-seq-row-element"/>
+          </elem>
+        </seq>
+      </elem>
+    </elem>
+    <str id="username" json-attribute-name="username"/>
+  </elem>
+</dfasdl>

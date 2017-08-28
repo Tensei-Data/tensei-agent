@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <seq id="rows" keepID="true">
+    <seq class="id:columns" keepID="true" stop-sign="[\n\r]">
+      <elem class="id:column">
+        <str class="id:data" stop-sign=",">John</str>
+      </elem>
+      <elem class="id:column">
+        <str class="id:data" stop-sign=",">Doe</str>
+      </elem>
+      <elem class="id:column">
+        <str class="id:data" stop-sign=",">john.doe@example.com</str>
+      </elem>
+    </seq>
+    <seq class="id:columns" keepID="true" stop-sign="[\n\r]">
+      <elem class="id:column">
+        <str class="id:data" stop-sign=",">Jane</str>
+      </elem>
+      <elem class="id:column">
+        <str class="id:data" stop-sign=",">Doe</str>
+      </elem>
+      <elem class="id:column">
+        <str class="id:data" stop-sign=",">jane.doe@example.com</str>
+      </elem>
+    </seq>
+    <seq class="id:columns" keepID="true" stop-sign="[\n\r]">
+      <elem class="id:column">
+        <str class="id:data" stop-sign=",">Max</str>
+      </elem>
+      <elem class="id:column">
+        <str class="id:data" stop-sign=",">Mustermann</str>
+      </elem>
+      <elem class="id:column">
+        <str class="id:data" stop-sign=",">max.mustermann@example.com</str>
+      </elem>
+    </seq>
+  </seq>
+</dfasdl>

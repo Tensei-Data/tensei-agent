@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <seq id="account_list" keepID="true">
+    <choice id="row">
+      <celem id="normal-row">
+        <str id="firstname" stop-sign="," start-sign="\w"/>
+        <str id="lastname" stop-sign=","/>
+        <str id="email" stop-sign=","/>
+        <str id="birthday" stop-sign=","/>
+        <str id="phone" stop-sign=","/>
+        <str id="division"/>
+      </celem>
+      <celem id="empty-row">
+        <str id="empty-columns"/>
+      </celem>
+    </choice>
+  </seq>
+</dfasdl>

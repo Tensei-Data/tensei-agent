@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <str id="firstname" stop-sign=",">Andreas</str>
+  <str id="lastname" stop-sign=",">Müller</str>
+  <str id="email" stop-sign=",">andreas.mueller@example.com</str>
+  <str id="birthday" stop-sign=",">24.12.0000</str>
+  <str id="phone" stop-sign=",">+49 123 456789</str>
+  <str id="division">Technical</str>
+</dfasdl>

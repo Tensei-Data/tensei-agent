@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL" semantic="custom">
+  <elem id="json-root">
+    <elem id="house" json-attribute-name="house">
+      <str id="house-street" json-attribute-name="street"/>
+      <num id="house-number" json-attribute-name="number"/>
+      <num id="house-apartments" json-attribute-name="apartments"/>
+      <formatnum decimal-separator="." format="(-?[\d\.,⎖]+)" id="house-value" json-attribute-name="value" max-digits="36" max-precision="2"/>
+      <formatnum decimal-separator="." format="(-?[\d\.,⎖]+)" id="house-costs" json-attribute-name="costs" max-digits="36" max-precision="2"/>
+      <elem id="house-size" json-attribute-name="size">
+        <seq id="house-size-seq" keepID="true">
+          <elem id="house-size-seq-row">
+            <num id="house-size-seq-row-element"/>
+          </elem>
+        </seq>
+      </elem>
+    </elem>
+    <elem id="persons" json-attribute-name="persons">
+      <seq id="persons-seq" keepID="true">
+        <elem id="persons-seq-row">
+          <elem id="persons-seq-row-name" json-attribute-name="name">
+            <str id="persons-seq-row-name-firstname" json-attribute-name="firstname"/>
+            <str id="persons-seq-row-name-lastname" json-attribute-name="lastname"/>
+          </elem>
+          <date id="persons-seq-row-birthday" json-attribute-name="birthday"/>
+          <num id="persons-seq-row-telephone" json-attribute-name="telephone"/>
+          <num id="persons-seq-row-apartment" json-attribute-name="apartment"/>
+          <datetime id="persons-seq-row-lastpay" json-attribute-name="lastPay"/>
+          <elem id="persons-seq-row-other" json-attribute-name="other">
+            <seq id="persons-seq-row-other-seq" keepID="true">
+              <elem id="persons-seq-row-other-seq-row">
+                <str id="persons-seq-row-other-seq-row-element"/>
+              </elem>
+            </seq>
+          </elem>
+        </elem>
+      </seq>
+    </elem>
+    <elem id="landlord" json-attribute-name="landlord">
+      <elem id="landlord-name" json-attribute-name="name">
+        <str id="landlord-name-lastname" json-attribute-name="lastname"/>
+        <str id="landlord-name-firstname" json-attribute-name="firstname"/>
+      </elem>
+      <num id="landlord-age" json-attribute-name="age"/>
+    </elem>
+  </elem>
+</dfasdl>

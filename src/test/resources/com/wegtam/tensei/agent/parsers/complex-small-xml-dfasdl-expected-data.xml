@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <seq id="rows">
+    <elem class="id:row">
+      <str class="id:firstname">Albert</str>
+      <str class="id:lastname">Einstein</str>
+      <str class="id:email">albert.einstein@example.com</str>
+      <str class="id:birthday">1879-03-14</str>
+      <seq class="id:awards">
+        <elem id="award-row-1" class="id:award-complete">
+          <num id="compare-helper-01" class="id:award-complete-year">1914</num>
+          <str id="compare-helper-02" class="id:award-complete-name">Ordentliches Mitglied der Preußischen Akademie der Wissenschaften</str>
+        </elem>
+        <elem id="award-row-2" class="id:award-complete">
+          <num id="compare-helper-03" class="id:award-complete-year">1917</num>
+          <str id="compare-helper-04" class="id:award-complete-name">Ehrenpreis der Peter-Wilhelm-Müller-Stiftung</str>
+        </elem>
+        <elem id="award-row-3" class="id:award-complete">
+          <num id="compare-helper-05" class="id:award-complete-year">1919</num>
+          <str id="compare-helper-06" class="id:award-complete-name">Ehrendoktorwürde (Dr. h.c.) der Universität Rostock</str>
+        </elem>
+      </seq>
+    </elem>
+    <elem class="id:row">
+      <str class="id:firstname">Bernhard</str>
+      <str class="id:lastname">Riemann</str>
+      <str class="id:email">br@example.com</str>
+      <str class="id:birthday">1826-09-17</str>
+      <seq class="id:awards">
+        <elem id="award-row-4" class="id:award-complete">
+          <num id="compare-helper-07" class="id:award-complete-year">1868</num>
+          <str id="compare-helper-08" class="id:award-complete-name">Riemann-Helmholtz-Raumproblem</str>
+        </elem>
+      </seq>
+    </elem>
+    <elem class="id:row">
+      <str class="id:firstname">Johann Carl Friedrich</str>
+      <str class="id:lastname">Gauß</str>
+      <str class="id:email">gauss@example.com</str>
+      <str class="id:birthday">1777-04-30</str>
+      <seq class="id:awards">
+        <elem class="id:award-complete"/>
+      </seq>
+    </elem>
+    <elem class="id:row">
+      <str class="id:firstname">Johann Benedict</str>
+      <str class="id:lastname">Listing</str>
+      <str class="id:email">bl@example.com</str>
+      <str class="id:birthday">1808-07-25</str>
+      <seq class="id:awards">
+        <elem id="award-row-5" class="id:award-year-only">
+          <num id="compare-helper-09" class="id:award-year-only-year">1858</num>
+        </elem>
+        <elem id="award-row-6" class="id:award-complete">
+          <num id="compare-helper-10" class="id:award-complete-year">1861</num>
+          <str id="compare-helper-11" class="id:award-complete-name">Mitglied Akademie der Wissenschaften in Göttingen</str>
+        </elem>
+      </seq>
+    </elem>
+    <elem class="id:row">
+      <str class="id:firstname">Gottfried Wilhelm</str>
+      <str class="id:lastname">Leibnitz</str>
+      <str class="id:email">leibnitz@example.com</str>
+      <str class="id:birthday">1646-07-01</str>
+      <seq class="id:awards">
+        <elem id="award-row-7" class="id:award-name-only">
+          <str id="compare-helper-12" class="id:award-name-only-name">Gottfried-Wilhelm-Leibniz-Preis</str>
+        </elem>
+        <elem id="award-row-8" class="id:award-complete">
+          <num id="compare-helper-13" class="id:award-complete-year">2008</num>
+          <str id="compare-helper-14" class="id:award-complete-name">Denkmal in Hannover</str>
+        </elem>
+      </seq>
+    </elem>
+  </seq>
+</dfasdl>

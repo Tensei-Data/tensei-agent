@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL" semantic="custom">
+  <seq id="testdatatypes">
+    <elem id="testdatatypes_row">
+      <num db-column-name="field1" id="testdatatypes_row_field1" max-digits="38"/>
+      <str db-column-name="field2" id="testdatatypes_row_field2" max-length="15"/>
+      <datetime db-column-name="field3" id="testdatatypes_row_field3"/>
+      <formatnum db-column-name="field4" decimal-separator="." format="(\d*[,\.]*?\d{1,2})" id="testdatatypes_row_field4" max-digits="20" max-precision="2"/>
+      <formatnum db-column-name="field5" decimal-separator="." defaultnum="11.12" format="(\d*[,\.]*?\d{1,4})" id="testdatatypes_row_field5" max-digits="38" max-precision="4"/>
+    </elem>
+  </seq>
+</dfasdl>

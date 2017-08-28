@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        semantic="custom">
+    <seq id="wp_users">
+        <elem id="wp_users_row">
+            <num db-column-name="id" id="wp_users_row_id" max-digits="20"/>
+            <str db-column-name="user_login" id="wp_users_row_user_login" max-length="60"/>
+            <str db-column-name="user_pass" id="wp_users_row_user_pass" max-length="64"/>
+            <str db-column-name="user_nicename" id="wp_users_row_user_nicename" max-length="50"/>
+            <str db-column-name="user_email" id="wp_users_row_user_email" max-length="100"/>
+            <str db-column-name="user_url" id="wp_users_row_user_url" max-length="100"/>
+            <datetime db-column-name="user_registered" id="wp_users_row_user_registered"/>
+            <str db-column-name="user_activation_key" id="wp_users_row_user_activation_key" max-length="60"/>
+            <num db-column-name="user_status" defaultnum="0" id="wp_users_row_user_status" max-digits="11"/>
+            <str db-column-name="display_name" id="wp_users_row_display_name" max-length="250"/>
+        </elem>
+    </seq>
+</dfasdl>

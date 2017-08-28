@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL" semantic="custom">
+  <seq id="lines">
+    <elem id="row">
+      <num id="entry-0" stop-sign=";"/>
+      <str id="entry-1" stop-sign=";"/>
+      <str id="entry-2"/>
+    </elem>
+  </seq>
+</dfasdl>

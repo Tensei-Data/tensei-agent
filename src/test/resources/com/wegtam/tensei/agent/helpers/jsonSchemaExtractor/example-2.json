@@ -1,0 +1,11 @@
+{
+  "persons": [{
+    "firstname": "Max",
+    "lastname": "Mustermann",
+    "birthday": "1997-03-21",
+    "telephone": "0176123456",
+    "apartment": 2,
+    "lastPay": "2015-11-02 12:34:55",
+    "other": ["parking slot", "extra room"]
+  }]
+}

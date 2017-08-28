@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+    <seq id="wp_terms" db-select="SELECT t1.*, t2.description, t2.parent FROM wp_terms AS t1 LEFT JOIN wp_term_taxonomy AS t2 ON (t1.term_id = t2.term_id) WHERE t2.taxonomy = 'category'">
+        <elem id="wp_terms_row">
+            <num db-column-name="term_id" id="wp_terms_row_term_id" max-digits="20"/>
+            <str db-column-name="name" id="wp_terms_row_name" max-length="200"/>
+            <str db-column-name="slug" id="wp_terms_row_slug" max-length="200"/>
+            <num db-column-name="term_group" defaultnum="0" id="wp_terms_row_term_group" max-digits="10"/>
+            <str db-column-name="description" id="wp_terms_row_description"/>
+            <num db-column-name="parent" id="wp_terms_row_parent" max-digits="20"/>
+        </elem>
+    </seq>
+</dfasdl>

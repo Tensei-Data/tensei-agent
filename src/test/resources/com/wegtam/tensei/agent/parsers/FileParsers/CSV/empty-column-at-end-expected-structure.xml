@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="custom">
+  <seq id="lines" keepID="true">
+    <elem id="row">
+      <num id="entry-0" stop-sign="," precision="0"/>
+      <num id="entry-1" stop-sign="," precision="0"/>
+      <str id="entry-2" stop-sign=","/>
+      <str id="entry-3" stop-sign=","/>
+      <str id="entry-4" stop-sign=","/>
+      <num id="entry-5" stop-sign="," precision="0"/>
+      <str id="entry-6" stop-sign=","/>
+      <str id="entry-7" stop-sign=","/>
+      <str id="entry-8"/>
+    </elem>
+  </seq>
+</dfasdl>

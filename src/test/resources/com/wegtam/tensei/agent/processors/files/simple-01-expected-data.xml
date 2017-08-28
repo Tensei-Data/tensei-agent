@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <seq id="rows" keepID="true">
+    <elem class="id:row">
+      <str class="id:firstname" stop-sign=",">John</str>
+      <str class="id:lastname" stop-sign=",">Doe</str>
+      <str class="id:email" stop-sign=",">john.doe@example.com</str>
+      <num class="id:integer" precision="0" stop-sign=",">42</num>
+      <formatnum class="id:float1" format="-?\d+\.\d+" stop-sign="," decimal-separator=".">3.14</formatnum>
+      <formatnum class="id:float2" format="-?\d+\.\d+" decimal-separator=".">-2.71</formatnum>
+    </elem>
+    <elem class="id:row">
+      <str class="id:firstname" stop-sign=",">Jane</str>
+      <str class="id:lastname" stop-sign=",">Doe</str>
+      <str class="id:email" stop-sign=",">jane.doe@example.com</str>
+      <num class="id:integer" precision="0" stop-sign=",">-11</num>
+      <formatnum class="id:float1" format="-?\d+\.\d+" stop-sign="," decimal-separator=".">-0.98</formatnum>
+      <formatnum class="id:float2" format="-?\d+\.\d+" decimal-separator=".">1.76</formatnum>
+    </elem>
+  </seq>
+</dfasdl>

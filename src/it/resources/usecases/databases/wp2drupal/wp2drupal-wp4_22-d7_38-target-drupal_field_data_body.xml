@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        semantic="custom">
+  <seq id="drupal_field_data_body">
+    <elem id="drupal_field_data_body_row">
+      <str db-column-name="entity_type" id="drupal_field_data_body_row_entity_type" max-length="128"/>
+      <str db-column-name="bundle" id="drupal_field_data_body_row_bundle" max-length="128"/>
+      <num db-column-name="deleted" defaultnum="0" id="drupal_field_data_body_row_deleted" max-digits="4"/>
+      <num db-column-name="entity_id" id="drupal_field_data_body_row_entity_id" max-digits="10"/>
+      <num db-column-name="revision_id" id="drupal_field_data_body_row_revision_id" max-digits="10"/>
+      <str db-column-name="language" id="drupal_field_data_body_row_language" max-length="32"/>
+      <num db-column-name="delta" id="drupal_field_data_body_row_delta" max-digits="10"/>
+      <str db-column-name="body_value" id="drupal_field_data_body_row_body_value"/>
+      <str db-column-name="body_summary" id="drupal_field_data_body_row_body_summary"/>
+      <str db-column-name="body_format" id="drupal_field_data_body_row_body_format" max-length="255"/>
+    </elem>
+  </seq>
+</dfasdl>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL" semantic="custom">
+  <seq db-primary-key="id" id="employees">
+    <elem id="employees_row">
+      <num db-column-name="id" id="employees_row_id" max-digits="19"/>
+      <str db-column-name="firstname" id="employees_row_firstname" max-length="254"/>
+      <str db-column-name="lastname" id="employees_row_lastname" max-length="254"/>
+      <date db-column-name="birthday" id="employees_row_birthday"/>
+    </elem>
+  </seq>
+  <seq id="salary">
+    <elem id="salary_row">
+      <num db-column-name="employee_id" db-foreign-key="employees_row_id" id="salary_row_employee_id" max-digits="19"/>
+      <formatnum db-column-name="amount" decimal-separator="." format="(-?\d{0,8}\.\d{0,2})" id="salary_row_amount" max-digits="10" max-precision="2"/>
+    </elem>
+  </seq>
+</dfasdl>

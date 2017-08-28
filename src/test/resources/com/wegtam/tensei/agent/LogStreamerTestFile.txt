@@ -1,0 +1,41 @@
+2016-03-17 10:57:04,102 INFO  Slf4jLogger - Slf4jLogger started
+2016-03-17 10:57:04,404 INFO  Cluster(akka://tensei-agent) - Cluster Node [akka.tcp://tensei-agent@localhost:2551] - Starting up...
+2016-03-17 10:57:04,505 INFO  Cluster(akka://tensei-agent) - Cluster Node [akka.tcp://tensei-agent@localhost:2551] - Registered cluster JMX MBean [akka:type=Cluster]
+2016-03-17 10:57:04,506 INFO  Cluster(akka://tensei-agent) - Cluster Node [akka.tcp://tensei-agent@localhost:2551] - Started up successfully
+2016-03-17 10:57:04,533 INFO  Cluster(akka://tensei-agent) - Cluster Node [akka.tcp://tensei-agent@localhost:2551] - Node [akka.tcp://tensei-agent@localhost:2551] is JOINING, roles [agent]
+2016-03-17 10:57:04,583 INFO  Cluster(akka://tensei-agent) - Cluster Node [akka.tcp://tensei-agent@localhost:2551] - Metrics will be retreived from MBeans, and may be incorrect on some platforms. To increase metric accuracy add the 'sigar.jar' to the classpath and the appropriate platform-specific native libary to 'java.library.path'. Reason: java.lang.IllegalArgumentException: java.lang.UnsatisfiedLinkError: org.hyperic.sigar.Sigar.getPid()J
+2016-03-17 10:57:04,584 INFO  Cluster(akka://tensei-agent) - Cluster Node [akka.tcp://tensei-agent@localhost:2551] - Metrics collection has started successfully
+2016-03-17 10:57:04,601 INFO  ActorSystemImpl - Running system tensei-agent and waiting for termination with top level node at: akka://tensei-agent/user/singleton.
+2016-03-17 10:57:04,601 INFO  ActorSystemImpl - Type "shutdown" or "s" to stop the system.
+2016-03-17 10:57:04,684 WARN  ReliableDeliverySupervisor - Association with remote system [akka.tcp://tensei-system@localhost:4096] has failed, address is now gated for [5000] ms. Reason: [Association failed with [akka.tcp://tensei-system@localhost:4096]] Caused by: [Connection refused: localhost/127.0.0.1:4096]
+2016-03-17 10:57:04,690 INFO  RemoteActorRefProvider$RemoteDeadLetterActorRef - Message [akka.contrib.pattern.ClusterReceptionist$Internal$GetContacts$] from Actor[akka://tensei-agent/user/clusterClient#986073694] to Actor[akka://tensei-agent/deadLetters] was not delivered. [1] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2016-03-17 10:57:04,690 INFO  RemoteActorRefProvider$RemoteDeadLetterActorRef - Message [akka.contrib.pattern.ClusterReceptionist$Internal$GetContacts$] from Actor[akka://tensei-agent/user/clusterClient#986073694] to Actor[akka://tensei-agent/deadLetters] was not delivered. [2] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2016-03-17 10:57:05,548 INFO  Cluster(akka://tensei-agent) - Cluster Node [akka.tcp://tensei-agent@localhost:2551] - Leader is moving node [akka.tcp://tensei-agent@localhost:2551] to [Up]
+2016-03-17 10:57:05,553 INFO  ClusterSingletonManager - Singleton manager [akka.tcp://tensei-agent@localhost:2551] starting singleton actor
+2016-03-17 10:57:05,554 INFO  ClusterSingletonManager - ClusterSingletonManager state change [Start -> Oldest]
+2016-03-17 10:57:05,570 INFO  TenseiAgent - Starting tensei agent Milo...
+2016-03-17 10:57:06,554 INFO  ClusterSingletonProxy - Singleton identified: akka://tensei-agent/user/singleton/TenseiAgent
+2016-03-17 10:57:07,604 INFO  RemoteActorRefProvider$RemoteDeadLetterActorRef - Message [akka.contrib.pattern.ClusterReceptionist$Internal$GetContacts$] from Actor[akka://tensei-agent/user/clusterClient#986073694] to Actor[akka://tensei-agent/deadLetters] was not delivered. [3] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2016-03-17 10:57:10,608 WARN  ReliableDeliverySupervisor - Association with remote system [akka.tcp://tensei-system@localhost:4096] has failed, address is now gated for [5000] ms. Reason: [Association failed with [akka.tcp://tensei-system@localhost:4096]] Caused by: [Connection refused: localhost/127.0.0.1:4096]
+2016-03-17 10:57:10,608 INFO  RemoteActorRefProvider$RemoteDeadLetterActorRef - Message [akka.contrib.pattern.ClusterReceptionist$Internal$GetContacts$] from Actor[akka://tensei-agent/user/clusterClient#986073694] to Actor[akka://tensei-agent/deadLetters] was not delivered. [4] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2016-03-17 10:57:10,956 INFO  TenseiAgent - Received SHUTDOWN signal.
+2016-03-17 10:57:10,960 INFO  RepointableActorRef - Message [akka.contrib.pattern.ClusterClient$Send] from Actor[akka://tensei-agent/user/singleton/TenseiAgent#-1214689184] to Actor[akka://tensei-agent/user/clusterClient#986073694] was not delivered. [5] dead letters encountered, no more dead letters will be logged. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2016-03-17 10:57:10,964 INFO  RemoteActorRefProvider$RemotingTerminator - Shutting down remote daemon.
+2016-03-17 10:57:10,965 INFO  RemoteActorRefProvider$RemotingTerminator - Remote daemon shut down; proceeding with flushing remote transports.
+2016-03-17 10:57:10,983 INFO  RemoteActorRefProvider$RemotingTerminator - Remoting shut down.
+2016-03-17 10:57:11,000 ERROR This is an exception that is a somewhat longer log entry but will be split up into lines.
+java.lang.ClassCastException: scala.None$ cannot be cast to java.lang.Long
+ at scala.runtime.BoxesRunTime.unboxToLong(BoxesRunTime.java:105) ~[scala-library-2.11.7.jar:0.13.8]
+ at com.wegtam.tensei.agent.transformers.FetchForeignKeyValue$$anonfun$transform$1.applyOrElse(FetchForeignKeyValue.scala:43) ~[classes/:na]
+ at akka.actor.Actor$class.aroundReceive(Actor.scala:467) ~[akka-actor_2.11-2.3.14.jar:na]
+ at com.wegtam.tensei.agent.transformers.BaseTransformer.aroundReceive(BaseTransformer.scala:39) ~[classes/:na]
+ at akka.actor.ActorCell.receiveMessage(ActorCell.scala:516) [akka-actor_2.11-2.3.14.jar:na]
+ at akka.actor.ActorCell.invoke(ActorCell.scala:487) [akka-actor_2.11-2.3.14.jar:na]
+ at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:238) [akka-actor_2.11-2.3.14.jar:na]
+ at akka.dispatch.Mailbox.run(Mailbox.scala:220) [akka-actor_2.11-2.3.14.jar:na]
+ at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(AbstractDispatcher.scala:397) [akka-actor_2.11-2.3.14.jar:na]
+ at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260) [scala-library-2.11.7.jar:na]
+ at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339) [scala-library-2.11.7.jar:na]
+ at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979) [scala-library-2.11.7.jar:na]
+ at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107) [scala-library-2.11.7.jar:na]
+2016-03-17 10:57:11,123 INFO  This is the end my friend...

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <seq id="vcard">
+    <elem id="container">
+      <seq id="vcards" max="1">
+        <elem id="part1">
+          <str id="label01" class="label" stop-sign=":"/>
+          <str id="start_tag"/>
+          <str id="label02" class="label" stop-sign=":"/>
+          <str id="version"/>
+          <str id="label03" class="label" stop-sign=":"/>
+          <str id="name"/>
+          <str id="label04" class="label" stop-sign=":"/>
+          <str id="full_name"/>
+          <str id="label05" class="label" stop-sign=":"/>
+          <str id="organisation"/>
+          <str id="label06" class="label" stop-sign=":"/>
+          <str id="title"/>
+          <str id="label07" class="label" stop-sign=":"/>
+          <str id="photo"/>
+          <str id="label08" class="label" stop-sign=":"/>
+          <str id="phone_work"/>
+        </elem>
+      </seq>
+      <seq id="vcards2" max="1">
+        <elem id="part2">
+          <str id="label09" class="label" stop-sign=":"/>
+          <str id="phone_home"/>
+          <str id="label10" class="label" stop-sign=":"/>
+          <str id="address_work"/>
+          <str id="label11" class="label" stop-sign=":"/>
+          <str id="label_work"/>
+          <str id="label12" class="label" stop-sign=":"/>
+          <str id="address_home"/>
+          <str id="label13" class="label" stop-sign=":"/>
+          <str id="label_home"/>
+          <str id="label14" class="label" stop-sign=":"/>
+          <str id="email"/>
+          <str id="label15" class="label" stop-sign=":"/>
+          <str id="revision"/>
+          <str id="label16" class="label" stop-sign=":"/>
+          <str id="end_tag"/>
+        </elem>
+      </seq>
+    </elem>
+  </seq>
+</dfasdl>

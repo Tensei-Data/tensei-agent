@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <seq id="test" keepID="true">
+    <elem class="id:account_list">
+      <choice class="id:field1">
+        <celem class="id:field1-container-1">
+          <num stop-sign=";" class="id:num-field1" precision="0">01</num>
+        </celem>
+      </choice>
+      <choice class="id:field2">
+        <celem class="id:field2-container-2">
+          <str stop-sign=";" class="id:str-field2">booyah</str>
+        </celem>
+      </choice>
+      <choice class="id:field3">
+        <celem class="id:field3-container-2">
+          <str class="id:str-field3">test01</str>
+        </celem>
+      </choice>
+    </elem>
+    <elem class="id:account_list">
+      <choice class="id:field1">
+        <celem class="id:field1-container-1">
+          <num stop-sign=";" class="id:num-field1" precision="0">02</num>
+        </celem>
+      </choice>
+      <choice class="id:field2">
+        <celem class="id:field2-container-2">
+          <str stop-sign=";" class="id:str-field2">aliG</str>
+        </celem>
+      </choice>
+      <choice class="id:field3">
+        <celem class="id:field3-container-1">
+          <num class="id:num-field3" precision="0">42</num>
+        </celem>
+      </choice>
+    </elem>
+  </seq>
+</dfasdl>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <fixseq id="account_list" count="3">
+    <elem id="column1">
+      <elem id="a1">
+        <str id="firstname" stop-sign=","/>
+        <str id="lastname" stop-sign=","/>
+      </elem>
+      <elem id="a3">
+        <elem id="a3a"><str id="email" stop-sign=","/></elem>
+        <elem id="a3b"><str id="birthday" stop-sign=","/></elem>
+      </elem>
+      <elem id="a5"><str id="phone" stop-sign=","/></elem>
+      <elem id="a6"><str id="division"/></elem>
+    </elem>
+    <elem id="column2">
+      <elem id="b1">
+        <str id="alias" stop-sign="|"/>
+        <str id="photo-url" stop-sign="|"/>
+      </elem>
+      <elem id="b2">
+        <str id="level"/>
+      </elem>
+    </elem>
+  </fixseq>
+</dfasdl>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        semantic="custom">
+  <seq id="drupal_taxonomy_term_data">
+    <elem id="drupal_taxonomy_term_data_row">
+      <num db-column-name="tid" id="drupal_taxonomy_term_data_row_tid" max-digits="10"/>
+      <num db-column-name="vid" defaultnum="0" id="drupal_taxonomy_term_data_row_vid" max-digits="10"/>
+      <str db-column-name="name" id="drupal_taxonomy_term_data_row_name" max-length="255"/>
+      <str db-column-name="description" id="drupal_taxonomy_term_data_row_description"/>
+      <str db-column-name="format" id="drupal_taxonomy_term_data_row_format" max-length="255"/>
+      <num db-column-name="weight" defaultnum="0" id="drupal_taxonomy_term_data_row_weight" max-digits="11"/>
+    </elem>
+  </seq>
+</dfasdl>

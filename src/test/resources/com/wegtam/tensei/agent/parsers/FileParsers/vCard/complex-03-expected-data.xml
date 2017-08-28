@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <seq id="vcards" keepID="true">
+    <elem class="id:vcard">
+      <fixseq count="16" class="id:entries" keepID="true">
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">VCARD</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">3.0</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">Gump;Forrest;Mr.</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">Forrest Gump</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">Bubba Gump Shrimp Co.</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">Shrimp Man</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">http://www.example.com/dir_photos/my_photo.gif</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">(111) 555-1212</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">(404) 555-1212</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">;;100 Waters Edge;Baytown;LA;30314;United States of America</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">100 Waters Edge\nBaytown, LA 30314\nUnited States of America</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">;;42 Plantation St.;Baytown;LA;30314;United States of America</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">42 Plantation St.\nBaytown, LA 30314\nUnited States of America</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">forrestgump@example.com</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">2008-04-24T19:52:43Z</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">VCARD</formatstr>
+        </elem>
+      </fixseq>
+    </elem>
+    <elem class="id:vcard">
+      <fixseq count="16" class="id:entries" keepID="true">
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">VCARD</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">3.0</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">Gump;Alex;Mr.</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">Alex Gump</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">Bubba Gump Shrimp Co.</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">Shrimp Man</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">http://www.example.com/dir_photos/my_photo.gif</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">(111) 555-1212</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">(404) 555-1212</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">;;100 Waters Edge;Baytown;LA;30314;United States of America</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">100 Waters Edge\nBaytown, LA 30314\nUnited States of America</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">;;42 Plantation St.;Baytown;LA;30314;United States of America</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">42 Plantation St.\nBaytown, LA 30314\nUnited States of America</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">forrestgump@example.com</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">2008-04-24T19:52:43Z</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">VCARD</formatstr>
+        </elem>
+      </fixseq>
+    </elem>
+    <elem class="id:vcard">
+      <fixseq count="16" class="id:entries" keepID="true">
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">VCARD</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">3.0</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">Gump;Jane;Mrs.</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">Jane Gump</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">Bubba Gump Shrimp Co.</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">Shrimp Woman</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">http://www.example.com/dir_photos/my_photo.gif</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">(111) 555-1212</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">(404) 555-1212</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">;;100 Waters Edge;Baytown;LA;30314;United States of America</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">100 Waters Edge\nBaytown, LA 30314\nUnited States of America</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">;;42 Plantation St.;Baytown;LA;30314;United States of America</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">42 Plantation St.\nBaytown, LA 30314\nUnited States of America</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">forrestgump@example.com</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">2008-04-24T19:52:43Z</formatstr>
+        </elem>
+        <elem class="id:row">
+          <formatstr format=".*?:(.*)" class="id:value">VCARD</formatstr>
+        </elem>
+      </fixseq>
+    </elem>
+  </seq>
+</dfasdl>

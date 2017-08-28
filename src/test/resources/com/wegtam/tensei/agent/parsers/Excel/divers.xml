@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL" semantic="custom">
+  <str id="header"/>
+  <seq id="products">
+    <elem id="row">
+      <str id="vorname" stop-sign="~~~"/>
+      <formatnum id="us" defaultnum="0" decimal-separator="." format="\s*(-?[\d\.,\u2396]*)\s*" stop-sign="~~~"/>
+      <str id="adresse" stop-sign="~~~"/>
+      <str id="plz" stop-sign="~~~"/>
+      <date id="datum" stop-sign="~~~"/>
+      <formatnum id="preis" defaultnum="0" decimal-separator="." format="\s*(-?[\d\.,\u2396]*)\s*" stop-sign="~~~"/>
+      <formatnum id="prozent" defaultnum="0" decimal-separator="." format="\s*(-?[\d\.,\u2396]*)\s*%" stop-sign="~~~"/>
+      <str id="bemerkung" stop-sign="~~~"/>
+      <time id="uhrzeit" stop-sign="~~~"/>
+      <str id="sonderzeichen"/>
+    </elem>
+  </seq>
+</dfasdl>

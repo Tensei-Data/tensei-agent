@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rows>
+  <row>
+    <name>
+      <firstname>Albert</firstname>
+      <lastname>Einstein</lastname>
+    </name>
+    <email>albert.einstein@example.com</email>
+    <birthday>1879-03-14</birthday>
+  </row>
+  <row>
+    <name>
+      <firstname>Bernhard</firstname>
+      <lastname>Riemann</lastname>
+    </name>
+    <email>br@example.com</email>
+    <birthday>1826-09-17</birthday>
+  </row>
+  <row>
+    <name>
+      <firstname>Johann Carl Friedrich</firstname>
+      <lastname>Gauß</lastname>
+    </name>
+    <email>gauss@example.com</email>
+    <birthday>1777-04-30</birthday>
+  </row>
+  <row>
+    <name>
+      <firstname>Johann Benedict</firstname>
+      <lastname>Listing</lastname>
+    </name>
+    <email>bl@example.com</email>
+    <birthday>1808-07-25</birthday>
+  </row>
+  <row>
+    <name>
+      <firstname>Gottfried Wilhelm</firstname>
+      <lastname>Leibnitz</lastname>
+    </name>
+    <email>leibnitz@example.com</email>
+    <birthday>1646-07-01</birthday>
+  </row>
+</rows>

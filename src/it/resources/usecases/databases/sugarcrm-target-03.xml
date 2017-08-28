@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <seq id="accounts">
+    <elem id="row">
+      <str id="name" stop-sign=","/>
+      <str id="human_name" stop-sign=","/>
+      <str id="vorwahl" stop-sign=","/>
+      <str id="hauptnummer"/>
+    </elem>
+  </seq>
+</dfasdl>

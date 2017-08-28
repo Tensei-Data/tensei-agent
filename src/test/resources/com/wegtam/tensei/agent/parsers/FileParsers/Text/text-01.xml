@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <seq id="headers" stop-sign="\A$">
+    <elem id="row">
+      <str id="content"/>
+    </elem>
+  </seq>
+  <str id="footer" stop-sign="EOF"/>
+</dfasdl>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Tensei (転成)
+  ~
+  ~ Copyright (C) 2014 - 2015 Wegtam UG
+  ~
+  ~ Unauthorized copying of this file, via any medium is strictly prohibited!
+  ~ Proprietary and confidential
+  -->
+
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <str id="header"/>
+  <seq id="rows1" stop-sign="###">
+    <elem id="row1">
+      <str id="firstname1" stop-sign=","/>
+      <str id="lastname1" stop-sign=","/>
+      <str id="email1" stop-sign=","/>
+      <date id="birthday1"/>
+    </elem>
+  </seq>
+  <seq id="rows2" stop-sign="###">
+    <elem id="row2">
+      <str id="firstname2" stop-sign=","/>
+      <str id="lastname2" stop-sign=","/>
+      <str id="email2" stop-sign=","/>
+      <date id="birthday2"/>
+    </elem>
+  </seq>
+  <seq id="rows3">
+    <elem id="row3">
+      <str id="firstname3" stop-sign=","/>
+      <str id="lastname3" stop-sign=","/>
+      <str id="email3" stop-sign=","/>
+      <date id="birthday3"/>
+    </elem>
+  </seq>
+</dfasdl>

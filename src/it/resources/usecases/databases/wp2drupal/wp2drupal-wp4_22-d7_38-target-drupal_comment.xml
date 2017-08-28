@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        semantic="custom">
+  <seq id="drupal_comment">
+    <elem id="drupal_comment_row">
+      <num db-column-name="cid" id="drupal_comment_row_cid" max-digits="11"/>
+      <num db-column-name="pid" defaultnum="0" id="drupal_comment_row_pid" max-digits="11"/>
+      <num db-column-name="nid" defaultnum="0" id="drupal_comment_row_nid" max-digits="11"/>
+      <num db-column-name="uid" defaultnum="0" id="drupal_comment_row_uid" max-digits="11"/>
+      <str db-column-name="subject" id="drupal_comment_row_subject" max-length="64"/>
+      <str db-column-name="hostname" id="drupal_comment_row_hostname" max-length="128"/>
+      <num db-column-name="created" defaultnum="0" id="drupal_comment_row_created" max-digits="11"/>
+      <num db-column-name="changed" defaultnum="0" id="drupal_comment_row_changed" max-digits="11"/>
+      <num db-column-name="status" defaultnum="1" id="drupal_comment_row_status" max-digits="3"/>
+      <str db-column-name="thread" id="drupal_comment_row_thread" max-length="255"/>
+      <str db-column-name="name" id="drupal_comment_row_name" max-length="60"/>
+      <str db-column-name="mail" id="drupal_comment_row_mail" max-length="64"/>
+      <str db-column-name="homepage" id="drupal_comment_row_homepage" max-length="255"/>
+      <str db-column-name="language" id="drupal_comment_row_language" max-length="12"/>
+    </elem>
+  </seq>
+</dfasdl>

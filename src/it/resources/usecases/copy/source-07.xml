@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        semantic="custom">
+  <seq id="rows">
+    <elem id="row">
+      <str id="firstname" stop-sign=";"/>
+      <str id="lastname" stop-sign=";"/>
+      <str id="e-mail" stop-sign=";"/>
+      <formatnum id="value" format="(-?[\d\.,⎖]+)" decimal-separator="⎖"/>
+    </elem>
+  </seq>
+</dfasdl>

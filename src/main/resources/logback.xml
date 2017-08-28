@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false">
+  <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+      <level>${tensei.agent.loglevel.console:-INFO}</level>
+    </filter>
+    <encoder>
+      <pattern>%date %highlight(%-5level) %cyan(%logger{0}) - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="file-sift" class="ch.qos.logback.classic.sift.SiftingAppender">
+    <!-- in the absence of the class attribute, it is assumed that the
+         desired discriminator type is
+         ch.qos.logback.classic.sift.MDCBasedDiscriminator -->
+    <discriminator>
+      <key>runId</key>
+      <defaultValue>tensei-agent</defaultValue>
+    </discriminator>
+    <sift>
+      <appender name="file-${runId}" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--See also http://logback.qos.ch/manual/appenders.html#RollingFileAppender-->
+        <file>${tensei.agent.logdir:-./logs}/${runId}.log</file>
+        <encoder>
+          <!-- TODO Maybe we should add `akkaSource` to the log? -->
+          <pattern>%date %-5level %logger{0} - %msg%n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+          <maxIndex>10</maxIndex>
+          <FileNamePattern>${tensei.agent.logdir:-./logs}/${runId}.log.%i</FileNamePattern>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+          <MaxFileSize>10MB</MaxFileSize>
+        </triggeringPolicy>
+      </appender>
+    </sift>
+  </appender>
+
+  <appender name="async-file" class="ch.qos.logback.classic.AsyncAppender">
+    <!-- We are wrapping the sifting file appender into the async appender for performance reasons. -->
+    <appender-ref ref="file-sift"/>
+    <queueSize>5000</queueSize>
+    <discardingThreshold>0</discardingThreshold>
+  </appender>
+
+  <logger name="Remoting" level="warn" additivity="false">
+    <appender-ref ref="console"/>
+    <appender-ref ref="async-file"/>
+  </logger>
+
+  <logger name="akka.remote.EndpointWriter" level="off" additivity="false">
+  </logger>
+
+  <logger name="com.wegtam.tensei.agent" level="${tensei.agent.loglevel:-INFO}" additivity="false">
+    <appender-ref ref="console"/>
+    <appender-ref ref="async-file"/>
+  </logger>
+
+  <root>
+    <appender-ref ref="console"/>
+    <appender-ref ref="async-file"/>
+  </root>
+</configuration>

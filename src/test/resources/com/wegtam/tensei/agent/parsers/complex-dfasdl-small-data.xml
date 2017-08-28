@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rows>
+  <row>
+    <firstname>Albert</firstname>
+    <lastname>Einstein</lastname>
+    <email>albert.einstein@example.com</email>
+    <birthday>1879-03-14</birthday>
+    <awards>
+      <award>
+        <year>1914</year>
+        <name>Ordentliches Mitglied der Preußischen Akademie der Wissenschaften</name>
+      </award>
+      <award>
+        <year>1917</year>
+        <name>Ehrenpreis der Peter-Wilhelm-Müller-Stiftung</name>
+      </award>
+      <award>
+        <year>1919</year>
+        <name>Ehrendoktorwürde (Dr. h.c.) der Universität Rostock</name>
+      </award>
+    </awards>
+  </row>
+  <row>
+    <firstname>Bernhard</firstname>
+    <lastname>Riemann</lastname>
+    <email>br@example.com</email>
+    <birthday>1826-09-17</birthday>
+    <awards>
+      <award>
+        <year>1868</year>
+        <name>Riemann-Helmholtz-Raumproblem</name>
+      </award>
+    </awards>
+  </row>
+  <row>
+    <firstname>Johann Carl Friedrich</firstname>
+    <lastname>Gauß</lastname>
+    <email>gauss@example.com</email>
+    <birthday>1777-04-30</birthday>
+    <awards/>
+  </row>
+  <row>
+    <firstname>Johann Benedict</firstname>
+    <lastname>Listing</lastname>
+    <email>bl@example.com</email>
+    <birthday>1808-07-25</birthday>
+    <awards>
+      <award>
+        <year>1858</year>
+      </award>
+      <award>
+        <year>1861</year>
+        <name>Mitglied Akademie der Wissenschaften in Göttingen</name>
+      </award>
+    </awards>
+  </row>
+  <row>
+    <firstname>Gottfried Wilhelm</firstname>
+    <lastname>Leibnitz</lastname>
+    <email>leibnitz@example.com</email>
+    <birthday>1646-07-01</birthday>
+    <awards>
+      <award>
+        <name>Gottfried-Wilhelm-Leibniz-Preis</name>
+      </award>
+      <award>
+        <year>2008</year>
+        <name>Denkmal in Hannover</name>
+      </award>
+    </awards>
+  </row>
+</rows>

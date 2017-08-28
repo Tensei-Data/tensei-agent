@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <seq id="vcards" keepID="true">
+    <elem id="vcard">
+      <seq id="entries" keepID="true">
+        <elem id="row">
+          <choice id="vcardChoice">
+            <celem id="c_end_tag">
+              <str id="label01" class="label" start-sign="END" stop-sign=":"/>
+              <str id="end_tag"/>
+            </celem>
+            <celem id="c_version">
+              <str id="label02" class="label" start-sign="VERSION" stop-sign=":"/>
+              <str id="version"/>
+            </celem>
+            <celem id="c_start_tag">
+              <str id="label03" class="label" start-sign="BEGIN" stop-sign=":"/>
+              <str id="start_tag"/>
+            </celem>
+            <celem id="c_name">
+              <str id="label04" class="label" start-sign="N" stop-sign=":"/>
+              <str id="name"/>
+            </celem>
+            <celem id="c_full_name">
+              <str id="label05" class="label" start-sign="FN" stop-sign=":"/>
+              <str id="full_name"/>
+            </celem>
+            <celem id="c_organisation">
+              <str id="label06" class="label" start-sign="ORG" stop-sign=":"/>
+              <str id="organisation"/>
+            </celem>
+            <celem id="c_title">
+              <str id="label07" class="label" start-sign="TITLE" stop-sign=":"/>
+              <str id="title"/>
+            </celem>
+            <celem id="c_photo">
+              <str id="label08" class="label" start-sign="PHOTO" stop-sign=":"/>
+              <str id="photo"/>
+            </celem>
+            <celem id="c_phone_work">
+              <str id="label09" class="label" start-sign="TEL;TYPE=WORK" stop-sign=":"/>
+              <str id="phone_work"/>
+            </celem>
+            <celem id="c_phone_home">
+              <str id="label10" class="label" start-sign="TEL;TYPE=HOME" stop-sign=":"/>
+              <str id="phone_home"/>
+            </celem>
+            <celem id="c_address_home">
+              <str id="label11" class="label" start-sign="ADR;TYPE=HOME" stop-sign=":"/>
+              <str id="address_home"/>
+            </celem>
+            <celem id="c_label_home">
+              <str id="label12" class="label" start-sign="LABEL;TYPE=HOME" stop-sign=":"/>
+              <str id="label_home"/>
+            </celem>
+            <celem id="c_address_work">
+              <str id="label13" class="label" start-sign="ADR;TYPE=WORK" stop-sign=":"/>
+              <str id="address_work"/>
+            </celem>
+            <celem id="c_work">
+              <str id="label14" class="label" start-sign="LABEL;TYPE=WORK" stop-sign=":"/>
+              <str id="label_work"/>
+            </celem>
+            <celem id="c_email">
+              <str id="label15" class="label" start-sign="EMAIL" stop-sign=":"/>
+              <str id="email"/>
+            </celem>
+            <celem id="c_revision">
+              <str id="label16" class="label" start-sign="REV" stop-sign=":"/>
+              <str id="revision"/>
+            </celem>
+          </choice>
+        </elem>
+      </seq>
+    </elem>
+  </seq>
+</dfasdl>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <seq id="vcards">
+    <elem id="vcard">
+      <str class="label" stop-sign=":"/>
+      <str id="start_tag"/>
+      <str class="label" stop-sign=":"/>
+      <str id="version"/>
+      <str class="label" stop-sign=":"/>
+      <str id="name"/>
+      <str class="label" stop-sign=":"/>
+      <str id="full_name"/>
+      <str class="label" stop-sign=":"/>
+      <str id="organisation"/>
+      <str class="label" stop-sign=":"/>
+      <str id="title"/>
+      <str class="label" stop-sign=":"/>
+      <str id="photo"/>
+      <str class="label" stop-sign=":"/>
+      <str id="phone_work"/>
+      <str class="label" stop-sign=":"/>
+      <str id="phone_home"/>
+      <str class="label" stop-sign=":"/>
+      <str id="address_work"/>
+      <str class="label" stop-sign=":"/>
+      <str id="label_work"/>
+      <str class="label" stop-sign=":"/>
+      <str id="address_home"/>
+      <str class="label" stop-sign=":"/>
+      <str id="label_home"/>
+      <str class="label" stop-sign=":"/>
+      <str id="email"/>
+      <str class="label" stop-sign=":"/>
+      <str id="revision"/>
+      <str class="label" stop-sign=":"/>
+      <str id="end_tag"/>
+    </elem>
+  </seq>
+</dfasdl>

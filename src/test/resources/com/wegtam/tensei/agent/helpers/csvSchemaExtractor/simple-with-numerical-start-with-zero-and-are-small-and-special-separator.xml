@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL" semantic="custom">
+  <seq id="lines">
+    <elem id="row">
+      <num id="entry-0" stop-sign=";"/>
+      <formatnum decimal-separator="⎖" format="(-?[\d\.,⎖]+)" id="entry-1" max-digits="30" max-precision="8" stop-sign=";"/>
+      <formatnum decimal-separator="⎖" format="(-?[\d\.,⎖]+)" id="entry-2" max-digits="36" max-precision="2"/>
+    </elem>
+  </seq>
+</dfasdl>

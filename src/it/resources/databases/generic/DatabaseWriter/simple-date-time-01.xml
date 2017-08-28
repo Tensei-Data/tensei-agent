@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        semantic="custom">
+  <seq id="accounts">
+    <elem id="row">
+      <num id="id" db-column-name="id"/>
+      <date id="created" db-column-name="created"/>
+      <datetime id="updated" db-column-name="updated"/>
+      <time id="accessed" db-column-name="accessed"/>
+      <formattime id="created2" format="dd.MM.yyyy" db-column-name="created2"/>
+      <formattime id="updated2" format="dd.MM.yyyy HH:mm:ss" db-column-name="updated2"/>
+      <formattime id="accessed2" format="HH:mm:ss a" db-column-name="accessed2"/>
+    </elem>
+  </seq>
+</dfasdl>

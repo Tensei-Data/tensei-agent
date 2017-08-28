@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <fixseq id="account_list" count="3">
+    <elem id="row">
+      <elem id="a1">
+        <str id="firstname" stop-sign=","/>
+        <str id="lastname" stop-sign=","/>
+      </elem>
+      <elem id="a3">
+        <elem id="a3a"><str id="email" stop-sign=","/></elem>
+        <elem id="a3b"><str id="birthday" stop-sign=","/></elem>
+      </elem>
+      <elem id="a5"><str id="phone" stop-sign=","/></elem>
+      <elem id="a6"><str id="division"/></elem>
+    </elem>
+  </fixseq>
+</dfasdl>

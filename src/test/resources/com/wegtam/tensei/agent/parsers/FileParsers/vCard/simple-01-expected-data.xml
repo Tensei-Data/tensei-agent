@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <elem id="vcard">
+    <str class="label" stop-sign=":">BEGIN</str>
+    <str id="start_tag">VCARD</str>
+    <str class="label" stop-sign=":">VERSION</str>
+    <str id="version">3.0</str>
+    <str class="label" stop-sign=":">N</str>
+    <str id="name">Gump;Forrest;Mr.</str>
+    <str class="label" stop-sign=":">FN</str>
+    <str id="full_name">Forrest Gump</str>
+    <str class="label" stop-sign=":">ORG</str>
+    <str id="organisation">Bubba Gump Shrimp Co.</str>
+    <str class="label" stop-sign=":">TITLE</str>
+    <str id="title">Shrimp Man</str>
+    <str class="label" stop-sign=":">PHOTO;VALUE=URL;TYPE=GIF</str>
+    <str id="photo">http://www.example.com/dir_photos/my_photo.gif</str>
+    <str class="label" stop-sign=":">TEL;TYPE=WORK,VOICE</str>
+    <str id="phone_work">(111) 555-1212</str>
+    <str class="label" stop-sign=":">TEL;TYPE=HOME,VOICE</str>
+    <str id="phone_home">(404) 555-1212</str>
+    <str class="label" stop-sign=":">ADR;TYPE=WORK</str>
+    <str id="address_work">;;100 Waters Edge;Baytown;LA;30314;United States of America</str>
+    <str class="label" stop-sign=":">LABEL;TYPE=WORK</str>
+    <str id="label_work">100 Waters Edge\nBaytown, LA 30314\nUnited States of America</str>
+    <str class="label" stop-sign=":">ADR;TYPE=HOME</str>
+    <str id="address_home">;;42 Plantation St.;Baytown;LA;30314;United States of America</str>
+    <str class="label" stop-sign=":">LABEL;TYPE=HOME</str>
+    <str id="label_home">42 Plantation St.\nBaytown, LA 30314\nUnited States of America</str>
+    <str class="label" stop-sign=":">EMAIL;TYPE=PREF,INTERNET</str>
+    <str id="email">forrestgump@example.com</str>
+    <str class="label" stop-sign=":">REV</str>
+    <str id="revision">2008-04-24T19:52:43Z</str>
+    <str class="label" stop-sign=":">END</str>
+    <str id="end_tag">VCARD</str>
+  </elem>
+</dfasdl>

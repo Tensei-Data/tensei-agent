@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        semantic="custom">
+  <seq id="drupal_taxonomy_vocabulary">
+    <elem id="drupal_taxonomy_vocabulary_row">
+      <num db-column-name="vid" id="drupal_taxonomy_vocabulary_row_vid" max-digits="10"/>
+      <str db-column-name="name" id="drupal_taxonomy_vocabulary_row_name" max-length="255"/>
+      <str db-column-name="machine_name" id="drupal_taxonomy_vocabulary_row_machine_name" max-length="255"/>
+      <str db-column-name="description" id="drupal_taxonomy_vocabulary_row_description"/>
+      <num db-column-name="hierarchy" defaultnum="0" id="drupal_taxonomy_vocabulary_row_hierarchy" max-digits="3"/>
+      <str db-column-name="module" id="drupal_taxonomy_vocabulary_row_module" max-length="255"/>
+      <num db-column-name="weight" defaultnum="0" id="drupal_taxonomy_vocabulary_row_weight" max-digits="11"/>
+    </elem>
+  </seq>
+</dfasdl>

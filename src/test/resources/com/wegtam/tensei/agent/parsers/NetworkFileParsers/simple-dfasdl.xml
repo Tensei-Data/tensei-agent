@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        semantic="custom">
+  <seq id="rows">
+    <elem id="row">
+      <str id="lastname" stop-sign=","/>
+      <str id="firstname"/>
+    </elem>
+  </seq>
+</dfasdl>

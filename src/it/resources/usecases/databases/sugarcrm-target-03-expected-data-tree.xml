@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <fixseq count="3" db-select="SELECT a.name, c.first_name, c.last_name, c.phone_home FROM accounts AS a JOIN accounts_contacts AS ac ON a.id = ac.account_id JOIN contacts AS c ON ac.contact_id = c.id ORDER BY c.id LIMIT 3" id="accounts_with_contacts" keepID="true">
+    <elem class="id:accounts_with_contacts_row">
+      <str class="id:accounts_with_contacts_row_name" db-column-name="name" max-length="150">Nelson Inc</str>
+      <str class="id:accounts_with_contacts_row_first_name" db-column-name="first_name" max-length="100">Ignacio</str>
+      <str class="id:accounts_with_contacts_row_last_name" db-column-name="last_name" max-length="100">Kohan</str>
+      <str class="id:accounts_with_contacts_row_phone_home" db-column-name="phone_home" max-length="100">(743) 191-1224</str>
+    </elem>
+    <elem class="id:accounts_with_contacts_row">
+      <str class="id:accounts_with_contacts_row_name" db-column-name="name" max-length="150">Lexington Shores Corp</str>
+      <str class="id:accounts_with_contacts_row_first_name" db-column-name="first_name" max-length="100">Elda</str>
+      <str class="id:accounts_with_contacts_row_last_name" db-column-name="last_name" max-length="100">Wass</str>
+      <str class="id:accounts_with_contacts_row_phone_home" db-column-name="phone_home" max-length="100">(507) 543-8725</str>
+    </elem>
+    <elem class="id:accounts_with_contacts_row">
+      <str class="id:accounts_with_contacts_row_name" db-column-name="name" max-length="150">Rhyme &amp; Reason Inc</str>
+      <str class="id:accounts_with_contacts_row_first_name" db-column-name="first_name" max-length="100">Everett</str>
+      <str class="id:accounts_with_contacts_row_last_name" db-column-name="last_name" max-length="100">Osteen</str>
+      <str class="id:accounts_with_contacts_row_phone_home" db-column-name="phone_home" max-length="100">(255) 104-5091</str>
+    </elem>
+  </fixseq>
+</dfasdl>

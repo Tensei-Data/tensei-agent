@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <elem id="vcard">
+    <formatstr format=".*?:(.*)" id="start_tag" />
+    <formatstr format=".*?:(.*)" id="version"/>
+    <formatstr format=".*?:(.*)" id="name"/>
+    <formatstr format=".*?:(.*)" id="full_name"/>
+    <formatstr format=".*?:(.*)" id="organisation"/>
+    <formatstr format=".*?:(.*)" id="title"/>
+    <formatstr format=".*?:(.*)" id="photo"/>
+    <formatstr format=".*?:(.*)" id="phone_work"/>
+    <formatstr format=".*?:(.*)" id="phone_home"/>
+    <formatstr format=".*?:(.*)" id="address_work"/>
+    <formatstr format=".*?:(.*)" id="label_work"/>
+    <formatstr format=".*?:(.*)" id="address_home"/>
+    <formatstr format=".*?:(.*)" id="label_home"/>
+    <formatstr format=".*?:(.*)" id="email"/>
+    <formatstr format=".*?:(.*)" id="revision"/>
+    <formatstr format=".*?:(.*)" id="end_tag"/>
+  </elem>
+</dfasdl>

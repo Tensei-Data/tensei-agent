@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL" semantic="custom">
+  <elem id="csv_header">
+    <str id="csv_header_lfd_nr" stop-sign=";"/>
+    <str id="csv_header_name" stop-sign=";"/>
+    <str id="csv_header_datum"/>
+  </elem>
+  <seq id="lines">
+    <elem id="row">
+      <num id="lfd_nr" stop-sign=";"/>
+      <str id="name" stop-sign=";"/>
+      <formattime format="dd.MM.yyyy" id="datum"/>
+    </elem>
+  </seq>
+</dfasdl>

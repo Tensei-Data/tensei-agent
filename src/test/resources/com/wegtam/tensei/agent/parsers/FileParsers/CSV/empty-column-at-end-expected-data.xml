@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        semantic="custom">
+  <seq id="lines" keepID="true">
+    <elem class="id:row">
+      <num class="id:entry-0" stop-sign="," precision="0">0</num>
+      <num class="id:entry-1" stop-sign="," precision="0">211</num>
+      <str class="id:entry-2" stop-sign=",">Ozkan</str>
+      <str class="id:entry-3" stop-sign=",">Douglas</str>
+      <str class="id:entry-4" stop-sign=","/>
+      <num class="id:entry-5" stop-sign="," precision="0">647</num>
+      <str class="id:entry-6" stop-sign=",">EGZKSobTeknHCbLuHczvWmhTmCSGXD</str>
+      <str class="id:entry-7" stop-sign=",">OFFICE7152</str>
+      <str class="id:entry-8"/>
+    </elem>
+    <elem class="id:row">
+      <num class="id:entry-0" stop-sign="," precision="0">1</num>
+      <num class="id:entry-1" stop-sign="," precision="0">413</num>
+      <str class="id:entry-2" stop-sign=",">Suer</str>
+      <str class="id:entry-3" stop-sign=",">Candice</str>
+      <str class="id:entry-4" stop-sign=","/>
+      <num class="id:entry-5" stop-sign="," precision="0">314</num>
+      <str class="id:entry-6" stop-sign=",">OfOBVvpzNvHCebxyuxXFwsMju  JRU</str>
+      <str class="id:entry-7" stop-sign=",">OFFICE8586</str>
+      <str class="id:entry-8">(344) 999-2652</str>
+    </elem>
+    <elem class="id:row">
+      <num class="id:entry-0" stop-sign="," precision="0">2</num>
+      <num class="id:entry-1" stop-sign="," precision="0">246</num>
+      <str class="id:entry-2" stop-sign=",">Somisetty</str>
+      <str class="id:entry-3" stop-sign=",">Jami</str>
+      <str class="id:entry-4" stop-sign=",">P</str>
+      <num class="id:entry-5" stop-sign="," precision="0">534</num>
+      <str class="id:entry-6" stop-sign=",">rAHWYkktOXAyPAYHlncZPG</str>
+      <str class="id:entry-7" stop-sign=","/>
+      <str class="id:entry-8">(984) 538-5366</str>
+    </elem>
+    <elem class="id:row">
+      <num class="id:entry-0" stop-sign="," precision="0">3</num>
+      <num class="id:entry-1" stop-sign="," precision="0">248</num>
+      <str class="id:entry-2" stop-sign=",">Mazurek</str>
+      <str class="id:entry-3" stop-sign=",">Rosalinda</str>
+      <str class="id:entry-4" stop-sign=",">J</str>
+      <num class="id:entry-5" stop-sign="," precision="0">364</num>
+      <str class="id:entry-6" stop-sign=",">TJQqsUQQGqWG QleLheUoYlgRNVT</str>
+      <str class="id:entry-7" stop-sign=",">OFFICE8487</str>
+      <str class="id:entry-8">(860) 037-6897</str>
+    </elem>
+  </seq>
+</dfasdl>

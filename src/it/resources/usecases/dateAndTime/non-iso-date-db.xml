@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL" semantic="custom">
+  <seq id="test">
+    <elem id="test_row">
+      <date db-column-name="active" id="test_row_active"/>
+    </elem>
+  </seq>
+</dfasdl>

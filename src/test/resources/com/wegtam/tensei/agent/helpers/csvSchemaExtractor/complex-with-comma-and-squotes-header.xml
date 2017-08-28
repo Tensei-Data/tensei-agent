@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL" semantic="custom">
+  <elem id="csv_header">
+    <str id="csv_header_vorname" stop-sign=","/>
+    <str id="csv_header_nachname" stop-sign=","/>
+    <str id="csv_header_geburtsdatum" stop-sign=","/>
+    <str id="csv_header_telefon"/>
+  </elem>
+  <seq id="lines">
+    <elem id="row">
+      <str id="vorname" stop-sign=","/>
+      <str id="nachname" stop-sign=","/>
+      <formattime format="dd.MM.yyyy" id="geburtsdatum" stop-sign=","/>
+      <num id="telefon"/>
+    </elem>
+  </seq>
+</dfasdl>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        semantic="custom">
+    <seq id="wp_posts">
+        <elem id="wp_posts_row">
+            <num db-column-name="id" id="wp_posts_row_id" max-digits="20"/>
+            <num db-column-name="post_author" defaultnum="0" id="wp_posts_row_post_author" max-digits="20"/>
+            <datetime db-column-name="post_date" id="wp_posts_row_post_date"/>
+            <datetime db-column-name="post_date_gmt" id="wp_posts_row_post_date_gmt"/>
+            <str db-column-name="post_content" id="wp_posts_row_post_content"/>
+            <str db-column-name="post_title" id="wp_posts_row_post_title" max-length="65535"/>
+            <str db-column-name="post_excerpt" id="wp_posts_row_post_excerpt" max-length="65535"/>
+            <str db-column-name="post_status" defaultstr="publish" id="wp_posts_row_post_status" max-length="20"/>
+            <str db-column-name="comment_status" defaultstr="open" id="wp_posts_row_comment_status" max-length="20"/>
+            <str db-column-name="ping_status" defaultstr="open" id="wp_posts_row_ping_status" max-length="20"/>
+            <str db-column-name="post_password" id="wp_posts_row_post_password" max-length="20"/>
+            <str db-column-name="post_name" id="wp_posts_row_post_name" max-length="200"/>
+            <str db-column-name="to_ping" id="wp_posts_row_to_ping" max-length="65535"/>
+            <str db-column-name="pinged" id="wp_posts_row_pinged" max-length="65535"/>
+            <datetime db-column-name="post_modified" id="wp_posts_row_post_modified"/>
+            <datetime db-column-name="post_modified_gmt" id="wp_posts_row_post_modified_gmt"/>
+            <str db-column-name="post_content_filtered" id="wp_posts_row_post_content_filtered"/>
+            <num db-column-name="post_parent" defaultnum="0" id="wp_posts_row_post_parent" max-digits="20"/>
+            <str db-column-name="guid" id="wp_posts_row_guid" max-length="255"/>
+            <num db-column-name="menu_order" defaultnum="0" id="wp_posts_row_menu_order" max-digits="11"/>
+            <str db-column-name="post_type" defaultstr="post" id="wp_posts_row_post_type" max-length="20"/>
+            <str db-column-name="post_mime_type" id="wp_posts_row_post_mime_type" max-length="100"/>
+            <num db-column-name="comment_count" defaultnum="0" id="wp_posts_row_comment_count" max-digits="20"/>
+        </elem>
+    </seq>
+</dfasdl>

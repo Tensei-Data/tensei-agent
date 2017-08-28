@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <seq id="headers" keepID="true" stop-sign="[\r\n][\r\n]">
+    <choice id="header">
+      <celem id="date">
+        <str id="dateLabel" start-sign="Date" stop-sign=":"/>
+        <str id="dateValue" trim="both"/>
+      </celem>
+      <celem id="from">
+        <str id="fromLabel" start-sign="From" stop-sign=":"/>
+        <str id="fromValue" trim="both"/>
+      </celem>
+      <celem id="to">
+        <str id="toLabel" start-sign="To" stop-sign=":"/>
+        <str id="toValue" trim="both"/>
+      </celem>
+      <celem id="cc">
+        <str id="ccLabel" start-sign="Cc" stop-sign=":"/>
+        <str id="ccValue" trim="both"/>
+      </celem>
+      <celem id="subject">
+        <str id="subjectLabel" start-sign="Subject" stop-sign=":"/>
+        <str id="subjectValue" trim="both"/>
+      </celem>
+      <celem id="messageId">
+        <str id="messageIdLabel" start-sign="Message-Id" stop-sign=":"/>
+        <str id="messageIdValue" trim="both"/>
+      </celem>
+      <celem id="genericHeaderMultiLine">
+        <str id="genericLabel" stop-sign=":"/>
+        <str id="genericHeaderMultiLineValue" stop-sign="[\r\n][\w|[\r\n]]" correct-offset="-1" trim="both"/>
+      </celem>
+    </choice>
+  </seq>
+  <str id="body" stop-sign="EOF" storage-path="akka://"/>
+</dfasdl>

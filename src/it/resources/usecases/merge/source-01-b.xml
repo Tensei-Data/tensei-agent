@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <seq id="product_list">
+    <elem id="product">
+      <str id="ean" stop-sign="\t"/>
+      <str id="id" stop-sign="\t"/>
+      <formatnum id="gewicht" format="(-?\d+(\.\d+)?)" decimal-separator="." stop-sign="\t"/>
+      <str id="google_cat" stop-sign="\t"/>
+      <str id="verfuegbarkeit" stop-sign="\t"/>
+      <str id="produkttyp" stop-sign="\t"/>
+      <str id="zustand" stop-sign="\t"/>
+      <formatnum id="versand" format="(-?\d+(\.\d+)?)" decimal-separator="."/>
+    </elem>
+  </seq>
+</dfasdl>

@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <seq id="vcards" keepID="true">
+    <elem class="id:vcard">
+      <fixseq count="16" class="id:entries" keepID="true">
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">BEGIN</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">VCARD</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">VERSION</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">3.0</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">N</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">Gump;Forrest;Mr.</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">FN</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">Forrest Gump</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">ORG</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">Bubba Gump Shrimp Co.</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">TITLE</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">Shrimp Man</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">PHOTO;VALUE=URL;TYPE=GIF</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">http://www.example.com/dir_photos/my_photo.gif</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">TEL;TYPE=WORK,VOICE</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">(111) 555-1212</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">TEL;TYPE=HOME,VOICE</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">(404) 555-1212</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">ADR;TYPE=WORK</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">;;100 Waters Edge;Baytown;LA;30314;United States of America</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">LABEL;TYPE=WORK</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">100 Waters Edge\nBaytown, LA 30314\nUnited States of America</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">ADR;TYPE=HOME</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">;;42 Plantation St.;Baytown;LA;30314;United States of America</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">LABEL;TYPE=HOME</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">42 Plantation St.\nBaytown, LA 30314\nUnited States of America</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">EMAIL;TYPE=PREF,INTERNET</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">forrestgump@example.com</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">REV</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">2008-04-24T19:52:43Z</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">END</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">VCARD</str>
+            </elem>
+          </fixseq>
+        </elem>
+      </fixseq>
+    </elem>
+    <elem class="id:vcard">
+      <fixseq count="16" class="id:entries" keepID="true">
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">BEGIN</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">VCARD</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">VERSION</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">3.0</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">N</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">Gump;Alex;Mr.</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">FN</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">Alex Gump</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">ORG</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">Bubba Gump Shrimp Co.</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">TITLE</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">Shrimp Man</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">PHOTO;VALUE=URL;TYPE=GIF</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">http://www.example.com/dir_photos/my_photo.gif</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">TEL;TYPE=WORK,VOICE</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">(111) 555-1212</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">TEL;TYPE=HOME,VOICE</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">(404) 555-1212</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">ADR;TYPE=WORK</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">;;100 Waters Edge;Baytown;LA;30314;United States of America</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">LABEL;TYPE=WORK</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">100 Waters Edge\nBaytown, LA 30314\nUnited States of America</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">ADR;TYPE=HOME</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">;;42 Plantation St.;Baytown;LA;30314;United States of America</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">LABEL;TYPE=HOME</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">42 Plantation St.\nBaytown, LA 30314\nUnited States of America</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">EMAIL;TYPE=PREF,INTERNET</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">forrestgump@example.com</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">REV</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">2008-04-24T19:52:43Z</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">END</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">VCARD</str>
+            </elem>
+          </fixseq>
+        </elem>
+      </fixseq>
+    </elem>
+    <elem class="id:vcard">
+      <fixseq count="16" class="id:entries" keepID="true">
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">BEGIN</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">VCARD</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">VERSION</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">3.0</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">N</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">Gump;Jane;Mrs.</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">FN</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">Jane Gump</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">ORG</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">Bubba Gump Shrimp Co.</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">TITLE</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">Shrimp Woman</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">PHOTO;VALUE=URL;TYPE=GIF</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">http://www.example.com/dir_photos/my_photo.gif</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">TEL;TYPE=WORK,VOICE</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">(111) 555-1212</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">TEL;TYPE=HOME,VOICE</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">(404) 555-1212</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">ADR;TYPE=WORK</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">;;100 Waters Edge;Baytown;LA;30314;United States of America</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">LABEL;TYPE=WORK</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">100 Waters Edge\nBaytown, LA 30314\nUnited States of America</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">ADR;TYPE=HOME</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">;;42 Plantation St.;Baytown;LA;30314;United States of America</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">LABEL;TYPE=HOME</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">42 Plantation St.\nBaytown, LA 30314\nUnited States of America</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">EMAIL;TYPE=PREF,INTERNET</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">forrestgump@example.com</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">REV</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">2008-04-24T19:52:43Z</str>
+            </elem>
+          </fixseq>
+        </elem>
+        <elem class="id:row">
+          <fixseq count="1" class="id:columns" keepID="true">
+            <elem class="id:column">
+              <str class="id:column-data" stop-sign=":">END</str>
+            </elem>
+            <elem class="id:column2">
+              <str class="id:column2-data">VCARD</str>
+            </elem>
+          </fixseq>
+        </elem>
+      </fixseq>
+    </elem>
+  </seq>
+</dfasdl>

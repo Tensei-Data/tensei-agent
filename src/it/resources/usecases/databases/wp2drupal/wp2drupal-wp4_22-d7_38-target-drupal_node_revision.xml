@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        semantic="custom">
+  <seq id="drupal_node_revision">
+    <elem id="drupal_node_revision_row">
+      <num db-column-name="nid" defaultnum="0" id="drupal_node_revision_row_nid" max-digits="10"/>
+      <num db-column-name="vid" id="drupal_node_revision_row_vid" max-digits="10"/>
+      <num db-column-name="uid" defaultnum="0" id="drupal_node_revision_row_uid" max-digits="11"/>
+      <str db-column-name="title" id="drupal_node_revision_row_title" max-length="255"/>
+      <str db-column-name="log" id="drupal_node_revision_row_log"/>
+      <num db-column-name="timestamp" defaultnum="0" id="drupal_node_revision_row_timestamp" max-digits="11"/>
+      <num db-column-name="status" defaultnum="1" id="drupal_node_revision_row_status" max-digits="11"/>
+      <num db-column-name="comment" defaultnum="0" id="drupal_node_revision_row_comment" max-digits="11"/>
+      <num db-column-name="promote" defaultnum="0" id="drupal_node_revision_row_promote" max-digits="11"/>
+      <num db-column-name="sticky" defaultnum="0" id="drupal_node_revision_row_sticky" max-digits="11"/>
+    </elem>
+  </seq>
+</dfasdl>

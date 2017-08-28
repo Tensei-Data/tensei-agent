@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <seq id="vcards" keepID="true">
+    <fixseq id="entries" count="16" keepID="true">
+      <fixseq count="1" id="columns" keepID="true">
+        <elem id="column">
+          <str id="column-data" stop-sign=":"/>
+        </elem>
+        <elem id="column2">
+          <str id="column2-data"/>
+        </elem>
+      </fixseq>
+    </fixseq>
+  </seq>
+</dfasdl>

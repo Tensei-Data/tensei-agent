@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <elem id="account_list">
+    <choice id="field1">
+      <celem id="field1-container-1">
+        <num stop-sign=";" id="num-field1"/>
+      </celem>
+      <celem id="field1-container-2">
+        <str stop-sign=";" id="str-field1"/>
+      </celem>
+    </choice>
+    <choice id="field2">
+      <celem id="field2-container-1">
+        <num stop-sign=";" id="num-field2"/>
+      </celem>
+      <celem id="field2-container-2">
+        <str stop-sign=";" id="str-field2"/>
+      </celem>
+    </choice>
+    <choice id="field3">
+      <celem id="field3-container-1">
+        <num id="num-field3"/>
+      </celem>
+      <celem id="field3-container-2">
+        <str id="str-field3"/>
+      </celem>
+    </choice>
+  </elem>
+</dfasdl>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL" default-encoding="utf-8" semantic="custom">
+  <seq id="lines">
+    <elem id="row">
+      <str id="name"/>
+    </elem>
+  </seq>
+</dfasdl>

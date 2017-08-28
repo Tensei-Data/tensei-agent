@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <seq id="reservations">
+    <seq id="reservation">
+      <elem id="reservation-data">
+        <str id="buchungsnr"/>
+        <str id="art"/>
+        <str id="anreise"/>
+        <str id="abreise"/>
+        <str id="preis"/>
+        <str id="preisaufschlag"/>
+        <str id="waehrung"/>
+        <str id="ankunftszeit"/>
+        <str id="provision"/>
+        <str id="mwst"/>
+        <str id="status"/>
+        <num id="erwachsene"/>
+        <str id="anzahlung"/>
+        <str id="anzahlung_datum"/>
+        <str id="mwst_prov"/>
+        <str id="bemerkungen"/>
+        <str id="split_prov"/>
+        <str id="buchungszeitpunkt"/>
+        <str id="leistungen_vor_ort"/>
+        <str id="kunde_nr"/>
+        <num id="room_id"/>
+        <str id="verm_gebuehr"/>
+        <num id="vermittler_id"/>
+        <seq id="kinder">
+          <elem id="alter">
+            <num id="kinder-alter-age" xml-attribute-name="age" xml-attribute-parent="alter"/>
+            <num id="kinder-alter-anzahl" xml-attribute-name="anzahl" xml-attribute-parent="alter"/>
+          </elem>
+        </seq>
+        <seq id="zusaetze">
+          <elem id="zusatz">
+            <str id="zusatz-name" xml-attribute-name="name" xml-attribute-parent="zusatz"/>
+            <num id="zusatz-anzahl" xml-attribute-name="anzahl" xml-attribute-parent="zusatz"/>
+            <str id="zusatz-einzelpreis" xml-attribute-name="einzelpreis" xml-attribute-parent="zusatz"/>
+            <str id="zusatz-buchungsnr" xml-attribute-name="buchungsnr" xml-attribute-parent="zusatz"/>
+            <str id="zusatz-provision" xml-attribute-name="provision" xml-attribute-parent="zusatz"/>
+            <str id="zusatz-provision-split" xml-attribute-name="provision_split" xml-attribute-parent="zusatz"/>
+            <str id="zusatz-mwst-satz" xml-attribute-name="mwst_satz" xml-attribute-parent="zusatz"/>
+            <str id="zusatz-kuerzel" xml-attribute-name="kuerzel" xml-attribute-parent="zusatz"/>
+          </elem>
+        </seq>
+        <str id="v_titel"/>
+        <str id="v_plz"/>
+        <str id="v_ort"/>
+        <str id="v_strasse"/>
+        <str id="v_telefon"/>
+        <str id="v_fax"/>
+        <str id="v_email"/>
+        <str id="v_url"/>
+        <str id="o_id"/>
+        <str id="o_bezeichnung"/>
+        <str id="o_plz"/>
+        <str id="o_ort"/>
+        <str id="o_strasse"/>
+        <str id="o_url"/>
+        <str id="o_telefon"/>
+        <str id="o_fax"/>
+        <str id="o_email"/>
+        <str id="o_gewerblich"/>
+        <str id="k_bezeichnung"/>
+        <str id="z_bezeichnung"/>
+        <str id="restzahlung_datum"/>
+        <str id="systemgebuehr"/>
+        <str id="systemgebuehr_waehrung"/>
+        <str id="mietpreis"/>
+        <str id="zm_anzahlung"/>
+        <str id="zm_restzahlung"/>
+        <str id="zm_zwischenzahlung"/>
+        <str id="zm_mietzahlung"/>
+        <str id="zm_stornogebuehr"/>
+        <str id="ku_name"/>
+        <str id="ku_vorname"/>
+        <str id="ku_anrede"/>
+        <str id="ku_land"/>
+        <str id="ku_plz"/>
+        <str id="ku_ort"/>
+        <str id="ku_strasse"/>
+        <str id="ku_telefon"/>
+        <str id="ku_fax"/>
+        <str id="ku_email"/>
+        <str id="ku_handy"/>
+        <str id="ku_firma"/>
+        <num id="k_id"/>
+      </elem>
+    </seq>
+  </seq>
+</dfasdl>

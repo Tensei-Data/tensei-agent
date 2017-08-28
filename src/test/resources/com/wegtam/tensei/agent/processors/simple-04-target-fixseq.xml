@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <fixseq id="rows" keepID="true" count="2">
+    <fixseq id="columns" count="3" stop-sign="[\n\r]">
+      <elem id="column">
+        <str id="column-data" stop-sign=","/>
+      </elem>
+    </fixseq>
+  </fixseq>
+</dfasdl>

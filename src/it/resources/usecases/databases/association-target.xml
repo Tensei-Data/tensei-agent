@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL" semantic="custom">
+  <seq id="accounts">
+    <elem id="accounts_row">
+      <num db-column-name="id" id="accounts_row_id" max-digits="10"/>
+      <str db-column-name="name" id="accounts_row_name" max-length="150"/>
+      <str db-column-name="vorname" id="accounts_row_vorname" max-length="200"/>
+      <datetime db-column-name="date_entered" id="accounts_row_date_entered"/>
+      <date db-column-name="birthday" id="accounts_row_birthday"/>
+      <str db-column-name="description" id="accounts_row_description" max-length="65535"/>
+      <num db-column-name="deleted" defaultnum="0" id="accounts_row_deleted" max-digits="1"/>
+      <str db-column-name="phone_office" id="accounts_row_phone_office" max-length="100"/>
+      <str db-column-name="website" id="accounts_row_website" max-length="255"/>
+    </elem>
+  </seq>
+  <seq id="accounts_ata">
+    <elem id="accounts_ata_row">
+      <num db-column-name="id" id="accounts_ata_row_id" max-digits="10"/>
+      <str db-column-name="name" id="accounts_ata_row_name" max-length="150"/>
+      <str db-column-name="vorname" id="accounts_ata_row_vorname" max-length="200"/>
+      <datetime db-column-name="date_entered" id="accounts_ata_row_date_entered"/>
+      <date db-column-name="birthday" id="accounts_ata_row_birthday"/>
+      <str db-column-name="description" id="accounts_ata_row_description" max-length="65535"/>
+      <num db-column-name="deleted" defaultnum="0" id="accounts_ata_row_deleted" max-digits="1"/>
+      <str db-column-name="phone_office" id="accounts_ata_row_phone_office" max-length="100"/>
+      <str db-column-name="website" id="accounts_ata_row_website" max-length="255"/>
+    </elem>
+  </seq>
+</dfasdl>

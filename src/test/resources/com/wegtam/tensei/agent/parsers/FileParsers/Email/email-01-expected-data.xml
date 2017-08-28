@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <seq id="headers" stop-sign="[\r\n][\r\n]" keepID="true">
+    <choice class="id:header">
+      <celem class="id:genericHeaderMultiLine">
+        <str class="id:genericLabel" stop-sign=":">Return-Path</str>
+        <str class="id:genericHeaderMultiLineValue" correct-offset="-1" stop-sign="[\r\n][\w|[\r\n]]" trim="both"><![CDATA[<jens@wegtam.com>]]></str>
+      </celem>
+    </choice>
+    <choice class="id:header">
+      <celem class="id:genericHeaderMultiLine">
+        <str class="id:genericLabel" stop-sign=":">Delivered-To</str>
+        <str class="id:genericHeaderMultiLineValue" correct-offset="-1" stop-sign="[\r\n][\w|[\r\n]]" trim="both">andre@wegtam.com</str>
+      </celem>
+    </choice>
+    <choice class="id:header">
+      <celem class="id:genericHeaderMultiLine">
+        <str class="id:genericLabel" stop-sign=":">Received</str>
+        <str class="id:genericHeaderMultiLineValue" correct-offset="-1" stop-sign="[\r\n][\w|[\r\n]]" trim="both"><![CDATA[from smtp41.gate.dfw1a (smtp41.gate.dfw1a.rsapps.net [172.20.100.41])
+	by store130a.mail.dfw1a (SMTP Server) with ESMTP id 581391D80A2
+	for <andre@wegtam.com>; Mon, 28 Apr 2014 04:27:08 -0400 (EDT)]]></str>
+      </celem>
+    </choice>
+    <choice class="id:header">
+      <celem class="id:genericHeaderMultiLine">
+        <str class="id:genericLabel" stop-sign=":">X-Virus-Scanned</str>
+        <str class="id:genericHeaderMultiLineValue" correct-offset="-1" stop-sign="[\r\n][\w|[\r\n]]" trim="both">OK</str>
+      </celem>
+    </choice>
+    <choice class="id:header">
+      <celem class="id:genericHeaderMultiLine">
+        <str class="id:genericLabel" stop-sign=":">X-MessageSniffer-Scan-Result</str>
+        <str class="id:genericHeaderMultiLineValue" correct-offset="-1" stop-sign="[\r\n][\w|[\r\n]]" trim="both">0</str>
+      </celem>
+    </choice>
+    <choice class="id:header">
+      <celem class="id:genericHeaderMultiLine">
+        <str class="id:genericLabel" stop-sign=":">X-MessageSniffer-Rules</str>
+        <str class="id:genericHeaderMultiLineValue" correct-offset="-1" stop-sign="[\r\n][\w|[\r\n]]" trim="both">0-0-0-4292-c</str>
+      </celem>
+    </choice>
+    <choice class="id:header">
+      <celem class="id:genericHeaderMultiLine">
+        <str class="id:genericLabel" stop-sign=":">X-CMAE-Scan-Result</str>
+        <str class="id:genericHeaderMultiLineValue" correct-offset="-1" stop-sign="[\r\n][\w|[\r\n]]" trim="both">0</str>
+      </celem>
+    </choice>
+    <choice class="id:header">
+      <celem class="id:genericHeaderMultiLine">
+        <str class="id:genericLabel" stop-sign=":">X-CNFS-Analysis</str>
+        <str class="id:genericHeaderMultiLineValue" correct-offset="-1" stop-sign="[\r\n][\w|[\r\n]]" trim="both">v=2.1 cv=XfmwkuJ5 c=1 sm=0 tr=0 a=E3KZ53FmvAFxQtyWo729Vw==:117 a=E3KZ53FmvAFxQtyWo729Vw==:17 a=OTleaX3xBfsA:10 a=wPDyFdB5xvgA:10 a=kj9zAlcOel0A:10 a=80MYoa46AAAA:8 a=GF4HiIEFAAAA:8 a=9ro_oHBkAAAA:8 a=gFun6ocCyU8A:10 a=x-Bl-83-i81MCIlInGwA:9 a=CjuIK1q_8ugA:10</str>
+      </celem>
+    </choice>
+    <choice class="id:header">
+      <celem class="id:genericHeaderMultiLine">
+        <str class="id:genericLabel" stop-sign=":">Received</str>
+        <str class="id:genericHeaderMultiLineValue" correct-offset="-1" stop-sign="[\r\n][\w|[\r\n]]" trim="both"><![CDATA[from [173.203.187.63] ([173.203.187.63:33992] helo=smtp12.relay.iad3a.emailsrvr.com)
+	by smtp41.gate.dfw1a.rsapps.net (envelope-from <jens@wegtam.com>)
+	(ecelerity 2.2.3.49 r(42060/42061)) with ESMTPS (cipher=AES256-SHA)
+	id 28/29-26985-CD01E535; Mon, 28 Apr 2014 04:27:08 -0400]]></str>
+      </celem>
+    </choice>
+    <choice class="id:header">
+      <celem class="id:genericHeaderMultiLine">
+        <str class="id:genericLabel" stop-sign=":">Received</str>
+        <str class="id:genericHeaderMultiLineValue" correct-offset="-1" stop-sign="[\r\n][\w|[\r\n]]" trim="both"><![CDATA[from localhost (localhost.localdomain [127.0.0.1])
+	by smtp12.relay.iad3a.emailsrvr.com (SMTP Server) with ESMTP id B1F22F0148;
+	Mon, 28 Apr 2014 04:27:07 -0400 (EDT)]]></str>
+      </celem>
+    </choice>
+    <choice class="id:header">
+      <celem class="id:genericHeaderMultiLine">
+        <str class="id:genericLabel" stop-sign=":">X-Virus-Scanned</str>
+        <str class="id:genericHeaderMultiLineValue" correct-offset="-1" stop-sign="[\r\n][\w|[\r\n]]" trim="both">OK</str>
+      </celem>
+    </choice>
+    <choice class="id:header">
+      <celem class="id:genericHeaderMultiLine">
+        <str class="id:genericLabel" stop-sign=":">Received</str>
+        <str class="id:genericHeaderMultiLineValue" correct-offset="-1" stop-sign="[\r\n][\w|[\r\n]]" trim="both"><![CDATA[by smtp12.relay.iad3a.emailsrvr.com (Authenticated sender: jens-AT-wegtam.com) with ESMTPSA id 33E03F0145;
+	Mon, 28 Apr 2014 04:27:06 -0400 (EDT)]]></str>
+      </celem>
+    </choice>
+    <choice class="id:header">
+      <celem class="id:date">
+        <str class="id:dateLabel" start-sign="Date" stop-sign=":">Date</str>
+        <str class="id:dateValue" trim="both">Mon, 28 Apr 2014 10:27:06 +0200</str>
+      </celem>
+    </choice>
+    <choice class="id:header">
+      <celem class="id:from">
+        <str class="id:fromLabel" start-sign="From" stop-sign=":">From</str>
+        <str class="id:fromValue" trim="both"><![CDATA[Jens Grassel <jens@wegtam.com>]]></str>
+      </celem>
+    </choice>
+    <choice class="id:header">
+      <celem class="id:to">
+        <str class="id:toLabel" start-sign="To" stop-sign=":">To</str>
+        <str class="id:toValue" trim="both"><![CDATA[=?ISO-8859-1?Q?Andr=E9_Sch=FCtz?= <andre@wegtam.com>]]></str>
+      </celem>
+    </choice>
+    <choice class="id:header">
+      <celem class="id:cc">
+        <str class="id:ccLabel" start-sign="Cc" stop-sign=":">Cc</str>
+        <str class="id:ccValue" trim="both"><![CDATA[Jens Grassel <jens@wegtam.com>]]></str>
+      </celem>
+    </choice>
+    <choice class="id:header">
+      <celem class="id:subject">
+        <str class="id:subjectLabel" start-sign="Subject" stop-sign=":">Subject</str>
+        <str class="id:subjectValue" trim="both">This is a test subject!</str>
+      </celem>
+    </choice>
+    <choice class="id:header">
+      <celem class="id:messageId">
+        <str class="id:messageIdLabel" start-sign="Message-Id" stop-sign=":">Message-Id</str>
+        <str class="id:messageIdValue" trim="both"><![CDATA[<20140428102706.0477e42d9e210a5c90583026@wegtam.com>]]></str>
+      </celem>
+    </choice>
+    <choice class="id:header">
+      <celem class="id:genericHeaderMultiLine">
+        <str class="id:genericLabel" stop-sign=":">Organization</str>
+        <str class="id:genericHeaderMultiLineValue" correct-offset="-1" stop-sign="[\r\n][\w|[\r\n]]" trim="both">Wegtam UG</str>
+      </celem>
+    </choice>
+    <choice class="id:header">
+      <celem class="id:genericHeaderMultiLine">
+        <str class="id:genericLabel" stop-sign=":">X-Mailer</str>
+        <str class="id:genericHeaderMultiLineValue" correct-offset="-1" stop-sign="[\r\n][\w|[\r\n]]" trim="both">Sylpheed 3.4.1 (GTK+ 2.24.22; amd64-portbld-freebsd9.2)</str>
+      </celem>
+    </choice>
+    <choice class="id:header">
+      <celem class="id:genericHeaderMultiLine">
+        <str class="id:genericLabel" stop-sign=":">Mime-Version</str>
+        <str class="id:genericHeaderMultiLineValue" correct-offset="-1" stop-sign="[\r\n][\w|[\r\n]]" trim="both">1.0</str>
+      </celem>
+    </choice>
+    <choice class="id:header">
+      <celem class="id:genericHeaderMultiLine">
+        <str class="id:genericLabel" stop-sign=":">Content-Type</str>
+        <str class="id:genericHeaderMultiLineValue" correct-offset="-1" stop-sign="[\r\n][\w|[\r\n]]" trim="both">text/plain; charset=US-ASCII</str>
+      </celem>
+    </choice>
+    <choice class="id:header">
+      <celem class="id:genericHeaderMultiLine">
+        <str class="id:genericLabel" stop-sign=":">Content-Transfer-Encoding</str>
+        <str class="id:genericHeaderMultiLineValue" correct-offset="-1" stop-sign="[\r\n][\w|[\r\n]]" trim="both">7bit</str>
+      </celem>
+    </choice>
+  </seq>
+  <str id="body" stop-sign="EOF"><![CDATA[Hi there,
+
+lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
+elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
+dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus
+est Lorem ipsum dolor sit amet.
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
+elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
+dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus
+est Lorem ipsum dolor sit amet.
+
+Regards,
+
+Cicero
+
+--
+28. Ostermond 2014, 10:26
+Homepage : http://www.wegtam.com
+
+The telephone is a good way to talk to people without having to offer
+them a drink.
+		-- Fran Lebowitz, "Interview"]]></str>
+</dfasdl>

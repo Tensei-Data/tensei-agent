@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL" default-encoding="utf-8" semantic="niem">
+  <seq id="mitarbeiter">
+    <elem id="column">
+      <str id="name" stop-sign="," />
+      <str id="vorname" stop-sign="," />
+      <str id="title" stop-sign="," />
+      <str id="telefonnummer" stop-sign="," />
+      <str id="city" />
+    </elem>
+  </seq>
+</dfasdl>

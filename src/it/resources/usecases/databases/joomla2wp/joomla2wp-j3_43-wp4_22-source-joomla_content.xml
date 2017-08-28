@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL" semantic="custom">
+    <seq id="joomla_content">
+        <elem id="joomla_content_row">
+            <num db-column-name="id" id="joomla_content_row_id" max-digits="10"/>
+            <num db-column-name="asset_id" defaultnum="0" id="joomla_content_row_asset_id" max-digits="10"/>
+            <str db-column-name="title" id="joomla_content_row_title" max-length="255"/>
+            <str db-column-name="alias" id="joomla_content_row_alias" max-length="255"/>
+            <str db-column-name="introtext" id="joomla_content_row_introtext" max-length="16777215"/>
+            <str db-column-name="fulltext" id="joomla_content_row_fulltext" max-length="16777215"/>
+            <num db-column-name="state" defaultnum="0" id="joomla_content_row_state" max-digits="3"/>
+            <num db-column-name="catid" defaultnum="0" id="joomla_content_row_catid" max-digits="10"/>
+            <datetime db-column-name="created" id="joomla_content_row_created"/>
+            <num db-column-name="created_by" defaultnum="0" id="joomla_content_row_created_by" max-digits="10"/>
+            <str db-column-name="created_by_alias" id="joomla_content_row_created_by_alias" max-length="255"/>
+            <datetime db-column-name="modified" id="joomla_content_row_modified"/>
+            <num db-column-name="modified_by" defaultnum="0" id="joomla_content_row_modified_by" max-digits="10"/>
+            <num db-column-name="checked_out" defaultnum="0" id="joomla_content_row_checked_out" max-digits="10"/>
+            <datetime db-column-name="checked_out_time" id="joomla_content_row_checked_out_time"/>
+            <datetime db-column-name="publish_up" id="joomla_content_row_publish_up"/>
+            <datetime db-column-name="publish_down" id="joomla_content_row_publish_down"/>
+            <str db-column-name="images" id="joomla_content_row_images" max-length="65535"/>
+            <str db-column-name="urls" id="joomla_content_row_urls" max-length="65535"/>
+            <str db-column-name="attribs" id="joomla_content_row_attribs" max-length="5120"/>
+            <num db-column-name="version" defaultnum="1" id="joomla_content_row_version" max-digits="10"/>
+            <num db-column-name="ordering" defaultnum="0" id="joomla_content_row_ordering" max-digits="11"/>
+            <str db-column-name="metakey" id="joomla_content_row_metakey" max-length="65535"/>
+            <str db-column-name="metadesc" id="joomla_content_row_metadesc" max-length="65535"/>
+            <num db-column-name="access" defaultnum="0" id="joomla_content_row_access" max-digits="10"/>
+            <num db-column-name="hits" defaultnum="0" id="joomla_content_row_hits" max-digits="10"/>
+            <str db-column-name="metadata" id="joomla_content_row_metadata" max-length="65535"/>
+            <num db-column-name="featured" defaultnum="0" id="joomla_content_row_featured" max-digits="3"/>
+            <str db-column-name="language" id="joomla_content_row_language" max-length="7"/>
+            <str db-column-name="xreference" id="joomla_content_row_xreference" max-length="50"/>
+        </elem>
+    </seq>
+</dfasdl>

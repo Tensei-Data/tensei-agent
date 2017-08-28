@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <seq id="account_list">
+    <elem id="row">
+      <str id="firstname" stop-sign="," trim="left"/>
+      <str id="lastname" stop-sign="," trim="right"/>
+      <str id="email" stop-sign="," trim="both"/>
+      <str id="birthday" stop-sign=","/>
+      <str id="phone" stop-sign=","/>
+      <str id="division"/>
+    </elem>
+  </seq>
+</dfasdl>

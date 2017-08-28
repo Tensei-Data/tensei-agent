@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL" semantic="custom">
+    <seq id="joomla_jcomments">
+        <elem id="joomla_jcomments_row">
+            <num db-column-name="id" id="joomla_jcomments_row_id" max-digits="11"/>
+            <num db-column-name="parent" defaultnum="0" id="joomla_jcomments_row_parent" max-digits="11"/>
+            <num db-column-name="thread_id" defaultnum="0" id="joomla_jcomments_row_thread_id" max-digits="11"/>
+            <str db-column-name="path" id="joomla_jcomments_row_path" max-length="255"/>
+            <num db-column-name="level" defaultnum="0" id="joomla_jcomments_row_level" max-digits="1"/>
+            <num db-column-name="object_id" defaultnum="0" id="joomla_jcomments_row_object_id" max-digits="11"/>
+            <str db-column-name="object_group" id="joomla_jcomments_row_object_group" max-length="255"/>
+            <str db-column-name="object_params" id="joomla_jcomments_row_object_params" max-length="65535"/>
+            <str db-column-name="lang" id="joomla_jcomments_row_lang" max-length="255"/>
+            <num db-column-name="userid" defaultnum="0" id="joomla_jcomments_row_userid" max-digits="11"/>
+            <str db-column-name="name" id="joomla_jcomments_row_name" max-length="255"/>
+            <str db-column-name="username" id="joomla_jcomments_row_username" max-length="255"/>
+            <str db-column-name="email" id="joomla_jcomments_row_email" max-length="255"/>
+            <str db-column-name="homepage" id="joomla_jcomments_row_homepage" max-length="255"/>
+            <str db-column-name="title" id="joomla_jcomments_row_title" max-length="255"/>
+            <str db-column-name="comment" id="joomla_jcomments_row_comment" max-length="65535"/>
+            <str db-column-name="ip" id="joomla_jcomments_row_ip" max-length="39"/>
+            <datetime db-column-name="date" id="joomla_jcomments_row_date"/>
+            <num db-column-name="isgood" defaultnum="0" id="joomla_jcomments_row_isgood" max-digits="5"/>
+            <num db-column-name="ispoor" defaultnum="0" id="joomla_jcomments_row_ispoor" max-digits="5"/>
+            <num db-column-name="published" defaultnum="0" id="joomla_jcomments_row_published" max-digits="1"/>
+            <num db-column-name="deleted" defaultnum="0" id="joomla_jcomments_row_deleted" max-digits="1"/>
+            <num db-column-name="subscribe" defaultnum="0" id="joomla_jcomments_row_subscribe" max-digits="1"/>
+            <str db-column-name="source" id="joomla_jcomments_row_source" max-length="255"/>
+            <num db-column-name="source_id" defaultnum="0" id="joomla_jcomments_row_source_id" max-digits="11"/>
+            <num db-column-name="checked_out" defaultnum="0" id="joomla_jcomments_row_checked_out" max-digits="11"/>
+            <datetime db-column-name="checked_out_time" id="joomla_jcomments_row_checked_out_time"/>
+            <str db-column-name="editor" id="joomla_jcomments_row_editor" max-length="50"/>
+        </elem>
+    </seq>
+</dfasdl>

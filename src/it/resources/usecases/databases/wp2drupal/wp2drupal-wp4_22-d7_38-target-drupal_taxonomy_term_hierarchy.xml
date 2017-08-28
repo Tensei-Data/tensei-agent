@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        semantic="custom">
+  <seq id="drupal_taxonomy_term_hierarchy">
+    <elem id="drupal_taxonomy_term_hierarchy_row">
+      <num db-column-name="tid" defaultnum="0" id="drupal_taxonomy_term_hierarchy_row_tid" max-digits="10"/>
+      <num db-column-name="parent" defaultnum="0" id="drupal_taxonomy_term_hierarchy_row_parent" max-digits="10"/>
+    </elem>
+  </seq>
+</dfasdl>

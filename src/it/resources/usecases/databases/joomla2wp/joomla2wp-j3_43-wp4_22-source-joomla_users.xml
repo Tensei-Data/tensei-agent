@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL" semantic="custom">
+    <seq id="joomla_users">
+        <elem id="joomla_users_row">
+            <num db-column-name="id" id="joomla_users_row_id" max-digits="11"/>
+            <str db-column-name="name" id="joomla_users_row_name" max-length="255"/>
+            <str db-column-name="username" id="joomla_users_row_username" max-length="150"/>
+            <str db-column-name="email" id="joomla_users_row_email" max-length="100"/>
+            <str db-column-name="password" id="joomla_users_row_password" max-length="100"/>
+            <num db-column-name="block" defaultnum="0" id="joomla_users_row_block" max-digits="4"/>
+            <num db-column-name="sendemail" defaultnum="0" id="joomla_users_row_sendemail" max-digits="4"/>
+            <datetime db-column-name="registerdate" id="joomla_users_row_registerdate"/>
+            <datetime db-column-name="lastvisitdate" id="joomla_users_row_lastvisitdate"/>
+            <str db-column-name="activation" id="joomla_users_row_activation" max-length="100"/>
+            <str db-column-name="params" id="joomla_users_row_params" max-length="65535"/>
+            <datetime db-column-name="lastresettime" id="joomla_users_row_lastresettime"/>
+            <num db-column-name="resetcount" defaultnum="0" id="joomla_users_row_resetcount" max-digits="11"/>
+            <str db-column-name="otpkey" id="joomla_users_row_otpkey" max-length="1000"/>
+            <str db-column-name="otep" id="joomla_users_row_otep" max-length="1000"/>
+            <num db-column-name="requirereset" defaultnum="0" id="joomla_users_row_requirereset" max-digits="4"/>
+        </elem>
+    </seq>
+</dfasdl>

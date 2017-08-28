@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL" semantic="custom">
+    <seq db-primary-key="id" id="t4">
+        <elem id="t4_row">
+            <num db-column-name="id" id="t4_row_id" max-digits="19"/>
+            <str db-column-name="name" id="t4_row_name" max-length="254"/>
+        </elem>
+    </seq>
+    <seq id="t5">
+        <elem id="t5_row">
+            <num db-column-name="id2" id="t5_row_id2" max-digits="19"/>
+            <num db-column-name="fkid" db-foreign-key="t4_row_id" id="t5_row_fkid" max-digits="19"/>
+        </elem>
+    </seq>
+</dfasdl>

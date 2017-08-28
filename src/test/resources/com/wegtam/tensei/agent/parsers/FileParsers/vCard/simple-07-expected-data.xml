@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <seq id="vcard" keepID="true">
+      <elem class="id:row"><formatstr format=".*?:(.*)" class="id:entry">VCARD</formatstr></elem>
+      <elem class="id:row"><formatstr format=".*?:(.*)" class="id:entry">3.0</formatstr></elem>
+      <elem class="id:row"><formatstr format=".*?:(.*)" class="id:entry">Gump;Forrest;Mr.</formatstr></elem>
+      <elem class="id:row"><formatstr format=".*?:(.*)" class="id:entry">Forrest Gump</formatstr></elem>
+      <elem class="id:row"><formatstr format=".*?:(.*)" class="id:entry">Bubba Gump Shrimp Co.</formatstr></elem>
+      <elem class="id:row"><formatstr format=".*?:(.*)" class="id:entry">Shrimp Man</formatstr></elem>
+      <elem class="id:row"><formatstr format=".*?:(.*)" class="id:entry">http://www.example.com/dir_photos/my_photo.gif</formatstr></elem>
+      <elem class="id:row"><formatstr format=".*?:(.*)" class="id:entry">(111) 555-1212</formatstr></elem>
+      <elem class="id:row"><formatstr format=".*?:(.*)" class="id:entry">(404) 555-1212</formatstr></elem>
+      <elem class="id:row"><formatstr format=".*?:(.*)" class="id:entry">;;100 Waters Edge;Baytown;LA;30314;United States of America</formatstr></elem>
+      <elem class="id:row"><formatstr format=".*?:(.*)" class="id:entry">100 Waters Edge\nBaytown, LA 30314\nUnited States of America</formatstr></elem>
+      <elem class="id:row"><formatstr format=".*?:(.*)" class="id:entry">;;42 Plantation St.;Baytown;LA;30314;United States of America</formatstr></elem>
+      <elem class="id:row"><formatstr format=".*?:(.*)" class="id:entry">42 Plantation St.\nBaytown, LA 30314\nUnited States of America</formatstr></elem>
+      <elem class="id:row"><formatstr format=".*?:(.*)" class="id:entry">forrestgump@example.com</formatstr></elem>
+      <elem class="id:row"><formatstr format=".*?:(.*)" class="id:entry">2008-04-24T19:52:43Z</formatstr></elem>
+      <elem class="id:row"><formatstr format=".*?:(.*)" class="id:entry">VCARD</formatstr></elem>
+  </seq>
+</dfasdl>

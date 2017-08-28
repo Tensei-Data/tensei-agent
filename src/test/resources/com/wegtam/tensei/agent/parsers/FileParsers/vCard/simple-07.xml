@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <seq id="vcard">
+    <elem id="row">
+      <formatstr format=".*?:(.*)" id="entry"/>
+    </elem>
+  </seq>
+  <elem id="optional">
+    <str id="foo"/>
+  </elem>
+</dfasdl>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <elem id="row">
+    <elem id="a1">
+      <str id="firstname" stop-sign=","/>
+    </elem>
+    <elem id="a2">
+      <str id="lastname" stop-sign=","/>
+    </elem>
+    <elem id="a3">
+      <str id="email" stop-sign=","/>
+    </elem>
+    <elem id="a4">
+      <str id="birthday" stop-sign=","/>
+    </elem>
+    <elem id="a5">
+      <str id="phone" stop-sign=","/>
+    </elem>
+    <elem id="a6">
+      <str id="division"/>
+    </elem>
+  </elem>
+</dfasdl>

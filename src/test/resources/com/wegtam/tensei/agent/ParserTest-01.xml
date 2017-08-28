@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <seq id="monarchs">
+    <elem id="row">
+      <str id="house" stop-sign=","/>
+      <str id="names" stop-sign=","/>
+      <str id="title" stop-sign=","/>
+      <str id="realm"/>
+    </elem>
+  </seq>
+</dfasdl>

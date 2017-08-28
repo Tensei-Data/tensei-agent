@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Tensei (転成)
+  ~
+  ~ Copyright (C) 2014 - 2015 Wegtam UG
+  ~
+  ~ Unauthorized copying of this file, via any medium is strictly prohibited!
+  ~ Proprietary and confidential
+  -->
+
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <seq id="accounts">
+    <elem id="row">
+      <num id="id" db-column-name="id"/>
+      <str id="name" max-length="254" db-column-name="name"/>
+      <str id="description" db-column-name="description"/>
+      <date id="birthday" db-column-name="birthday"/>
+      <formatnum id="salary" format="([-]?\d+[,?\d*?]*?\.\d{1,2})" db-column-name="salary" decimal-separator="."/>
+    </elem>
+  </seq>
+  <seq id="accounts2">
+    <elem id="row2">
+      <num id="id2" db-column-name="id"/>
+      <str id="name2" max-length="254" db-column-name="name"/>
+      <str id="description2" db-column-name="description"/>
+      <date id="birthday2" db-column-name="birthday"/>
+      <formatnum id="salary2" format="([-]?\d+[,?\d*?]*?\.\d{1,2})" db-column-name="salary" decimal-separator="."/>
+    </elem>
+  </seq>
+  <seq id="accounts3">
+    <elem id="row3">
+      <num id="id3" db-column-name="id"/>
+      <str id="name3" max-length="254" db-column-name="name"/>
+      <str id="description3" db-column-name="description"/>
+      <date id="birthday3" db-column-name="birthday"/>
+      <formatnum id="salary3" format="([-]?\d+[,?\d*?]*?\.\d{1,2})" db-column-name="salary" decimal-separator="."/>
+    </elem>
+  </seq>
+  <seq id="accounts4">
+    <elem id="row4">
+      <num id="id4" db-column-name="id"/>
+      <str id="name4" max-length="254" db-column-name="name"/>
+      <str id="description4" db-column-name="description"/>
+      <date id="birthday4" db-column-name="birthday"/>
+      <formatnum id="salary4" format="([-]?\d+[,?\d*?]*?\.\d{1,2})" db-column-name="salary" decimal-separator="."/>
+    </elem>
+  </seq>
+</dfasdl>

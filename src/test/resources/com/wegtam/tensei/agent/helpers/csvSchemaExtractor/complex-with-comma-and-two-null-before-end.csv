@@ -1,0 +1,5 @@
+DataSet, BatchID ,Date , Attribute , Value, DValue, Empty2, Value2
+DimTradeHistory,1,,CT_Records,361856,,,1
+DimTradeHistory,1,,CT_Trades,361856,,,2
+DimTradeHistory,1,,CT_AccountsCreations,0,,,3
+DimTradeHistory,1,,CT_UpdatedAccounts,0,,,4

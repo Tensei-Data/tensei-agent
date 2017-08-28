@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <seq id="vcard" keepID="true">
+    <elem class="id:container">
+      <seq class="id:vcards" keepID="true" max="1">
+        <elem class="id:part1">
+          <str class="label" stop-sign=":">BEGIN</str>
+          <str class="id:start_tag">VCARD</str>
+          <str class="label" stop-sign=":">VERSION</str>
+          <str class="id:version">3.0</str>
+          <str class="label" stop-sign=":">N</str>
+          <str class="id:name">Gump;Forrest;Mr.</str>
+          <str class="label" stop-sign=":">FN</str>
+          <str class="id:full_name">Forrest Gump</str>
+          <str class="label" stop-sign=":">ORG</str>
+          <str class="id:organisation">Bubba Gump Shrimp Co.</str>
+          <str class="label" stop-sign=":">TITLE</str>
+          <str class="id:title">Shrimp Man</str>
+          <str class="label" stop-sign=":">PHOTO;VALUE=URL;TYPE=GIF</str>
+          <str class="id:photo">http://www.example.com/dir_photos/my_photo.gif</str>
+          <str class="label" stop-sign=":">TEL;TYPE=WORK,VOICE</str>
+          <str class="id:phone_work">(111) 555-1212</str>
+        </elem>
+      </seq>
+      <seq class="id:vcards2" keepID="true" max="1">
+        <elem class="id:part2">
+          <str class="label" stop-sign=":">TEL;TYPE=HOME,VOICE</str>
+          <str class="id:phone_home">(404) 555-1212</str>
+          <str class="label" stop-sign=":">ADR;TYPE=WORK</str>
+          <str class="id:address_work">;;100 Waters Edge;Baytown;LA;30314;United States of America</str>
+          <str class="label" stop-sign=":">LABEL;TYPE=WORK</str>
+          <str class="id:label_work">100 Waters Edge\nBaytown, LA 30314\nUnited States of America</str>
+          <str class="label" stop-sign=":">ADR;TYPE=HOME</str>
+          <str class="id:address_home">;;42 Plantation St.;Baytown;LA;30314;United States of America</str>
+          <str class="label" stop-sign=":">LABEL;TYPE=HOME</str>
+          <str class="id:label_home">42 Plantation St.\nBaytown, LA 30314\nUnited States of America</str>
+          <str class="label" stop-sign=":">EMAIL;TYPE=PREF,INTERNET</str>
+          <str class="id:email">forrestgump@example.com</str>
+          <str class="label" stop-sign=":">REV</str>
+          <str class="id:revision">2008-04-24T19:52:43Z</str>
+          <str class="label" stop-sign=":">END</str>
+          <str class="id:end_tag">VCARD</str>
+        </elem>
+      </seq>
+    </elem>
+    <elem class="id:container">
+      <seq class="id:vcards" keepID="true" max="1">
+        <elem class="id:part1">
+          <str class="label" stop-sign=":">BEGIN</str>
+          <str class="id:start_tag">VCARD</str>
+          <str class="label" stop-sign=":">VERSION</str>
+          <str class="id:version">3.0</str>
+          <str class="label" stop-sign=":">N</str>
+          <str class="id:name">Gump;Alex;Mr.</str>
+          <str class="label" stop-sign=":">FN</str>
+          <str class="id:full_name">Alex Gump</str>
+          <str class="label" stop-sign=":">ORG</str>
+          <str class="id:organisation">Bubba Gump Shrimp Co.</str>
+          <str class="label" stop-sign=":">TITLE</str>
+          <str class="id:title">Shrimp Man</str>
+          <str class="label" stop-sign=":">PHOTO;VALUE=URL;TYPE=GIF</str>
+          <str class="id:photo">http://www.example.com/dir_photos/my_photo.gif</str>
+          <str class="label" stop-sign=":">TEL;TYPE=WORK,VOICE</str>
+          <str class="id:phone_work">(111) 555-1212</str>
+        </elem>
+      </seq>
+      <seq class="id:vcards2" keepID="true" max="1">
+        <elem class="id:part2">
+          <str class="label" stop-sign=":">TEL;TYPE=HOME,VOICE</str>
+          <str class="id:phone_home">(404) 555-1212</str>
+          <str class="label" stop-sign=":">ADR;TYPE=WORK</str>
+          <str class="id:address_work">;;100 Waters Edge;Baytown;LA;30314;United States of America</str>
+          <str class="label" stop-sign=":">LABEL;TYPE=WORK</str>
+          <str class="id:label_work">100 Waters Edge\nBaytown, LA 30314\nUnited States of America</str>
+          <str class="label" stop-sign=":">ADR;TYPE=HOME</str>
+          <str class="id:address_home">;;42 Plantation St.;Baytown;LA;30314;United States of America</str>
+          <str class="label" stop-sign=":">LABEL;TYPE=HOME</str>
+          <str class="id:label_home">42 Plantation St.\nBaytown, LA 30314\nUnited States of America</str>
+          <str class="label" stop-sign=":">EMAIL;TYPE=PREF,INTERNET</str>
+          <str class="id:email">forrestgump@example.com</str>
+          <str class="label" stop-sign=":">REV</str>
+          <str class="id:revision">2008-04-24T19:52:43Z</str>
+          <str class="label" stop-sign=":">END</str>
+          <str class="id:end_tag">VCARD</str>
+        </elem>
+      </seq>
+    </elem>
+    <elem class="id:container">
+      <seq class="id:vcards" keepID="true" max="1">
+        <elem class="id:part1">
+          <str class="label" stop-sign=":">BEGIN</str>
+          <str class="id:start_tag">VCARD</str>
+          <str class="label" stop-sign=":">VERSION</str>
+          <str class="id:version">3.0</str>
+          <str class="label" stop-sign=":">N</str>
+          <str class="id:name">Gump;Jane;Mrs.</str>
+          <str class="label" stop-sign=":">FN</str>
+          <str class="id:full_name">Jane Gump</str>
+          <str class="label" stop-sign=":">ORG</str>
+          <str class="id:organisation">Bubba Gump Shrimp Co.</str>
+          <str class="label" stop-sign=":">TITLE</str>
+          <str class="id:title">Shrimp Woman</str>
+          <str class="label" stop-sign=":">PHOTO;VALUE=URL;TYPE=GIF</str>
+          <str class="id:photo">http://www.example.com/dir_photos/my_photo.gif</str>
+          <str class="label" stop-sign=":">TEL;TYPE=WORK,VOICE</str>
+          <str class="id:phone_work">(111) 555-1212</str>
+        </elem>
+      </seq>
+      <seq class="id:vcards2" keepID="true" max="1">
+        <elem class="id:part2">
+          <str class="label" stop-sign=":">TEL;TYPE=HOME,VOICE</str>
+          <str class="id:phone_home">(404) 555-1212</str>
+          <str class="label" stop-sign=":">ADR;TYPE=WORK</str>
+          <str class="id:address_work">;;100 Waters Edge;Baytown;LA;30314;United States of America</str>
+          <str class="label" stop-sign=":">LABEL;TYPE=WORK</str>
+          <str class="id:label_work">100 Waters Edge\nBaytown, LA 30314\nUnited States of America</str>
+          <str class="label" stop-sign=":">ADR;TYPE=HOME</str>
+          <str class="id:address_home">;;42 Plantation St.;Baytown;LA;30314;United States of America</str>
+          <str class="label" stop-sign=":">LABEL;TYPE=HOME</str>
+          <str class="id:label_home">42 Plantation St.\nBaytown, LA 30314\nUnited States of America</str>
+          <str class="label" stop-sign=":">EMAIL;TYPE=PREF,INTERNET</str>
+          <str class="id:email">forrestgump@example.com</str>
+          <str class="label" stop-sign=":">REV</str>
+          <str class="id:revision">2008-04-24T19:52:43Z</str>
+          <str class="label" stop-sign=":">END</str>
+          <str class="id:end_tag">VCARD</str>
+        </elem>
+      </seq>
+    </elem>
+  </seq>
+</dfasdl>

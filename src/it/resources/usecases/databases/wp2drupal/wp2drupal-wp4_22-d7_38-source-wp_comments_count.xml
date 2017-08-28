@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        semantic="custom">
+  <seq id="wp_comments_count" db-select="SELECT * FROM ( SELECT t1.* FROM wp_comments AS t1 LEFT OUTER JOIN wp_comments AS t2 ON t1.comment_post_ID = t2.comment_post_ID AND (t1.comment_date &lt; t2.comment_date) OR (t1.comment_date = t2.comment_date AND t1.comment_ID &lt; t2.comment_ID) WHERE t2.comment_post_ID IS NULL ) as lastValues LEFT JOIN ( SELECT comment_post_ID, count(comment_post_ID) AS comment_count FROM wp_comments GROUP BY comment_post_ID ) AS commentCounted ON lastValues.comment_post_ID = commentCounted.comment_post_ID">
+    <elem id="wp_comments_count_row">
+      <num db-column-name="comment_id" id="wp_comments_count_row_cid" max-digits="20"/>
+      <num db-column-name="comment_post_ID" id="wp_comments_count_row_nid" max-digits="20"/>
+      <str db-column-name="comment_author" id="wp_comments_count_row_last_comment_name" max-length="255"/>
+      <str db-column-name="comment_author_email" id="wp_comments_count_row_last_comment_email" max-length="255"/>
+      <str db-column-name="comment_author_url" id="wp_comments_count_row_last_comment_url" max-length="255"/>
+      <str db-column-name="comment_author_IP" id="wp_comments_count_row_last_comment_IP" max-length="255"/>
+      <datetime db-column-name="comment_date" id="wp_comments_count_row_last_comment_timestamp"/>
+      <datetime db-column-name="comment_date_gmt" id="wp_comments_count_row_last_comment_date_gmt"/>
+      <str db-column-name="comment_author_IP" id="wp_comments_count_row_last_comment_content"/>
+      <num db-column-name="comment_karma" id="wp_comments_count_row_last_comment_karma" max-digits="20"/>
+      <str db-column-name="comment_approved" id="wp_comments_count_row_last_comment_approved" max-length="20"/>
+      <str db-column-name="comment_agent" id="wp_comments_count_row_last_comment_agent" max-length="255"/>
+      <str db-column-name="comment_type" id="wp_comments_count_row_last_comment_type" max-length="20"/>
+      <num db-column-name="comment_parent" id="wp_comments_count_row_last_comment_parent" max-digits="20"/>
+      <num db-column-name="user_id" id="wp_comments_count_row_last_comment_uid" max-digits="20"/>
+      <num db-column-name="comment_post_ID" id="wp_comments_count_row_nid2" max-digits="20"/>
+      <num db-column-name="comment_count" defaultnum="0" id="wp_comments_count_row_comment_count" max-digits="20"/>
+    </elem>
+  </seq>
+</dfasdl>

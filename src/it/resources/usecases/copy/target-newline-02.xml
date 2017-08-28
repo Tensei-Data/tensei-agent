@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Tensei (転成)
+  ~
+  ~ Copyright (C) 2014 - 2015 Wegtam UG
+  ~ Copyright (C) 2015 - 2016 Wegtam GmbH
+  ~
+  ~ Unauthorized copying of this file, via any medium is strictly prohibited!
+  ~ Proprietary and confidential
+  -->
+
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        semantic="custom">
+  <seq id="rows">
+    <elem id="row">
+      <str id="e-mail" stop-sign="\t" trim="both"/>
+      <str id="firstname" stop-sign="\t" trim="both"/>
+      <str id="lastname" stop-sign="\t" trim="both"/>
+      <str id="description" trim="both"/>
+    </elem>
+  </seq>
+</dfasdl>

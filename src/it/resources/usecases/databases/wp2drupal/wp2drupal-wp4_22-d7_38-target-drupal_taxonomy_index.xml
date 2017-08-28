@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        semantic="custom">
+  <seq id="drupal_taxonomy_index">
+    <elem id="drupal_taxonomy_index_row">
+      <num db-column-name="nid" defaultnum="0" id="drupal_taxonomy_index_row_nid" max-digits="10"/>
+      <num db-column-name="tid" defaultnum="0" id="drupal_taxonomy_index_row_tid" max-digits="10"/>
+      <num db-column-name="sticky" defaultnum="0" id="drupal_taxonomy_index_row_sticky" max-digits="4"/>
+      <num db-column-name="created" defaultnum="0" id="drupal_taxonomy_index_row_created" max-digits="11"/>
+    </elem>
+  </seq>
+</dfasdl>

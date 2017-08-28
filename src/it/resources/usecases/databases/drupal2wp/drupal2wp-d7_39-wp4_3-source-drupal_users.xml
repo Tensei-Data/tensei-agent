@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        semantic="custom">
+    <seq id="users" filter="uid > 0">
+        <elem id="users_row">
+            <num db-column-name="uid" defaultnum="0" id="users_row_uid" max-digits="10"/>
+            <str db-column-name="name" id="users_row_name" max-length="60"/>
+            <str db-column-name="pass" id="users_row_pass" max-length="128"/>
+            <str db-column-name="mail" id="users_row_mail" max-length="254"/>
+            <str db-column-name="theme" id="users_row_theme" max-length="255"/>
+            <str db-column-name="signature" id="users_row_signature" max-length="255"/>
+            <str db-column-name="signature_format" id="users_row_signature_format" max-length="255"/>
+            <num db-column-name="created" defaultnum="0" id="users_row_created" max-digits="11"/>
+            <num db-column-name="access" defaultnum="0" id="users_row_access" max-digits="11"/>
+            <num db-column-name="login" defaultnum="0" id="users_row_login" max-digits="11"/>
+            <num db-column-name="status" defaultnum="0" id="users_row_status" max-digits="4"/>
+            <str db-column-name="timezone" id="users_row_timezone" max-length="32"/>
+            <str db-column-name="language" id="users_row_language" max-length="12"/>
+            <num db-column-name="picture" defaultnum="0" id="users_row_picture" max-digits="11"/>
+            <str db-column-name="init" id="users_row_init" max-length="254"/>
+            <str db-column-name="data" id="users_row_data"/>
+        </elem>
+    </seq>
+</dfasdl>

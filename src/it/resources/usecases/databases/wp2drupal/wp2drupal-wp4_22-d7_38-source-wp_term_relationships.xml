@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        semantic="custom">
+  <seq id="wp_term_relationships">
+    <elem id="wp_term_relationships_row">
+      <num db-column-name="object_id" defaultnum="0" id="wp_term_relationships_row_object_id" max-digits="20"/>
+      <num db-column-name="term_taxonomy_id" defaultnum="0" id="wp_term_relationships_row_term_taxonomy_id" max-digits="20"/>
+      <num db-column-name="term_order" defaultnum="0" id="wp_term_relationships_row_term_order" max-digits="11"/>
+    </elem>
+  </seq>
+</dfasdl>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        semantic="custom">
+  <seq id="drupal_node_comment_statistics">
+    <elem id="drupal_node_comment_statistics_row">
+      <num db-column-name="nid" defaultnum="0" id="drupal_node_comment_statistics_row_nid" max-digits="10"/>
+      <num db-column-name="cid" defaultnum="0" id="drupal_node_comment_statistics_row_cid" max-digits="11"/>
+      <num db-column-name="last_comment_timestamp" defaultnum="0" id="drupal_node_comment_statistics_row_last_comment_timestamp" max-digits="11"/>
+      <str db-column-name="last_comment_name" id="drupal_node_comment_statistics_row_last_comment_name" max-length="60"/>
+      <num db-column-name="last_comment_uid" defaultnum="0" id="drupal_node_comment_statistics_row_last_comment_uid" max-digits="11"/>
+      <num db-column-name="comment_count" defaultnum="0" id="drupal_node_comment_statistics_row_comment_count" max-digits="10"/>
+    </elem>
+  </seq>
+</dfasdl>

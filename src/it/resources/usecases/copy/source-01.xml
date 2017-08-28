@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <seq id="rows">
+    <elem id="row">
+      <str id="firstname" stop-sign=","/>
+      <str id="lastname" stop-sign=","/>
+      <str id="e-mail"/>
+    </elem>
+  </seq>
+</dfasdl>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <elem id="name">
+    <str id="name-value" json-attribute-name="name"/>
+  </elem>
+</dfasdl>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL" semantic="custom">
+  <elem id="json-root">
+    <elem id="persons" json-attribute-name="persons">
+      <seq id="persons-seq" keepID="true">
+        <elem id="persons-seq-row">
+          <str id="persons-seq-row-firstname" json-attribute-name="firstname"/>
+          <str id="persons-seq-row-lastname" json-attribute-name="lastname"/>
+          <date id="persons-seq-row-birthday" json-attribute-name="birthday"/>
+          <str id="persons-seq-row-telephone" json-attribute-name="telephone"/>
+          <num id="persons-seq-row-apartment" json-attribute-name="apartment"/>
+          <datetime id="persons-seq-row-lastpay" json-attribute-name="lastPay"/>
+          <elem id="persons-seq-row-other" json-attribute-name="other">
+            <seq id="persons-seq-row-other-seq" keepID="true">
+              <elem id="persons-seq-row-other-seq-row">
+                <str id="persons-seq-row-other-seq-row-element"/>
+              </elem>
+            </seq>
+          </elem>
+        </elem>
+      </seq>
+    </elem>
+  </elem>
+</dfasdl>

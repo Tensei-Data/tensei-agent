@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        semantic="custom">
+  <seq id="wp_comments_count_nuller" db-select="SELECT ID AS nid, 0 AS cid, MAX(post_date) AS last_comment_timestamp, MAX(comment_author) AS last_comment_name, MAX(post_author) AS last_comment_uid, 0 AS comment_count FROM wp_posts LEFT JOIN wp_comments ON ( ID = comment_post_ID )  WHERE post_type =  'post' OR post_type =  'page' GROUP BY ID HAVING last_comment_name IS NULL">
+    <elem id="wp_comments_count_nuller_row">
+      <num db-column-name="nid" id="wp_comments_count_nuller_row_nid" max-digits="20"/>
+      <num db-column-name="cid" defaultnum="0" id="wp_comments_count_nuller_row_cid" max-digits="20"/>
+      <datetime db-column-name="last_comment_timestamp" id="wp_comments_count_nuller_row_last_comment_timestamp"/>
+      <str db-column-name="last_comment_name" id="wp_comments_count_nuller_row_last_comment_name" max-length="255"/>
+      <num db-column-name="last_comment_uid" defaultnum="0" id="wp_comments_count_nuller_row_last_comment_uid" max-digits="20"/>
+      <num db-column-name="comment_count" defaultnum="0" id="wp_comments_count_nuller_row_comment_count" max-digits="20"/>
+    </elem>
+  </seq>
+</dfasdl>

@@ -1,0 +1,39 @@
+{
+  "house": {
+    "street": "Musterstreet",
+    "number": "3",
+    "apartments": 7,
+    "value": "2300000.00",
+    "costs": 15345.55,
+    "size": [
+      15,
+      30,
+      45
+    ]
+  },
+  "persons": [
+    {
+      "firstname": "Max",
+      "lastname": "Mustermann",
+      "birthday": "1997-03-21",
+      "telephone": "0176123456",
+      "apartment": 2,
+      "lastPay": "2015-11-02 12:34:55",
+      "other": [
+        "parking slot",
+        "extra room"
+      ]
+    },
+    {
+      "firstname": "Eva",
+      "lastname": "Musterfrau",
+      "birthday": "1997-04-01",
+      "telephone": "0176987654321",
+      "apartment": 4,
+      "lastPay": "2015-11-01 12:34:55",
+      "other": [
+        "extra room"
+      ]
+    }
+  ]
+}

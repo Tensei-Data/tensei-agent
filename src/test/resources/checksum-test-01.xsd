@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+ DFASDL - Data Format and Semantics Description Language
+
+ File:      dfasdl.xsd
+ Version:   1.0
+
+ Information
+ –––––––––––
+ This XML Schema defines the Syntax for the DFASDL.
+
+ >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-->
+<xs:schema xmlns="http://www.dfasdl.org/DFASDL"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.dfasdl.org/DFASDL"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified"
+           version="1.0">
+
+  <xs:annotation>
+    <xs:documentation xml:lang="en">
+      Default DFASDL elements.
+    </xs:documentation>
+  </xs:annotation>
+
+  <!--
+  –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+  Include the attributes and elementary definitions.
+  –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+  -->
+  <xs:include schemaLocation="dfasdl-attributes.xsd"/>
+
+  <!--
+  –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+  Structure
+  –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+  -->
+  <xs:complexType name="dfasdl-element" abstract="true">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">
+        This element is the abstract definition of all complex
+        elements that are created in the following.
+        <br/>
+        Elements that have SimpleContent will not be extended from
+        this element.
+      </xs:documentation>
+    </xs:annotation>
+  </xs:complexType>
+
+  <!--
+  Root element
+  -->
+  <xs:element name="dfasdl" type="dfasdl-element-root">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">
+        Tag: dfasdl
+        <br/>
+        Name: dfasdl
+        <br/>
+        <p>
+          The <b>dfasdl</b> element is the root element of the
+          <abbr>DFASDL</abbr> structure. It is the outermost element
+          of the XML tree and surrounds all possible <abbr>DFASDL</abbr>
+          elements.
+        </p>
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="dfasdl-element-root">
+    <xs:complexContent>
+      <xs:extension base="dfasdl-element">
+        <xs:group ref="elements"/>
+        <xs:attributeGroup ref="dfasdl-attributes-root"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!--
+  Basic element
+  -->
+  <xs:element name="elem" type="dfasdl-element-element">
+    <xs:annotation>
+      <xs:documentation>
+        Tag: elem
+        <br/>
+        Name: element
+        <br/>
+        <p>
+          The <b>elem</b> element is a smallest entity in the
+          <abbr>DFASDL</abbr> structure. It is recursively defined
+          and can contain <b>elem</b> and other elements.
+        </p>
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="dfasdl-element-element">
+    <xs:complexContent>
+      <xs:extension base="dfasdl-element">
+        <xs:group ref="elements"/>
+        <xs:attributeGroup ref="dfasdl-attributes-base"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!--
+  Structural elements
+  -->
+  <!-- sequence -->
+  <xs:element name="seq" type="dfasdl-element-sequence">
+    <xs:annotation>
+      <xs:documentation>
+        Tag: seq
+        <br/>
+        Name: sequence
+        <br/>
+        <p>
+          The <b>seq</b> element defines a repeatable structure.
+        </p>
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="dfasdl-element-sequence">
+    <xs:complexContent>
+      <xs:extension base="dfasdl-element">
+        <xs:sequence maxOccurs="unbounded">
+          <xs:group ref="elements"/>
+        </xs:sequence>
+        <xs:attributeGroup ref="dfasdl-attributes-sequence"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="choice" type="dfasdl-element-choice">
+    <xs:annotation>
+      <xs:documentation>
+        Tag: choice
+        <br/>
+        Name: choice
+        <br/>
+        <p>
+          The <b>choice</b> element defines possible elements that can/must
+          occur in the specified structure.
+        </p>
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="dfasdl-element-choice">
+    <xs:complexContent>
+      <xs:extension base="dfasdl-element">
+        <xs:sequence maxOccurs="1">
+          <xs:group ref="elements"/>
+        </xs:sequence>
+        <xs:attributeGroup ref="dfasdl-attributes-choice"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!-- fixseq -->
+  <xs:element name="fixseq" type="dfasdl-element-fixed-sequence">
+    <xs:annotation>
+      <xs:documentation>
+        Tag: fixseq
+        <br/>
+        Name: fixed sequence
+        <br/>
+        <p>
+          The <b>fixseq</b> element defines a repeatable structure
+          which specifies a determined number of repeated inner elements.
+        </p>
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="dfasdl-element-fixed-sequence">
+    <xs:complexContent>
+      <xs:extension base="dfasdl-element">
+        <xs:sequence maxOccurs="unbounded">
+          <xs:group ref="elements"/>
+        </xs:sequence>
+        <xs:attributeGroup ref="dfasdl-attributes-fixed-sequence"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!-- customid -->
+  <xs:element name="cid" type="dfasdl-element-cid">
+    <xs:annotation>
+      <xs:documentation>
+        Tag: cid
+        <br/>
+        Name: custom ID
+        <br/>
+        <p>
+          The <b>cid</b> element is a user defined ID that is used as
+          box element for one<b>num</b>,<b>formatnum</b>, <b>str</b>
+          or <b>formatstr</b> element.
+        </p>
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="dfasdl-element-cid">
+    <xs:complexContent>
+      <xs:extension base="dfasdl-element">
+        <xs:sequence maxOccurs="1" minOccurs="0">
+          <xs:group ref="data-elements"/>
+        </xs:sequence>
+        <xs:attributeGroup ref="dfasdl-attributes-cid"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!-- reference -->
+  <xs:element name="ref" type="dfasdl-element-reference">
+    <xs:annotation>
+      <xs:documentation>
+        Tag: ref
+        <br/>
+        Name: reference
+        <br/>
+        <p>
+          The <b>ref</b> element points to a part of the document
+          that is replaced at the position of the reference.
+        </p>
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="dfasdl-element-reference">
+    <xs:complexContent>
+      <xs:extension base="dfasdl-element">
+        <xs:attributeGroup ref="dfasdl-attributes-reference"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!--
+  Data elements
+  -->
+  <!-- numeric -->
+  <xs:element name="num" type="dfasdl-element-numeric">
+    <xs:annotation>
+      <xs:documentation>
+        Tag: num
+        <br/>
+        Name: numeric
+        <br/>
+        <p>
+          The <b>num</b> element defines a numeric data element.
+        </p>
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="dfasdl-element-numeric">
+    <xs:simpleContent>
+      <xs:extension base="dfasdl-empty-or-numeric">
+        <xs:attributeGroup ref="dfasdl-attributes-numeric"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <!-- formatted numeric -->
+  <xs:element name="formatnum" type="dfasdl-element-formatted-numeric">
+    <xs:annotation>
+      <xs:documentation>
+        Tag: formatnum
+        <br/>
+        Name: formatted numeric
+        <br/>
+        <p>
+          The <b>formatnum</b> element defines a numeric data element
+          with a defined format.
+        </p>
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="dfasdl-element-formatted-numeric">
+    <xs:simpleContent>
+      <xs:extension base="dfasdl-empty-or-string">
+        <xs:attributeGroup ref="dfasdl-attributes-formatted-numeric"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <!-- string -->
+  <xs:element name="str" type="dfasdl-element-string">
+    <xs:annotation>
+      <xs:documentation>
+        Tag: str
+        <br/>
+        Name: string
+        <br/>
+        <p>
+          The <b>str</b> element defines a character string.
+        </p>
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="dfasdl-element-string">
+    <xs:simpleContent>
+      <xs:extension base="dfasdl-empty-or-string">
+        <xs:attributeGroup ref="dfasdl-attributes-string"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <!-- formatted string -->
+  <xs:element name="formatstr" type="dfasdl-element-formatted-string">
+    <xs:annotation>
+      <xs:documentation>
+        Tag: formatstr
+        <br/>
+        Name: formatted string
+        <br/>
+        <p>
+          The <b>formatstr</b> element defines a character string
+          with a defined format.
+        </p>
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="dfasdl-element-formatted-string">
+    <xs:simpleContent>
+      <xs:extension base="dfasdl-empty-or-string">
+        <xs:attributeGroup ref="dfasdl-attributes-formatted-string"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <!-- binary -->
+  <xs:element name="bin" type="dfasdl-element-binary">
+    <xs:annotation>
+      <xs:documentation>
+        Tag: bin
+        <br/>
+        Name: Binary
+        <br/>
+        <p>
+          The <b>bin</b> element defines a binary.
+        </p>
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="dfasdl-element-binary">
+    <xs:simpleContent>
+      <xs:extension base="dfasdl-binary">
+        <xs:attributeGroup ref="dfasdl-attributes-binary"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:element name="bin64" type="dfasdl-element-binary64">
+    <xs:annotation>
+      <xs:documentation>
+        Tag: bin64
+        <br/>
+        Name: Binary Base 64
+        <br/>
+        <p>
+          The <b>bin64</b> element defines Base64-encoded binary data.
+        </p>
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="dfasdl-element-binary64">
+    <xs:simpleContent>
+      <xs:extension base="dfasdl-binary64">
+        <xs:attributeGroup ref="dfasdl-attributes-binary64"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:element name="binHex" type="dfasdl-element-binaryHex">
+    <xs:annotation>
+      <xs:documentation>
+        Tag: binHex
+        <br/>
+        Name: Binary Hex
+        <br/>
+        <p>
+          The <b>binHex</b> element defines hexadecimal-encoded binary data.
+        </p>
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="dfasdl-element-binaryHex">
+    <xs:simpleContent>
+      <xs:extension base="dfasdl-binaryHex">
+        <xs:attributeGroup ref="dfasdl-attributes-binaryHex"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <!--
+  Time elements
+  -->
+  <!-- date -->
+  <xs:element name="date" type="dfasdl-element-date">
+    <xs:annotation>
+      <xs:documentation>
+        Tag: date
+        <br/>
+        Name: Date
+        <br/>
+        <p>
+          The <b>date</b> element defines a date field.
+        </p>
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="dfasdl-element-date">
+    <xs:simpleContent>
+      <xs:extension base="dfasdl-date">
+        <xs:attributeGroup ref="dfasdl-attributes-date"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <!-- datetime -->
+  <xs:element name="datetime" type="dfasdl-element-datetime">
+    <xs:annotation>
+      <xs:documentation>
+        Tag: datetime
+        <br/>
+        Name: Datetime
+        <br/>
+        <p>
+          The <b>datetime</b> element defines a datetime field.
+        </p>
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="dfasdl-element-datetime">
+    <xs:simpleContent>
+      <xs:extension base="dfasdl-datetime">
+        <xs:attributeGroup ref="dfasdl-attributes-date"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <!-- time -->
+  <xs:element name="time" type="dfasdl-element-time">
+    <xs:annotation>
+      <xs:documentation>
+        Tag: time
+        <br/>
+        Name: Time
+        <br/>
+        <p>
+          The <b>time</b> element defines a time field.
+        </p>
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="dfasdl-element-time">
+    <xs:simpleContent>
+      <xs:extension base="dfasdl-time">
+        <xs:attributeGroup ref="dfasdl-attributes-date"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <!-- time -->
+  <xs:element name="formattime" type="dfasdl-element-formatted-time">
+    <xs:annotation>
+      <xs:documentation>
+        Tag: formattime
+        <br/>
+        Name: Formatted Time
+        <br/>
+        <p>
+          The <b>formattime</b> element defines a time field
+          that can define a formatted date, datetime or time entry.
+        </p>
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="dfasdl-element-formatted-time">
+    <xs:simpleContent>
+      <xs:extension base="dfasdl-empty-or-string">
+        <xs:attributeGroup ref="dfasdl-attributes-formatted-time"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <!--
+  Expression elements
+  -->
+  <!-- constant -->
+  <xs:element name="const" type="dfasdl-element-const">
+    <xs:annotation>
+      <xs:documentation>
+        Tag: const
+        <br/>
+        Name: constant
+        <br/>
+        <p>
+          The <b>const</b> element is a box element for one <b>num</b>,
+          <b>formatnum</b>, <b>str</b> or <b>formatstr</b> element.
+        </p>
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="dfasdl-element-const">
+    <xs:complexContent>
+      <xs:extension base="dfasdl-element">
+        <xs:sequence minOccurs="1" maxOccurs="1">
+          <xs:group ref="data-elements"/>
+        </xs:sequence>
+        <xs:attributeGroup ref="dfasdl-attributes-const"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!-- expression -->
+  <xs:element name="sxp" type="dfasdl-element-scala-expression" >
+    <xs:annotation>
+      <xs:documentation>
+        Tag: sxp
+        <br/>
+        Name: Scala expression
+        <br/>
+        <p>
+          The <b>sxp</b> element defines a Scala expression.
+        </p>
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="dfasdl-element-scala-expression" mixed="true">
+    <xs:simpleContent>
+      <xs:extension base="dfasdl-scala-expression">
+        <xs:attributeGroup ref="dfasdl-attributes-scala-expression"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <!--
+  –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+  Element groupings
+  –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+  -->
+  <xs:group name="data-elements">
+    <xs:choice>
+      <xs:element ref="bin"/>
+      <xs:element ref="bin64"/>
+      <xs:element ref="binHex"/>
+      <xs:element ref="formatnum"/>
+      <xs:element ref="formatstr"/>
+      <xs:element ref="num"/>
+      <xs:element ref="str"/>
+    </xs:choice>
+  </xs:group>
+
+  <xs:group name="time-elements">
+    <xs:choice>
+      <xs:element ref="date"/>
+      <xs:element ref="datetime"/>
+      <xs:element ref="formattime"/>
+      <xs:element ref="time"/>
+    </xs:choice>
+  </xs:group>
+
+  <xs:group name="structural-elements">
+    <xs:choice>
+      <xs:element ref="choice"/>
+      <xs:element ref="cid"/>
+      <xs:element ref="elem"/>
+      <xs:element ref="fixseq"/>
+      <xs:element ref="ref"/>
+      <xs:element ref="seq"/>
+    </xs:choice>
+  </xs:group>
+
+  <xs:group name="expression-elements">
+    <xs:choice>
+      <xs:element ref="const"/>
+      <xs:element ref="sxp"/>
+    </xs:choice>
+  </xs:group>
+
+  <xs:group name="elements">
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:group ref="structural-elements"/>
+        <xs:group ref="data-elements"/>
+        <xs:group ref="time-elements"/>
+        <xs:group ref="expression-elements"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:group>
+</xs:schema>

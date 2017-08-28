@@ -1,0 +1,13 @@
+{
+  "query": "akka-http authenticator",
+  "language": "all",
+  "max-results": 20,
+  "profiles": [ "default" ],
+  "mode": "ALL",
+  "filters": {
+    "domains": [ ],
+    "engines": [ ],
+    "keywords": [ "code" ]
+  },
+  "username": "USER@DOMAIN"
+}

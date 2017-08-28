@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL" semantic="custom">
+  <elem id="json-root">
+    <elem id="widget" json-attribute-name="widget">
+      <str id="widget-debug" json-attribute-name="debug"/>
+      <elem id="widget-window" json-attribute-name="window">
+        <str id="widget-window-title" json-attribute-name="title"/>
+        <str id="widget-window-name" json-attribute-name="name"/>
+        <num id="widget-window-width" json-attribute-name="width"/>
+        <num id="widget-window-height" json-attribute-name="height"/>
+      </elem>
+      <elem id="widget-image" json-attribute-name="image">
+        <str id="widget-image-src" json-attribute-name="src"/>
+        <str id="widget-image-name" json-attribute-name="name"/>
+        <num id="widget-image-hoffset" json-attribute-name="hOffset"/>
+        <num id="widget-image-voffset" json-attribute-name="vOffset"/>
+        <str id="widget-image-alignment" json-attribute-name="alignment"/>
+      </elem>
+      <elem id="widget-text" json-attribute-name="text">
+        <str id="widget-text-data" json-attribute-name="data"/>
+        <num id="widget-text-size" json-attribute-name="size"/>
+        <str id="widget-text-style" json-attribute-name="style"/>
+        <str id="widget-text-name" json-attribute-name="name"/>
+        <num id="widget-text-hoffset" json-attribute-name="hOffset"/>
+        <num id="widget-text-voffset" json-attribute-name="vOffset"/>
+        <str id="widget-text-alignment" json-attribute-name="alignment"/>
+        <str id="widget-text-onmouseup" json-attribute-name="onMouseUp"/>
+      </elem>
+    </elem>
+  </elem>
+</dfasdl>

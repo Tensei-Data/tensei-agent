@@ -1,0 +1,35 @@
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+.elc
+auto-save-list
+tramp
+# IntelliJ Idea
+*.iml
+*.ipr
+*.iws
+.idea/
+# Maven
+target/
+# NetBeans
+nbproject/
+# Vim
+.*.sw[a-z]
+*.un~
+Session.vim
+# Ensime
+.ensime
+.ensime_cache/
+.ensime*.log
+# Windows
+Thumbs.db
+Desktop.ini
+# Logfiles
+/logs/
+*.log
+# Tensei
+tensei-agent-id.properties
+# lib
+/lib/

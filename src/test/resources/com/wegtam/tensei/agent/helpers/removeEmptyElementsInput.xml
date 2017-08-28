@@ -1,0 +1,42 @@
+<elem id="e1">
+  <elem id="e2">
+    <str>FOO</str>
+    <num>42</num>
+  </elem>
+  <elem id="e3">
+    <elem id="e4">
+      <str>BAR</str>
+    </elem>
+    <elem id="e5">
+      <str/>
+    </elem>
+    <elem id="e6">
+      <elem id="e7">
+        <str>FANCY</str>
+        <num/>
+        <str/>
+        <str>STUFF</str>
+      </elem>
+    </elem>
+  </elem>
+  <seq>
+    <elem>
+      <choice>
+        <celem>
+          <str>TEST1</str>
+        </celem>
+        <celem/>
+        <celem/>
+      </choice>
+    </elem>
+    <elem>
+      <choice>
+        <celem/>
+        <celem>
+          <num>89</num>
+        </celem>
+        <celem/>
+      </choice>
+    </elem>
+  </seq>
+</elem>

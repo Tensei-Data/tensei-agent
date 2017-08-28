@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        semantic="custom">
+    <seq id="node" db-select="SELECT t1 . * , t2.body_value, t3.comment_count FROM  `node` AS t1 LEFT JOIN  `field_data_body` AS t2 ON ( t1.nid = t2.entity_id ) LEFT JOIN `node_comment_statistics` AS t3 ON (t1.nid = t3.nid)">
+        <elem id="node_row">
+            <num db-column-name="nid" id="node_row_nid" max-digits="10"/>
+            <num db-column-name="vid" id="node_row_vid" max-digits="10"/>
+            <str db-column-name="type" id="node_row_type" max-length="32"/>
+            <str db-column-name="language" id="node_row_language" max-length="12"/>
+            <str db-column-name="title" id="node_row_title" max-length="255"/>
+            <num db-column-name="uid" defaultnum="0" id="node_row_uid" max-digits="11"/>
+            <num db-column-name="status" defaultnum="1" id="node_row_status" max-digits="11"/>
+            <num db-column-name="created" defaultnum="0" id="node_row_created" max-digits="11"/>
+            <num db-column-name="changed" defaultnum="0" id="node_row_changed" max-digits="11"/>
+            <num db-column-name="comment" defaultnum="0" id="node_row_comment" max-digits="11"/>
+            <num db-column-name="promote" defaultnum="0" id="node_row_promote" max-digits="11"/>
+            <num db-column-name="sticky" defaultnum="0" id="node_row_sticky" max-digits="11"/>
+            <num db-column-name="tnid" defaultnum="0" id="node_row_tnid" max-digits="10"/>
+            <num db-column-name="translate" defaultnum="0" id="node_row_translate" max-digits="11"/>
+            <str db-column-name="body_value" id="node_row_body_value"/>
+            <num db-column-name="comment_count" defaultnum="0" id="node_row_comment_count" max-digits="10"/>
+        </elem>
+    </seq>
+</dfasdl>

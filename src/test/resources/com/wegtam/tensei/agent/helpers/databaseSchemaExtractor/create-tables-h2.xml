@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<seq id="accounts">
+  <elem id="accounts_row">
+    <num db-column-name="id" id="accounts_row_id" max-digits="19"/>
+    <str db-column-name="name" id="accounts_row_name" max-length="254"/>
+    <str db-column-name="description" id="accounts_row_description" max-length="2147483647"/>
+    <date db-column-name="birthday" id="accounts_row_birthday"/>
+    <formatnum db-column-name="salary" format="(-?\d{1,17})" id="accounts_row_salary" max-digits="17"/>
+    <formatnum db-column-name="points" decimal-separator="." format="(-?\d{0,2}\.\d{0,2})" id="accounts_row_points" max-digits="4" max-precision="2"/>
+  </elem>
+</seq>

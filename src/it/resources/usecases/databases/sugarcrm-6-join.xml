@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <fixseq count="3" id="accounts_with_contacts"
+       db-select="SELECT a.name, a.account_type, c.salutation, c.first_name, c.last_name, c.birthdate FROM accounts AS a JOIN accounts_contacts AS ac ON a.id = ac.account_id JOIN contacts AS c ON ac.contact_id = c.id LIMIT 3">
+    <elem id="accounts_with_contacts_row">
+      <str id="accounts_with_contacts_row_name" db-column-name="name" max-length="150"/>
+      <str id="accounts_with_contacts_row_account_type" db-column-name="account_type" max-length="50"/>
+      <str id="accounts_with_contacts_row_salutation" db-column-name="salutation" max-length="255"/>
+      <str id="accounts_with_contacts_row_first_name" db-column-name="first_name" max-length="100"/>
+      <str id="accounts_with_contacts_row_last_name" db-column-name="last_name" max-length="100"/>
+      <date id="accounts_with_contacts_row_birthdate" db-column-name="birthdate"/>
+    </elem>
+  </fixseq>
+</dfasdl>

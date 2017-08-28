@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL" semantic="custom">
+  <str id="header" defaultstr="name~~~birthdate~~~birthtime~~~age~~~price"/>
+  <seq id="people">
+    <elem id="row">
+      <str id="name" stop-sign="~~~"/>
+      <date id="birthdate" stop-sign="~~~"/>
+      <time id="birthtime" stop-sign="~~~"/>
+      <num id="age" stop-sign="~~~"/>
+      <formatnum id="price" defaultnum="0" decimal-separator="." format="\s*(-?[\d\.,\u2396]*)\s*"/>
+    </elem>
+  </seq>
+</dfasdl>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL" semantic="custom">
+  <seq id="customersTest">
+    <elem id="CUSTOMER">
+      <formatnum format="(\d{0,38}\.\d{0,2})" decimal-separator="." id="customer_id" max-digits="38" max-precision="2" />
+      <str id="customer_name" />
+    </elem>
+  </seq>
+</dfasdl>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        semantic="custom">
+  <seq id="drupal_node">
+    <elem id="drupal_node_row">
+      <num db-column-name="nid" id="drupal_node_row_nid" max-digits="10"/>
+      <num db-column-name="vid" id="drupal_node_row_vid" max-digits="10"/>
+      <str db-column-name="type" id="drupal_node_row_type" max-length="32"/>
+      <str db-column-name="language" id="drupal_node_row_language" max-length="12"/>
+      <str db-column-name="title" id="drupal_node_row_title" max-length="255"/>
+      <num db-column-name="uid" defaultnum="0" id="drupal_node_row_uid" max-digits="11"/>
+      <num db-column-name="status" defaultnum="1" id="drupal_node_row_status" max-digits="11"/>
+      <num db-column-name="created" defaultnum="0" id="drupal_node_row_created" max-digits="11"/>
+      <num db-column-name="changed" defaultnum="0" id="drupal_node_row_changed" max-digits="11"/>
+      <num db-column-name="comment" defaultnum="0" id="drupal_node_row_comment" max-digits="11"/>
+      <num db-column-name="promote" defaultnum="0" id="drupal_node_row_promote" max-digits="11"/>
+      <num db-column-name="sticky" defaultnum="0" id="drupal_node_row_sticky" max-digits="11"/>
+      <num db-column-name="tnid" defaultnum="0" id="drupal_node_row_tnid" max-digits="10"/>
+      <num db-column-name="translate" defaultnum="0" id="drupal_node_row_translate" max-digits="11"/>
+    </elem>
+  </seq>
+</dfasdl>

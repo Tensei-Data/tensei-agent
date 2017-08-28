@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <seq id="vcards" max="5" keepID="true">
+      <elem class="id:row"><formatstr format=".*?:(.*)" class="id:entry">VCARD</formatstr></elem>
+      <elem class="id:row"><formatstr format=".*?:(.*)" class="id:entry">3.0</formatstr></elem>
+      <elem class="id:row"><formatstr format=".*?:(.*)" class="id:entry">Gump;Forrest;Mr.</formatstr></elem>
+      <elem class="id:row"><formatstr format=".*?:(.*)" class="id:entry">Forrest Gump</formatstr></elem>
+      <elem class="id:row"><formatstr format=".*?:(.*)" class="id:entry">Bubba Gump Shrimp Co.</formatstr></elem>
+  </seq>
+</dfasdl>

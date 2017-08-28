@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <seq id="accounts">
+    <elem id="row">
+      <num id="id" db-column-name="id"/>
+      <str id="name" max-length="254" db-column-name="name"/>
+      <str id="description" db-column-name="description"/>
+      <date id="birthday" db-column-name="birthday"/>
+      <formatnum id="salary" format="([-]?\d+[,?\d*?]*?\.\d+)" db-column-name="salary" decimal-separator="."/>
+    </elem>
+  </seq>
+</dfasdl>

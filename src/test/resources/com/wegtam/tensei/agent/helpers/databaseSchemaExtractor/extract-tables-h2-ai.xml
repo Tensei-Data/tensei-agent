@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL" semantic="custom">
+    <seq id="t6">
+        <elem id="t6_row">
+            <num db-auto-inc="true" db-column-name="id" id="t6_row_id" max-digits="19"/>
+            <str db-column-name="name" id="t6_row_name" max-length="254"/>
+        </elem>
+    </seq>
+</dfasdl>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL" default-encoding="utf-8" semantic="niem">
+  <str id="firstname" stop-sign="\|" storage-path="akka://"/>
+  <str id="lastname" stop-sign="\|" storage-path="akka://"/>
+  <str id="email" stop-sign="\|" storage-path="akka://"/>
+  <str id="birthday" stop-sign="\|" storage-path="akka://"/>
+  <str id="phone" stop-sign="\|" storage-path="akka://"/>
+  <str id="division" storage-path="akka://"/>
+</dfasdl>

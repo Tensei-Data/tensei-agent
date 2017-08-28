@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fixseq count="3" id="account_list" keepID="true">
+  <elem class="id:row">
+    <elem class="id:a1">
+      <str class="id:firstname" stop-sign=",">YEAH!</str>
+      <str class="id:lastname" stop-sign=",">YEAH!</str>
+    </elem>
+    <elem class="id:a3">
+      <elem class="id:a3a">
+        <str class="id:email" stop-sign=",">YEAH!</str>
+      </elem>
+      <elem class="id:a3b">
+        <str class="id:birthday" stop-sign=",">YEAH!</str>
+      </elem>
+    </elem>
+    <elem class="id:a5">
+      <str class="id:phone" stop-sign=",">YEAH!</str>
+    </elem>
+    <elem class="id:a6">
+      <str class="id:division">YEAH!</str>
+    </elem>
+  </elem>
+  <elem class="id:row">
+    <elem class="id:a1">
+      <str class="id:firstname" stop-sign=",">YEAH!</str>
+      <str class="id:lastname" stop-sign=",">YEAH!</str>
+    </elem>
+    <elem class="id:a3">
+      <elem class="id:a3a">
+        <str class="id:email" stop-sign=",">YEAH!</str>
+      </elem>
+      <elem class="id:a3b">
+        <str class="id:birthday" stop-sign=",">YEAH!</str>
+      </elem>
+    </elem>
+    <elem class="id:a5">
+      <str class="id:phone" stop-sign=",">YEAH!</str>
+    </elem>
+    <elem class="id:a6">
+      <str class="id:division">YEAH!</str>
+    </elem>
+  </elem>
+  <elem class="id:row">
+    <elem class="id:a1">
+      <str class="id:firstname" stop-sign=",">YEAH!</str>
+      <str class="id:lastname" stop-sign=",">YEAH!</str>
+    </elem>
+    <elem class="id:a3">
+      <elem class="id:a3a">
+        <str class="id:email" stop-sign=",">YEAH!</str>
+      </elem>
+      <elem class="id:a3b">
+        <str class="id:birthday" stop-sign=",">YEAH!</str>
+      </elem>
+    </elem>
+    <elem class="id:a5">
+      <str class="id:phone" stop-sign=",">YEAH!</str>
+    </elem>
+    <elem class="id:a6">
+      <str class="id:division">YEAH!</str>
+    </elem>
+  </elem>
+</fixseq>

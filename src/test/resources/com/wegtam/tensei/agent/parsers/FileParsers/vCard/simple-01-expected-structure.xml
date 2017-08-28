@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <elem id="vcard">
+    <str id="label_start_tag" class="label" stop-sign=":" storage-path="akka://"/>
+    <str id="start_tag"  storage-path="akka://"/>
+    <str id="label_version" class="label" stop-sign=":" storage-path="akka://"/>
+    <str id="version" storage-path="akka://"/>
+    <str id="label_name" class="label" stop-sign=":" storage-path="akka://"/>
+    <str id="name" storage-path="akka://"/>
+    <str id="label_full_name" class="label" stop-sign=":" storage-path="akka://"/>
+    <str id="full_name" storage-path="akka://"/>
+    <str id="label_organisation" class="label" stop-sign=":" storage-path="akka://"/>
+    <str id="organisation" storage-path="akka://"/>
+    <str id="label_title" class="label" stop-sign=":" storage-path="akka://"/>
+    <str id="title" storage-path="akka://"/>
+    <str id="label_photo" class="label" stop-sign=":" storage-path="akka://"/>
+    <str id="photo" storage-path="akka://"/>
+    <str id="label_phone_work" class="label" stop-sign=":" storage-path="akka://"/>
+    <str id="phone_work" storage-path="akka://"/>
+    <str id="label_phone_home" class="label" stop-sign=":" storage-path="akka://"/>
+    <str id="phone_home" storage-path="akka://"/>
+    <str id="label_address_work" class="label" stop-sign=":" storage-path="akka://"/>
+    <str id="address_work" storage-path="akka://"/>
+    <str id="label_label_work" class="label" stop-sign=":" storage-path="akka://"/>
+    <str id="label_work" storage-path="akka://"/>
+    <str id="label_address_home" class="label" stop-sign=":" storage-path="akka://"/>
+    <str id="address_home" storage-path="akka://"/>
+    <str id="label_label_home" class="label" stop-sign=":" storage-path="akka://"/>
+    <str id="label_home" storage-path="akka://"/>
+    <str id="label_email" class="label" stop-sign=":" storage-path="akka://"/>
+    <str id="email" storage-path="akka://"/>
+    <str id="label_revision" class="label" stop-sign=":" storage-path="akka://"/>
+    <str id="revision" storage-path="akka://"/>
+    <str id="label_end_tag" class="label" stop-sign=":" storage-path="akka://"/>
+    <str id="end_tag" storage-path="akka://"/>
+  </elem>
+</dfasdl>

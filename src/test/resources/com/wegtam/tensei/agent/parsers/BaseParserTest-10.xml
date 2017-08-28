@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Tensei (転成)
+  ~
+  ~ Copyright (C) 2014 - 2015 Wegtam UG
+  ~
+  ~ Unauthorized copying of this file, via any medium is strictly prohibited!
+  ~ Proprietary and confidential
+  -->
+
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        default-encoding="utf-8" semantic="niem">
+  <seq id="table1">
+    <elem id="table1-columns">
+      <str id="t1-a-endless"/>
+      <str id="t1-b"/>
+    </elem>
+  </seq>
+  <seq id="table2">
+    <elem id="table2-columns">
+      <!-- The code in the test has to handle the bail out here to avoid endless loops! -->
+      <str id="t2-a-endless"/>
+      <str id="t2-b-endless"/>
+    </elem>
+  </seq>
+  <seq id="table3">
+    <elem id="table3-columns">
+      <str id="t3-a-endless"/>
+      <str id="t3-b"/>
+    </elem>
+  </seq>
+  <elem id="footer">
+    <str id="footer-text"/>
+  </elem>
+</dfasdl>

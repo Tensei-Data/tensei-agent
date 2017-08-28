@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL" semantic="custom">
+  <seq db-primary-key="id" id="employee">
+    <elem id="employee_row">
+      <num db-auto-inc="true" db-column-name="id" id="employee_row_id" max-digits="11" stop-sign=","/>
+      <str db-column-name="firstname" id="employee_row_firstname" max-length="45" stop-sign=","/>
+      <str db-column-name="lastname" id="employee_row_lastname" max-length="45" stop-sign=","/>
+      <str db-column-name="email" id="employee_row_email" max-length="60" stop-sign=","/>
+      <str db-column-name="birthday" id="employee_row_birthday" max-length="30" stop-sign=","/>
+      <str db-column-name="department" id="employee_row_department" max-length="45" stop-sign=","/>
+      <str db-column-name="phone" id="employee_row_phone" max-length="60"/>
+    </elem>
+  </seq>
+</dfasdl>

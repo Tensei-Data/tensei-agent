@@ -1,0 +1,10 @@
+{
+  "house" : {
+    "street": "Musterstreet",
+    "number": "03",
+    "apartments": 7,
+    "value": "2300000.00",
+    "costs" : 15345.55,
+    "size" : [15, 15, 30]
+  }
+}

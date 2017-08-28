@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dfasdl xmlns="http://www.dfasdl.org/DFASDL"
+        semantic="custom">
+  <seq id="accounts" db-select="SELECT t1.name, t1.familyid FROM ACCOUNTS as t1, ACCOUNTS2 as t2 WHERE t1.familyid = t2.familyid ORDER BY t1.familyid">
+    <elem id="row">
+      <str id="name" max-length="254" db-column-name="name"/>
+      <num id="familyid" db-column-name="familyid"/>
+    </elem>
+  </seq>
+  <seq id="accounts2" db-select="SELECT t2.name, t2.familyid FROM ACCOUNTS as t1, ACCOUNTS2 as t2 WHERE t1.familyid = t2.familyid AND t2.familyid = 3 ORDER BY t2.familyid">
+    <elem id="row2">
+      <str id="name2" max-length="254" db-column-name="name"/>
+      <num id="familyid2" db-column-name="familyid"/>
+    </elem>
+  </seq>
+</dfasdl>
