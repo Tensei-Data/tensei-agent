@@ -284,6 +284,8 @@ class FileWriterActor(target: ConnectionInformation,
         target.write(byteString.utf8String.getBytes(charset.getOrElse(DEFAULT_CHARSET)))
       case date: java.sql.Date =>
         target.write(date.toString.getBytes(charset.getOrElse(DEFAULT_CHARSET)))
+      case date: java.time.LocalDate =>
+        target.write(date.toString.getBytes(charset.getOrElse(DEFAULT_CHARSET)))
       case decimal: java.math.BigDecimal =>
         target.write(decimal.toPlainString.getBytes(charset.getOrElse(DEFAULT_CHARSET)))
       case number: Number =>
@@ -291,7 +293,11 @@ class FileWriterActor(target: ConnectionInformation,
       case string: String => target.write(string.getBytes(charset.getOrElse(DEFAULT_CHARSET)))
       case time: java.sql.Time =>
         target.write(time.toString.getBytes(charset.getOrElse(DEFAULT_CHARSET)))
+      case time: java.time.LocalTime =>
+        target.write(time.toString.getBytes(charset.getOrElse(DEFAULT_CHARSET)))
       case timestamp: java.sql.Timestamp =>
+        target.write(timestamp.toString.getBytes(charset.getOrElse(DEFAULT_CHARSET)))
+      case timestamp: java.time.OffsetDateTime =>
         target.write(timestamp.toString.getBytes(charset.getOrElse(DEFAULT_CHARSET)))
       case None => target.write(Array.empty[Byte])
       case _ =>

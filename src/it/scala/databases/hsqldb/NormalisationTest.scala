@@ -161,8 +161,7 @@ class NormalisationTest extends ActorSpec with BeforeAndAfterEach {
                                          elementId = "employees_row_century")
                       ),
                       targets = List(
-                        ElementReference(dfasdlId = targetDfasdl.id,
-                                         elementId = "centuries_row_id")
+                        ElementReference(dfasdlId = targetDfasdl.id, elementId = "centuries_row_id")
                       ),
                       transformations = List(
                         TransformationDescription("com.wegtam.tensei.agent.transformers.Nullify",
@@ -188,12 +187,10 @@ class NormalisationTest extends ActorSpec with BeforeAndAfterEach {
                   mappings = List(
                     MappingTransformation(
                       sources = List(
-                        ElementReference(dfasdlId = sourceDfasdl.id,
-                                         elementId = "employees_row_id")
+                        ElementReference(dfasdlId = sourceDfasdl.id, elementId = "employees_row_id")
                       ),
                       targets = List(
-                        ElementReference(dfasdlId = targetDfasdl.id,
-                                         elementId = "employees_row_id")
+                        ElementReference(dfasdlId = targetDfasdl.id, elementId = "employees_row_id")
                       )
                     ),
                     MappingTransformation(
@@ -358,8 +355,7 @@ class NormalisationTest extends ActorSpec with BeforeAndAfterEach {
                                          elementId = "employees_row_century")
                       ),
                       targets = List(
-                        ElementReference(dfasdlId = targetDfasdl.id,
-                                         elementId = "centuries_row_id")
+                        ElementReference(dfasdlId = targetDfasdl.id, elementId = "centuries_row_id")
                       ),
                       transformations = List(
                         TransformationDescription("com.wegtam.tensei.agent.transformers.Nullify",
@@ -385,12 +381,10 @@ class NormalisationTest extends ActorSpec with BeforeAndAfterEach {
                   mappings = List(
                     MappingTransformation(
                       sources = List(
-                        ElementReference(dfasdlId = sourceDfasdl.id,
-                                         elementId = "employees_row_id")
+                        ElementReference(dfasdlId = sourceDfasdl.id, elementId = "employees_row_id")
                       ),
                       targets = List(
-                        ElementReference(dfasdlId = targetDfasdl.id,
-                                         elementId = "employees_row_id")
+                        ElementReference(dfasdlId = targetDfasdl.id, elementId = "employees_row_id")
                       )
                     ),
                     MappingTransformation(
@@ -556,8 +550,7 @@ class NormalisationTest extends ActorSpec with BeforeAndAfterEach {
                                          elementId = "employees_row_century")
                       ),
                       targets = List(
-                        ElementReference(dfasdlId = targetDfasdl.id,
-                                         elementId = "centuries_row_id")
+                        ElementReference(dfasdlId = targetDfasdl.id, elementId = "centuries_row_id")
                       ),
                       transformations = List(
                         TransformationDescription("com.wegtam.tensei.agent.transformers.Nullify",
@@ -723,8 +716,7 @@ class NormalisationTest extends ActorSpec with BeforeAndAfterEach {
                                          elementId = "employees_row_century")
                       ),
                       targets = List(
-                        ElementReference(dfasdlId = targetDfasdl.id,
-                                         elementId = "centuries_row_id")
+                        ElementReference(dfasdlId = targetDfasdl.id, elementId = "centuries_row_id")
                       ),
                       transformations = List(
                         TransformationDescription("com.wegtam.tensei.agent.transformers.Nullify",
@@ -904,8 +896,7 @@ class NormalisationTest extends ActorSpec with BeforeAndAfterEach {
                                        elementId = "employees_row_century")
                     ),
                     targets = List(
-                      ElementReference(dfasdlId = targetDfasdl.id,
-                                       elementId = "centuries_row_name")
+                      ElementReference(dfasdlId = targetDfasdl.id, elementId = "centuries_row_name")
                     )
                   )
                 )
@@ -1094,8 +1085,7 @@ class NormalisationTest extends ActorSpec with BeforeAndAfterEach {
                                        elementId = "employees_row_century")
                     ),
                     targets = List(
-                      ElementReference(dfasdlId = targetDfasdl.id,
-                                       elementId = "centuries_row_name")
+                      ElementReference(dfasdlId = targetDfasdl.id, elementId = "centuries_row_name")
                     )
                   )
                 )

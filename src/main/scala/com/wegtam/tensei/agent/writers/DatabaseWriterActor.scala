@@ -161,8 +161,7 @@ class DatabaseWriterActor(
       if (unwrittenMessages.nonEmpty)
         log.warning("Could not write {} messages upon close request!", unwrittenMessages.size)
       self ! CloseResources
-      goto(Closing) using data.copy(messages = unwrittenMessages,
-                                    closeRequester = Option(sender()))
+      goto(Closing) using data.copy(messages = unwrittenMessages, closeRequester = Option(sender()))
     case Event(AreYouReady, data) =>
       sender() ! ReadyToWork
       stay() using data

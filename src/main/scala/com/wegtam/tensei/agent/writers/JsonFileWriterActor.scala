@@ -28,6 +28,7 @@ import akka.util.ByteString
 import argonaut.Argonaut._
 import argonaut._
 import com.wegtam.tensei.adt.{ ConnectionInformation, DFASDL }
+import com.wegtam.tensei.agent.helpers.ArgonautJavaTime._
 import com.wegtam.tensei.agent.helpers.LoggingHelpers
 import com.wegtam.tensei.agent.processor.UniqueValueBuffer
 import com.wegtam.tensei.agent.processor.UniqueValueBuffer.UniqueValueBufferMessages
@@ -412,11 +413,15 @@ class JsonFileWriterActor(target: ConnectionInformation,
             case value: Long =>
               target
                 .write(value.toString.getBytes(charset)) // TODO: We hardcode the `toString` of `Long` here because argonaut adds quotes! Maybe this can be solved better in the future.
-            case value: String             => target.write(value.asJson.nospaces.getBytes(charset))
-            case value: java.sql.Date      => target.write(value.asJson.nospaces.getBytes(charset))
-            case value: java.sql.Time      => target.write(value.asJson.nospaces.getBytes(charset))
-            case value: java.sql.Timestamp => target.write(value.asJson.nospaces.getBytes(charset))
-            case value: LocalDateTime      => target.write(value.asJson.nospaces.getBytes(charset))
+            case value: String              => target.write(value.asJson.nospaces.getBytes(charset))
+            case value: java.sql.Date       => target.write(value.asJson.nospaces.getBytes(charset))
+            case value: java.time.LocalDate => target.write(value.asJson.nospaces.getBytes(charset))
+            case value: java.sql.Time       => target.write(value.asJson.nospaces.getBytes(charset))
+            case value: java.time.LocalTime => target.write(value.asJson.nospaces.getBytes(charset))
+            case value: java.sql.Timestamp  => target.write(value.asJson.nospaces.getBytes(charset))
+            case value: java.time.OffsetDateTime =>
+              target.write(value.asJson.nospaces.getBytes(charset))
+            case value: LocalDateTime => target.write(value.asJson.nospaces.getBytes(charset))
             case None =>
               val dummyValue: Option[String] = None
               target.write(dummyValue.asJson.nospaces.getBytes(charset))

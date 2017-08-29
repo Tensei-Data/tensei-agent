@@ -19,7 +19,8 @@ package com.wegtam.tensei.agent
 
 import java.io.File
 
-import akka.testkit.{ EventFilter, TestActorRef }
+import akka.actor.Terminated
+import akka.testkit.{ TestActorRef, TestProbe }
 import com.wegtam.tensei.adt.GlobalMessages
 
 import scala.collection.mutable.ListBuffer
@@ -37,41 +38,45 @@ class LogStreamerTest extends ActorSpec {
 
       describe("given valid path") {
         it("should return nothing and stop") {
-          EventFilter.debug(message = "LogStreamer done, stopping.", occurrences = 1) intercept {
-            val a = TestActorRef(LogStreamer.props(self, "LOGSTREAMER-TEST"))
-            a ! LogStreamer.StreamLog(path)
-            expectNoMsg()
-          }
+          val a = TestActorRef(LogStreamer.props(self, "LOGSTREAMER-TEST"))
+          val p = TestProbe()
+          p.watch(a)
+          a ! LogStreamer.StreamLog(path)
+          val t = p.expectMsgType[Terminated]
+          t.actor shouldEqual a
         }
       }
 
       describe("given valid path and offset") {
         it("should return nothing and stop") {
-          EventFilter.debug(message = "LogStreamer done, stopping.", occurrences = 1) intercept {
-            val a = TestActorRef(LogStreamer.props(self, "LOGSTREAMER-TEST"))
-            a ! LogStreamer.StreamLog(path, offset = Option(23L))
-            expectNoMsg()
-          }
+          val a = TestActorRef(LogStreamer.props(self, "LOGSTREAMER-TEST"))
+          val p = TestProbe()
+          p.watch(a)
+          a ! LogStreamer.StreamLog(path, offset = Option(23L))
+          val t = p.expectMsgType[Terminated]
+          t.actor shouldEqual a
         }
       }
 
       describe("given valid path and maximum size") {
         it("should return nothing and stop") {
-          EventFilter.debug(message = "LogStreamer done, stopping.", occurrences = 1) intercept {
-            val a = TestActorRef(LogStreamer.props(self, "LOGSTREAMER-TEST"))
-            a ! LogStreamer.StreamLog(path, maxSize = Option(42L))
-            expectNoMsg()
-          }
+          val a = TestActorRef(LogStreamer.props(self, "LOGSTREAMER-TEST"))
+          val p = TestProbe()
+          p.watch(a)
+          a ! LogStreamer.StreamLog(path, maxSize = Option(42L))
+          val t = p.expectMsgType[Terminated]
+          t.actor shouldEqual a
         }
       }
 
       describe("given valid path, offset and maximum size") {
         it("should return nothing and stop") {
-          EventFilter.debug(message = "LogStreamer done, stopping.", occurrences = 1) intercept {
-            val a = TestActorRef(LogStreamer.props(self, "LOGSTREAMER-TEST"))
-            a ! LogStreamer.StreamLog(path, offset = Option(23L), maxSize = Option(42L))
-            expectNoMsg()
-          }
+          val a = TestActorRef(LogStreamer.props(self, "LOGSTREAMER-TEST"))
+          val p = TestProbe()
+          p.watch(a)
+          a ! LogStreamer.StreamLog(path, offset = Option(23L), maxSize = Option(42L))
+          val t = p.expectMsgType[Terminated]
+          t.actor shouldEqual a
         }
       }
     }

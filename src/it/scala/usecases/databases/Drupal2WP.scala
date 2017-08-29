@@ -20,8 +20,8 @@ package usecases.databases
 import java.io.InputStream
 import java.net.URI
 
-import akka.actor.ActorRef
-import akka.testkit.{ EventFilter, TestActorRef }
+import akka.actor.{ ActorRef, Terminated }
+import akka.testkit.{ TestActorRef, TestProbe }
 import com.wegtam.scalatest.tags.{ DbTest, DbTestH2 }
 import com.wegtam.tensei.adt.Recipe.{ MapAllToAll, MapOneToOne }
 import com.wegtam.tensei.adt._
@@ -61,7 +61,10 @@ class Drupal2WP extends XmlActorSpec with BeforeAndAfterEach {
     cs.execute("SHUTDOWN")
     cs.close()
     c.close()
-    EventFilter.debug(message = "stopped", source = agent.path.toString, occurrences = 1) intercept stopDummyAgent()
+    val p = TestProbe()
+    p.watch(agent)
+    stopDummyAgent()
+    val _ = p.expectMsgType[Terminated]
   }
 
   private def executeDbQuery(db: java.sql.Connection, sql: String): Unit = {
@@ -437,8 +440,7 @@ class Drupal2WP extends XmlActorSpec with BeforeAndAfterEach {
                                                   TransformerOptions(classOf[String],
                                                                      classOf[String],
                                                                      List(("search", "1"),
-                                                                          ("replace",
-                                                                           "publish")))),
+                                                                          ("replace", "publish")))),
                         TransformationDescription("com.wegtam.tensei.agent.transformers.Replace",
                                                   TransformerOptions(classOf[String],
                                                                      classOf[String],

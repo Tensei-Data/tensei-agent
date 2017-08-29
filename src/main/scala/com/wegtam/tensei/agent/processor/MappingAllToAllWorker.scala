@@ -288,35 +288,34 @@ class MappingAllToAllWorker(
         val elementTransformationQueue: List[TransformationDescription] =
           if (data.targetFields.exists(_.hasAttribute(AttributeNames.DB_FOREIGN_KEY))) {
             val ts =
-              data.targetFields.filter(_.hasAttribute(AttributeNames.DB_FOREIGN_KEY)).flatMap {
-                e =>
-                  val foreignKeyReference =
-                    targetTree.getElementById(e.getAttribute(AttributeNames.DB_FOREIGN_KEY))
-                  if (foreignKeyReference == null)
-                    throw new IllegalArgumentException(
-                      s"Referenced foreign key element '${e.getAttribute(AttributeNames.DB_FOREIGN_KEY)}' does not exist in target DFASDL ${targetDfasdl.id}!"
-                    )
+              data.targetFields.filter(_.hasAttribute(AttributeNames.DB_FOREIGN_KEY)).flatMap { e =>
+                val foreignKeyReference =
+                  targetTree.getElementById(e.getAttribute(AttributeNames.DB_FOREIGN_KEY))
+                if (foreignKeyReference == null)
+                  throw new IllegalArgumentException(
+                    s"Referenced foreign key element '${e.getAttribute(AttributeNames.DB_FOREIGN_KEY)}' does not exist in target DFASDL ${targetDfasdl.id}!"
+                  )
 
-                  if (foreignKeyReference
-                        .hasAttribute(AttributeNames.DB_AUTO_INCREMENT) && foreignKeyReference
-                        .getAttribute(AttributeNames.DB_AUTO_INCREMENT) == "true") {
-                    val r = ElementReference(dfasdlId = targetDfasdl.id,
-                                             elementId = foreignKeyReference.getAttribute("id"))
-                    val fetchForeignKeyValue = TransformationDescription(
-                      transformerClassName =
-                        "com.wegtam.tensei.agent.transformers.FetchForeignKeyValue",
-                      options = TransformerOptions(
-                        srcType = classOf[String],
-                        dstType = classOf[String],
-                        params = List(
-                          ("autoIncBufferPath", autoIncBufferPath),
-                          ("reference", r.asJson.nospaces)
-                        )
+                if (foreignKeyReference
+                      .hasAttribute(AttributeNames.DB_AUTO_INCREMENT) && foreignKeyReference
+                      .getAttribute(AttributeNames.DB_AUTO_INCREMENT) == "true") {
+                  val r = ElementReference(dfasdlId = targetDfasdl.id,
+                                           elementId = foreignKeyReference.getAttribute("id"))
+                  val fetchForeignKeyValue = TransformationDescription(
+                    transformerClassName =
+                      "com.wegtam.tensei.agent.transformers.FetchForeignKeyValue",
+                    options = TransformerOptions(
+                      srcType = classOf[String],
+                      dstType = classOf[String],
+                      params = List(
+                        ("autoIncBufferPath", autoIncBufferPath),
+                        ("reference", r.asJson.nospaces)
                       )
                     )
-                    data.elementTransformationQueue ::: fetchForeignKeyValue :: Nil
-                  } else
-                    data.elementTransformationQueue
+                  )
+                  data.elementTransformationQueue ::: fetchForeignKeyValue :: Nil
+                } else
+                  data.elementTransformationQueue
               }
 
             // This is needed to avoid returning an empty list by chance.
@@ -474,8 +473,7 @@ class MappingAllToAllWorker(
       // Fire the first fetch request.
       nextStateData.sourceFields.headOption.foreach { m =>
         val loc = FetchDataLocator(
-          mappingKeyFieldId =
-            nextStateData.mappingKeyField.map(f => Option(f.name)).getOrElse(None),
+          mappingKeyFieldId = nextStateData.mappingKeyField.map(f => Option(f.name)).getOrElse(None),
           mappingKeyFieldValue = nextStateData.lastMappingKeyFieldValue,
           sequenceRow = sequenceRow
         )

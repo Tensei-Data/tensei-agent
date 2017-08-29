@@ -17,15 +17,16 @@
 
 package com.wegtam.tensei.agent.parsers
 
-import akka.testkit.{ EventFilter, TestActorRef }
+import akka.actor.Terminated
+import akka.testkit.{ TestActorRef, TestProbe }
 import akka.util.{ ByteString, Timeout }
 import com.wegtam.tensei.adt._
 import com.wegtam.tensei.agent.DataTreeDocument.DataTreeDocumentMessages
 import com.wegtam.tensei.agent.DataTreeNode.DataTreeNodeMessages
 import com.wegtam.tensei.agent.adt.{ ParserStatus, ParserStatusMessage }
 import com.wegtam.tensei.agent.{ ActorSpec, DataTreeDocument, XmlTestHelpers }
-import org.eclipse.jetty.server.{ Handler, Server }
 import org.eclipse.jetty.server.handler._
+import org.eclipse.jetty.server.{ Handler, Server }
 import org.eclipse.jetty.toolchain.test.MavenTestingUtils
 import org.eclipse.jetty.util.resource.Resource
 
@@ -149,9 +150,11 @@ class NetworkFileParserTest extends ActorSpec with XmlTestHelpers {
       val networkFileParser =
         TestActorRef(FileParser.props(source, cookbook, dataTree, Option("NetworkFileParserTest")))
 
-      EventFilter.debug(message = "stopped", occurrences = 1) intercept {
-        networkFileParser ! BaseParserMessages.Stop
-      }
+      val p = TestProbe()
+      p.watch(networkFileParser)
+      networkFileParser ! BaseParserMessages.Stop
+      val t = p.expectMsgType[Terminated]
+      t.actor shouldEqual networkFileParser
     }
 
     describe("with HTTP request") {
@@ -257,7 +260,8 @@ class NetworkFileParserTest extends ActorSpec with XmlTestHelpers {
             dataTree ! DataTreeDocumentMessages.ReturnData("num-field1")
             val cell00 = expectMsgType[DataTreeNodeMessages.Content]
             cell00.data.size should be(1)
-            cell00.data.head.data should be(1)
+            cell00.data.head.data shouldBe a[java.lang.Long]
+            cell00.data.head.data should be(1L)
 
             dataTree ! DataTreeDocumentMessages.ReturnData("str-field2")
             val cell01 = expectMsgType[DataTreeNodeMessages.Content]

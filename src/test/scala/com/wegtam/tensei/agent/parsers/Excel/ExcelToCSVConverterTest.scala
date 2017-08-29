@@ -274,17 +274,20 @@ class ExcelToCSVConverterTest extends ActorSpec with XmlTestHelpers {
           dataTree ! DataTreeDocumentMessages.ReturnData("datum")
           val column51 = expectMsgType[DataTreeNodeMessages.Content]
           column51.data.size should be(1)
-          column51.data.head.data should be(java.sql.Date.valueOf("2017-01-01"))
+          column51.data.head.data shouldBe a[java.time.LocalDate]
+          column51.data.head.data should be(java.time.LocalDate.parse("2017-01-01"))
 
           dataTree ! DataTreeDocumentMessages.ReturnData("datum", Option(1L))
           val column52 = expectMsgType[DataTreeNodeMessages.Content]
           column52.data.size should be(1)
-          column52.data.head.data should be(java.sql.Date.valueOf("2017-02-01"))
+          column52.data.head.data shouldBe a[java.time.LocalDate]
+          column52.data.head.data should be(java.time.LocalDate.parse("2017-02-01"))
 
           dataTree ! DataTreeDocumentMessages.ReturnData("datum", Option(2L))
           val column53 = expectMsgType[DataTreeNodeMessages.Content]
           column53.data.size should be(1)
-          column53.data.head.data should be(java.sql.Date.valueOf("1999-03-31"))
+          column53.data.head.data shouldBe a[java.time.LocalDate]
+          column53.data.head.data should be(java.time.LocalDate.parse("1999-03-31"))
 
           dataTree ! DataTreeDocumentMessages.ReturnData("preis")
           val column61 = expectMsgType[DataTreeNodeMessages.Content]
@@ -344,17 +347,20 @@ class ExcelToCSVConverterTest extends ActorSpec with XmlTestHelpers {
           dataTree ! DataTreeDocumentMessages.ReturnData("uhrzeit")
           val column91 = expectMsgType[DataTreeNodeMessages.Content]
           column91.data.size should be(1)
-          column91.data.head.data should be(java.sql.Time.valueOf("1:00:00"))
+          column91.data.head.data shouldBe a[java.time.LocalTime]
+          column91.data.head.data should be(java.time.LocalTime.parse("01:00:00"))
 
           dataTree ! DataTreeDocumentMessages.ReturnData("uhrzeit", Option(1L))
           val column92 = expectMsgType[DataTreeNodeMessages.Content]
           column92.data.size should be(1)
-          column92.data.head.data should be(java.sql.Time.valueOf("12:02:00"))
+          column92.data.head.data shouldBe a[java.time.LocalTime]
+          column92.data.head.data should be(java.time.LocalTime.parse("12:02:00"))
 
           dataTree ! DataTreeDocumentMessages.ReturnData("uhrzeit", Option(3L))
           val column93 = expectMsgType[DataTreeNodeMessages.Content]
           column93.data.size should be(1)
-          column93.data.head.data should be(java.sql.Time.valueOf("13:55:00"))
+          column93.data.head.data shouldBe a[java.time.LocalTime]
+          column93.data.head.data should be(java.time.LocalTime.parse("13:55:00"))
 
           dataTree ! DataTreeDocumentMessages.ReturnData("sonderzeichen")
           val column101 = expectMsgType[DataTreeNodeMessages.Content]
@@ -532,17 +538,20 @@ class ExcelToCSVConverterTest extends ActorSpec with XmlTestHelpers {
           dataTree ! DataTreeDocumentMessages.ReturnData("datum")
           val column51 = expectMsgType[DataTreeNodeMessages.Content]
           column51.data.size should be(1)
-          column51.data.head.data should be(java.sql.Date.valueOf("2017-01-01"))
+          column51.data.head.data shouldBe a[java.time.LocalDate]
+          column51.data.head.data should be(java.time.LocalDate.parse("2017-01-01"))
 
           dataTree ! DataTreeDocumentMessages.ReturnData("datum", Option(1L))
           val column52 = expectMsgType[DataTreeNodeMessages.Content]
           column52.data.size should be(1)
-          column52.data.head.data should be(java.sql.Date.valueOf("2017-02-01"))
+          column52.data.head.data shouldBe a[java.time.LocalDate]
+          column52.data.head.data should be(java.time.LocalDate.parse("2017-02-01"))
 
           dataTree ! DataTreeDocumentMessages.ReturnData("datum", Option(2L))
           val column53 = expectMsgType[DataTreeNodeMessages.Content]
           column53.data.size should be(1)
-          column53.data.head.data should be(java.sql.Date.valueOf("1999-03-31"))
+          column53.data.head.data shouldBe a[java.time.LocalDate]
+          column53.data.head.data should be(java.time.LocalDate.parse("1999-03-31"))
 
           dataTree ! DataTreeDocumentMessages.ReturnData("preis")
           val column61 = expectMsgType[DataTreeNodeMessages.Content]
@@ -602,17 +611,20 @@ class ExcelToCSVConverterTest extends ActorSpec with XmlTestHelpers {
           dataTree ! DataTreeDocumentMessages.ReturnData("uhrzeit")
           val column91 = expectMsgType[DataTreeNodeMessages.Content]
           column91.data.size should be(1)
-          column91.data.head.data should be(java.sql.Time.valueOf("1:00:00"))
+          column91.data.head.data shouldBe a[java.time.LocalTime]
+          column91.data.head.data should be(java.time.LocalTime.parse("01:00:00"))
 
           dataTree ! DataTreeDocumentMessages.ReturnData("uhrzeit", Option(1L))
           val column92 = expectMsgType[DataTreeNodeMessages.Content]
           column92.data.size should be(1)
-          column92.data.head.data should be(java.sql.Time.valueOf("12:02:00"))
+          column92.data.head.data shouldBe a[java.time.LocalTime]
+          column92.data.head.data should be(java.time.LocalTime.parse("12:02:00"))
 
           dataTree ! DataTreeDocumentMessages.ReturnData("uhrzeit", Option(3L))
           val column93 = expectMsgType[DataTreeNodeMessages.Content]
           column93.data.size should be(1)
-          column93.data.head.data should be(java.sql.Time.valueOf("13:55:00"))
+          column93.data.head.data shouldBe a[java.time.LocalTime]
+          column93.data.head.data should be(java.time.LocalTime.parse("13:55:00"))
 
           dataTree ! DataTreeDocumentMessages.ReturnData("sonderzeichen")
           val column101 = expectMsgType[DataTreeNodeMessages.Content]

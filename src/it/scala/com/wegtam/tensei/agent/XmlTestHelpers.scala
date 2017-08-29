@@ -25,7 +25,7 @@ import javax.xml.transform.stream.{ StreamResult, StreamSource }
 import javax.xml.transform.{ OutputKeys, TransformerFactory }
 import javax.xml.validation.SchemaFactory
 
-import org.dfasdl.utils.{ DFASDLResourceResolver, XmlErrorHandler }
+import org.dfasdl.utils.XmlErrorHandler
 import org.w3c.dom.traversal.{ DocumentTraversal, NodeFilter }
 import org.w3c.dom.{ Document, Element, Node }
 
@@ -50,11 +50,10 @@ trait XmlTestHelpers {
       factory.setNamespaceAware(true)
 
       val schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI)
-      schemaFactory.setResourceResolver(new DFASDLResourceResolver)
       factory.setSchema(schemaFactory.newSchema(new StreamSource(xsdMain)))
 
       val builder = factory.newDocumentBuilder()
-      builder.setErrorHandler(new XmlErrorHandler)
+      builder.setErrorHandler(new XmlErrorHandler())
       builder
     } else
       DocumentBuilderFactory.newInstance().newDocumentBuilder()

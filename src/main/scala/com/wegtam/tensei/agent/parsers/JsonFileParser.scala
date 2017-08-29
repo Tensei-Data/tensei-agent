@@ -283,7 +283,9 @@ class JsonFileParser(source: ConnectionInformation,
         )
       )
 
-  override def save(data: ParserDataContainer, dataHash: Long, referenceId: Option[String]): Unit = {
+  override def save(data: ParserDataContainer,
+                    dataHash: Long,
+                    referenceId: Option[String]): Unit = {
     val sourceSequenceRow =
       if (state.isInSequence)
         Option(state.getCurrentSequenceRowCount)

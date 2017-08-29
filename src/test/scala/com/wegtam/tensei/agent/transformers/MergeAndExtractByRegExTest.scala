@@ -254,8 +254,8 @@ class MergeAndExtractByRegExTest extends ActorSpec {
 
             expectMsg(ReadyToTransform)
 
-            val params = List(("regexp", "-(\\d{4,})(-[\\w]+|-[\\D][\\w]+-[\\w]+|\\w{0,0})$"),
-                              ("groups", "0"))
+            val params =
+              List(("regexp", "-(\\d{4,})(-[\\w]+|-[\\D][\\w]+-[\\w]+|\\w{0,0})$"), ("groups", "0"))
 
             actor ! StartTransformation(List(ByteString("Birk-128261-403137-37")),
                                         new TransformerOptions(classOf[String],
@@ -276,9 +276,8 @@ class MergeAndExtractByRegExTest extends ActorSpec {
 
             expectMsg(ReadyToTransform)
 
-            val params = List(("regexp", ".*(Das).*(Haus).*(Fenster).*"),
-                              ("filler", "#"),
-                              ("groups", "0,2,5"))
+            val params =
+              List(("regexp", ".*(Das).*(Haus).*(Fenster).*"), ("filler", "#"), ("groups", "0,2,5"))
 
             actor ! StartTransformation(
               List(ByteString("Das ist eine [Haus], mit :drei: Fenstern!")),

@@ -121,8 +121,7 @@ trait BaseWriterFunctions {
     */
   def messagesMissing(messages: SortedSet[BaseWriterMessages.WriteData]): Boolean =
     messages.headOption.exists(
-      head =>
-        messages.lastOption.exists(last => (last.number - (head.number - 1)) != messages.size)
+      head => messages.lastOption.exists(last => (last.number - (head.number - 1)) != messages.size)
     )
 }
 

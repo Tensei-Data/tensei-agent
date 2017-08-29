@@ -18,7 +18,7 @@
 package com.wegtam.tensei.agent.helpers
 
 import java.sql.PreparedStatement
-import java.time.LocalDateTime
+import java.time._
 import java.util.{ Locale, Properties }
 
 import akka.event.LoggingAdapter
@@ -716,11 +716,24 @@ trait DatabaseHelpers {
               statement.setString(index, data)
           case data: java.sql.Date =>
             statement.setString(index, new java.sql.Timestamp(data.getTime).toString)
+          case data: LocalDate =>
+            statement.setString(
+              index,
+              new java.sql.Timestamp(java.sql.Date.valueOf(data).getTime).toString
+            )
           case data: java.sql.Time =>
             statement.setString(index, new java.sql.Timestamp(data.getTime).toString)
+          case data: LocalTime =>
+            statement.setString(
+              index,
+              new java.sql.Timestamp(java.sql.Time.valueOf(data).getTime).toString
+            )
           case data: java.sql.Timestamp => statement.setString(index, data.toString)
           case data: LocalDateTime =>
             statement.setString(index, java.sql.Timestamp.valueOf(data).toString)
+          case data: OffsetDateTime =>
+            val lt = data.atZoneSameInstant(ZoneId.of("UTC")).toLocalDateTime // Convert to UTC time.
+            statement.setString(index, java.sql.Timestamp.valueOf(lt).toString)
           case None => setNull(statement, index)
           case _    =>
             // We assume that the value is an empty column here!
@@ -753,10 +766,15 @@ trait DatabaseHelpers {
             } else
               statement.setString(index, data)
           case data: java.sql.Date      => statement.setDate(index, data)
+          case data: LocalDate          => statement.setDate(index, java.sql.Date.valueOf(data))
           case data: java.sql.Time      => statement.setTime(index, data)
+          case data: LocalTime          => statement.setTime(index, java.sql.Time.valueOf(data))
           case data: java.sql.Timestamp => statement.setTimestamp(index, data)
           case data: LocalDateTime =>
             statement.setTimestamp(index, java.sql.Timestamp.valueOf(data))
+          case data: OffsetDateTime =>
+            val lt = data.atZoneSameInstant(ZoneId.of("UTC")).toLocalDateTime // Convert to UTC time.
+            statement.setTimestamp(index, java.sql.Timestamp.valueOf(lt))
           case None => setNull(statement, index)
           case _    =>
             // We assume that the value is an empty column here!

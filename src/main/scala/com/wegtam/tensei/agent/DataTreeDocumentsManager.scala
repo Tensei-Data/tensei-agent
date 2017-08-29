@@ -77,9 +77,7 @@ object DataTreeDocumentsManager {
   *
   * @param agentRunIdentifier An optional agent run identifier which is usually an uuid.
   */
-class DataTreeDocumentsManager(agentRunIdentifier: Option[String])
-    extends Actor
-    with ActorLogging {
+class DataTreeDocumentsManager(agentRunIdentifier: Option[String]) extends Actor with ActorLogging {
   override val log
     : DiagnosticLoggingAdapter = Logging(this) // Override the standard logger to be able to add stuff via MDC.
   log.mdc(LoggingHelpers.generateMdcEntryForRunIdentifier(agentRunIdentifier))

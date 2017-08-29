@@ -78,7 +78,9 @@ trait ProcessorHelpers
     * @param containerElement The container element which should be a sequence.
     * @return A map containing several vectors e.g. the "data columns" mapped to the id of the data element. The first element in each vector is always the container element.
     */
-  def convertContainerElementToVectorMap(containerElement: Element): Map[String, Vector[Element]] = {
+  def convertContainerElementToVectorMap(
+      containerElement: Element
+  ): Map[String, Vector[Element]] = {
     // FIXME We should use the vector builders throughout the process to avoid copying of immutable resources.
     val mappedColumns = scala.collection.mutable.Map.empty[String, Vector[Element]]
 
@@ -149,6 +151,7 @@ trait ProcessorHelpers
     * @param target  The target data description.
     * @return The processed data.
     */
+  @SuppressWarnings(Array("org.wartremover.warts.Throw"))
   def processTargetData(data: Any, target: Element): Any =
     if (getDataElementType(target.getNodeName) == DataElementType.StringDataElement && data != None) {
       val dataString: String = data match {
@@ -161,7 +164,10 @@ trait ProcessorHelpers
           val ps = processStringData(dataString, target)
           ByteString(ps)
         case ElementNames.FORMATTED_NUMBER =>
-          extractData(processFormattedNumberData(dataString, target), target)
+          extractData(processFormattedNumberData(dataString, target), target) match {
+            case scala.util.Failure(t) => throw t
+            case scala.util.Success(d) => d
+          }
         case ElementNames.NUMBER =>
           val processedNumber =
             data match {
@@ -194,7 +200,10 @@ trait ProcessorHelpers
           if (processedNumber.isEmpty)
             processedNumber
           else
-            extractData(processedNumber, target)
+            extractData(processedNumber, target) match {
+              case scala.util.Failure(t) => throw t
+              case scala.util.Success(d) => d
+            }
         case _ =>
           data
       }

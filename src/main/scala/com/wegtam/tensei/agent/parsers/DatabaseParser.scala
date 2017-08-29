@@ -18,6 +18,7 @@
 package com.wegtam.tensei.agent.parsers
 
 import java.nio.charset.Charset
+import java.time.{ OffsetDateTime, ZoneOffset }
 import javax.xml.xpath.{ XPath, XPathConstants, XPathFactory }
 
 import akka.actor.{ Actor, ActorLogging, ActorRef, Props }
@@ -32,8 +33,8 @@ import org.dfasdl.utils.{ AttributeNames, DataElementType, ElementNames, Structu
 import org.w3c.dom.{ Element, NodeList }
 
 import scala.collection.mutable
+import scalaz.Scalaz._
 import scalaz._
-import Scalaz._
 
 object DatabaseParser {
 
@@ -50,7 +51,7 @@ object DatabaseParser {
             cookbook: Cookbook,
             dataTreeRef: ActorRef,
             agentRunIdentifier: Option[String]): Props =
-    Props(classOf[DatabaseParser], source, cookbook, dataTreeRef, agentRunIdentifier)
+    Props(new DatabaseParser(source, cookbook, dataTreeRef, agentRunIdentifier))
 
   /**
     * A sealed trait for the different states of a cursor.
@@ -288,6 +289,16 @@ class DatabaseParser(source: ConnectionInformation,
                 results.get.getString(columnName) // Fall back to string parsing because of errors which might result from fancy things like parsing a varchar column with a formatnum element.
               case \/-(success) => success
             }
+          case ElementNames.DATETIME =>
+            \/.fromTryCatch {
+              OffsetDateTime
+                .of(results.get.getTimestamp(columnName).toLocalDateTime, ZoneOffset.UTC)
+                .toString
+            } match {
+              case -\/(failure) =>
+                results.get.getString(columnName) // Fall back to string parsing because of errors which might result from fancy things like parsing a varchar column with a formatnum element.
+              case \/-(success) => success
+            }
           case _ => results.get.getString(columnName)
         }
         val bytes =
@@ -303,8 +314,7 @@ class DatabaseParser(source: ConnectionInformation,
             if (format.isEmpty)
               Option(new String(bytes, encoding))
             else {
-              val response
-                : Option[String] = getDataElementType(structureElement.getTagName) match {
+              val response: Option[String] = getDataElementType(structureElement.getTagName) match {
                 case DataElementType.BinaryDataElement => Option(new String(bytes, encoding))
                 case DataElementType.StringDataElement =>
                   structureElement.getTagName match {

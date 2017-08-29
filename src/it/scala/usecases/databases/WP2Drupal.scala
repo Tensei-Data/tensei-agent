@@ -20,8 +20,8 @@ package usecases.databases
 import java.io.InputStream
 import java.net.URI
 
-import akka.actor.ActorRef
-import akka.testkit.{ EventFilter, TestActorRef }
+import akka.actor.{ ActorRef, Terminated }
+import akka.testkit.{ TestActorRef, TestProbe }
 import com.wegtam.scalatest.tags.{ DbTest, DbTestH2 }
 import com.wegtam.tensei.adt.Recipe.{ MapAllToAll, MapOneToOne }
 import com.wegtam.tensei.adt._
@@ -61,7 +61,10 @@ class WP2Drupal extends XmlActorSpec with BeforeAndAfterEach {
     cs.execute("SHUTDOWN")
     cs.close()
     c.close()
-    EventFilter.debug(message = "stopped", source = agent.path.toString, occurrences = 1) intercept stopDummyAgent()
+    val p = TestProbe()
+    p.watch(agent)
+    stopDummyAgent()
+    val _ = p.expectMsgType[Terminated]
   }
 
   private def executeDbQuery(db: java.sql.Connection, sql: String): Unit = {
@@ -215,8 +218,7 @@ class WP2Drupal extends XmlActorSpec with BeforeAndAfterEach {
                           "com.wegtam.tensei.agent.transformers.Replace",
                           TransformerOptions(classOf[String],
                                              classOf[String],
-                                             List(("search", "\\d+"),
-                                                  ("replace", "Europe/Berlin")))
+                                             List(("search", "\\d+"), ("replace", "Europe/Berlin")))
                         )
                       )
                     )
@@ -267,7 +269,7 @@ class WP2Drupal extends XmlActorSpec with BeforeAndAfterEach {
               results.getString("theme") should be("")
               results.getString("signature") should be("")
               results.getString("signature_format") should be(null)
-              results.getLong("created") should be(1436253751L)
+              results.getLong("created") should be(1436260951L)
               results.getLong("access") should be(0)
               results.getLong("login") should be(0)
               results.getLong("status") should be(1)
@@ -459,8 +461,7 @@ class WP2Drupal extends XmlActorSpec with BeforeAndAfterEach {
                           "com.wegtam.tensei.agent.transformers.Replace",
                           TransformerOptions(classOf[String],
                                              classOf[String],
-                                             List(("search", "\\d+"),
-                                                  ("replace", "Europe/Berlin")))
+                                             List(("search", "\\d+"), ("replace", "Europe/Berlin")))
                         )
                       )
                     )
@@ -491,8 +492,7 @@ class WP2Drupal extends XmlActorSpec with BeforeAndAfterEach {
                     MappingTransformation(
                       createElementReferenceList(sourceDfasdl,
                                                  List("wp_comments_row_comment_author_ip")),
-                      createElementReferenceList(targetDfasdl,
-                                                 List("drupal_comment_row_hostname")),
+                      createElementReferenceList(targetDfasdl, List("drupal_comment_row_hostname")),
                       List(
                         TransformationDescription("com.wegtam.tensei.agent.transformers.Replace",
                                                   TransformerOptions(classOf[String],
@@ -569,8 +569,7 @@ class WP2Drupal extends XmlActorSpec with BeforeAndAfterEach {
                     MappingTransformation(
                       createElementReferenceList(sourceDfasdl,
                                                  List("wp_comments_row_comment_type")),
-                      createElementReferenceList(targetDfasdl,
-                                                 List("drupal_comment_row_language")),
+                      createElementReferenceList(targetDfasdl, List("drupal_comment_row_language")),
                       List(
                         TransformationDescription("com.wegtam.tensei.agent.transformers.Overwrite",
                                                   TransformerOptions(classOf[String],
@@ -643,7 +642,7 @@ class WP2Drupal extends XmlActorSpec with BeforeAndAfterEach {
               results.getString("theme") should be("")
               results.getString("signature") should be("")
               results.getString("signature_format") should be(null)
-              results.getLong("created") should be(1436253751L)
+              results.getLong("created") should be(1436260951L)
               results.getLong("access") should be(0)
               results.getLong("login") should be(0)
               results.getLong("status") should be(1)
@@ -672,8 +671,8 @@ class WP2Drupal extends XmlActorSpec with BeforeAndAfterEach {
               results2.getString("name") should be("Mr WordPress")
               results2.getString("mail") should be("")
               results2.getString("homepage") should be("https://wordpress.org/")
-              results2.getLong("created") should be(1436253751L)
-              results2.getLong("changed") should be(1436253751L)
+              results2.getLong("created") should be(1436260951L)
+              results2.getLong("changed") should be(1436260951L)
               results2.getString("subject") should be("")
               results2.getString("language") should be("und")
               results2.getString("thread") should be("01/")
@@ -687,8 +686,8 @@ class WP2Drupal extends XmlActorSpec with BeforeAndAfterEach {
               results2.getString("name") should be("chris")
               results2.getString("mail") should be("christian_tessnow@yahoo.de")
               results2.getString("homepage") should be("")
-              results2.getLong("created") should be(1436334249L)
-              results2.getLong("changed") should be(1436334249L)
+              results2.getLong("created") should be(1436341449L)
+              results2.getLong("changed") should be(1436341449L)
               results2.getString("subject") should be("")
               results2.getString("language") should be("und")
               results2.getString("thread") should be("01/")
@@ -836,8 +835,7 @@ class WP2Drupal extends XmlActorSpec with BeforeAndAfterEach {
                       )
                     ),
                     MappingTransformation(
-                      createElementReferenceList(sourceDfasdl,
-                                                 List("wp_posts_row_comment_status")),
+                      createElementReferenceList(sourceDfasdl, List("wp_posts_row_comment_status")),
                       createElementReferenceList(targetDfasdl, List("drupal_node_row_comment")),
                       List(
                         TransformationDescription("com.wegtam.tensei.agent.transformers.Replace",
@@ -865,8 +863,7 @@ class WP2Drupal extends XmlActorSpec with BeforeAndAfterEach {
                                                   TransformerOptions(classOf[String],
                                                                      classOf[String],
                                                                      List(("search", "post"),
-                                                                          ("replace",
-                                                                           "artikel")))),
+                                                                          ("replace", "artikel")))),
                         TransformationDescription("com.wegtam.tensei.agent.transformers.Replace",
                                                   TransformerOptions(classOf[String],
                                                                      classOf[String],
@@ -875,8 +872,7 @@ class WP2Drupal extends XmlActorSpec with BeforeAndAfterEach {
                       )
                     ),
                     MappingTransformation(
-                      createElementReferenceList(sourceDfasdl,
-                                                 List("wp_posts_row_post_mime_type")),
+                      createElementReferenceList(sourceDfasdl, List("wp_posts_row_post_mime_type")),
                       createElementReferenceList(targetDfasdl, List("drupal_node_row_language")),
                       List(
                         TransformationDescription("com.wegtam.tensei.agent.transformers.Overwrite",
@@ -887,8 +883,7 @@ class WP2Drupal extends XmlActorSpec with BeforeAndAfterEach {
                       )
                     ),
                     MappingTransformation(
-                      createElementReferenceList(sourceDfasdl,
-                                                 List("wp_posts_row_post_mime_type")),
+                      createElementReferenceList(sourceDfasdl, List("wp_posts_row_post_mime_type")),
                       createElementReferenceList(targetDfasdl, List("drupal_node_row_promote")),
                       List(
                         TransformationDescription("com.wegtam.tensei.agent.transformers.Overwrite",
@@ -960,8 +955,8 @@ class WP2Drupal extends XmlActorSpec with BeforeAndAfterEach {
               results.next() should be(right = true)
               results.getLong("nid") should be(1)
               results.getLong("uid") should be(1)
-              results.getLong("created") should be(1436253751L)
-              results.getLong("changed") should be(1436253751L)
+              results.getLong("created") should be(1436260951L)
+              results.getLong("changed") should be(1436260951L)
               results.getString("title") should be("Hallo Welt!")
               results.getLong("status") should be(1)
               results.getLong("comment") should be(2)
@@ -1074,8 +1069,7 @@ class WP2Drupal extends XmlActorSpec with BeforeAndAfterEach {
                                                       "drupal_node_revision_row_title"))
                     ),
                     MappingTransformation(
-                      createElementReferenceList(sourceDfasdl,
-                                                 List("wp_posts_row_post_mime_type")),
+                      createElementReferenceList(sourceDfasdl, List("wp_posts_row_post_mime_type")),
                       createElementReferenceList(targetDfasdl,
                                                  List("drupal_node_revision_row_log")),
                       List(
@@ -1122,8 +1116,7 @@ class WP2Drupal extends XmlActorSpec with BeforeAndAfterEach {
                       )
                     ),
                     MappingTransformation(
-                      createElementReferenceList(sourceDfasdl,
-                                                 List("wp_posts_row_comment_status")),
+                      createElementReferenceList(sourceDfasdl, List("wp_posts_row_comment_status")),
                       createElementReferenceList(targetDfasdl,
                                                  List("drupal_node_revision_row_comment")),
                       List(
@@ -1145,8 +1138,7 @@ class WP2Drupal extends XmlActorSpec with BeforeAndAfterEach {
                       )
                     ),
                     MappingTransformation(
-                      createElementReferenceList(sourceDfasdl,
-                                                 List("wp_posts_row_post_mime_type")),
+                      createElementReferenceList(sourceDfasdl, List("wp_posts_row_post_mime_type")),
                       createElementReferenceList(targetDfasdl,
                                                  List("drupal_node_revision_row_promote")),
                       List(
@@ -1158,8 +1150,7 @@ class WP2Drupal extends XmlActorSpec with BeforeAndAfterEach {
                       )
                     ),
                     MappingTransformation(
-                      createElementReferenceList(sourceDfasdl,
-                                                 List("wp_posts_row_post_mime_type")),
+                      createElementReferenceList(sourceDfasdl, List("wp_posts_row_post_mime_type")),
                       createElementReferenceList(targetDfasdl,
                                                  List("drupal_node_revision_row_sticky")),
                       List(
@@ -1215,7 +1206,7 @@ class WP2Drupal extends XmlActorSpec with BeforeAndAfterEach {
               results.next() should be(right = true)
               results.getLong("nid") should be(1)
               results.getLong("uid") should be(1)
-              results.getLong("timestamp") should be(1436253751L)
+              results.getLong("timestamp") should be(1436260951L)
               results.getString("title") should be("Hallo Welt!")
               results.getLong("status") should be(1)
               results.getLong("comment") should be(2)
@@ -1323,8 +1314,7 @@ class WP2Drupal extends XmlActorSpec with BeforeAndAfterEach {
                                                       "drupal_field_data_body_row_revision_id"))
                     ),
                     MappingTransformation(
-                      createElementReferenceList(sourceDfasdl,
-                                                 List("wp_posts_row_post_mime_type")),
+                      createElementReferenceList(sourceDfasdl, List("wp_posts_row_post_mime_type")),
                       createElementReferenceList(targetDfasdl,
                                                  List("drupal_field_data_body_row_body_summary")),
                       List(
@@ -1334,8 +1324,7 @@ class WP2Drupal extends XmlActorSpec with BeforeAndAfterEach {
                       )
                     ),
                     MappingTransformation(
-                      createElementReferenceList(sourceDfasdl,
-                                                 List("wp_posts_row_post_mime_type")),
+                      createElementReferenceList(sourceDfasdl, List("wp_posts_row_post_mime_type")),
                       createElementReferenceList(targetDfasdl,
                                                  List("drupal_field_data_body_row_entity_type")),
                       List(
@@ -1355,8 +1344,7 @@ class WP2Drupal extends XmlActorSpec with BeforeAndAfterEach {
                                                   TransformerOptions(classOf[String],
                                                                      classOf[String],
                                                                      List(("search", "post"),
-                                                                          ("replace",
-                                                                           "artikel")))),
+                                                                          ("replace", "artikel")))),
                         TransformationDescription("com.wegtam.tensei.agent.transformers.Replace",
                                                   TransformerOptions(classOf[String],
                                                                      classOf[String],
@@ -1380,8 +1368,7 @@ class WP2Drupal extends XmlActorSpec with BeforeAndAfterEach {
                       )
                     ),
                     MappingTransformation(
-                      createElementReferenceList(sourceDfasdl,
-                                                 List("wp_posts_row_post_mime_type")),
+                      createElementReferenceList(sourceDfasdl, List("wp_posts_row_post_mime_type")),
                       createElementReferenceList(targetDfasdl,
                                                  List("drupal_field_data_body_row_language")),
                       List(
@@ -1393,8 +1380,7 @@ class WP2Drupal extends XmlActorSpec with BeforeAndAfterEach {
                       )
                     ),
                     MappingTransformation(
-                      createElementReferenceList(sourceDfasdl,
-                                                 List("wp_posts_row_post_mime_type")),
+                      createElementReferenceList(sourceDfasdl, List("wp_posts_row_post_mime_type")),
                       createElementReferenceList(targetDfasdl,
                                                  List("drupal_field_data_body_row_body_format")),
                       List(
@@ -1554,8 +1540,7 @@ class WP2Drupal extends XmlActorSpec with BeforeAndAfterEach {
                     MappingTransformation(
                       createElementReferenceList(sourceDfasdl,
                                                  List("wp_comments_row_comment_author_ip")),
-                      createElementReferenceList(targetDfasdl,
-                                                 List("drupal_comment_row_hostname")),
+                      createElementReferenceList(targetDfasdl, List("drupal_comment_row_hostname")),
                       List(
                         TransformationDescription("com.wegtam.tensei.agent.transformers.Replace",
                                                   TransformerOptions(classOf[String],
@@ -1632,8 +1617,7 @@ class WP2Drupal extends XmlActorSpec with BeforeAndAfterEach {
                     MappingTransformation(
                       createElementReferenceList(sourceDfasdl,
                                                  List("wp_comments_row_comment_type")),
-                      createElementReferenceList(targetDfasdl,
-                                                 List("drupal_comment_row_language")),
+                      createElementReferenceList(targetDfasdl, List("drupal_comment_row_language")),
                       List(
                         TransformationDescription("com.wegtam.tensei.agent.transformers.Overwrite",
                                                   TransformerOptions(classOf[String],
@@ -1704,8 +1688,8 @@ class WP2Drupal extends XmlActorSpec with BeforeAndAfterEach {
               results.getString("name") should be("Mr WordPress")
               results.getString("mail") should be("")
               results.getString("homepage") should be("https://wordpress.org/")
-              results.getLong("created") should be(1436253751L)
-              results.getLong("changed") should be(1436253751L)
+              results.getLong("created") should be(1436260951L)
+              results.getLong("changed") should be(1436260951L)
               results.getString("subject") should be("")
               results.getString("language") should be("und")
               results.getString("thread") should be("01/")
@@ -1719,8 +1703,8 @@ class WP2Drupal extends XmlActorSpec with BeforeAndAfterEach {
               results.getString("name") should be("chris")
               results.getString("mail") should be("christian_tessnow@yahoo.de")
               results.getString("homepage") should be("")
-              results.getLong("created") should be(1436334249L)
-              results.getLong("changed") should be(1436334249L)
+              results.getLong("created") should be(1436341449L)
+              results.getLong("changed") should be(1436341449L)
               results.getString("subject") should be("")
               results.getString("language") should be("und")
               results.getString("thread") should be("01/")
@@ -2364,14 +2348,14 @@ class WP2Drupal extends XmlActorSpec with BeforeAndAfterEach {
               results.next() should be(right = true)
               results.getLong("nid") should be(1)
               results.getLong("cid") should be(8)
-              results.getLong("last_comment_timestamp") should be(1437982356L)
+              results.getLong("last_comment_timestamp") should be(1437989556L)
               results.getString("last_comment_name") should be("chris")
               results.getLong("last_comment_uid") should be(0)
               results.getLong("comment_count") should be(6)
               results.next() should be(right = true)
               results.getLong("nid") should be(9)
               results.getLong("cid") should be(3)
-              results.getLong("last_comment_timestamp") should be(1436341474L)
+              results.getLong("last_comment_timestamp") should be(1436348674L)
               results.getString("last_comment_name") should be("chris")
               results.getLong("last_comment_uid") should be(1)
               results.getLong("comment_count") should be(2)
@@ -2486,8 +2470,7 @@ class WP2Drupal extends XmlActorSpec with BeforeAndAfterEach {
                           "com.wegtam.tensei.agent.transformers.Replace",
                           TransformerOptions(classOf[String],
                                              classOf[String],
-                                             List(("search", "Uncategorized"),
-                                                  ("replace", "Tags")))
+                                             List(("search", "Uncategorized"), ("replace", "Tags")))
                         )
                       )
                     ),
@@ -2502,8 +2485,7 @@ class WP2Drupal extends XmlActorSpec with BeforeAndAfterEach {
                           "com.wegtam.tensei.agent.transformers.Replace",
                           TransformerOptions(classOf[String],
                                              classOf[String],
-                                             List(("search", "Uncategorized"),
-                                                  ("replace", "tags")))
+                                             List(("search", "Uncategorized"), ("replace", "tags")))
                         ),
                         TransformationDescription(
                           "com.wegtam.tensei.agent.transformers.LowerOrUpper",
@@ -3187,8 +3169,7 @@ class WP2Drupal extends XmlActorSpec with BeforeAndAfterEach {
                                                   TransformerOptions(classOf[String],
                                                                      classOf[String],
                                                                      List(("search", "post_tag"),
-                                                                          ("replace",
-                                                                           "article")))),
+                                                                          ("replace", "article")))),
                         TransformationDescription("com.wegtam.tensei.agent.transformers.Replace",
                                                   TransformerOptions(classOf[String],
                                                                      classOf[String],
@@ -3452,8 +3433,7 @@ class WP2Drupal extends XmlActorSpec with BeforeAndAfterEach {
                                                   TransformerOptions(classOf[String],
                                                                      classOf[String],
                                                                      List(("search", "post_tag"),
-                                                                          ("replace",
-                                                                           "article")))),
+                                                                          ("replace", "article")))),
                         TransformationDescription("com.wegtam.tensei.agent.transformers.Replace",
                                                   TransformerOptions(classOf[String],
                                                                      classOf[String],

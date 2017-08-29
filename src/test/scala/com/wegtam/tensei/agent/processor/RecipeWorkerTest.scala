@@ -77,8 +77,7 @@ class RecipeWorkerTest
           ),
           TransformationDescription(
             transformerClassName = "com.wegtam.tensei.agent.transformers.Concat",
-            options =
-              TransformerOptions(classOf[String], classOf[String], List(("separator", " ")))
+            options = TransformerOptions(classOf[String], classOf[String], List(("separator", " ")))
           )
         )
 
@@ -213,15 +212,13 @@ class RecipeWorkerTest
           atomicTransformations = List(
             AtomicTransformationDescription(
               element = ElementReference(dfasdl.id, "DATA-4"),
-              transformerClassName =
-                "com.wegtam.tensei.agent.transformers.atomic.TimestampAdjuster",
+              transformerClassName = "com.wegtam.tensei.agent.transformers.atomic.TimestampAdjuster",
               options =
                 TransformerOptions(classOf[String], classOf[String], List(("perform", "reduce")))
             ),
             AtomicTransformationDescription(
               element = ElementReference(dfasdl.id, "DATA-5"),
-              transformerClassName =
-                "com.wegtam.tensei.agent.transformers.atomic.TimestampAdjuster",
+              transformerClassName = "com.wegtam.tensei.agent.transformers.atomic.TimestampAdjuster",
               options =
                 TransformerOptions(classOf[String], classOf[String], List(("perform", "reduce")))
             )

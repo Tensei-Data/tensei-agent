@@ -17,8 +17,8 @@
 
 package com.wegtam.tensei.agent.transformers
 
-import akka.actor.ActorRef
-import akka.testkit.EventFilter
+import akka.actor.{ ActorRef, Terminated }
+import akka.testkit.{ EventFilter, TestProbe }
 import akka.util.ByteString
 import com.wegtam.tensei.adt.TransformerOptions
 import com.wegtam.tensei.agent.transformers.BaseTransformer.{
@@ -36,8 +36,14 @@ class DrupalVanCodeTransformerTest extends ActorSpec with BeforeAndAfterEach {
   override protected def beforeEach(): Unit =
     agent = createDummyAgent(Option("TEST"))
 
-  override protected def afterEach(): Unit =
-    EventFilter.debug(message = "stopped", source = agent.path.toString, occurrences = 1) intercept stopDummyAgent()
+  override protected def afterEach(): Unit = {
+    val p = TestProbe()
+    p.watch(agent)
+    stopDummyAgent()
+    val t = p.expectMsgType[Terminated]
+    t.actor shouldEqual agent
+    ()
+  }
 
   describe("Transformers") {
     describe("DrupalVanCodeTransformer") {

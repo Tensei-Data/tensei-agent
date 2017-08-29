@@ -135,7 +135,8 @@ class DatabaseParserTest extends XmlActorSpec with BeforeAndAfterEach {
           dataTree ! ReturnData("id", Option(0L))
           val row1column1 = expectMsgType[DataTreeNodeMessages.Content]
           row1column1.data.size should be(1)
-          row1column1.data.head.data should be(1)
+          row1column1.data.head.data shouldBe a[java.lang.Long]
+          row1column1.data.head.data should be(1L)
           dataTree ! ReturnData("id", Option(1L))
           val row2column1 = expectMsgType[DataTreeNodeMessages.Content]
           row2column1.data.size should be(1)
@@ -144,11 +145,11 @@ class DatabaseParserTest extends XmlActorSpec with BeforeAndAfterEach {
           dataTree ! ReturnData("birthday", Option(0L))
           val birthday1 = expectMsgType[DataTreeNodeMessages.Content]
           birthday1.data.size should be(1)
-          birthday1.data.head.data should be(java.sql.Date.valueOf("1963-01-01"))
+          birthday1.data.head.data should be(java.time.LocalDate.parse("1963-01-01"))
           dataTree ! ReturnData("birthday", Option(1L))
           val birthday2 = expectMsgType[DataTreeNodeMessages.Content]
           birthday2.data.size should be(1)
-          birthday2.data.head.data should be(java.sql.Date.valueOf("1968-01-01"))
+          birthday2.data.head.data should be(java.time.LocalDate.parse("1968-01-01"))
         }
       }
 
@@ -1720,7 +1721,7 @@ class DatabaseParserTest extends XmlActorSpec with BeforeAndAfterEach {
           dataTree ! ReturnData("birthday", Option(0L))
           val birthday1 = expectMsgType[DataTreeNodeMessages.Content]
           birthday1.data.size should be(1)
-          birthday1.data.head.data should be(java.sql.Date.valueOf("1963-01-01"))
+          birthday1.data.head.data should be(java.time.LocalDate.parse("1963-01-01"))
 
           sourceDatabaseConnectionSqlite.close()
         }

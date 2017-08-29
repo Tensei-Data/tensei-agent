@@ -29,8 +29,9 @@ import com.wegtam.tensei.agent.transformers.BaseTransformer.{
   StartTransformation,
   TransformerResponse
 }
+import org.scalatest.prop.PropertyChecks
 
-class DateConverterTest extends ActorSpec {
+class DateConverterTest extends ActorSpec with PropertyChecks {
   describe("Transformers") {
     describe("DateConverter") {
       describe("when given an empty list") {

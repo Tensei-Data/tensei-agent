@@ -203,12 +203,10 @@ class StringAnalyzerTest extends ActorSpec with XmlHelpers with GenericHelpers {
 
           analyzer ! GetStatisticResult
 
-          val response = new StatsResultString("MyElement",
-                                               BasicStatisticsResult(3,
-                                                                     Option(3),
-                                                                     Option(2.0),
-                                                                     Option(7.0),
-                                                                     Option(4.666666666666667)))
+          val response = new StatsResultString(
+            "MyElement",
+            BasicStatisticsResult(3, Option(3), Option(2.0), Option(7.0), Option(4.666666666666667))
+          )
 
           expectMsg(response)
         }

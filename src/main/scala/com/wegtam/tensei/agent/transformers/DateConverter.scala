@@ -17,7 +17,6 @@
 
 package com.wegtam.tensei.agent.transformers
 
-import java.sql.{ Date, Timestamp }
 import java.time.format.DateTimeFormatter
 import java.time._
 
@@ -31,7 +30,55 @@ import com.wegtam.tensei.agent.transformers.BaseTransformer.{
 import scala.util.Try
 
 object DateConverter {
-  def props: Props = Props(classOf[DateConverter])
+  def props: Props = Props(new DateConverter())
+
+  def convertDate(df: DateTimeFormatter)(tz: ZoneId)(data: Any): Any =
+    data match {
+      case b: ByteString =>
+        if (b.utf8String.matches("^\\d+$"))
+          java.sql.Timestamp.valueOf(
+            ZonedDateTime
+              .ofInstant(Instant.ofEpochMilli(b.utf8String.toLong), tz)
+              .toLocalDateTime
+          )
+        else
+          ZonedDateTime
+            .of(LocalDateTime.parse(b.utf8String, df), tz)
+            .toInstant
+            .toEpochMilli
+      case d: LocalDate =>
+        ZonedDateTime.of(d, LocalTime.MIN, tz)
+      case d: java.sql.Date =>
+        ZonedDateTime
+          .of(d.toLocalDate.getYear,
+              d.toLocalDate.getMonthValue,
+              d.toLocalDate.getDayOfMonth,
+              0,
+              0,
+              0,
+              0,
+              tz)
+          .toInstant
+          .toEpochMilli
+      case n: Long =>
+        java.sql.Timestamp
+          .valueOf(ZonedDateTime.ofInstant(Instant.ofEpochMilli(n), tz).toLocalDateTime)
+      case o: OffsetDateTime =>
+        o.toInstant.toEpochMilli
+      case s: String =>
+        if (s.matches("^\\d+$"))
+          java.sql.Timestamp.valueOf(
+            ZonedDateTime.ofInstant(Instant.ofEpochMilli(s.toLong), tz).toLocalDateTime
+          )
+        else
+          ZonedDateTime
+            .of(LocalDateTime.parse(s, df), tz)
+            .toInstant
+            .toEpochMilli
+      case t: java.sql.Timestamp =>
+        ZonedDateTime.ofInstant(t.toInstant, tz).toInstant.toEpochMilli
+      case otherType => otherType // Unsupported types are returned as is.
+    }
 }
 
 /**
@@ -54,7 +101,7 @@ class DateConverter extends BaseTransformer {
       val params = msg.options.params
 
       val timezone = Try(params.find(p => p._1 == "timezone") match {
-        case Some((n, t)) => ZoneId.of(t)
+        case Some((_, t)) => ZoneId.of(t)
         case None         => ZoneId.of("UTC")
       }) match {
         case scala.util.Failure(f) =>
@@ -64,51 +111,11 @@ class DateConverter extends BaseTransformer {
       }
       val format        = params.find(p => p._1 == "format").fold("yyyy-MM-dd HH:mm:ss")(_._2.trim)
       val dateFormatter = DateTimeFormatter.ofPattern(format)
-      val result = msg.src.map {
-        case b: ByteString =>
-          if (b.utf8String.matches("^\\d+$"))
-            java.sql.Timestamp.valueOf(
-              ZonedDateTime
-                .ofInstant(Instant.ofEpochMilli(b.utf8String.toLong), timezone)
-                .toLocalDateTime
-            )
-          else
-            ZonedDateTime
-              .of(LocalDateTime.parse(b.utf8String, dateFormatter), (timezone))
-              .toInstant
-              .toEpochMilli
-        case d: Date =>
-          ZonedDateTime
-            .of(d.toLocalDate.getYear,
-                d.toLocalDate.getMonthValue,
-                d.toLocalDate.getDayOfMonth,
-                0,
-                0,
-                0,
-                0,
-                timezone)
-            .toInstant
-            .toEpochMilli
-        case n: Long =>
-          java.sql.Timestamp
-            .valueOf(ZonedDateTime.ofInstant(Instant.ofEpochMilli(n), timezone).toLocalDateTime)
-        case s: String =>
-          if (s.matches("^\\d+$"))
-            java.sql.Timestamp.valueOf(
-              ZonedDateTime.ofInstant(Instant.ofEpochMilli(s.toLong), timezone).toLocalDateTime
-            )
-          else
-            ZonedDateTime
-              .of(LocalDateTime.parse(s, dateFormatter), (timezone))
-              .toInstant
-              .toEpochMilli
-        case t: Timestamp => ZonedDateTime.ofInstant(t.toInstant, timezone).toInstant.toEpochMilli
-        case otherType    => otherType // Unsupported types are returned as is.
-      }
+      val result        = msg.src.map(DateConverter.convertDate(dateFormatter)(timezone))
 
       log.debug("DateConverter finished.")
       log.debug("DateConverter transformed {} into {}.", msg.src, result)
       context become receive
-      sender() ! new TransformerResponse(result, classOf[String])
+      sender() ! TransformerResponse(result, classOf[String])
   }
 }

@@ -147,12 +147,10 @@ class ForeignKeysTest extends ActorSpec with BeforeAndAfterEach {
                   mappings = List(
                     MappingTransformation(
                       sources = List(
-                        ElementReference(dfasdlId = sourceDfasdl.id,
-                                         elementId = "employees_row_id")
+                        ElementReference(dfasdlId = sourceDfasdl.id, elementId = "employees_row_id")
                       ),
                       targets = List(
-                        ElementReference(dfasdlId = targetDfasdl.id,
-                                         elementId = "employees_row_id")
+                        ElementReference(dfasdlId = targetDfasdl.id, elementId = "employees_row_id")
                       )
                     ),
                     MappingTransformation(

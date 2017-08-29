@@ -687,9 +687,9 @@ trait DatabaseSchemaExtractor
     * @param d A DFASDL xml document.
     * @return The element for the table.
     */
-  def describeMariaDbTable(table: Table,
-                           statements: List[PreparedStatement],
-                           databaseName: String)(implicit d: Document): Option[Element] =
+  def describeMariaDbTable(table: Table, statements: List[PreparedStatement], databaseName: String)(
+      implicit d: Document
+  ): Option[Element] =
     // FIXME Instead of simply calling the MySQL function here we should use real code.
     describeMySqlTable(table, statements, databaseName)
 
@@ -1195,8 +1195,7 @@ trait DatabaseSchemaExtractor
   def isNumericMysql(column_type: String): Boolean =
     column_type match {
       case "bigint" | "bit" | "bool" | "boolean" | "dec" | "decimal" | "double" |
-          "double precision" | "float" | "int" | "integer" | "mediumint" | "smallint" |
-          "tinyint" =>
+          "double precision" | "float" | "int" | "integer" | "mediumint" | "smallint" | "tinyint" =>
         true
       case _ => false
     }

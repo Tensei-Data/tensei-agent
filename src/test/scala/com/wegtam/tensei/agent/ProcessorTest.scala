@@ -131,11 +131,11 @@ class ProcessorTest extends ActorSpec with XmlTestHelpers {
           val recipe  = new Recipe("COPY-COLUMNS", Recipe.MapOneToOne, List(mapping))
           val cookbook =
             Cookbook("COOKBOOK", List(sourceDfasdl), Option(targetDfasdl), List(recipe))
-          val source = ConnectionInformation(sourceData,
-                                             Option(DFASDLReference(cookbook.id, sourceDfasdl.id)))
+          val source =
+            ConnectionInformation(sourceData, Option(DFASDLReference(cookbook.id, sourceDfasdl.id)))
           val targetData = File.createTempFile("ProcessorTest", "tmpData").toURI
-          val target = ConnectionInformation(targetData,
-                                             Option(DFASDLReference(cookbook.id, targetDfasdl.id)))
+          val target =
+            ConnectionInformation(targetData, Option(DFASDLReference(cookbook.id, targetDfasdl.id)))
 
           val dataTree = TestActorRef(
             DataTreeDocument.props(sourceDfasdl, Option("ProcessorTest"), Set.empty[String])

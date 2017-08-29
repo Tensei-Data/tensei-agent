@@ -49,10 +49,10 @@ class LocaleDFASDLResolverTest extends ActorSpec with XmlTestHelpers {
           .mkString
       )
       val cookbook = Cookbook("COOKBOOK", List(dfasdl), None, List.empty[Recipe])
-      val source = ConnectionInformation(uri = fileUri,
-                                         dfasdlRef =
-                                           Option(DFASDLReference(cookbook.id, dfasdl.id)),
-                                         languageTag = Option(locale))
+      val source =
+        ConnectionInformation(uri = fileUri,
+                              dfasdlRef = Option(DFASDLReference(cookbook.id, dfasdl.id)),
+                              languageTag = Option(locale))
 
       // Convert
       val converter = TestActorRef(ExcelToCSVConverter.props(source, None))

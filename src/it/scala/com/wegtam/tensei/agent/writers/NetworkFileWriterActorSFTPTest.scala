@@ -1,15 +1,19 @@
 package com.wegtam.tensei.agent.writers
 
-import java.io.{File, FileNotFoundException}
-import java.nio.file.{Files, Path, Paths}
+import java.io.{ File, FileNotFoundException }
+import java.nio.file.{ Files, Path, Paths }
 import java.util
 
 import akka.testkit.TestFSMRef
 import com.wegtam.tensei.adt._
 import com.wegtam.tensei.agent.ActorSpec
 import com.wegtam.tensei.agent.helpers.NetworkFileWriterHelper
-import com.wegtam.tensei.agent.writers.BaseWriter.BaseWriterMessages.{AreYouReady, ReadyToWork, WriteData}
-import com.wegtam.tensei.agent.writers.BaseWriter.{BaseWriterMessages, WriterMessageMetaData}
+import com.wegtam.tensei.agent.writers.BaseWriter.BaseWriterMessages.{
+  AreYouReady,
+  ReadyToWork,
+  WriteData
+}
+import com.wegtam.tensei.agent.writers.BaseWriter.{ BaseWriterMessages, WriterMessageMetaData }
 import org.apache.sshd.common.NamedFactory
 import org.apache.sshd.common.file.virtualfs.VirtualFileSystemFactory
 import org.apache.sshd.server.auth.UserAuth
@@ -18,11 +22,11 @@ import org.apache.sshd.server.keyprovider.SimpleGeneratorHostKeyProvider
 import org.apache.sshd.server.scp.ScpCommandFactory
 import org.apache.sshd.server.session.ServerSession
 import org.apache.sshd.server.subsystem.sftp.SftpSubsystemFactory
-import org.apache.sshd.server.{Command, SshServer}
+import org.apache.sshd.server.{ Command, SshServer }
 
 import scala.concurrent.Await
 import scala.concurrent.duration.Duration
-import scala.util.{Failure, Success, Try}
+import scala.util.{ Failure, Success, Try }
 import scalaz.Scalaz._
 
 class NetworkFileWriterActorSFTPTest extends ActorSpec with NetworkFileWriterHelper {
@@ -49,7 +53,7 @@ class NetworkFileWriterActorSFTPTest extends ActorSpec with NetworkFileWriterHel
     sshd.setUserAuthFactories(userAuthFactories)
     sshd.setCommandFactory(new ScpCommandFactory())
     val namedFactoryList = new util.ArrayList[NamedFactory[Command]]()
-    val sf = new SftpSubsystemFactory.Builder().build()
+    val sf               = new SftpSubsystemFactory.Builder().build()
     namedFactoryList.add(sf)
     sshd.setSubsystemFactories(namedFactoryList)
 
@@ -94,7 +98,10 @@ class NetworkFileWriterActorSFTPTest extends ActorSpec with NetworkFileWriterHel
             .mkString
         )
         val cookbook = Cookbook("COOKBOOK", List(dfasdl), Option(dfasdl), List.empty[Recipe])
-        val con = new ConnectionInformation(uri, Option(DFASDLReference(cookbook.id, dfasdl.id)), Option(USERNAME), Option(PASSWORD))
+        val con = new ConnectionInformation(uri,
+                                            Option(DFASDLReference(cookbook.id, dfasdl.id)),
+                                            Option(USERNAME),
+                                            Option(PASSWORD))
 
         val writer =
           TestFSMRef(new NetworkFileWriterActor(con, dfasdl, Option("NetworkFileWriterTest")))
@@ -119,19 +126,42 @@ class NetworkFileWriterActorSFTPTest extends ActorSpec with NetworkFileWriterHel
               )
               .mkString
           )
-          val cookbook = Cookbook("COOKBOOK", List(dfasdl), Option(dfasdl), List(Recipe("foo", Recipe.MapOneToOne, List(MappingTransformation(List(ElementReference(dfasdl.id, "name")), List(ElementReference(dfasdl.id, "name")), List(), List(), None)))))
-          val con = new ConnectionInformation(uri, Option(DFASDLReference(cookbook.id, dfasdl.id)), Option(USERNAME), Option(PASSWORD))
+          val cookbook = Cookbook(
+            "COOKBOOK",
+            List(dfasdl),
+            Option(dfasdl),
+            List(
+              Recipe(
+                "foo",
+                Recipe.MapOneToOne,
+                List(
+                  MappingTransformation(List(ElementReference(dfasdl.id, "name")),
+                                        List(ElementReference(dfasdl.id, "name")),
+                                        List(),
+                                        List(),
+                                        None)
+                )
+              )
+            )
+          )
+          val con = new ConnectionInformation(uri,
+                                              Option(DFASDLReference(cookbook.id, dfasdl.id)),
+                                              Option(USERNAME),
+                                              Option(PASSWORD))
           val writer =
-            TestFSMRef(new NetworkFileWriterActor(con, dfasdl, Option("NetworkFileWriterActorSFTPTest")))
+            TestFSMRef(
+              new NetworkFileWriterActor(con, dfasdl, Option("NetworkFileWriterActorSFTPTest"))
+            )
           writer.stateName should be(BaseWriter.State.Initializing)
           writer ! BaseWriterMessages.InitializeTarget
           writer ! AreYouReady
           expectMsg(ReadyToWork)
 
-          contacts.zipWithIndex.foreach {case (contact, index) =>
-            writer ! WriteData(number = index.toLong,
-              data = contact,
-              metaData = Option(WriterMessageMetaData(id = "name")))
+          contacts.zipWithIndex.foreach {
+            case (contact, index) =>
+              writer ! WriteData(number = index.toLong,
+                                 data = contact,
+                                 metaData = Option(WriterMessageMetaData(id = "name")))
           }
 
           writer ! BaseWriterMessages.CloseWriter
@@ -147,13 +177,14 @@ class NetworkFileWriterActorSFTPTest extends ActorSpec with NetworkFileWriterHel
 
   def testFile(filepath: String, contacts: Seq[String]): Try[Boolean] = {
     Thread.sleep(1000)
-    serverDirectory.fold[Try[Boolean]](Failure(new FileNotFoundException("No server directory!"))) { dir =>
-      Try {
-        val fp = Paths.get(dir.toString, filepath)
-        val content = scala.io.Source.fromFile(fp.toFile).getLines().mkString("\n")
-        content should be(contacts.mkString("\n"))
-        true
-      }
+    serverDirectory.fold[Try[Boolean]](Failure(new FileNotFoundException("No server directory!"))) {
+      dir =>
+        Try {
+          val fp      = Paths.get(dir.toString, filepath)
+          val content = scala.io.Source.fromFile(fp.toFile).getLines().mkString("\n")
+          content should be(contacts.mkString("\n"))
+          true
+        }
     }
   }
 

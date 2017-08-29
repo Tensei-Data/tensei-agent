@@ -353,12 +353,8 @@ class ExtractorHelpersTest extends DefaultSpec with BeforeAndAfterAll with Extra
 
         describe("with max 3") {
           it("should return 3") {
-            val entries = List[String]("1.200,20",
-                                       "1,223",
-                                       "1.200,11",
-                                       "4.000,23",
-                                       "1.234.567,893",
-                                       "1.200,00")
+            val entries =
+              List[String]("1.200,20", "1,223", "1.200,11", "4.000,23", "1.234.567,893", "1.200,00")
             determinePrecisionLength(entries, ",") should be(Option(3))
           }
         }
