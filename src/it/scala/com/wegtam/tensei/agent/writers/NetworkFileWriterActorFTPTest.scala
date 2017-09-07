@@ -1,31 +1,38 @@
 package com.wegtam.tensei.agent.writers
 
 import java.io.FileNotFoundException
-import java.nio.file.{Files, Path, Paths}
+import java.nio.file.{ Files, Path, Paths }
 import java.util
 
 import akka.testkit.TestFSMRef
 import com.wegtam.tensei.adt._
 import com.wegtam.tensei.agent.ActorSpec
 import com.wegtam.tensei.agent.helpers.NetworkFileWriterHelper
-import com.wegtam.tensei.agent.writers.BaseWriter.BaseWriterMessages.{AreYouReady, ReadyToWork, WriteData}
-import com.wegtam.tensei.agent.writers.BaseWriter.{BaseWriterMessages, WriterMessageMetaData}
+import com.wegtam.tensei.agent.writers.BaseWriter.BaseWriterMessages.{
+  AreYouReady,
+  ReadyToWork,
+  WriteData
+}
+import com.wegtam.tensei.agent.writers.BaseWriter.{ BaseWriterMessages, WriterMessageMetaData }
 import org.apache.ftpserver.ftplet.Authority
 import org.apache.ftpserver.listener.ListenerFactory
-import org.apache.ftpserver.usermanager.impl.{BaseUser, WritePermission}
-import org.apache.ftpserver.usermanager.{PropertiesUserManagerFactory, SaltedPasswordEncryptor}
-import org.apache.ftpserver.{ConnectionConfigFactory, FtpServer, FtpServerFactory}
+import org.apache.ftpserver.usermanager.impl.{ BaseUser, WritePermission }
+import org.apache.ftpserver.usermanager.{ PropertiesUserManagerFactory, SaltedPasswordEncryptor }
+import org.apache.ftpserver.{ ConnectionConfigFactory, FtpServer, FtpServerFactory }
 import org.scalatest.BeforeAndAfterEach
 
 import scala.concurrent.Await
 import scala.concurrent.duration.Duration
-import scala.util.{Failure, Success, Try}
+import scala.util.{ Failure, Success, Try }
 import scalaz.Scalaz._
 
-class NetworkFileWriterActorFTPTest extends ActorSpec with BeforeAndAfterEach with NetworkFileWriterHelper {
+class NetworkFileWriterActorFTPTest
+    extends ActorSpec
+    with BeforeAndAfterEach
+    with NetworkFileWriterHelper {
 
-  val portNumber: Int = ActorSpec.findAvailablePort()
-  var server: Option[FtpServer] = None
+  val portNumber: Int               = ActorSpec.findAvailablePort()
+  var server: Option[FtpServer]     = None
   var serverDirectory: Option[Path] = None
 
   val contacts = Seq(
@@ -66,8 +73,8 @@ class NetworkFileWriterActorFTPTest extends ActorSpec with BeforeAndAfterEach wi
     auths.add(auth)
     user.setAuthorities(auths)
     user2.setAuthorities(auths)
-      userManager.save(user)
-      userManager.save(user2)
+    userManager.save(user)
+    userManager.save(user2)
     serverFactory.setUserManager(userManager)
 
     // replace the default listener
@@ -79,9 +86,8 @@ class NetworkFileWriterActorFTPTest extends ActorSpec with BeforeAndAfterEach wi
     serverDirectory = Option(dir)
   }
 
-  override def afterEach(): Unit = {
+  override def afterEach(): Unit =
     server.foreach(_.stop())
-  }
 
   override def afterAll(): Unit = {
     val _ = Await.result(system.terminate(), Duration.Inf)
@@ -94,7 +100,9 @@ class NetworkFileWriterActorFTPTest extends ActorSpec with BeforeAndAfterEach wi
       it("should answer after it has initialized") {
         val con = new ConnectionInformation(uri, None)
         val writer =
-          TestFSMRef(new NetworkFileWriterActor(con, DFASDL("TEST", ""), Option("NetworkFileWriterTest")))
+          TestFSMRef(
+            new NetworkFileWriterActor(con, DFASDL("TEST", ""), Option("NetworkFileWriterTest"))
+          )
         writer.stateName should be(BaseWriter.State.Initializing)
         writer ! AreYouReady
         writer ! BaseWriterMessages.InitializeTarget
@@ -116,7 +124,7 @@ class NetworkFileWriterActorFTPTest extends ActorSpec with BeforeAndAfterEach wi
               .mkString
           )
           val cookbook = Cookbook("COOKBOOK", List(dfasdl), Option(dfasdl), List.empty[Recipe])
-          val con = new ConnectionInformation(uri, Option(DFASDLReference(cookbook.id, dfasdl.id)))
+          val con      = new ConnectionInformation(uri, Option(DFASDLReference(cookbook.id, dfasdl.id)))
           val writer =
             TestFSMRef(new NetworkFileWriterActor(con, dfasdl, Option("NetworkFileWriterTest")))
           writer.stateName should be(BaseWriter.State.Initializing)
@@ -125,10 +133,11 @@ class NetworkFileWriterActorFTPTest extends ActorSpec with BeforeAndAfterEach wi
           val expectedMsg = ReadyToWork
           expectMsg(expectedMsg)
 
-          contacts.zipWithIndex.foreach {case (contact, index) =>
-            writer ! WriteData(number = index.toLong,
-              data = contact,
-              metaData = Option(WriterMessageMetaData(id = "name")))
+          contacts.zipWithIndex.foreach {
+            case (contact, index) =>
+              writer ! WriteData(number = index.toLong,
+                                 data = contact,
+                                 metaData = Option(WriterMessageMetaData(id = "name")))
           }
 
           writer ! BaseWriterMessages.CloseWriter
@@ -143,7 +152,6 @@ class NetworkFileWriterActorFTPTest extends ActorSpec with BeforeAndAfterEach wi
         }
       }
 
-
       describe("and simple user authentication") {
         it("should create the file") {
           val dfasdl = DFASDL(
@@ -157,7 +165,10 @@ class NetworkFileWriterActorFTPTest extends ActorSpec with BeforeAndAfterEach wi
               .mkString
           )
           val cookbook = Cookbook("COOKBOOK", List(dfasdl), Option(dfasdl), List.empty[Recipe])
-          val con = new ConnectionInformation(uri, Option(DFASDLReference(cookbook.id, dfasdl.id)), Option("test"), Option("test"))
+          val con = new ConnectionInformation(uri,
+                                              Option(DFASDLReference(cookbook.id, dfasdl.id)),
+                                              Option("test"),
+                                              Option("test"))
           val writer =
             TestFSMRef(new NetworkFileWriterActor(con, dfasdl, Option("NetworkFileWriterTest")))
           writer.stateName should be(BaseWriter.State.Initializing)
@@ -166,10 +177,11 @@ class NetworkFileWriterActorFTPTest extends ActorSpec with BeforeAndAfterEach wi
           val expectedMsg = ReadyToWork
           expectMsg(expectedMsg)
 
-          contacts.zipWithIndex.foreach {case (contact, index) =>
-            writer ! WriteData(number = index.toLong,
-              data = contact,
-              metaData = Option(WriterMessageMetaData(id = "name")))
+          contacts.zipWithIndex.foreach {
+            case (contact, index) =>
+              writer ! WriteData(number = index.toLong,
+                                 data = contact,
+                                 metaData = Option(WriterMessageMetaData(id = "name")))
           }
 
           writer ! BaseWriterMessages.CloseWriter
@@ -188,13 +200,14 @@ class NetworkFileWriterActorFTPTest extends ActorSpec with BeforeAndAfterEach wi
 
   def testFile(filepath: String, contacts: Seq[String]): Try[Boolean] = {
     Thread.sleep(5000)
-    serverDirectory.fold[Try[Boolean]](Failure(new FileNotFoundException("No server directory!"))) { dir =>
-      Try {
-        val fp = Paths.get(dir.toAbsolutePath.toString, filepath)
-        val content = scala.io.Source.fromFile(fp.toFile, "UTF-8").getLines().mkString("\n")
-        content should be(contacts.mkString("\n"))
-        true
-      }
+    serverDirectory.fold[Try[Boolean]](Failure(new FileNotFoundException("No server directory!"))) {
+      dir =>
+        Try {
+          val fp      = Paths.get(dir.toAbsolutePath.toString, filepath)
+          val content = scala.io.Source.fromFile(fp.toFile, "UTF-8").getLines().mkString("\n")
+          content should be(contacts.mkString("\n"))
+          true
+        }
     }
   }
 

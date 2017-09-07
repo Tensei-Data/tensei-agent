@@ -17,7 +17,8 @@
 
 package com.wegtam.tensei.agent.parsers
 
-import akka.testkit.{ EventFilter, TestActorRef }
+import akka.actor.Terminated
+import akka.testkit.{ TestActorRef, TestProbe }
 import akka.util.ByteString
 import com.wegtam.tensei.adt._
 import com.wegtam.tensei.agent.DataTreeDocument.DataTreeDocumentMessages
@@ -58,9 +59,11 @@ class FileParserTest extends ActorSpec with XmlTestHelpers {
         val fileParser =
           TestActorRef(FileParser.props(source, cookbook, dataTree, Option("FileParserTest")))
 
-        EventFilter.debug(message = "stopped", occurrences = 1) intercept {
-          fileParser ! BaseParserMessages.Stop
-        }
+        val p = TestProbe()
+        p.watch(fileParser)
+        fileParser ! BaseParserMessages.Stop
+        val t = p.expectMsgType[Terminated]
+        t.actor shouldEqual fileParser
       }
 
       it("should parse upon request") {
@@ -144,7 +147,8 @@ class FileParserTest extends ActorSpec with XmlTestHelpers {
         dataTree ! DataTreeDocumentMessages.ReturnData("birthday")
         val birthday1 = expectMsgType[DataTreeNodeMessages.Content]
         birthday1.data.size should be(1)
-        birthday1.data.head.data should be(java.sql.Timestamp.valueOf("1970-01-01 00:00:00.0"))
+        birthday1.data.head.data shouldBe a[java.time.OffsetDateTime]
+        birthday1.data.head.data should be(java.time.OffsetDateTime.parse("0000-01-01T00:00Z"))
 
         dataTree ! DataTreeDocumentMessages.ReturnData("lastname", Option(4L))
         val cell = expectMsgType[DataTreeNodeMessages.Content]
@@ -154,7 +158,10 @@ class FileParserTest extends ActorSpec with XmlTestHelpers {
         dataTree ! DataTreeDocumentMessages.ReturnData("birthday", Option(4L))
         val birthday2 = expectMsgType[DataTreeNodeMessages.Content]
         birthday2.data.size should be(1)
-        birthday2.data.head.data should be(java.sql.Timestamp.valueOf("1646-07-01 15:15:15.0"))
+        birthday2.data.head.data shouldBe a[java.time.OffsetDateTime]
+        birthday2.data.head.data should be(
+          java.time.OffsetDateTime.parse("1646-07-01T15:15:15.0+01:00")
+        )
       }
     }
 
@@ -204,7 +211,8 @@ class FileParserTest extends ActorSpec with XmlTestHelpers {
         dataTree ! DataTreeDocumentMessages.ReturnData("birthday")
         val birthday1 = expectMsgType[DataTreeNodeMessages.Content]
         birthday1.data.size should be(1)
-        birthday1.data.head.data should be(java.sql.Date.valueOf("1970-01-01"))
+        birthday1.data.head.data shouldBe a[java.time.LocalDate]
+        birthday1.data.head.data should be(java.time.LocalDate.parse("0000-01-01"))
 
         dataTree ! DataTreeDocumentMessages.ReturnData("lastname", Option(4L))
         val cell = expectMsgType[DataTreeNodeMessages.Content]
@@ -214,7 +222,8 @@ class FileParserTest extends ActorSpec with XmlTestHelpers {
         dataTree ! DataTreeDocumentMessages.ReturnData("birthday", Option(4L))
         val birthday2 = expectMsgType[DataTreeNodeMessages.Content]
         birthday2.data.size should be(1)
-        birthday2.data.head.data should be(java.sql.Date.valueOf("1646-07-01"))
+        birthday2.data.head.data shouldBe a[java.time.LocalDate]
+        birthday2.data.head.data should be(java.time.LocalDate.parse("1646-07-01"))
       }
     }
 

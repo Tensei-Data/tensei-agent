@@ -293,8 +293,7 @@ trait FileParserFunctions {
               if (m.get.groupCount > 0)
                 Option(m.get.group(1))
               else {
-                log.warning("No data could be extracted using element format '{}'!",
-                            options.format)
+                log.warning("No data could be extracted using element format '{}'!", options.format)
                 None
               } else {
               log.warning("Format '{}' did not match for parsed element!", options.format)

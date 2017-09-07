@@ -363,9 +363,10 @@ class TenseiAgent(id: String, clusterClient: ActorSelection)
       // start the parser
       val agentStartMessage =
         new AgentStartTransformationMessage(List(msg.source), msg.source, msg.cookbook)
-      newStateData.parser.get ! ParserMessages.StartParsing(stm = agentStartMessage,
-                                                            dataTreeDocs =
-                                                              newStateData.dataTreeDocs)
+      newStateData.parser.get ! ParserMessages.StartParsing(
+        stm = agentStartMessage,
+        dataTreeDocs = newStateData.dataTreeDocs
+      )
       goto(TenseiAgentState.Working) using newStateData.copy(currentEmployer = Option(sender()))
   }
 
@@ -388,8 +389,7 @@ class TenseiAgent(id: String, clusterClient: ActorSelection)
     case Event(GlobalMessages.AbortTransformation(ref), data) =>
       log.info("Got abort transformation message from {}, terminating actors!", sender().path)
       terminateWorkers(data)
-      sender() ! GlobalMessages.AbortTransformationResponse(self,
-                                                            Option("Transformation aborted!"))
+      sender() ! GlobalMessages.AbortTransformationResponse(self, Option("Transformation aborted!"))
       goto(TenseiAgentState.Aborting) using data
     case Event(msg: TransformationError, data) =>
       log.debug("Send TransformationError message to caller")
@@ -406,8 +406,7 @@ class TenseiAgent(id: String, clusterClient: ActorSelection)
     case Event(GlobalMessages.AbortTransformation(ref), data) =>
       log.info("Got abort transformation message from {}, terminating actors!", sender().path)
       terminateWorkers(data)
-      sender() ! GlobalMessages.AbortTransformationResponse(self,
-                                                            Option("Transformation aborted!"))
+      sender() ! GlobalMessages.AbortTransformationResponse(self, Option("Transformation aborted!"))
       goto(TenseiAgentState.Aborting) using data
     case Event(ParserCompletedStatus(messages, dataTreeDocs), data) =>
       log.debug("Parser completed, starting processor.")

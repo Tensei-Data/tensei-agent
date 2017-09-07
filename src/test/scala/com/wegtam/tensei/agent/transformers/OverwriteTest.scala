@@ -252,8 +252,8 @@ class OverwriteTest extends ActorSpec {
                                         new TransformerOptions(classOf[String],
                                                                classOf[String],
                                                                params))
-            val expectedResponse = TransformerResponse(List(java.sql.Date.valueOf("1970-01-01")),
-                                                       classOf[java.sql.Date])
+            val expectedResponse =
+              TransformerResponse(List(java.sql.Date.valueOf("1970-01-01")), classOf[java.sql.Date])
             expectMsg(expectedResponse)
           }
         }
@@ -270,8 +270,8 @@ class OverwriteTest extends ActorSpec {
                                         new TransformerOptions(classOf[String],
                                                                classOf[String],
                                                                params))
-            val expectedResponse = TransformerResponse(List(java.sql.Date.valueOf("2015-03-13")),
-                                                       classOf[java.sql.Date])
+            val expectedResponse =
+              TransformerResponse(List(java.sql.Date.valueOf("2015-03-13")), classOf[java.sql.Date])
             expectMsg(expectedResponse)
           }
         }

@@ -196,9 +196,7 @@ abstract class XmlActorSpec
     val gramps    = getParentSequence(doc.getElementById(parentSequenceId))
 
     val labels = xpath
-      .evaluate(s"""//*[@class="id:$parentSequenceId"]""",
-                expectedDataTree,
-                XPathConstants.NODESET)
+      .evaluate(s"""//*[@class="id:$parentSequenceId"]""", expectedDataTree, XPathConstants.NODESET)
       .asInstanceOf[NodeList]
     var parentSequenceRows = 0
     while (parentSequenceRows < labels.getLength) {
@@ -518,7 +516,8 @@ abstract class XmlActorSpec
     * @param actualNodes List of actual nodes.
     * @return Returns `true` if there are no differences.
     */
-  def compareXmlStructureNodes(expectedNodes: List[Element], actualNodes: List[Element]): Boolean = {
+  def compareXmlStructureNodes(expectedNodes: List[Element],
+                               actualNodes: List[Element]): Boolean = {
     (expectedNodes, actualNodes).zipped.map {
       case (e, a: Element) =>
         withClue(s"Comparing ${xmlToPrettyString(e)} to ${xmlToPrettyString(a)}: ") {

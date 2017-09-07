@@ -33,9 +33,8 @@ class SortTransformationMappingsFunctionsTest
 
       describe("given an empty haystack") {
         it("should return -1") {
-          val elements = List(ElementReference("T", "A"),
-                              ElementReference("T", "B"),
-                              ElementReference("T", "C"))
+          val elements =
+            List(ElementReference("T", "A"), ElementReference("T", "B"), ElementReference("T", "C"))
           findFirstId(Vector.empty[ElementReference], elements) should be(-1L)
         }
       }
@@ -110,9 +109,7 @@ class SortTransformationMappingsFunctionsTest
             List(ElementReference("S", "1"),
                  ElementReference("S", "2"),
                  ElementReference("S", "3")),
-            List(ElementReference("T", "B"),
-                 ElementReference("T", "C"),
-                 ElementReference("T", "A"))
+            List(ElementReference("T", "B"), ElementReference("T", "C"), ElementReference("T", "A"))
           )
           val sortedElements = Vector(ElementReference("T", "A"),
                                       ElementReference("T", "B"),
@@ -121,9 +118,7 @@ class SortTransformationMappingsFunctionsTest
             List(ElementReference("S", "1"),
                  ElementReference("S", "2"),
                  ElementReference("S", "3")),
-            List(ElementReference("T", "A"),
-                 ElementReference("T", "B"),
-                 ElementReference("T", "C"))
+            List(ElementReference("T", "A"), ElementReference("T", "B"), ElementReference("T", "C"))
           )
           sortAllToAllMappingPairs(m)(sortedElements) should be(expectedM)
         }
@@ -157,9 +152,7 @@ class SortTransformationMappingsFunctionsTest
             List(ElementReference("S", "1"),
                  ElementReference("S", "2"),
                  ElementReference("S", "3")),
-            List(ElementReference("T", "B"),
-                 ElementReference("T", "C"),
-                 ElementReference("T", "A"))
+            List(ElementReference("T", "B"), ElementReference("T", "C"), ElementReference("T", "A"))
           )
           val sortedElements = Vector(ElementReference("T", "A"),
                                       ElementReference("T", "B"),
@@ -168,9 +161,7 @@ class SortTransformationMappingsFunctionsTest
             List(ElementReference("S", "3"),
                  ElementReference("S", "1"),
                  ElementReference("S", "2")),
-            List(ElementReference("T", "A"),
-                 ElementReference("T", "B"),
-                 ElementReference("T", "C"))
+            List(ElementReference("T", "A"), ElementReference("T", "B"), ElementReference("T", "C"))
           )
           sortOneToOneMappingPairs(m)(sortedElements) should be(expectedM)
         }

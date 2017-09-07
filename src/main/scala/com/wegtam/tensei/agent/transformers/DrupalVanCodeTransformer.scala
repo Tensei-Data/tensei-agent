@@ -80,7 +80,9 @@ class DrupalVanCodeTransformer extends BaseTransformer {
       }
   }
 
-  private def initialiseDrupalVanCodeGenerator(id: String, article: String, parent: String): Unit = {
+  private def initialiseDrupalVanCodeGenerator(id: String,
+                                               article: String,
+                                               parent: String): Unit = {
     val actor =
       if (self.path.toString.contains("/singleton/"))
         context.actorSelection(

@@ -20,7 +20,8 @@ package com.wegtam.tensei.agent.parsers
 import java.io.StringReader
 import javax.xml.xpath.{ XPathConstants, XPathFactory }
 
-import akka.testkit.{ EventFilter, TestActorRef }
+import akka.actor.Terminated
+import akka.testkit.{ TestActorRef, TestProbe }
 import akka.util.ByteString
 import com.wegtam.tensei.adt._
 import com.wegtam.tensei.agent.DataTreeDocument.DataTreeDocumentMessages
@@ -79,9 +80,11 @@ class XmlFileParserTest extends XmlActorSpec {
       val xmlFileParser =
         TestActorRef(XmlFileParser.props(source, cookbook, dataTree, agentRunIdentifier))
 
-      EventFilter.debug(message = "stopped", occurrences = 1) intercept {
-        xmlFileParser ! BaseParserMessages.Stop
-      }
+      val p = TestProbe()
+      p.watch(xmlFileParser)
+      xmlFileParser ! BaseParserMessages.Stop
+      val t = p.expectMsgType[Terminated]
+      t.actor shouldEqual xmlFileParser
     }
 
     it("should parse upon request") {
@@ -203,19 +206,19 @@ class XmlFileParserTest extends XmlActorSpec {
           "name-first" -> ByteString("Albert"),
           "name-last"  -> ByteString("Einstein"),
           "email"      -> ByteString("albert.einstein@example.com"),
-          "birthday"   -> java.sql.Date.valueOf("1879-03-14")
+          "birthday"   -> java.time.LocalDate.parse("1879-03-14")
         ),
         1L -> Map(
           "name-first" -> None,
           "name-last"  -> None,
           "email"      -> ByteString("br@example.com"),
-          "birthday"   -> java.sql.Date.valueOf("1826-09-17")
+          "birthday"   -> java.time.LocalDate.parse("1826-09-17")
         ),
         2L -> Map(
           "name-first" -> ByteString("Johann Carl Friedrich"),
           "name-last"  -> None,
           "email"      -> ByteString("gauss@example.com"),
-          "birthday"   -> java.sql.Date.valueOf("1777-04-30")
+          "birthday"   -> java.time.LocalDate.parse("1777-04-30")
         ),
         3L -> Map(
           "name-first" -> ByteString("Johann Benedict"),
@@ -227,7 +230,7 @@ class XmlFileParserTest extends XmlActorSpec {
           "name-first" -> None,
           "name-last"  -> ByteString("Leibnitz"),
           "email"      -> None,
-          "birthday"   -> java.sql.Date.valueOf("1646-07-01")
+          "birthday"   -> java.time.LocalDate.parse("1646-07-01")
         )
       )
 
@@ -413,7 +416,8 @@ class XmlFileParserTest extends XmlActorSpec {
         )
         val column1 = expectMsgType[DataTreeNodeMessages.Content]
         column1.data.size should be > 0
-        column1.data(dataIndex).data should be(1914)
+        column1.data(dataIndex).data shouldBe a[java.lang.Long]
+        column1.data(dataIndex).data should be(1914L)
 
         dataTree ! DataTreeDocumentMessages.ReturnHashedData(
           "name",
@@ -847,9 +851,7 @@ class XmlFileParserTest extends XmlActorSpec {
 
         Map(
           "kinder-alter-age" -> (("14",
-                                  List(("kinder", 0L),
-                                       ("reservation", 0L),
-                                       ("reservations", 1L)))),
+                                  List(("kinder", 0L), ("reservation", 0L), ("reservations", 1L)))),
           "kinder-alter-anzahl" -> (("1",
                                      List(("kinder", 0L),
                                           ("reservation", 0L),

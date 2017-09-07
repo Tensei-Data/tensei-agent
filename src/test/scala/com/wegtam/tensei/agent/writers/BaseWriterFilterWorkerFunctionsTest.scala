@@ -23,9 +23,7 @@ import com.wegtam.tensei.agent.writers.BaseWriter.BaseWriterMessages
 
 import scala.collection.SortedSet
 
-class BaseWriterFilterWorkerFunctionsTest
-    extends DefaultSpec
-    with BaseWriterFilterWorkerFunctions {
+class BaseWriterFilterWorkerFunctionsTest extends DefaultSpec with BaseWriterFilterWorkerFunctions {
 
   describe("BaseWriterFilterWorkerFunctions") {
 
@@ -378,10 +376,9 @@ class BaseWriterFilterWorkerFunctionsTest
                     List("A", "B", "C"),
                     ElementReference(dfasdlId = "TEST", elementId = "B"),
                     "egal3") should be(Option(2))
-      findRowNumber(s,
-                    List("A", "B", "C"),
-                    ElementReference(dfasdlId = "TEST", elementId = "C"),
-                    1) should be(Option(0))
+      findRowNumber(s, List("A", "B", "C"), ElementReference(dfasdlId = "TEST", elementId = "C"), 1) should be(
+        Option(0)
+      )
       findRowNumber(s,
                     List("A", "B", "C"),
                     ElementReference(dfasdlId = "TEST", elementId = "C"),

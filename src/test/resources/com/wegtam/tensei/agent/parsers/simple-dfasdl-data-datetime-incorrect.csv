@@ -3,4 +3,4 @@ Albert,Einstein,albert.einstein@example.com,0000-00-00 00:00:00
 Bernhard,Riemann,br@example.com,1826-09-17 03:12:22
 Johann Carl Friedrich,Gauß,gauss@example.com,1777-04-30 04:25:00
 Johann Benedict,Listing,bl@example.com,1808-07-25 00:00:00
-Gottfried Wilhelm,Leibnitz,leibnitz@example.com,1646-07-01 15:15:15
+Gottfried Wilhelm,Leibnitz,leibnitz@example.com,1646-07-01T15:15:15+01:00

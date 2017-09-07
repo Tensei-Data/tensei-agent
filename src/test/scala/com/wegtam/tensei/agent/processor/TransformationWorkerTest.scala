@@ -160,8 +160,7 @@ class TransformationWorkerTest extends ActorSpec with XmlTestHelpers {
           ),
           TransformationDescription(
             transformerClassName = "com.wegtam.tensei.agent.transformers.atomic.TimestampAdjuster",
-            options =
-              TransformerOptions(classOf[String], classOf[String], List(("perform", "add")))
+            options = TransformerOptions(classOf[String], classOf[String], List(("perform", "add")))
           ),
           TransformationDescription(
             transformerClassName = "com.wegtam.tensei.agent.transformers.atomic.BoxDataIntoList",
@@ -205,8 +204,7 @@ class TransformationWorkerTest extends ActorSpec with XmlTestHelpers {
           ),
           TransformationDescription(
             transformerClassName = "com.wegtam.tensei.agent.transformers.TimestampCalibrate",
-            options =
-              TransformerOptions(classOf[String], classOf[String], List(("perform", "add")))
+            options = TransformerOptions(classOf[String], classOf[String], List(("perform", "add")))
           )
         )
         actor ! TransformationWorkerMessages.Start(data,

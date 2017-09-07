@@ -352,9 +352,10 @@ class DatabaseWriterActorTest extends ActorSpec with BeforeAndAfterEach {
                   .mkString
                 val dfasdl = new DFASDL("SIMPLE-01", xml)
                 val target =
-                  new ConnectionInformation(uri = new URI(connection.getMetaData.getURL),
-                                            dfasdlRef =
-                                              Option(DFASDLReference("TEST", "SIMPLE-01")))
+                  new ConnectionInformation(
+                    uri = new URI(connection.getMetaData.getURL),
+                    dfasdlRef = Option(DFASDLReference("TEST", "SIMPLE-01"))
+                  )
 
                 val databaseWriter = initializeWriter(target, dfasdl)
                 val msg = new WriteBatchData(
@@ -455,9 +456,10 @@ class DatabaseWriterActorTest extends ActorSpec with BeforeAndAfterEach {
                   .mkString
                 val dfasdl = new DFASDL("SIMPLE-01", xml)
                 val target =
-                  new ConnectionInformation(uri = new URI(connection.getMetaData.getURL),
-                                            dfasdlRef =
-                                              Option(DFASDLReference("TEST", "SIMPLE-01")))
+                  new ConnectionInformation(
+                    uri = new URI(connection.getMetaData.getURL),
+                    dfasdlRef = Option(DFASDLReference("TEST", "SIMPLE-01"))
+                  )
 
                 val databaseWriter = initializeWriter(target, dfasdl)
 
@@ -491,10 +493,7 @@ class DatabaseWriterActorTest extends ActorSpec with BeforeAndAfterEach {
                                   List(),
                                   Option(new WriterMessageMetaData("salary"))),
                     new WriteData(6, 3, List(), Option(new WriterMessageMetaData("id"))),
-                    new WriteData(7,
-                                  "Dr. Evil",
-                                  List(),
-                                  Option(new WriterMessageMetaData("name"))),
+                    new WriteData(7, "Dr. Evil", List(), Option(new WriterMessageMetaData("name"))),
                     new WriteData(8,
                                   "Beware of Austin Powers!",
                                   List(),
@@ -619,10 +618,7 @@ class DatabaseWriterActorTest extends ActorSpec with BeforeAndAfterEach {
                                 List(),
                                 Option(new WriterMessageMetaData("salary"))),
                   new WriteData(11, 1, List(), Option(new WriterMessageMetaData("id2"))),
-                  new WriteData(12,
-                                "Dr. Evil",
-                                List(),
-                                Option(new WriterMessageMetaData("name2"))),
+                  new WriteData(12, "Dr. Evil", List(), Option(new WriterMessageMetaData("name2"))),
                   new WriteData(13,
                                 "Beware of Austin Powers!",
                                 List(),
@@ -653,10 +649,7 @@ class DatabaseWriterActorTest extends ActorSpec with BeforeAndAfterEach {
                                 List(),
                                 Option(new WriterMessageMetaData("salary2"))),
                   new WriteData(21, 3, List(), Option(new WriterMessageMetaData("id2"))),
-                  new WriteData(22,
-                                "Dr. Evil",
-                                List(),
-                                Option(new WriterMessageMetaData("name2"))),
+                  new WriteData(22, "Dr. Evil", List(), Option(new WriterMessageMetaData("name2"))),
                   new WriteData(23,
                                 "Beware of Austin Powers!",
                                 List(),
@@ -765,10 +758,7 @@ class DatabaseWriterActorTest extends ActorSpec with BeforeAndAfterEach {
                                 List(),
                                 Option(new WriterMessageMetaData("description"))),
                   new WriteData(11, 1, List(), Option(new WriterMessageMetaData("id2"))),
-                  new WriteData(12,
-                                "Dr. Evil",
-                                List(),
-                                Option(new WriterMessageMetaData("name2"))),
+                  new WriteData(12, "Dr. Evil", List(), Option(new WriterMessageMetaData("name2"))),
                   new WriteData(13,
                                 "Beware of Austin Powers!",
                                 List(),
@@ -814,10 +804,7 @@ class DatabaseWriterActorTest extends ActorSpec with BeforeAndAfterEach {
                                 new BigDecimal("1500.00"),
                                 List(),
                                 Option(new WriterMessageMetaData("salary2"))),
-                  new WriteData(22,
-                                "Dr. Evil",
-                                List(),
-                                Option(new WriterMessageMetaData("name2"))),
+                  new WriteData(22, "Dr. Evil", List(), Option(new WriterMessageMetaData("name2"))),
                   new WriteData(25,
                                 new BigDecimal("1500000.00"),
                                 List(),
@@ -1018,10 +1005,7 @@ class DatabaseWriterActorTest extends ActorSpec with BeforeAndAfterEach {
           val msg = new WriteBatchData(
             batch = List(
               new WriteData(1, None, List(), Option(new WriterMessageMetaData("id"))),
-              new WriteData(2,
-                            "Eva Mustermann",
-                            List(),
-                            Option(new WriterMessageMetaData("name"))),
+              new WriteData(2, "Eva Mustermann", List(), Option(new WriterMessageMetaData("name"))),
               new WriteData(3,
                             "Some fancy text...",
                             List(),
@@ -1125,10 +1109,7 @@ class DatabaseWriterActorTest extends ActorSpec with BeforeAndAfterEach {
           val msg = new WriteBatchData(
             batch = List(
               new WriteData(1, 2L, List(), Option(new WriterMessageMetaData("id"))),
-              new WriteData(2,
-                            "Eva Mustermann",
-                            List(),
-                            Option(new WriterMessageMetaData("name"))),
+              new WriteData(2, "Eva Mustermann", List(), Option(new WriterMessageMetaData("name"))),
               new WriteData(3, None, List(), Option(new WriterMessageMetaData("description"))),
               new WriteData(4,
                             java.sql.Date.valueOf("1968-01-01"),

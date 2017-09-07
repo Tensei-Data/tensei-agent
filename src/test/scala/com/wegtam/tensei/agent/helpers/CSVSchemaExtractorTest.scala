@@ -365,11 +365,10 @@ class CSVSchemaExtractorTest
             val sourceFilePath = getClass.getResource(csvFile).toURI
             val file           = new File(sourceFilePath)
 
-            val dfasdl = extractFromCSV(file,
-                                        ExtractSchemaOptions.createCsvOptions(hasHeaderLine = true,
-                                                                              "\\t",
-                                                                              ""),
-                                        extractorMetaData)
+            val dfasdl =
+              extractFromCSV(file,
+                             ExtractSchemaOptions.createCsvOptions(hasHeaderLine = true, "\\t", ""),
+                             extractorMetaData)
 
             val in: InputStream = getClass.getResourceAsStream(
               "/com/wegtam/tensei/agent/helpers/csvSchemaExtractor/complex-with-tab.xml"
@@ -516,12 +515,10 @@ class CSVSchemaExtractorTest
               val sourceFilePath = getClass.getResource(csvFile).toURI
               val file           = new File(sourceFilePath)
 
-              val dfasdl = extractFromCSV(file,
-                                          ExtractSchemaOptions.createCsvOptions(hasHeaderLine =
-                                                                                  false,
-                                                                                "",
-                                                                                ""),
-                                          extractorMetaData)
+              val dfasdl =
+                extractFromCSV(file,
+                               ExtractSchemaOptions.createCsvOptions(hasHeaderLine = false, "", ""),
+                               extractorMetaData)
 
               val in: InputStream = getClass.getResourceAsStream(
                 "/com/wegtam/tensei/agent/helpers/csvSchemaExtractor/simple-with-timestamp-iso.xml"
@@ -541,12 +538,10 @@ class CSVSchemaExtractorTest
               val sourceFilePath = getClass.getResource(csvFile).toURI
               val file           = new File(sourceFilePath)
 
-              val dfasdl = extractFromCSV(file,
-                                          ExtractSchemaOptions.createCsvOptions(hasHeaderLine =
-                                                                                  false,
-                                                                                "",
-                                                                                ""),
-                                          extractorMetaData)
+              val dfasdl =
+                extractFromCSV(file,
+                               ExtractSchemaOptions.createCsvOptions(hasHeaderLine = false, "", ""),
+                               extractorMetaData)
 
               val in: InputStream = getClass.getResourceAsStream(
                 "/com/wegtam/tensei/agent/helpers/csvSchemaExtractor/simple-with-timestamp-noiso.xml"

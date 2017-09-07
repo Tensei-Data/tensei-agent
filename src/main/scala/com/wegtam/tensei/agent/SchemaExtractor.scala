@@ -20,12 +20,7 @@ package com.wegtam.tensei.agent
 import java.util.Locale
 
 import akka.actor.{ Actor, ActorLogging, Props, SupervisorStrategy }
-import com.wegtam.tensei.adt.{
-  ConnectionInformation,
-  DFASDL,
-  ExtractSchemaOptions,
-  GlobalMessages
-}
+import com.wegtam.tensei.adt.{ ConnectionInformation, DFASDL, ExtractSchemaOptions, GlobalMessages }
 import com.wegtam.tensei.agent.SchemaExtractor.{ ExtractorMetaData, FormatsFormattime }
 import com.wegtam.tensei.agent.adt._
 import com.wegtam.tensei.agent.helpers._

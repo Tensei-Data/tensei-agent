@@ -23,10 +23,8 @@ lazy val tenseiAgent = project
       databaseDriverLibrary.h2,
       databaseDriverLibrary.hsqldb,
       databaseDriverLibrary.mariadb,
-      databaseDriverLibrary.oracle,
       databaseDriverLibrary.postgresql,
       databaseDriverLibrary.sqlite,
-      databaseDriverLibrary.sqlserver,
       library.aaltoXml,
       library.akkaCluster,
       library.akkaClusterMetrics,
@@ -44,7 +42,6 @@ lazy val tenseiAgent = project
       library.logbackClassic,
       library.poi,
       library.poiExamples,
-      library.sigar,
       library.tenseiApi,
       library.zeroAllocHash,
       library.akkaTestkit               % IntegrationTest,
@@ -102,8 +99,6 @@ lazy val tenseiAgent = project
     publishArtifact in (Compile, packageDoc) := false,
     publishArtifact in packageDoc := false,
     sources in (Compile, doc) := Seq.empty,
-    // Exclude jars from unmanaged dependencies folder.
-    mappings in Universal := (mappings in Universal).value.filter { case(jar, _) => jar.getParentFile != unmanagedBase.value },
     // Package our configuration files into an extra directory.
     // FIXME There has to be a sane way to do this!
     mappings in Universal += new File(targetDirectory.value + "/logback.xml") -> "conf/logback.xml",
@@ -157,7 +152,8 @@ lazy val library =
       val c3p0            = "0.9.5.2"
       val commonsMath     = "3.6.1"
       val commonsNet      = "3.6"
-      val dfasdl          = "1.25.0"
+      val dfasdlCore      = "1.0"
+      val dfasdlUtils     = "2.0.0"
       val easyMock        = "3.4"
       val ftpServer       = "1.1.1"
       val guava           = "21.0"
@@ -172,10 +168,10 @@ lazy val library =
       val poi             = "3.15"
       val sigar           = "1.7.3"
       val scalaCheck      = "1.13.5"
-      val scalaTest       = "3.0.3"
+      val scalaTest       = "3.0.4"
       val shapeless       = "2.3.2"
       val sshd            = "1.6.0"
-      val tenseiApi       = "1.91.0"
+      val tenseiApi       = "1.92.0"
       val xmlUnit         = "2.3.0"
       val zeroAllocHash   = "0.8"
     }
@@ -189,8 +185,8 @@ lazy val library =
     val c3p0               = "com.mchange"                 %  "c3p0"                    % Version.c3p0
     val commonsMath        = "org.apache.commons"          %  "commons-math3"           % Version.commonsMath
     val commonsNet         = "commons-net"                 %  "commons-net"             % Version.commonsNet
-    val dfasdlCore         = "org.dfasdl"                  %% "dfasdl-core"             % Version.dfasdl
-    val dfasdlUtils        = "org.dfasdl"                  %% "dfasdl-utils"            % Version.dfasdl
+    val dfasdlCore         = "org.dfasdl"                  %% "dfasdl-core"             % Version.dfasdlCore
+    val dfasdlUtils        = "org.dfasdl"                  %% "dfasdl-utils"            % Version.dfasdlUtils
     val easyMock           = "org.easymock"                %  "easymock"                % Version.easyMock
     val ftpletApi          = "org.apache.ftpserver"        %  "ftplet-api"              % Version.ftpServer
     val ftpServerCore      = "org.apache.ftpserver"        %  "ftpserver-core"          % Version.ftpServer
@@ -223,7 +219,7 @@ lazy val databaseDriverLibrary =
       val h2         = "1.4.193"
       val hsqldb     = "2.3.4"
       val mariadb    = "1.5.9"
-      val postgresql = "42.0.0"
+      val postgresql = "42.1.4"
       val oracle     = "7"
       val sqlite     = "3.16.1"
       val sqlserver  = "4.1"
@@ -279,19 +275,18 @@ lazy val commonSettings =
     //wartremoverWarnings in (Compile, compile) ++= Warts.unsafe
   )
 
-// Resolvers
-lazy val ivyLocal = Resolver.file("local", file(Path.userHome.absolutePath + "/.ivy2/local"))(Resolver.ivyStylePatterns)
-lazy val tenseiRepo = "Tensei Repository" at "https://quackerjack.wegtam.com/repository/tensei"
 lazy val resolverSettings =
   Seq(
-    externalResolvers := List(tenseiRepo, ivyLocal, "Maven Central" at Resolver.DefaultMavenRepositoryRoot),
-    credentials += Credentials(Path.userHome / ".ivy2" / ".credentials-tensei")
+    resolvers += Resolver.bintrayRepo("wegtam", "dfasdl"),
+    resolvers += Resolver.bintrayRepo("wegtam", "tensei-data")
   )
 
 lazy val scalafmtSettings =
   Seq(
     scalafmtOnCompile := true,
-    scalafmtVersion := "1.0.0-RC4"
+    scalafmtOnCompile.in(Sbt) := false,
+    scalafmtVersion := "1.2.0"
   )
 // Enable scalafmt for the IntegrationTest scope.
 inConfig(IntegrationTest)(com.lucidchart.sbt.scalafmt.ScalafmtCorePlugin.autoImport.scalafmtSettings)
+

@@ -22,11 +22,7 @@ import akka.event.{ DiagnosticLoggingAdapter, Logging }
 import akka.routing.{ ActorRefRoutee, RoundRobinRoutingLogic, Router }
 import com.wegtam.tensei.adt.AtomicTransformationDescription
 import com.wegtam.tensei.agent.helpers.LoggingHelpers
-import com.wegtam.tensei.agent.processor.Fetcher.{
-  FetcherMessages,
-  FetcherState,
-  FetcherStateData
-}
+import com.wegtam.tensei.agent.processor.Fetcher.{ FetcherMessages, FetcherState, FetcherStateData }
 import com.wegtam.tensei.agent.processor.FetcherWorker.FetcherWorkerMessages
 import org.w3c.dom.Element
 

@@ -32,9 +32,7 @@ import com.wegtam.tensei.agent.processor.AutoIncrementValueBuffer.AutoIncrementV
   *
   * @param agentRunIdentifier An optional agent run identifier which is usually an uuid.
   */
-class AutoIncrementValueBuffer(agentRunIdentifier: Option[String])
-    extends Actor
-    with ActorLogging {
+class AutoIncrementValueBuffer(agentRunIdentifier: Option[String]) extends Actor with ActorLogging {
   // Create a distributed pub sub mediator.
   import DistributedPubSubMediator.{ Subscribe, SubscribeAck }
   val mediator = DistributedPubSub(context.system).mediator

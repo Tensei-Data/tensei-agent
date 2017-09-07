@@ -10,8 +10,8 @@
     <elem id="accounts_row">
       <str id="accounts_row_id" db-column-name="id" max-length="36"/>
       <str id="accounts_row_name" db-column-name="name" max-length="150"/>
-      <datetime id="accounts_row_date_entered" db-column-name="date_entered"/>
-      <datetime id="accounts_row_date_modified" db-column-name="date_modified"/>
+      <formattime format="yyyy-MM-dd HH:mm:ss.S" id="accounts_row_date_entered" db-column-name="date_entered"/>
+      <formattime format="yyyy-MM-dd HH:mm:ss.S" id="accounts_row_date_modified" db-column-name="date_modified"/>
       <str id="accounts_row_modified_user_id" db-column-name="modified_user_id" max-length="36"/>
       <str id="accounts_row_created_by" db-column-name="created_by" max-length="36"/>
       <str id="accounts_row_description" db-column-name="description"/>
@@ -48,7 +48,7 @@
       <str id="accounts_bugs_row_id" db-column-name="id" max-length="36"/>
       <str id="accounts_bugs_row_account_id" db-column-name="account_id" max-length="36"/>
       <str id="accounts_bugs_row_bug_id" db-column-name="bug_id" max-length="36"/>
-      <datetime id="accounts_bugs_row_date_modified" db-column-name="date_modified"/>
+      <formattime format="yyyy-MM-dd HH:mm:ss.S" id="accounts_bugs_row_date_modified" db-column-name="date_modified"/>
       <num id="accounts_bugs_row_deleted" db-column-name="deleted" length="1"/>
     </elem>
   </seq>
@@ -57,15 +57,15 @@
       <str id="accounts_contacts_row_id" db-column-name="id" max-length="36"/>
       <str id="accounts_contacts_row_contact_id" db-column-name="contact_id" max-length="36"/>
       <str id="accounts_contacts_row_account_id" db-column-name="account_id" max-length="36"/>
-      <datetime id="accounts_contacts_row_date_modified" db-column-name="date_modified"/>
+      <formattime format="yyyy-MM-dd HH:mm:ss.S" id="accounts_contacts_row_date_modified" db-column-name="date_modified"/>
       <num id="accounts_contacts_row_deleted" db-column-name="deleted" length="1"/>
     </elem>
   </seq>
   <seq id="contacts">
     <elem id="contacts_row">
       <str id="contacts_row_id" db-column-name="id" max-length="36"/>
-      <datetime id="contacts_row_date_entered" db-column-name="date_entered"/>
-      <datetime id="contacts_row_date_modified" db-column-name="date_modified"/>
+      <formattime format="yyyy-MM-dd HH:mm:ss.S" id="contacts_row_date_entered" db-column-name="date_entered"/>
+      <formattime format="yyyy-MM-dd HH:mm:ss.S" id="contacts_row_date_modified" db-column-name="date_modified"/>
       <str id="contacts_row_modified_user_id" db-column-name="modified_user_id" max-length="36"/>
       <str id="contacts_row_created_by" db-column-name="created_by" max-length="36"/>
       <str id="contacts_row_description" db-column-name="description"/>

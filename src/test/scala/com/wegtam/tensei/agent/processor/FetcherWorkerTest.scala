@@ -65,8 +65,7 @@ class FetcherWorkerTest extends ActorSpec with XmlTestHelpers with GenericHelper
           AtomicTransformationDescription(
             element = ElementReference(dfasdl.id, "MY-DATA"),
             transformerClassName = "com.wegtam.tensei.agent.transformers.atomic.TimestampAdjuster",
-            options =
-              TransformerOptions(classOf[String], classOf[String], List(("perform", "add")))
+            options = TransformerOptions(classOf[String], classOf[String], List(("perform", "add")))
           ),
           AtomicTransformationDescription(
             element = ElementReference(dfasdl.id, "MY-DATA"),

@@ -20,8 +20,8 @@ package usecases.databases
 import java.io.InputStream
 import java.net.URI
 
-import akka.actor.ActorRef
-import akka.testkit.{ EventFilter, TestActorRef }
+import akka.actor.{ ActorRef, Terminated }
+import akka.testkit.{ TestActorRef, TestProbe }
 import com.wegtam.scalatest.tags.{ DbTest, DbTestH2 }
 import com.wegtam.tensei.adt.Recipe.MapOneToOne
 import com.wegtam.tensei.adt._
@@ -61,7 +61,10 @@ class WP2Joomla extends XmlActorSpec with BeforeAndAfterEach {
     cs.execute("SHUTDOWN")
     cs.close()
     c.close()
-    EventFilter.debug(message = "stopped", source = agent.path.toString, occurrences = 1) intercept stopDummyAgent()
+    val p = TestProbe()
+    p.watch(agent)
+    stopDummyAgent()
+    val _ = p.expectMsgType[Terminated]
   }
 
   private def executeDbQuery(db: java.sql.Connection, sql: String): Unit = {
@@ -164,8 +167,7 @@ class WP2Joomla extends XmlActorSpec with BeforeAndAfterEach {
                     ),
                     MappingTransformation(
                       createElementReferenceList(sourceDfasdl, List("wp_users_row_id")),
-                      createElementReferenceList(targetDfasdl,
-                                                 List("joomla_users_row_activation")),
+                      createElementReferenceList(targetDfasdl, List("joomla_users_row_activation")),
                       List(
                         TransformationDescription(
                           "com.wegtam.tensei.agent.transformers.EmptyString",
@@ -238,8 +240,7 @@ class WP2Joomla extends XmlActorSpec with BeforeAndAfterEach {
                     ),
                     MappingTransformation(
                       createElementReferenceList(sourceDfasdl, List("wp_users_row_id")),
-                      createElementReferenceList(targetDfasdl,
-                                                 List("joomla_users_row_resetcount")),
+                      createElementReferenceList(targetDfasdl, List("joomla_users_row_resetcount")),
                       List(
                         TransformationDescription("com.wegtam.tensei.agent.transformers.Overwrite",
                                                   TransformerOptions(classOf[String],
@@ -445,8 +446,7 @@ class WP2Joomla extends XmlActorSpec with BeforeAndAfterEach {
                     ),
                     MappingTransformation(
                       createElementReferenceList(sourceDfasdl, List("wp_posts_row_id")),
-                      createElementReferenceList(targetDfasdl,
-                                                 List("joomla_content_row_asset_id")),
+                      createElementReferenceList(targetDfasdl, List("joomla_content_row_asset_id")),
                       List(
                         TransformationDescription("com.wegtam.tensei.agent.transformers.Overwrite",
                                                   TransformerOptions(classOf[String],
@@ -520,8 +520,7 @@ class WP2Joomla extends XmlActorSpec with BeforeAndAfterEach {
                     ),
                     MappingTransformation(
                       createElementReferenceList(sourceDfasdl, List("wp_posts_row_id")),
-                      createElementReferenceList(targetDfasdl,
-                                                 List("joomla_content_row_ordering")),
+                      createElementReferenceList(targetDfasdl, List("joomla_content_row_ordering")),
                       List(
                         TransformationDescription("com.wegtam.tensei.agent.transformers.Overwrite",
                                                   TransformerOptions(classOf[String],
@@ -554,8 +553,7 @@ class WP2Joomla extends XmlActorSpec with BeforeAndAfterEach {
                     ),
                     MappingTransformation(
                       createElementReferenceList(sourceDfasdl, List("wp_posts_row_id")),
-                      createElementReferenceList(targetDfasdl,
-                                                 List("joomla_content_row_featured")),
+                      createElementReferenceList(targetDfasdl, List("joomla_content_row_featured")),
                       List(
                         TransformationDescription("com.wegtam.tensei.agent.transformers.Overwrite",
                                                   TransformerOptions(classOf[String],
@@ -566,8 +564,7 @@ class WP2Joomla extends XmlActorSpec with BeforeAndAfterEach {
                     ),
                     MappingTransformation(
                       createElementReferenceList(sourceDfasdl, List("wp_posts_row_id")),
-                      createElementReferenceList(targetDfasdl,
-                                                 List("joomla_content_row_language")),
+                      createElementReferenceList(targetDfasdl, List("joomla_content_row_language")),
                       List(
                         TransformationDescription("com.wegtam.tensei.agent.transformers.Overwrite",
                                                   TransformerOptions(classOf[String],

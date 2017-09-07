@@ -1,6 +1,9 @@
 # Tensei-Agent
 
-![Build Status](https://teamcity.wegtam.com/TeamCity/app/rest/builds/buildType%3A%28id%3ATENSEI_AGENT_TESTS%29/statusIcon)
+![TeamCity Build Status](https://teamcity.wegtam.com/TeamCity/app/rest/builds/buildType%3A%28id%3ATENSEI_AGENT_TESTS%29/statusIcon)
+[![Travis CI Build Status](https://travis-ci.org/Tensei-Data/tensei-agent.svg?branch=master)](https://travis-ci.org/Tensei-Data/tensei-agent)
+[![codecov](https://codecov.io/gh/Tensei-Data/tensei-agent/branch/master/graph/badge.svg)](https://codecov.io/gh/Tensei-Data/tensei-agent)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a66bcb5d504f467da5f929612d775b2c)](https://www.codacy.com/app/jan0sch/tensei-agent)
 
 An agent is the workhorse of the Tensei (転成) system. It uses an actor 
 system to do the actual work of reading, parsing, transforming and 

@@ -381,6 +381,8 @@ class NetworkFileWriterActor(target: ConnectionInformation,
           byteString.utf8String.getBytes(charset.getOrElse(DEFAULT_CHARSET))
         case date: java.sql.Date =>
           date.toString.getBytes(charset.getOrElse(DEFAULT_CHARSET))
+        case date: java.time.LocalDate =>
+          date.toString.getBytes(charset.getOrElse(DEFAULT_CHARSET))
         case decimal: java.math.BigDecimal =>
           decimal.toPlainString.getBytes(charset.getOrElse(DEFAULT_CHARSET))
         case number: Number =>
@@ -388,7 +390,11 @@ class NetworkFileWriterActor(target: ConnectionInformation,
         case string: String => string.getBytes(charset.getOrElse(DEFAULT_CHARSET))
         case time: java.sql.Time =>
           time.toString.getBytes(charset.getOrElse(DEFAULT_CHARSET))
+        case time: java.time.LocalTime =>
+          time.toString.getBytes(charset.getOrElse(DEFAULT_CHARSET))
         case timestamp: java.sql.Timestamp =>
+          timestamp.toString.getBytes(charset.getOrElse(DEFAULT_CHARSET))
+        case timestamp: java.time.OffsetDateTime =>
           timestamp.toString.getBytes(charset.getOrElse(DEFAULT_CHARSET))
         case None => Array.empty[Byte]
         case _ =>

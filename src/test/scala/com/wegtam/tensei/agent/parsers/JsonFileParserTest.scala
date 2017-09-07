@@ -19,7 +19,8 @@ package com.wegtam.tensei.agent.parsers
 
 import java.net.URI
 
-import akka.testkit.{ EventFilter, TestActorRef }
+import akka.actor.Terminated
+import akka.testkit.{ TestActorRef, TestProbe }
 import akka.util.ByteString
 import com.wegtam.tensei.adt._
 import com.wegtam.tensei.agent.DataTreeDocument.DataTreeDocumentMessages
@@ -53,9 +54,11 @@ class JsonFileParserTest extends ActorSpec with XmlTestHelpers {
           JsonFileParser.props(source, cookbook, dataTree, Option("JsonFileParserTest"))
         )
 
-        EventFilter.debug(message = "stopped", occurrences = 1) intercept {
-          parser ! BaseParserMessages.Stop
-        }
+        val p = TestProbe()
+        p.watch(parser)
+        parser ! BaseParserMessages.Stop
+        val t = p.expectMsgType[Terminated]
+        t.actor shouldEqual parser
       }
     }
 
@@ -142,7 +145,8 @@ class JsonFileParserTest extends ActorSpec with XmlTestHelpers {
         dataTree ! DataTreeDocumentMessages.ReturnData("persons-seq-row-apartment", Option(1))
         val d4 = expectMsgType[DataTreeNodeMessages.Content]
         d4.data.size should be(1)
-        d4.data.head.data should be(4)
+        d4.data.head.data shouldBe a[java.lang.Long]
+        d4.data.head.data should be(4L)
       }
     }
   }

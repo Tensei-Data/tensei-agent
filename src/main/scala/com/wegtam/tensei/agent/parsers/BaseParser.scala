@@ -51,9 +51,9 @@ trait BaseParser
 
   val state = new BaseParserState
 
-  val DEFAULT_DATETIME = "1970-01-01 00:00:00"
+  val DEFAULT_DATETIME = "0000-01-01T00:00Z"
 
-  val DEFAULT_DATE = "1970-01-01"
+  val DEFAULT_DATE = "0000-01-01"
 
   /**
     * Read the actual data from the data stream and return a `BaseParserResponse`.
@@ -114,7 +114,8 @@ trait BaseParser
   @throws[IllegalArgumentException]
   @throws[LengthValidationException]
   @throws[NumberFormatException]
-  def cleanAndValidateData(container: ParserDataContainer, element: Element): ParserDataContainer = {
+  def cleanAndValidateData(container: ParserDataContainer,
+                           element: Element): ParserDataContainer = {
     if (container.elementId != element.getAttribute("id"))
       throw new IllegalArgumentException(
         s"Container element id and structure element id do not match (${container.elementId} != ${element
@@ -136,11 +137,11 @@ trait BaseParser
         if (processedData.isEmpty)
           processedData
         else
-          Try(extractData(processedData, element)) match {
+          extractData(processedData, element) match {
             case scala.util.Failure(e) =>
               element.getTagName match {
-                case ElementNames.DATETIME => java.sql.Timestamp.valueOf(DEFAULT_DATETIME)
-                case ElementNames.DATE     => java.sql.Date.valueOf(DEFAULT_DATE)
+                case ElementNames.DATETIME => java.time.OffsetDateTime.parse(DEFAULT_DATETIME)
+                case ElementNames.DATE     => java.time.LocalDate.parse(DEFAULT_DATE)
                 case _ =>
                   throw BaseParserFormatException.create(
                     s"Format exception on element: ${element.getAttribute("id")} in DFASDL: ${container.dfasdlId}",

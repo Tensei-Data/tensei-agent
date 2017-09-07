@@ -70,8 +70,7 @@ class MappingAllToAllWorkerTest
         val transformations = List(
           TransformationDescription(
             transformerClassName = "com.wegtam.tensei.agent.transformers.TimestampCalibrate",
-            options =
-              TransformerOptions(classOf[String], classOf[String], List(("perform", "add")))
+            options = TransformerOptions(classOf[String], classOf[String], List(("perform", "add")))
           )
         )
 
@@ -182,8 +181,7 @@ class MappingAllToAllWorkerTest
           val atomicTransformations = List(
             AtomicTransformationDescription(
               element = ElementReference(dfasdl.id, "MY-DATA"),
-              transformerClassName =
-                "com.wegtam.tensei.agent.transformers.atomic.TimestampAdjuster",
+              transformerClassName = "com.wegtam.tensei.agent.transformers.atomic.TimestampAdjuster",
               options =
                 TransformerOptions(classOf[String], classOf[String], List(("perform", "reduce")))
             )

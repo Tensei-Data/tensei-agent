@@ -30,7 +30,8 @@ abstract class DefaultSpec extends FunSpec with Matchers with XmlTestHelpers {
     * @param actualNodes List of actual nodes.
     * @return Returns `true` if there are no differences.
     */
-  def compareXmlStructureNodes(expectedNodes: List[Element], actualNodes: List[Element]): Boolean = {
+  def compareXmlStructureNodes(expectedNodes: List[Element],
+                               actualNodes: List[Element]): Boolean = {
     (expectedNodes, actualNodes).zipped.map {
       case (e, a: Element) =>
         withClue(s"Comparing ${xmlToPrettyString(e)} to ${xmlToPrettyString(a)}: ") {

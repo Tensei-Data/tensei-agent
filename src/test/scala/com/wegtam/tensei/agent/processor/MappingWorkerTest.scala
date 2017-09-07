@@ -62,16 +62,14 @@ class MappingWorkerTest
           val atomicTransformations = List(
             AtomicTransformationDescription(
               element = ElementReference(dfasdl.id, "MY-DATA"),
-              transformerClassName =
-                "com.wegtam.tensei.agent.transformers.atomic.TimestampAdjuster",
+              transformerClassName = "com.wegtam.tensei.agent.transformers.atomic.TimestampAdjuster",
               options =
                 TransformerOptions(classOf[String], classOf[String], List(("perform", "reduce")))
             )
           )
           val transformations = List(
             TransformationDescription(
-              transformerClassName =
-                "com.wegtam.tensei.agent.transformers.atomic.TimestampAdjuster",
+              transformerClassName = "com.wegtam.tensei.agent.transformers.atomic.TimestampAdjuster",
               options =
                 TransformerOptions(classOf[String], classOf[String], List(("perform", "add")))
             )
@@ -134,9 +132,7 @@ class MappingWorkerTest
           EventFilter.warning(start = "unhandled message",
                               pattern = "MappingProcessed\\(1\\)",
                               occurrences = 1) intercept {
-            EventFilter.debug(start = "started",
-                              pattern = "MappingAllToAllWorker",
-                              occurrences = 1) intercept {
+            EventFilter.debug(start = "started", pattern = "MappingAllToAllWorker", occurrences = 1) intercept {
               mapper ! MapperMessages.ProcessMapping(
                 mapping = mt,
                 lastWriterMessageNumber = 0L,
@@ -174,16 +170,14 @@ class MappingWorkerTest
           val atomicTransformations = List(
             AtomicTransformationDescription(
               element = ElementReference(dfasdl.id, "MY-DATA"),
-              transformerClassName =
-                "com.wegtam.tensei.agent.transformers.atomic.TimestampAdjuster",
+              transformerClassName = "com.wegtam.tensei.agent.transformers.atomic.TimestampAdjuster",
               options =
                 TransformerOptions(classOf[String], classOf[String], List(("perform", "reduce")))
             )
           )
           val transformations = List(
             TransformationDescription(
-              transformerClassName =
-                "com.wegtam.tensei.agent.transformers.atomic.TimestampAdjuster",
+              transformerClassName = "com.wegtam.tensei.agent.transformers.atomic.TimestampAdjuster",
               options =
                 TransformerOptions(classOf[String], classOf[String], List(("perform", "add")))
             )
@@ -246,9 +240,7 @@ class MappingWorkerTest
           EventFilter.warning(start = "unhandled message",
                               pattern = "MappingProcessed\\(1\\)",
                               occurrences = 1) intercept {
-            EventFilter.debug(start = "started",
-                              pattern = "MappingOneToOneWorker",
-                              occurrences = 1) intercept {
+            EventFilter.debug(start = "started", pattern = "MappingOneToOneWorker", occurrences = 1) intercept {
               mapper ! MapperMessages.ProcessMapping(
                 mapping = mt,
                 lastWriterMessageNumber = 0L,

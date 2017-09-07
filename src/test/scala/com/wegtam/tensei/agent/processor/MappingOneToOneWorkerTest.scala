@@ -70,8 +70,7 @@ class MappingOneToOneWorkerTest
         val transformations = List(
           TransformationDescription(
             transformerClassName = "com.wegtam.tensei.agent.transformers.atomic.TimestampAdjuster",
-            options =
-              TransformerOptions(classOf[String], classOf[String], List(("perform", "add")))
+            options = TransformerOptions(classOf[String], classOf[String], List(("perform", "add")))
           )
         )
 
@@ -189,8 +188,7 @@ class MappingOneToOneWorkerTest
         val transformations = List(
           TransformationDescription(
             transformerClassName = "com.wegtam.tensei.agent.transformers.atomic.TimestampAdjuster",
-            options =
-              TransformerOptions(classOf[String], classOf[String], List(("perform", "add")))
+            options = TransformerOptions(classOf[String], classOf[String], List(("perform", "add")))
           )
         )
 
@@ -310,8 +308,7 @@ class MappingOneToOneWorkerTest
         val transformations = List(
           TransformationDescription(
             transformerClassName = "com.wegtam.tensei.agent.transformers.atomic.TimestampAdjuster",
-            options =
-              TransformerOptions(classOf[String], classOf[String], List(("perform", "add")))
+            options = TransformerOptions(classOf[String], classOf[String], List(("perform", "add")))
           )
         )
 

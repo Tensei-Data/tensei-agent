@@ -35,10 +35,7 @@ import com.wegtam.tensei.agent.Parser._
 import com.wegtam.tensei.agent.SyntaxValidator.SyntaxValidatorMessages
 import com.wegtam.tensei.agent.adt.ParserStatus.ParserStatusType
 import com.wegtam.tensei.agent.adt._
-import com.wegtam.tensei.agent.exceptions.{
-  AccessValidationException,
-  ChecksumValidationException
-}
+import com.wegtam.tensei.agent.exceptions.{ AccessValidationException, ChecksumValidationException }
 import com.wegtam.tensei.agent.helpers.ExcelToCSVConverter.ExcelConverterMessages.{
   Convert,
   ConvertResult
@@ -173,12 +170,12 @@ class Parser(agentRunIdentifier: Option[String])
           case Success(_) => // This should actually never happen, but the match pattern has to be complete.
           case Failure(f) =>
             if (data.caller.isDefined) {
-              data.caller.get ! TransformationError(data.msg.get.uniqueIdentifier,
-                                                    StatusMessage(message =
-                                                                    "Syntax validation failed!",
-                                                                  reporter =
-                                                                    Option(self.toString()),
-                                                                  cause = None))
+              data.caller.get ! TransformationError(
+                data.msg.get.uniqueIdentifier,
+                StatusMessage(message = "Syntax validation failed!",
+                              reporter = Option(self.toString()),
+                              cause = None)
+              )
             }
             log.error(f.toList.mkString)
         }
@@ -377,8 +374,7 @@ class Parser(agentRunIdentifier: Option[String])
       else {
         // Send completed message to original caller.
         if (data.caller.isDefined)
-          data.caller.get ! ParserCompletedStatus(data.statusMessages,
-                                                  data.dataTrees.values.toList)
+          data.caller.get ! ParserCompletedStatus(data.statusMessages, data.dataTrees.values.toList)
         else
           log.error(
             "No caller defined in parser state data! We cannot inform anyone upon completing the parsing!"

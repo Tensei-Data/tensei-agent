@@ -17,8 +17,8 @@
 
 package com.wegtam.tensei.agent.transformers
 
-import java.sql.{ Date, Time, Timestamp }
 import java.text.SimpleDateFormat
+import java.time.{ LocalDate, LocalTime, OffsetDateTime }
 
 import akka.actor.Props
 import akka.util.ByteString
@@ -28,7 +28,7 @@ import com.wegtam.tensei.agent.transformers.BaseTransformer.{
 }
 
 object DateValueToString {
-  def props: Props = Props(classOf[DateValueToString])
+  def props: Props = Props(new DateValueToString())
 }
 
 /**
@@ -62,12 +62,12 @@ class DateValueToString extends BaseTransformer {
         else {
           val formatter = new SimpleDateFormat(format)
           msg.src.map {
-            case dateData: Date =>
-              ByteString(formatter.format(dateData))
-            case timeDate: Time =>
-              ByteString(formatter.format(timeDate))
-            case dateTimeDate: Timestamp =>
-              ByteString(formatter.format(dateTimeDate))
+            case d: LocalDate          => ByteString(formatter.format(d))
+            case d: LocalTime          => ByteString(formatter.format(d))
+            case d: OffsetDateTime     => ByteString(formatter.format(d))
+            case d: java.sql.Date      => ByteString(formatter.format(d))
+            case d: java.sql.Time      => ByteString(formatter.format(d))
+            case d: java.sql.Timestamp => ByteString(formatter.format(d))
             case anyType =>
               ByteString(anyType.toString)
           }

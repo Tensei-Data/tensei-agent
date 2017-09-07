@@ -297,7 +297,8 @@ trait ExtractorHelpers {
     * @param formats  Specific formats that could define the given values.
     * @return If one format defines the values, it is returned, otherwise `None`
     */
-  def determineSpecificFormat(entries: ListBuffer[String], formats: List[String]): Option[String] = {
+  def determineSpecificFormat(entries: ListBuffer[String],
+                              formats: List[String]): Option[String] = {
     val isSpecificFormat: List[(String, List[Boolean])] =
       formats.map(
         format =>
