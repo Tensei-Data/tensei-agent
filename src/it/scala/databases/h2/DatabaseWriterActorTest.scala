@@ -22,7 +22,7 @@ import java.net.URI
 import akka.testkit.{ EventFilter, TestFSMRef }
 import com.wegtam.scalatest.tags.{ DbTest, DbTestH2 }
 import com.wegtam.tensei.adt.{ ConnectionInformation, DFASDL, DFASDLReference }
-import com.wegtam.tensei.agent.ActorSpec
+import com.wegtam.tensei.agent.ActorSpecWithDebugLog
 import com.wegtam.tensei.agent.writers.{ BaseWriter, DatabaseWriterActor }
 import com.wegtam.tensei.agent.writers.BaseWriter.BaseWriterMessages.{
   AreYouReady,
@@ -37,7 +37,7 @@ import org.scalatest.BeforeAndAfterEach
 import scalaz._
 import Scalaz._
 
-class DatabaseWriterActorTest extends ActorSpec with BeforeAndAfterEach {
+class DatabaseWriterActorTest extends ActorSpecWithDebugLog with BeforeAndAfterEach {
   override protected def beforeEach(): Unit = {
     java.sql.DriverManager.getConnection(s"jdbc:h2:mem:test")
     super.beforeEach()

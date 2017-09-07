@@ -24,7 +24,7 @@ import java.sql.{ Connection, SQLException }
 import akka.testkit.{ EventFilter, TestFSMRef }
 import com.wegtam.scalatest.tags.{ DbTest, DbTestSqlite }
 import com.wegtam.tensei.adt.{ ConnectionInformation, DFASDL, DFASDLReference }
-import com.wegtam.tensei.agent.ActorSpec
+import com.wegtam.tensei.agent.ActorSpecWithDebugLog
 import com.wegtam.tensei.agent.writers.BaseWriter.BaseWriterMessages._
 import com.wegtam.tensei.agent.writers.BaseWriter._
 import com.wegtam.tensei.agent.writers.DatabaseWriterActor.DatabaseWriterData
@@ -32,7 +32,7 @@ import com.wegtam.tensei.agent.writers.{ BaseWriter, DatabaseWriterActor }
 
 import scalaz.Scalaz._
 
-class DatabaseWriterActorTest extends ActorSpec {
+class DatabaseWriterActorTest extends ActorSpecWithDebugLog {
   private def initializeWriter(
       con: ConnectionInformation,
       dfasdl: DFASDL,

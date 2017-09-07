@@ -122,6 +122,14 @@ object UniqueValueBuffer {
     final case class Store(ref: ElementReference, value: Any) extends UniqueValueBufferMessages
 
     /**
+      * The acknowledgement that a value for the provided element reference
+      * has been stored.
+      *
+      * @param ref The element reference of the dfasdl element.
+      */
+    final case class StoreAck(ref: ElementReference) extends UniqueValueBufferMessages
+
+    /**
       * Store the given values for the provided element reference.
       *
       * @param ref The element reference of the dfasdl element.
@@ -129,6 +137,14 @@ object UniqueValueBuffer {
       */
     final case class StoreS(ref: ElementReference, values: Set[Any])
         extends UniqueValueBufferMessages
+
+    /**
+      * The acknowledgement that the values for the provided element reference
+      * have been stored.
+      *
+      * @param ref The element reference of the dfasdl element.
+      */
+    final case class StoreSeqAck(ref: ElementReference) extends UniqueValueBufferMessages
 
     /**
       * The "answer" to the [[CheckIfValueExists]] message that indicates that the value was already stored.

@@ -114,20 +114,16 @@ class TransformationWorkerTest extends ActorSpec with XmlTestHelpers {
           new ByteArrayInputStream(dfasdl.getBytes(Charset.defaultCharset()))
         )
         val data = ParserDataContainer(1449499335L, "ELEMENT-ID")
-        EventFilter.debug(message = "Received stop message in transforming state.",
-                          source = actor.path.toString,
-                          occurrences = 1) intercept {
-          EventFilter[ClassNotFoundException](source = actor.path.toString, occurrences = 1) intercept {
-            actor ! TransformationWorkerMessages.Start(
-              data,
-              doc.getElementById(data.elementId),
-              self,
-              List(
-                TransformationDescription("This is no class name!",
-                                          TransformerOptions(classOf[String], classOf[String]))
-              )
+        EventFilter[ClassNotFoundException](source = actor.path.toString, occurrences = 1) intercept {
+          actor ! TransformationWorkerMessages.Start(
+            data,
+            doc.getElementById(data.elementId),
+            self,
+            List(
+              TransformationDescription("This is no class name!",
+                                        TransformerOptions(classOf[String], classOf[String]))
             )
-          }
+          )
         }
       }
     }

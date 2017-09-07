@@ -84,7 +84,7 @@ object AutoIncrementValueBuffer {
   val AUTO_INCREMENT_BUFFER_NAME = "AutoIncBuffer" // The actor name that should be used for this actor.
 
   def props(agentRunIdentifier: Option[String]): Props =
-    Props(classOf[AutoIncrementValueBuffer], agentRunIdentifier)
+    Props(new AutoIncrementValueBuffer(agentRunIdentifier))
 
   /**
     * A wrapper to hold the old and the new value for an auto-increment column.

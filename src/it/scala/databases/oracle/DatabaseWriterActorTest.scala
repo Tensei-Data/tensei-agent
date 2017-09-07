@@ -24,7 +24,7 @@ import java.sql.{ SQLIntegrityConstraintViolationException, SQLSyntaxErrorExcept
 import akka.testkit.{ EventFilter, TestFSMRef }
 import com.wegtam.scalatest.tags.{ DbTest, DbTestOracle }
 import com.wegtam.tensei.adt.{ ConnectionInformation, DFASDL, DFASDLReference }
-import com.wegtam.tensei.agent.ActorSpec
+import com.wegtam.tensei.agent.ActorSpecWithDebugLog
 import com.wegtam.tensei.agent.writers.BaseWriter.BaseWriterMessages._
 import com.wegtam.tensei.agent.writers.BaseWriter._
 import com.wegtam.tensei.agent.writers.DatabaseWriterActor.DatabaseWriterData
@@ -34,7 +34,7 @@ import org.scalatest.BeforeAndAfterEach
 import scala.collection.mutable.ListBuffer
 import scalaz.Scalaz._
 
-class DatabaseWriterActorTest extends ActorSpec with BeforeAndAfterEach {
+class DatabaseWriterActorTest extends ActorSpecWithDebugLog with BeforeAndAfterEach {
 
   val databaseHost = testConfig.getString("oracle.host")
   val databasePort = testConfig.getInt("oracle.port")

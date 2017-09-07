@@ -17,6 +17,8 @@
 
 package com.wegtam.tensei.agent.processor
 
+import java.util.UUID
+
 import akka.actor.SupervisorStrategy.Escalate
 import akka.actor.{ Actor, ActorLogging, AllForOneStrategy, FSM, Props, SupervisorStrategy }
 import akka.event.{ DiagnosticLoggingAdapter, Logging }
@@ -34,7 +36,7 @@ object MappingWorker {
     * @return The props to create the actor.
     */
   def props(agentRunIdentifier: Option[String]): Props =
-    Props(classOf[MappingWorker], agentRunIdentifier)
+    Props(new MappingWorker(agentRunIdentifier))
 
 }
 
@@ -59,7 +61,7 @@ class MappingWorker(agentRunIdentifier: Option[String])
   startWith(MapperState.Empty, MapperStateData())
 
   when(MapperState.Empty) {
-    case Event(msg: MapperMessages.Initialise, data) =>
+    case Event(msg: MapperMessages.Initialise, _) =>
       log.debug("Received initialisation message.")
       // Inform sender and switch state.
       sender() ! MapperMessages.Ready
@@ -76,6 +78,7 @@ class MappingWorker(agentRunIdentifier: Option[String])
   when(MapperState.Ready) {
     case Event(msg: MapperMessages.ProcessMapping, data) =>
       log.debug("Received process mapping message.")
+      val uuid = UUID.randomUUID().toString
       \/.fromTryCatch(msg.recipeMode match {
         case Recipe.MapAllToAll =>
           context.actorOf(
@@ -89,7 +92,8 @@ class MappingWorker(agentRunIdentifier: Option[String])
               targetTree = data.targetTree.get,
               targetTreeWalker = data.targetTreeWalker.get,
               writer = data.writer.get
-            )
+            ),
+            s"MappingAllToAllWorker-$uuid"
           )
         case Recipe.MapOneToOne =>
           context.actorOf(
@@ -103,7 +107,8 @@ class MappingWorker(agentRunIdentifier: Option[String])
               targetTree = data.targetTree.get,
               targetTreeWalker = data.targetTreeWalker.get,
               writer = data.writer.get
-            )
+            ),
+            s"MappingOneToOneWorker-$uuid"
           )
       }) match {
         case -\/(failure) =>
@@ -123,7 +128,7 @@ class MappingWorker(agentRunIdentifier: Option[String])
   }
 
   whenUnhandled {
-    case Event(MapperMessages.Stop, data) =>
+    case Event(MapperMessages.Stop, _) =>
       log.debug("Received stop message.")
       stop()
   }

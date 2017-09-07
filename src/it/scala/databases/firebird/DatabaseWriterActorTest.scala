@@ -23,7 +23,7 @@ import java.net.URI
 import akka.testkit.{ EventFilter, TestFSMRef }
 import com.wegtam.scalatest.tags.{ DbTest, DbTestFirebird }
 import com.wegtam.tensei.adt.{ ConnectionInformation, DFASDL, DFASDLReference }
-import com.wegtam.tensei.agent.ActorSpec
+import com.wegtam.tensei.agent.ActorSpecWithDebugLog
 import com.wegtam.tensei.agent.writers.BaseWriter.BaseWriterMessages._
 import com.wegtam.tensei.agent.writers.BaseWriter._
 import com.wegtam.tensei.agent.writers.DatabaseWriterActor.DatabaseWriterData
@@ -33,7 +33,7 @@ import org.scalatest.BeforeAndAfterEach
 import scala.sys.process.Process
 import scalaz.Scalaz._
 
-class DatabaseWriterActorTest extends ActorSpec with BeforeAndAfterEach {
+class DatabaseWriterActorTest extends ActorSpecWithDebugLog with BeforeAndAfterEach {
 
   val databaseHost = testConfig.getString("firebird.host")
   val databasePort = testConfig.getInt("firebird.port")

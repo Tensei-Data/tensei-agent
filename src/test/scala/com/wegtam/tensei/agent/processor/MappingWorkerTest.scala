@@ -132,14 +132,17 @@ class MappingWorkerTest
           EventFilter.warning(start = "unhandled message",
                               pattern = "MappingProcessed\\(1\\)",
                               occurrences = 1) intercept {
-            EventFilter.debug(start = "started", pattern = "MappingAllToAllWorker", occurrences = 1) intercept {
-              mapper ! MapperMessages.ProcessMapping(
-                mapping = mt,
-                lastWriterMessageNumber = 0L,
-                recipeMode = Recipe.MapAllToAll,
-                maxLoops = 0L,
-                sequenceRow = None
-              )
+            mapper ! MapperMessages.ProcessMapping(
+              mapping = mt,
+              lastWriterMessageNumber = 0L,
+              recipeMode = Recipe.MapAllToAll,
+              maxLoops = 0L,
+              sequenceRow = None
+            )
+
+            mapper.children.headOption match {
+              case None      => fail("MappingWorker has not initialised any workers!")
+              case Some(ref) => ref.path.toString should include("MappingAllToAllWorker-")
             }
 
             // The writer must receive the correct data!
@@ -240,14 +243,17 @@ class MappingWorkerTest
           EventFilter.warning(start = "unhandled message",
                               pattern = "MappingProcessed\\(1\\)",
                               occurrences = 1) intercept {
-            EventFilter.debug(start = "started", pattern = "MappingOneToOneWorker", occurrences = 1) intercept {
-              mapper ! MapperMessages.ProcessMapping(
-                mapping = mt,
-                lastWriterMessageNumber = 0L,
-                recipeMode = Recipe.MapOneToOne,
-                maxLoops = 0L,
-                sequenceRow = None
-              )
+            mapper ! MapperMessages.ProcessMapping(
+              mapping = mt,
+              lastWriterMessageNumber = 0L,
+              recipeMode = Recipe.MapOneToOne,
+              maxLoops = 0L,
+              sequenceRow = None
+            )
+
+            mapper.children.headOption match {
+              case None      => fail("MappingWorker has not initialised any workers!")
+              case Some(ref) => ref.path.toString should include("MappingOneToOneWorker-")
             }
 
             // The writer must receive the correct data!
