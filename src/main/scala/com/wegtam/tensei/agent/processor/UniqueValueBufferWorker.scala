@@ -50,6 +50,7 @@ class UniqueValueBufferWorker(agentRunIdentifier: Option[String],
           log.warning(s"Given unique element value for $ref already stored!")
         buffer += value
         log.debug("Stored unique value for element {}.", ref)
+        sender() ! UniqueValueBufferMessages.StoreAck(ref)
       }
 
     case UniqueValueBufferMessages.StoreS(ref, values) =>
@@ -62,6 +63,7 @@ class UniqueValueBufferWorker(agentRunIdentifier: Option[String],
           log.warning(s"Given unique element value for $ref already stored!")
         buffer ++= values
         log.debug("Stored {} unique values for element {}.", values.size, ref)
+        sender() ! UniqueValueBufferMessages.StoreSeqAck(ref)
       }
 
     case UniqueValueBufferMessages.CheckIfValueExists(ref, value) =>
@@ -79,6 +81,6 @@ class UniqueValueBufferWorker(agentRunIdentifier: Option[String],
 object UniqueValueBufferWorker {
 
   def props(agentRunIdentifier: Option[String], ref: ElementReference): Props =
-    Props(classOf[UniqueValueBufferWorker], agentRunIdentifier, ref)
+    Props(new UniqueValueBufferWorker(agentRunIdentifier, ref))
 
 }

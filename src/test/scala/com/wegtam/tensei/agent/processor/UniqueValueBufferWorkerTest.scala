@@ -32,6 +32,7 @@ class UniqueValueBufferWorkerTest extends ActorSpec {
           val r = ElementReference(dfasdlId = "MY-DFASDL", elementId = "MY-ELEMENT")
           val a = TestActorRef(UniqueValueBufferWorker.props(agentRunIdentifier, r))
           a ! UniqueValueBufferMessages.Store(r, "FOO")
+          expectMsg(UniqueValueBufferMessages.StoreAck(r))
           a ! UniqueValueBufferMessages.CheckIfValueExists(r, "FOO")
           expectMsg(UniqueValueBufferMessages.ValueExists(r, "FOO"))
         }
@@ -42,6 +43,7 @@ class UniqueValueBufferWorkerTest extends ActorSpec {
           val r = ElementReference(dfasdlId = "MY-DFASDL", elementId = "MY-ELEMENT")
           val a = TestActorRef(UniqueValueBufferWorker.props(agentRunIdentifier, r))
           a ! UniqueValueBufferMessages.Store(r, "BAR")
+          expectMsg(UniqueValueBufferMessages.StoreAck(r))
           a ! UniqueValueBufferMessages.CheckIfValueExists(r, "FOO")
           expectMsg(UniqueValueBufferMessages.ValueDoesNotExist(r, "FOO"))
           val wrongRef = ElementReference(dfasdlId = "SOME-DFASDL", elementId = "SOME-ELEMENT")
@@ -77,9 +79,13 @@ class UniqueValueBufferWorkerTest extends ActorSpec {
               UniqueValueBufferMessages.Store(r, 1L),
               UniqueValueBufferMessages.Store(r, None)
             )
-            vs.foreach(v => a ! v)
+            vs.foreach { v =>
+              a ! v
+              expectMsg(UniqueValueBufferMessages.StoreAck(v.ref))
+            }
             val vss: Set[Any] = Set("FOOBAR", 3L)
             a ! UniqueValueBufferMessages.StoreS(r, vss)
+            expectMsg(UniqueValueBufferMessages.StoreSeqAck(r))
 
             vs.foreach(
               v =>

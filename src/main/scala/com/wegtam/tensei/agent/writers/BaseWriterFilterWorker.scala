@@ -77,7 +77,7 @@ class BaseWriterFilterWorker(agentRunIdentifier: Option[String], dfasdl: DFASDL)
   }
 
   override def receive: Receive = {
-    case ReportingTo(ref, id) =>
+    case ReportingTo(ref, _) =>
       log.debug("Received handshake from unique value buffer at {}.", ref.path)
       uniqueValueBuffer = Option(ref)
       val _ = context.watch(ref)
@@ -286,7 +286,7 @@ object BaseWriterFilterWorker {
     * @return The props to create the actor.
     */
   def props(agentRunIdentifier: Option[String], dfasdl: DFASDL): Props =
-    Props(classOf[BaseWriterFilterWorker], agentRunIdentifier, dfasdl)
+    Props(new BaseWriterFilterWorker(agentRunIdentifier, dfasdl))
 
   /**
     * Instruct the actor to filter the fiven data set for the given sequence.

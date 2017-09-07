@@ -17,8 +17,10 @@
 
 package com.wegtam.tensei.agent.writers
 
-import akka.actor.ActorRef
-import akka.testkit.{ EventFilter, TestActorRef }
+import akka.actor.{ ActorRef, Terminated }
+import akka.cluster.pubsub.DistributedPubSubMediator
+import akka.testkit.{ TestActorRef, TestProbe }
+import com.wegtam.tensei.adt.GlobalMessages.{ ReportToCaller, ReportingTo }
 import com.wegtam.tensei.adt.{ DFASDL, ElementReference }
 import com.wegtam.tensei.agent.XmlActorSpec
 import com.wegtam.tensei.agent.processor.UniqueValueBuffer
@@ -27,40 +29,69 @@ import com.wegtam.tensei.agent.writers.BaseWriter.BaseWriterMessages
 import org.scalatest.BeforeAndAfterEach
 
 import scala.collection.SortedSet
+import scala.concurrent.Future
+import scala.concurrent.duration._
+import scala.util.{ Failure, Success }
 
 class BaseWriterFilterWorkerTest extends XmlActorSpec with BeforeAndAfterEach {
-  val agentRunIdentifier                  = Option("BaseWriterFilterWorker-TEST")
-  var uniqueValueBuffer: Option[ActorRef] = None
+  val agentRunIdentifier                                         = Option("BaseWriterFilterWorker-TEST")
+  var uniqueValueBuffer: Option[TestActorRef[UniqueValueBuffer]] = None
 
   /**
     * Stop the unique value buffer actor after each test.
     */
   override protected def afterEach(): Unit =
-    uniqueValueBuffer.foreach(
-      u =>
-        EventFilter
-          .debug(message = "stopped", occurrences = 1, source = u.path.toString) intercept system
-          .stop(u)
-    )
+    uniqueValueBuffer.foreach { u =>
+      val p = TestProbe()
+      p.watch(u)
+      system.stop(u)
+      p.expectMsgType[Terminated]
+      system.stop(p.ref)
+    }
+
+  /**
+    * Create a new unique value buffer actor.
+    */
+  private def createNewUniqueValueBuffer(): Unit = {
+    val u = TestActorRef(new UniqueValueBuffer(agentRunIdentifier), "UniqueValueBuffer") // Create unique value buffer on event channel.
+    u ! ReportToCaller
+    withClue("Could not create UniqueValueBuffer for testing!")(expectMsg(ReportingTo(u)))
+    uniqueValueBuffer = Option(u)
+  }
 
   /**
     * Initialise the unique value buffer actor before each test.
     */
   override protected def beforeEach(): Unit = {
-    val u = TestActorRef(UniqueValueBuffer.props(agentRunIdentifier), "UniqueValueBuffer") // Create unique value buffer on event channel.
-    uniqueValueBuffer = Option(u)
+    import system.dispatcher
+
+    val checkExisting: Future[ActorRef] =
+      system.actorSelection("/system/user/UniqueValueBuffer").resolveOne(FiniteDuration(3, SECONDS))
+    checkExisting.onComplete {
+      case Failure(_) => createNewUniqueValueBuffer()
+      case Success(r) =>
+        val p = TestProbe()
+        p.watch(r)
+        system.stop(r)
+        p.expectMsgType[Terminated]
+        system.stop(p.ref)
+        createNewUniqueValueBuffer()
+    }
   }
 
   describe("BaseWriterFilterWorker") {
     it("should connect to unique value buffer at startup") {
       val dfasdl = DFASDL(id = "TEST", content = "")
-      uniqueValueBuffer.fold(fail("No unique value buffer found!"))(
-        u =>
-          EventFilter.debug(message = s"Received handshake from unique value buffer at ${u.path}.",
-                            occurrences = 1) intercept TestActorRef(
-            BaseWriterFilterWorker.props(agentRunIdentifier, dfasdl)
+      uniqueValueBuffer.foreach { u =>
+        val p = TestProbe()
+        u.underlyingActor.mediator ! DistributedPubSubMediator.Subscribe(
+          UniqueValueBuffer.UNIQUE_VALUE_BUFFER_CHANNEL,
+          p.ref
         )
-      )
+        expectMsgType[DistributedPubSubMediator.SubscribeAck]
+        TestActorRef(BaseWriterFilterWorker.props(agentRunIdentifier, dfasdl))
+        p.expectMsg(ReportToCaller)
+      }
     }
 
     describe("if not unique elements are defined") {
@@ -525,10 +556,10 @@ class BaseWriterFilterWorkerTest extends XmlActorSpec with BeforeAndAfterEach {
           val a = TestActorRef(BaseWriterFilterWorker.props(agentRunIdentifier, dfasdl))
 
           val uniqueRef = ElementReference(dfasdlId = dfasdl.id, elementId = "accounts-row-name")
-          EventFilter.debug(message = s"Stored unique value for element $uniqueRef.",
-                            occurrences = 1) intercept uniqueValueBuffer.foreach(
-            u => u ! UniqueValueBufferMessages.Store(uniqueRef, "Albert Einstein")
-          )
+          uniqueValueBuffer.foreach { u =>
+            u ! UniqueValueBufferMessages.Store(uniqueRef, "Albert Einstein")
+            expectMsg(UniqueValueBufferMessages.StoreAck(uniqueRef))
+          }
 
           val d = List(
             BaseWriterMessages.WriteData(
@@ -807,10 +838,10 @@ class BaseWriterFilterWorkerTest extends XmlActorSpec with BeforeAndAfterEach {
           val a = TestActorRef(BaseWriterFilterWorker.props(agentRunIdentifier, dfasdl))
 
           val uniqueRef = ElementReference(dfasdlId = dfasdl.id, elementId = "accounts-row-name")
-          EventFilter.debug(message = s"Stored unique value for element $uniqueRef.",
-                            occurrences = 1) intercept uniqueValueBuffer.foreach(
-            u => u ! UniqueValueBufferMessages.Store(uniqueRef, "Albert Einstein")
-          )
+          uniqueValueBuffer.foreach { u =>
+            u ! UniqueValueBufferMessages.Store(uniqueRef, "Albert Einstein")
+            expectMsg(UniqueValueBufferMessages.StoreAck(uniqueRef))
+          }
 
           val d = List(
             BaseWriterMessages.WriteData(

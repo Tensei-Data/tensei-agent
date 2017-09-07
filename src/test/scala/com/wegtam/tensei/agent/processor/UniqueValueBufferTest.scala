@@ -37,7 +37,10 @@ class UniqueValueBufferTest extends ActorSpec {
             UniqueValueBufferMessages.Store(r, 1L),
             UniqueValueBufferMessages.Store(r, None)
           )
-          vs.foreach(v => a ! v)
+          vs.foreach { v =>
+            a ! v
+            expectMsg(UniqueValueBufferMessages.StoreAck(v.ref))
+          }
 
           val wrongRef = ElementReference(dfasdlId = "SOME-DFASDL", elementId = "SOME-ELEMENT")
           a ! UniqueValueBufferMessages.CheckIfValueExists(wrongRef, "FOO")
@@ -55,7 +58,10 @@ class UniqueValueBufferTest extends ActorSpec {
             UniqueValueBufferMessages.Store(r1, 1L),
             UniqueValueBufferMessages.Store(r1, None)
           )
-          vs1.foreach(v => a ! v)
+          vs1.foreach { v =>
+            a ! v
+            expectMsg(UniqueValueBufferMessages.StoreAck(v.ref))
+          }
           val r2 = ElementReference(dfasdlId = "MY-DFASDL", elementId = "ANOTHER-ELEMENT")
           val vs2 = Vector(
             UniqueValueBufferMessages.Store(r2, "FOO"),
@@ -63,10 +69,14 @@ class UniqueValueBufferTest extends ActorSpec {
             UniqueValueBufferMessages.Store(r2, 1L),
             UniqueValueBufferMessages.Store(r2, None)
           )
-          vs2.foreach(v => a ! v)
+          vs2.foreach { v =>
+            a ! v
+            expectMsg(UniqueValueBufferMessages.StoreAck(v.ref))
+          }
           val r3            = ElementReference(dfasdlId = "ANOTHER-DFASDL", elementId = "ANOTHER-ELEMENT")
           val vs3: Set[Any] = Set("FOO", "BAR", 1L, None)
           a ! UniqueValueBufferMessages.StoreS(r3, vs3)
+          expectMsg(UniqueValueBufferMessages.StoreSeqAck(r3))
 
           vs1.foreach { v =>
             a ! UniqueValueBufferMessages.CheckIfValueExists(v.ref, v.value)
@@ -94,7 +104,10 @@ class UniqueValueBufferTest extends ActorSpec {
           UniqueValueBufferMessages.Store(r1, 1L),
           UniqueValueBufferMessages.Store(r1, None)
         )
-        vs1.foreach(v => a ! v)
+        vs1.foreach { v =>
+          a ! v
+          expectMsg(UniqueValueBufferMessages.StoreAck(v.ref))
+        }
         val r2 = ElementReference(dfasdlId = "MY-DFASDL", elementId = "ANOTHER-ELEMENT")
         val vs2 = Vector(
           UniqueValueBufferMessages.Store(r2, "FOO"),
@@ -102,7 +115,10 @@ class UniqueValueBufferTest extends ActorSpec {
           UniqueValueBufferMessages.Store(r2, 1L),
           UniqueValueBufferMessages.Store(r2, None)
         )
-        vs2.foreach(v => a ! v)
+        vs2.foreach { v =>
+          a ! v
+          expectMsg(UniqueValueBufferMessages.StoreAck(v.ref))
+        }
         val r3 = ElementReference(dfasdlId = "ANOTHER-DFASDL", elementId = "ANOTHER-ELEMENT")
         val vs3 = Vector(
           UniqueValueBufferMessages.Store(r3, "FOO"),
@@ -110,7 +126,10 @@ class UniqueValueBufferTest extends ActorSpec {
           UniqueValueBufferMessages.Store(r3, 1L),
           UniqueValueBufferMessages.Store(r3, None)
         )
-        vs3.foreach(v => a ! v)
+        vs3.foreach { v =>
+          a ! v
+          expectMsg(UniqueValueBufferMessages.StoreAck(v.ref))
+        }
 
         a.underlyingActor.asInstanceOf[UniqueValueBuffer].buffer.size should be(3)
 
