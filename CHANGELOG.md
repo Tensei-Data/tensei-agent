@@ -20,6 +20,10 @@ Please follow the listed conventions when editing this file:
 
 ## Unreleased
 
+### Fixed
+
+- timezone information lost because of internally used datatype and conversion
+
 ## 1.13.3 (2017-06-02)
 
 ### Fixed
