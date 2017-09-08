@@ -271,7 +271,6 @@ lazy val commonSettings =
       "-source", "1.8",
       "-target", "1.8"
     ),
-    incOptions := incOptions.value.withNameHashing(nameHashing = true)
     //wartremoverWarnings in (Compile, compile) ++= Warts.unsafe
   )
 
