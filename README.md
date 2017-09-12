@@ -69,9 +69,9 @@ To run all tests **except** the ones with specific tags use the `-l` flag:
 We use a JAR file that is provided by our own repository. To be able to use
 the hyperic sigar extension properly the system property `-Djava.library.path`
 must be set to the folder were the system library of sigar is installed.
-This can simply be done via the activator:
+This can simply be done by settings the `SBT_OPTS` environment variable:
 
-    % activator -Djava.library.path=/usr/local/share/java/classes run
+    % SBT_OPTS="-Djava.library.path=/usr/local/share/java/classes" sbt run
 
 The command above should work on a FreeBSD system that has the sigar port 
 installed.
@@ -79,14 +79,14 @@ installed.
 ## Profiling
 
 To profile the agent several JVM options should be included. These can
-be specified directly on the command line if `activator` is used:
+be specified in the `SBT_OPTS` environment variable:
 
-    % activator -J-XX:+PrintGCApplicationStoppedTime run
+    % SBT_OPTS="-XX:+PrintGCApplicationStoppedTime" sbt run
 
 ### Benchmarks
 
 The sub module `benchmarks` includes benchmarks that can be started 
-using the activator/sbt console.
+using the sbt console.
 
 #### JMH Benchmarks
 
@@ -112,20 +112,21 @@ the memory settings for the JVM (see `javaOptions in run` in `build.sbt`).
 The best way to use [jHiccup](https://github.com/giltene/jHiccup) is
 probably to use the `javaagent` parameter:
 
-    % activator -J-javaagent:/path/to/jHiccup.jar run
+    % SBT_OPTS="-javaagent:/path/to/jHiccup.jar" sbt run
 
 The usage of jHiccup should always be combined with GC analysis.
 
-    % activator -J-javaagent:/path/to/jHiccup.jar -J-XX:+PrintGCApplicationStoppedTime run
+    % SBT_OPTS="-javaagent:/path/to/jHiccup.jar -XX:+PrintGCApplicationStoppedTime" sbt run
 
 ### Memory analysis
 
 For memory (heap) analysis you should specify memory settings and instruct 
 the jvm to write a heap dump if an out of memory error occurs.
 
-    % activator -J-server -J-Xms1g -J-Xmx1g -J-XX:MaxMetaspaceSize=1g -J-XX:+HeapDumpOnOutOfMemoryError -J-XX:HeapDumpPath=/tmp/jvm-dumps run
+    % SBT_OPTS="-server -Xms1g -Xmx1g -XX:MaxMetaspaceSize=1g -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/jvm-dumps" sbt run
 
-Alternatively you can create heap dumps via the jmap utility.
+Alternatively you can create heap dumps via the jmap utility. Replace `PID` 
+with the process id of the JVM process.
 
     % jmap -dump:format=b,file=FILENAME.hprof PID
 
