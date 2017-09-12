@@ -90,6 +90,7 @@ class SchemaExtractionTest extends ActorSpec with BeforeAndAfterEach {
     */
   private def createDatabaseTables(connection: java.sql.Connection): Unit = {
     val s = connection.createStatement()
+    s.execute("DROP SCHEMA PUBLIC CASCADE") // There shouldn't exist any data, but...
     s.execute("""
         |CREATE TABLE salary_groups (
         |  id INT GENERATED ALWAYS AS IDENTITY,
