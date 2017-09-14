@@ -59,6 +59,7 @@ lazy val tenseiAgent = project
       library.minaCore                  % IntegrationTest,
       library.minaCore                  % Test,
       library.scalaCheck                % IntegrationTest,
+      library.scalaCheck                % Test,
       library.scalaTest                 % IntegrationTest,
       library.scalaTest                 % Test,
       library.sshd                      % IntegrationTest,

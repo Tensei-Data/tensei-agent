@@ -17,9 +17,9 @@
 
 package com.wegtam.tensei.agent.transformers
 
-import akka.actor.{ Actor, ActorLogging, Props }
-import com.wegtam.tensei.agent.adt.TransformerStatus
+import akka.actor.{ Actor, ActorLogging }
 import com.wegtam.tensei.adt.TransformerOptions
+import com.wegtam.tensei.agent.adt.TransformerStatus
 import com.wegtam.tensei.agent.adt.TransformerStatus.TransformerStatusType
 import com.wegtam.tensei.agent.transformers.BaseTransformer.{
   PrepareForTransformation,
@@ -30,13 +30,12 @@ import scala.collection.immutable.Seq
 import scala.language.existentials
 
 object BaseTransformer {
-  def props: Props = Props(classOf[BaseTransformer])
 
-  case class StartTransformation(src: List[Any], options: TransformerOptions)
+  final case class StartTransformation(src: List[Any], options: TransformerOptions)
 
-  case class TransformerResponse(data: List[Any],
-                                 dataType: Class[_],
-                                 status: TransformerStatusType = TransformerStatus.OK)
+  final case class TransformerResponse(data: List[Any],
+                                       dataType: Class[_],
+                                       status: TransformerStatusType = TransformerStatus.OK)
 
   case object PrepareForTransformation
 
@@ -89,11 +88,14 @@ abstract class BaseTransformer extends Actor with ActorLogging {
       case (_, value) => value
     }
 
+  @SuppressWarnings(Array("org.wartremover.warts.Any"))
   override def receive: Receive = {
     case PrepareForTransformation =>
       context become transform
       sender() ! ReadyToTransform
   }
 
+  @SuppressWarnings(Array("org.wartremover.warts.Any"))
   def transform: Receive
+
 }
