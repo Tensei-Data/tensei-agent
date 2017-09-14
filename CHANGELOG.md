@@ -20,6 +20,10 @@ Please follow the listed conventions when editing this file:
 
 ## Unreleased
 
+### Added
+
+- `TimestampOffsetTransformer` to convert timestamp values to other offsets
+
 ### Fixed
 
 - timezone information lost because of internally used datatype and conversion
