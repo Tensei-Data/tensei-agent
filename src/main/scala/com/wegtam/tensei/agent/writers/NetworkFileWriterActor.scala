@@ -23,8 +23,8 @@ import java.net.InetAddress
 import akka.actor.{ Actor, ActorLogging, ActorRef, ActorSystem, FSM, Props, Terminated }
 import akka.cluster.pubsub.{ DistributedPubSub, DistributedPubSubMediator }
 import akka.event.{ DiagnosticLoggingAdapter, Logging }
-import akka.stream.alpakka.ftp.RemoteFileSettings.{ FtpSettings, FtpsSettings }
-import akka.stream.alpakka.ftp.scaladsl.{ Ftp, Ftps, Sftp }
+import akka.stream.alpakka.ftp.{ FtpSettings, FtpsSettings }
+import akka.stream.alpakka.ftp.scaladsl._
 import akka.stream.alpakka.ftp.{ FtpCredentials, SftpSettings }
 import akka.stream.scaladsl.{ Flow, Sink, Source }
 import akka.stream.{ ActorMaterializer, IOResult, OverflowStrategy }
