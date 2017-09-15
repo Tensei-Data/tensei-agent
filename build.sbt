@@ -48,6 +48,8 @@ lazy val tenseiAgent = project
       library.akkaTestkit               % Test,
       library.easyMock                  % IntegrationTest,
       library.easyMock                  % Test,
+      library.edDsa                     % IntegrationTest,
+      library.edDsa                     % Test,
       library.ftpletApi                 % IntegrationTest,
       library.ftpletApi                 % Test,
       library.ftpServerCore             % IntegrationTest,
@@ -149,13 +151,14 @@ lazy val library =
     object Version {
       val aaltoXml        = "0.9.11"
       val akka            = "2.4.17"
-      val alpakkaFtp      = "0.9"
+      val alpakkaFtp      = "0.11"
       val c3p0            = "0.9.5.2"
       val commonsMath     = "3.6.1"
       val commonsNet      = "3.6"
       val dfasdlCore      = "1.0"
       val dfasdlUtils     = "2.0.0"
       val easyMock        = "3.4"
+      val edDsa           = "0.2.0"
       val ftpServer       = "1.1.1"
       val guava           = "21.0"
       val httpClient      = "4.5"
@@ -189,6 +192,7 @@ lazy val library =
     val dfasdlCore         = "org.dfasdl"                  %% "dfasdl-core"             % Version.dfasdlCore
     val dfasdlUtils        = "org.dfasdl"                  %% "dfasdl-utils"            % Version.dfasdlUtils
     val easyMock           = "org.easymock"                %  "easymock"                % Version.easyMock
+    val edDsa              = "net.i2p.crypto"              %  "eddsa"                   % Version.edDsa
     val ftpletApi          = "org.apache.ftpserver"        %  "ftplet-api"              % Version.ftpServer
     val ftpServerCore      = "org.apache.ftpserver"        %  "ftpserver-core"          % Version.ftpServer
     val guava              = "com.google.guava"            %  "guava"                   % Version.guava
