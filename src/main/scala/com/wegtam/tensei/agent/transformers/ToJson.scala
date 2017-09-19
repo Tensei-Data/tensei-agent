@@ -27,7 +27,7 @@ import com.wegtam.tensei.agent.transformers.BaseTransformer.{
 }
 
 object ToJson {
-  def props: Props = Props(classOf[ToJson])
+  def props: Props = Props(new ToJson())
 }
 
 /**
@@ -39,26 +39,21 @@ class ToJson extends BaseTransformer with JsonHelpers {
   override def transform: Receive = {
     case StartTransformation(src, options) =>
       log.debug("Starting conversion to json.")
-      val label =
-        if (options.params.exists(p => p._1 == "label"))
-          options.params.find(p => p._1 == "label").get._2.asInstanceOf[String]
-        else
-          ""
+      val label = paramValue("label")(options.params)
 
       val jsonString: ByteString =
-        src.size match {
-          case 0 =>
-            ByteString("")
-          case 1 =>
-            ByteString(createJson(src.head, label).nospaces)
-          case _ =>
-            val parts: List[Json] = src.map(data => createJson(data, ""))
-            val js =
-              if (label.isEmpty)
-                jArray(parts)
-              else
-                Json(s"$label" := jArray(parts))
-            ByteString(js.nospaces)
+        if (src.size < 2)
+          src.headOption match {
+            case None       => ByteString("")
+            case Some(head) => ByteString(createJson(head, label).nospaces)
+          } else {
+          val parts: List[Json] = src.map(data => createJson(data, ""))
+          val js =
+            if (label.isEmpty)
+              jArray(parts)
+            else
+              Json(s"$label" := jArray(parts))
+          ByteString(js.nospaces)
         }
 
       context.become(receive)

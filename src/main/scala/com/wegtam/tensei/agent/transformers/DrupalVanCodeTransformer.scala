@@ -34,7 +34,7 @@ import com.wegtam.tensei.agent.transformers.BaseTransformer.{
 object DrupalVanCodeTransformer {
   val name = "DrupalVanCodeTransformer"
 
-  def props: Props = Props(classOf[DrupalVanCodeTransformer])
+  def props: Props = Props(new DrupalVanCodeTransformer())
 }
 
 /**

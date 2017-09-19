@@ -46,36 +46,12 @@ class MergeAndExtractByRegEx extends BaseTransformer {
       log.debug("Starting regexp match of the data!")
 
       val params = msg.options.params
-      val regexp =
-        if (params.exists(p => p._1 == "regexp"))
-          params.find(p => p._1 == "regexp").get._2.asInstanceOf[String]
-        else
-          ""
-      val filler: String =
-        if (params.exists(p => p._1 == "filler") && params
-              .find(p => p._1 == "filler")
-              .get
-              ._2
-              .nonEmpty)
-          params.find(p => p._1 == "filler").get._2.asInstanceOf[String]
-        else
-          ""
-      val groups: List[Int] =
-        if (params.exists(p => p._1 == "groups") && params
-              .find(p => p._1 == "groups")
-              .get
-              ._2
-              .nonEmpty)
-          params
-            .find(p => p._1 == "groups")
-            .get
-            ._2
-            .asInstanceOf[String]
-            .split(",")
-            .map(_.trim.toInt)
-            .toList
-        else
-          List.empty
+      val regexp = paramValue("regexp")(params)
+      val filler = paramValue("filler")(params)
+      val groups = paramValue("groups")(params) match {
+        case "" => List.empty
+        case gs => gs.split(",").toList.map(_.trim.toInt)
+      }
 
       val p: Regex = s"""$regexp""".r
       val matchedParts: List[ByteString] = msg.src.flatMap { e =>

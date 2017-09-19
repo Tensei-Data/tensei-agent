@@ -46,11 +46,7 @@ class TimestampAdjuster extends BaseTransformer {
     case msg: StartTransformation =>
       val params = msg.options.params
 
-      val perform: String =
-        if (params.exists(p => p._1 == "perform"))
-          params.find(p => p._1 == "perform").get._2.asInstanceOf[String]
-        else
-          ""
+      val perform = paramValue("perform")(params)
 
       def adjustTimestamp(t: Long): Long =
         perform match {

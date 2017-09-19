@@ -46,15 +46,7 @@ class DateValueToString extends BaseTransformer {
     case msg: StartTransformation =>
       log.debug("Start DateValueToString")
       val params = msg.options.params
-      val format =
-        if (params.exists(p => p._1 == "format")) {
-          val t = params.find(p => p._1 == "format").get._2.trim
-          if (t.nonEmpty)
-            t
-          else
-            ""
-        } else
-          ""
+      val format = paramValue("format")(params).trim
 
       val result: List[ByteString] =
         if (format.isEmpty)

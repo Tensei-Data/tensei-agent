@@ -47,9 +47,8 @@ class LowerOrUpper extends BaseTransformer {
 
       val params = msg.options.params
 
-      val locale = params.find(p => p._1 == "locale").fold(Locale.getDefault) { p =>
-        val (_, loc) = p
-        val l        = Locale.forLanguageTag(loc)
+      val locale = paramValueO("locale")(params).fold(Locale.getDefault) { loc =>
+        val l = Locale.forLanguageTag(loc)
         if (Locale.getAvailableLocales.contains(l))
           l
         else
@@ -70,11 +69,11 @@ class LowerOrUpper extends BaseTransformer {
 
       val response: TransformerResponse =
         if (msg.src.nonEmpty) {
-          params.find(p => p._1 == "perform").fold(TransformerResponse(msg.src, classOf[String])) {
-            perform =>
+          paramValueO("perform")(params).fold(TransformerResponse(msg.src, classOf[String])) {
+            mode =>
               val res = msg.src.map {
-                case bs: ByteString => performOp(perform._2)(bs.utf8String)
-                case st: String     => performOp(perform._2)(st)
+                case bs: ByteString => performOp(mode)(bs.utf8String)
+                case st: String     => performOp(mode)(st)
                 case otherData      => otherData
               }
               TransformerResponse(res, classOf[String])

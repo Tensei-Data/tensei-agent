@@ -27,7 +27,7 @@ import akka.util.ByteString
 import scala.util.Try
 
 object Split {
-  def props: Props = Props(classOf[Split])
+  def props: Props = Props(new Split())
 }
 
 /**
@@ -43,36 +43,13 @@ class Split extends BaseTransformer {
     case msg: StartTransformation =>
       log.debug("Starting splitting of source: {}", msg.src)
 
-      val params = msg.options.params
-      val pattern =
-        if (params.exists(p => p._1 == "pattern"))
-          params.find(p => p._1 == "pattern").get._2.asInstanceOf[String]
-        else
-          ""
-      val limit: Int =
-        if (params.exists(p => p._1 == "limit") && params
-              .find(p => p._1 == "limit")
-              .get
-              ._2
-              .nonEmpty)
-          params.find(p => p._1 == "limit").get._2.asInstanceOf[String].toInt
-        else
-          -1
-      val selected: Seq[Int] =
-        if (params.exists(p => p._1 == "selected") && params
-              .find(p => p._1 == "selected")
-              .get
-              ._2
-              .nonEmpty)
-          params
-            .find(p => p._1 == "selected")
-            .get
-            ._2
-            .asInstanceOf[String]
-            .split(",")
-            .map(_.trim.toInt)
-        else
-          List.empty
+      val params     = msg.options.params
+      val pattern    = paramValue("pattern")(params)
+      val limit: Int = paramValueO("limit")(params).map(_.toInt).getOrElse(-1)
+      val selected: Seq[Int] = paramValue("selected")(params) match {
+        case "" => List.empty[Int]
+        case is => is.split(",").toList.map(_.trim.toInt)
+      }
 
       val splittedSource: List[ByteString] =
         if (msg.src.nonEmpty) {
