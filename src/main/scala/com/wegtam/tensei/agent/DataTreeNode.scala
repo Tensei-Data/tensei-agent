@@ -39,14 +39,14 @@ object DataTreeNode {
       *
       * @param data The data to append.
       */
-    case class AppendData(data: ParserDataContainer) extends DataTreeNodeMessages
+    final case class AppendData(data: ParserDataContainer) extends DataTreeNodeMessages
 
     /**
       * The response for a `ReturnContent` message.
       *
       * @param data The actual content of the data tree node that is returned.
       */
-    case class Content(data: Vector[ParserDataContainer]) extends DataTreeNodeMessages
+    final case class Content(data: Vector[ParserDataContainer]) extends DataTreeNodeMessages
 
     /**
       * Use the data from the stored element and create a `SaveData` message that will be send back to the caller.
@@ -55,9 +55,9 @@ object DataTreeNode {
       * @param referenceId       The id of the referenced data element that contains the actual data.
       * @param sourceSequenceRow An option to the sequence row in which the ref is located.
       */
-    case class CreateSaveDataForReference(data: ParserDataContainer,
-                                          referenceId: String,
-                                          sourceSequenceRow: Option[Long] = None)
+    final case class CreateSaveDataForReference(data: ParserDataContainer,
+                                                referenceId: String,
+                                                sourceSequenceRow: Option[Long] = None)
         extends DataTreeNodeMessages
 
     /**
@@ -65,7 +65,7 @@ object DataTreeNode {
       *
       * @param container The container holding the found data.
       */
-    case class FoundContent(container: ParserDataContainer) extends DataTreeNodeMessages
+    final case class FoundContent(container: ParserDataContainer) extends DataTreeNodeMessages
 
     /**
       * Return the content if it matches the given `elementId` and `data`.
@@ -74,7 +74,7 @@ object DataTreeNode {
       * @param data      The actual data which must match the data hold by the container.
       * @param receiver  An optional receiver.
       */
-    case class HasContent(elementId: String, data: Any, receiver: Option[ActorRef])
+    final case class HasContent(elementId: String, data: Any, receiver: Option[ActorRef])
         extends DataTreeNodeMessages
 
     /**
@@ -88,9 +88,9 @@ object DataTreeNode {
       * @param sequenceRow An option to a desired sequence row.
       * @param elementId   An option to an element id.
       */
-    case class ReturnContent(receiver: Option[ActorRef],
-                             sequenceRow: Option[Long] = None,
-                             elementId: Option[String] = None)
+    final case class ReturnContent(receiver: Option[ActorRef],
+                                   sequenceRow: Option[Long] = None,
+                                   elementId: Option[String] = None)
         extends DataTreeNodeMessages
 
   }
@@ -102,7 +102,7 @@ object DataTreeNode {
     * @return The props to generate an actor.
     */
   def props(agentRunIdentifier: Option[String]): Props =
-    Props(classOf[DataTreeNode], agentRunIdentifier)
+    Props(new DataTreeNode(agentRunIdentifier))
 
   /**
     * A sealed trait holding the data tree node states.
@@ -128,7 +128,7 @@ object DataTreeNode {
     *
     * @param content The actual parser data.
     */
-  case class DataTreeNodeContent(
+  final case class DataTreeNodeContent(
       content: Vector[ParserDataContainer] = Vector.empty[ParserDataContainer]
   )
 }
@@ -167,9 +167,9 @@ class DataTreeNode(agentRunIdentifier: Option[String])
 
     case Event(DataTreeNodeMessages.HasContent(elementId, content, receiver), data) =>
       val foundContent = data.content.find(c => c.elementId == elementId && c.data == content)
-      if (foundContent.isDefined) {
+      foundContent.foreach { fc =>
         log.debug("Matched HasContent request for '{}'.", elementId)
-        receiver.getOrElse(sender()) ! DataTreeNodeMessages.FoundContent(foundContent.get)
+        receiver.getOrElse(sender()) ! DataTreeNodeMessages.FoundContent(fc)
       }
       stay() using data
 
@@ -191,18 +191,22 @@ class DataTreeNode(agentRunIdentifier: Option[String])
         else
           None
       val content = findContent(Option(referenceId), sequenceRow, data.content)
+      if (content.lastOption.isEmpty)
+        log.warning("No data found for {}({})!", referenceId, sequenceRow)
+
       val saveData =
-        if (content.isEmpty) {
-          log.warning("No data found for {}({})!", referenceId, sequenceRow)
-          givenData
-        } else {
-          content.last.copy(elementId = givenData.elementId)
-        }
-      sender() ! DataTreeDocumentMessages.SaveData(
-        saveData.copy(sequenceRowCounter = sourceSequenceRow.getOrElse(-1L),
-                      dataElementHash = givenData.dataElementHash),
-        givenData.dataElementHash.get
-      )
+        content.lastOption.fold(givenData)(d => d.copy(elementId = givenData.elementId))
+
+      if (givenData.dataElementHash.isEmpty)
+        log.error("No data element hash present in given data element!")
+
+      givenData.dataElementHash.foreach { hash =>
+        sender() ! DataTreeDocumentMessages.SaveData(
+          saveData.copy(sequenceRowCounter = sourceSequenceRow.getOrElse(-1L),
+                        dataElementHash = givenData.dataElementHash),
+          hash
+        )
+      }
       stay() using data
   }
 
@@ -219,22 +223,18 @@ class DataTreeNode(agentRunIdentifier: Option[String])
   private def findContent(elementId: Option[String],
                           sequenceRow: Option[Long],
                           content: Vector[ParserDataContainer]): Vector[ParserDataContainer] =
-    if (sequenceRow.isDefined || elementId.isDefined)
-      if (sequenceRow.isDefined && elementId.isDefined) {
-        if (content.exists(
-              c => c.sequenceRowCounter == sequenceRow.get && c.elementId == elementId.get
-            ))
-          content.filter(
-            c => c.sequenceRowCounter == sequenceRow.get && c.elementId == elementId.get
-          ) // Only return the matching "cell".
+    (elementId, sequenceRow) match {
+      case (Some(e), Some(r)) =>
+        val cs    = content.filter(_.elementId == e)
+        val exact = cs.filter(_.sequenceRowCounter == r)
+        if (exact.nonEmpty)
+          exact // Return the matching "cell".
         else
-          content
-            .filter(_.elementId == elementId.get)
-            .take(1) // Only return the first element of the matching "column".
-      } else if (sequenceRow.isDefined)
-        content.filter(_.sequenceRowCounter == sequenceRow.get) // Only return the elements from the matching sequence row.
-      else
-        content.filter(_.elementId == elementId.get) // Only return the matching "column".
-    else
-      content // Return all content elements.
+          cs.take(1) // Return the first element of the matching "column".
+      case (Some(e), None) =>
+        content.filter(_.elementId == e) // Return the matching "column".
+      case (None, Some(r)) =>
+        content.filter(_.sequenceRowCounter == r) // Return the whole matching sequence row.
+      case _ => content // Return all content elements.
+    }
 }

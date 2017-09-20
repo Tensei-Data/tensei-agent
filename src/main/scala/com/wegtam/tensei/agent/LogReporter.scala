@@ -105,7 +105,7 @@ class LogReporter extends Actor with ActorLogging {
             if (Files.exists(path)) {
               log.debug("Delegating log data streaming to log streamer.")
               val worker = context.actorOf(LogStreamer.props(sender(), uuid))
-              context watch worker
+              val _      = context.watch(worker)
               worker ! LogStreamer.StreamLog(path = path, offset = offset, maxSize = maxSize)
             } else {
               log.error("Requested log file {} does not exist!", path)
@@ -146,7 +146,8 @@ class LogStreamer(receiver: ActorRef, uuid: String) extends Actor with ActorLogg
 
   override def supervisorStrategy: SupervisorStrategy = SupervisorStrategy.stoppingStrategy
 
-  override def receive: Actor.Receive = {
+  @SuppressWarnings(Array("org.wartremover.warts.Any", "org.wartremover.warts.Var"))
+  override def receive: Receive = {
     case LogStreamer.StreamLog(path, offset, maxSize) =>
       log.debug("Streaming log data from {} to {}.", path, receiver)
       val is = Files.newInputStream(path)
@@ -193,7 +194,7 @@ object LogStreamer {
     * @param uuid The agent run identifier which is usually uuid.
     * @return The props to create the actor.
     */
-  def props(receiver: ActorRef, uuid: String): Props = Props(classOf[LogStreamer], receiver, uuid)
+  def props(receiver: ActorRef, uuid: String): Props = Props(new LogStreamer(receiver, uuid))
 
   /**
     * Instruct the actor to stream data from the given file path.

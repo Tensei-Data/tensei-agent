@@ -26,7 +26,9 @@ import com.wegtam.tensei.agent.ChecksumValidator.ChecksumValidatorMessages
 import com.wegtam.tensei.agent.adt.ConnectionTypeFile
 import com.wegtam.tensei.agent.helpers.{ DigestHelpers, LoggingHelpers, URIHelpers }
 
-import scalaz._, Scalaz._
+import scalaz._
+import Scalaz._
+import scala.util.Try
 
 object ChecksumValidator {
 
@@ -37,7 +39,7 @@ object ChecksumValidator {
     * @return The props to generate the actor.
     */
   def props(agentRunIdentifier: Option[String]): Props =
-    Props(classOf[ChecksumValidator], agentRunIdentifier)
+    Props(new ChecksumValidator(agentRunIdentifier))
 
   sealed trait ChecksumValidatorMessages
 
@@ -68,23 +70,25 @@ case class ChecksumValidator(agentRunIdentifier: Option[String]) extends Actor w
     super.postStop()
   }
 
-  def receive = {
+  @SuppressWarnings(Array("org.wartremover.warts.Any"))
+  def receive: Receive = {
     case ChecksumValidatorMessages.ValidateChecksums(cons) =>
       log.debug("Starting checksum validation...")
       // Validate all connections that are a file and have a checksum defined.
       // TODO We should add more types here like network files.
-      try {
-        val results = cons filter (
-            c => URIHelpers.connectionType(c.uri) == ConnectionTypeFile && c.checksum.isDefined
-        ) map (c => validateFileChecksum(c.uri.getSchemeSpecificPart, c.checksum.get))
-        sender() ! ChecksumValidatorMessages.ValidateChecksumsResults(results)
-      } catch {
-        case e: Throwable =>
-          log.error(e, "An error occurred while validation a checksum!")
-          sender() ! ChecksumValidatorMessages.ValidateChecksumsResults(
-            List(e.getMessage.failNel[String])
-          )
+      val results = Try {
+        cons.filter(c => URIHelpers.connectionType(c.uri) == ConnectionTypeFile).flatMap { c =>
+          c.checksum.map { s =>
+            validateFileChecksum(c.uri.getSchemeSpecificPart, s)
+          }
+        }
+      } match {
+        case scala.util.Failure(f) =>
+          log.error(f, "An error occured during checksum validation!")
+          List(f.getMessage.failNel[String])
+        case scala.util.Success(r) => r
       }
+      sender() ! ChecksumValidatorMessages.ValidateChecksumsResults(results)
   }
 
   /**

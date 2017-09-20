@@ -129,7 +129,6 @@ class LogStreamerTest extends ActorSpec {
 
             for (l <- 27 to linesInLogFile) {
               val m = expectMsgType[GlobalMessages.ReportAgentRunLogLine]
-              println(m.offet)
               m.logLine should be(logFileLines(l - 1))
             }
           }

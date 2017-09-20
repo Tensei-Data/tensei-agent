@@ -38,7 +38,7 @@ import org.apache.http.client.methods.HttpGet
 import org.apache.http.impl.client.{ BasicCredentialsProvider, HttpClientBuilder }
 import org.apache.http.impl.conn.SystemDefaultRoutePlanner
 
-import scala.util.Random
+import scala.util.{ Random, Try }
 import scalaz.Scalaz._
 import scalaz._
 
@@ -344,10 +344,13 @@ class AccessValidator(agentRunIdentifier: Option[String])
                   else
                     httpPortNumber
 
+                require(con.username.isDefined, "No username set in credentials!")
+                require(con.password.isDefined, "No password set in credentials!")
                 val credsProvider: CredentialsProvider = new BasicCredentialsProvider()
                 credsProvider.setCredentials(
                   new AuthScope(host, port, AuthScope.ANY_REALM),
-                  new UsernamePasswordCredentials(con.username.get, con.password.get)
+                  new UsernamePasswordCredentials(con.username.getOrElse(""),
+                                                  con.password.getOrElse(""))
                 )
                 httpClientProxy.setDefaultCredentialsProvider(credsProvider).build()
               } else
@@ -376,6 +379,8 @@ class AccessValidator(agentRunIdentifier: Option[String])
       }
     }
 
+  @throws[FTPConnectionClosedException]
+  @throws[IOException]
   private def testWriteableFtpFile(
       con: ConnectionInformation
   ): ValidationNel[String, ConnectionInformation] = {
@@ -408,7 +413,7 @@ class AccessValidator(agentRunIdentifier: Option[String])
               new ByteArrayInputStream(filename.getBytes(StandardCharsets.UTF_8))
             )
             if (fileStored) {
-              client.deleteFile(filename)
+              val _ = client.deleteFile(filename)
               con.successNel
             } else {
               s"Error during FTP connection for writeable network file `${con.uri}` - could not store file".failNel
@@ -425,13 +430,6 @@ class AccessValidator(agentRunIdentifier: Option[String])
         client.disconnect()
         s"Error during FTP connection for writeable network file `${con.uri}` with reply code: $reply".failNel
       }
-    } catch {
-      case f: FTPConnectionClosedException =>
-        client.disconnect()
-        throw new RuntimeException(f)
-      case e: IOException =>
-        client.disconnect()
-        throw new RuntimeException(e)
     } finally {
       if (client.isConnected)
         client.disconnect()
@@ -470,7 +468,7 @@ class AccessValidator(agentRunIdentifier: Option[String])
               new ByteArrayInputStream(filename.getBytes(StandardCharsets.UTF_8))
             )
             if (fileStored) {
-              client.deleteFile(filename)
+              val _ = client.deleteFile(filename)
               con.successNel
             } else {
               s"Error during FTPs connection for writeable network file `${con.uri}` - could not store file".failNel
@@ -487,72 +485,61 @@ class AccessValidator(agentRunIdentifier: Option[String])
         client.disconnect()
         s"Error during FTPs connection for writeable network file `${con.uri}` with reply code: $reply".failNel
       }
-    } catch {
-      case f: FTPConnectionClosedException =>
-        client.disconnect()
-        throw new RuntimeException(f)
-      case e: IOException =>
-        client.disconnect()
-        throw new RuntimeException(e)
     } finally {
       if (client.isConnected)
         client.disconnect()
     }
   }
 
+  @SuppressWarnings(Array("org.wartremover.warts.AsInstanceOf"))
+  @throws[JSchException]
+  @throws[SftpException]
+  @throws[IOException]
   private def testWriteableSftpFile(
       con: ConnectionInformation
-  ): ValidationNel[String, ConnectionInformation] =
-    try {
-      val host = con.uri.getHost
-      val port =
-        if (con.uri.getPort > 0)
-          con.uri.getPort
-        else
-          sftpPortNumber
-      val credentials = getFtpCredentials(con)
+  ): ValidationNel[String, ConnectionInformation] = {
+    val host = con.uri.getHost
+    val port =
+      if (con.uri.getPort > 0)
+        con.uri.getPort
+      else
+        sftpPortNumber
+    val credentials = getFtpCredentials(con)
 
-      val jsch             = new JSch()
-      val session: Session = jsch.getSession(credentials.username, host, port)
-      session.setPassword(credentials.password)
-      session.setConfig("StrictHostKeyChecking", "no")
-      session.setTimeout(sftpConnectionTimeout.toInt)
-      session.connect()
-      if (session.isConnected) {
-        val sftpChannel: ChannelSftp = session.openChannel("sftp").asInstanceOf[ChannelSftp]
-        sftpChannel.connect()
-        if (sftpChannel.isConnected) {
-          val filename    = s"test_file_wt_${Random.alphanumeric.take(10).mkString}.txt"
-          val inputStream = sftpChannel.get(filename)
-          if (inputStream == null) {
-            sftpChannel.put(filename, filename)
-            val newInput = sftpChannel.get(filename)
-            if (newInput != null) {
-              sftpChannel.rm(filename)
-              con.successNel
-            } else {
-              s"Error during SFTP connection for writeable network file `${con.uri}` : could not write".failNel
-            }
+    val jsch             = new JSch()
+    val session: Session = jsch.getSession(credentials.username, host, port)
+    session.setPassword(credentials.password)
+    session.setConfig("StrictHostKeyChecking", "no")
+    session.setTimeout(sftpConnectionTimeout.toInt)
+    session.connect()
+    if (session.isConnected) {
+      val sftpChannel: ChannelSftp = session.openChannel("sftp").asInstanceOf[ChannelSftp]
+      sftpChannel.connect()
+      if (sftpChannel.isConnected) {
+        val filename    = s"test_file_wt_${Random.alphanumeric.take(10).mkString}.txt"
+        val inputStream = sftpChannel.get(filename)
+        if (inputStream == null) {
+          sftpChannel.put(filename, filename)
+          val newInput = sftpChannel.get(filename)
+          if (newInput != null) {
+            sftpChannel.rm(filename)
+            con.successNel
           } else {
-            if (session.isConnected)
-              session.disconnect()
-            s"Error during SFTP connection for writeable network file `${con.uri}` : test file already existed".failNel
+            s"Error during SFTP connection for writeable network file `${con.uri}` : could not write".failNel
           }
         } else {
           if (session.isConnected)
             session.disconnect()
-          s"Error during SFTP connection for writeable network file `${con.uri}` : channel not connected".failNel
+          s"Error during SFTP connection for writeable network file `${con.uri}` : test file already existed".failNel
         }
-      } else
-        s"Error during SFTP connection for writeable network file `${con.uri}` : session not connected".failNel
-    } catch {
-      case jschE: JSchException =>
-        throw new RuntimeException(jschE)
-      case sftpE: SftpException =>
-        throw new RuntimeException(sftpE)
-      case ioE: IOException =>
-        throw new RuntimeException(ioE)
-    }
+      } else {
+        if (session.isConnected)
+          session.disconnect()
+        s"Error during SFTP connection for writeable network file `${con.uri}` : channel not connected".failNel
+      }
+    } else
+      s"Error during SFTP connection for writeable network file `${con.uri}` : session not connected".failNel
+  }
 
   private def checkAccessDatabase(
       con: ConnectionInformation,
@@ -562,18 +549,17 @@ class AccessValidator(agentRunIdentifier: Option[String])
       case -\/(failure) => GenericHelpers.createValidationFromException(failure)
       case \/-(success) =>
         if (writeable) {
-          \/.fromTryCatch {
+          Try {
             val stm       = success.createStatement()
             val tablename = s"T${Random.alphanumeric.take(8).mkString}"
-            stm.execute(s"CREATE TABLE $tablename (test CHAR(18))")
-            stm.execute(s"INSERT INTO $tablename (test) VALUES('TENSEI-WRITE-TEST')")
-            stm.execute(s"DROP TABLE $tablename")
+            val ignoreA   = stm.execute(s"CREATE TABLE $tablename (test CHAR(18))")
+            val ignoreB   = stm.execute(s"INSERT INTO $tablename (test) VALUES('TENSEI-WRITE-TEST')")
+            val ignoreC   = stm.execute(s"DROP TABLE $tablename")
             stm.close()
             success.close()
-            con
           } match {
-            case -\/(f) => GenericHelpers.createValidationFromException(f)
-            case \/-(s) => s.successNel
+            case scala.util.Failure(f) => GenericHelpers.createValidationFromException(f)
+            case scala.util.Success(_) => con.successNel
           }
         } else {
           success.close()
