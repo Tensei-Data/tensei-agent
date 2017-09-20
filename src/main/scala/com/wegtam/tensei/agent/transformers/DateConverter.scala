@@ -100,16 +100,13 @@ class DateConverter extends BaseTransformer {
 
       val params = msg.options.params
 
-      val timezone = Try(params.find(p => p._1 == "timezone") match {
-        case Some((_, t)) => ZoneId.of(t)
-        case None         => ZoneId.of("UTC")
-      }) match {
+      val timezone = Try(paramValueO("timezone")(params).map(ZoneId.of).getOrElse(ZoneId.of("UTC"))) match {
         case scala.util.Failure(f) =>
           log.error(f, "Could not parse given timezone!")
           ZoneId.of("UTC")
         case scala.util.Success(z) => z
       }
-      val format        = params.find(p => p._1 == "format").fold("yyyy-MM-dd HH:mm:ss")(_._2.trim)
+      val format        = paramValueO("format")(params).fold("yyyy-MM-dd HH:mm:ss")(_.trim)
       val dateFormatter = DateTimeFormatter.ofPattern(format)
       val result        = msg.src.map(DateConverter.convertDate(dateFormatter)(timezone))
 

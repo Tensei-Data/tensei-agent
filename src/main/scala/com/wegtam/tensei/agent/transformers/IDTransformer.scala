@@ -48,33 +48,22 @@ class IDTransformer extends BaseTransformer {
 
   override def transform: Receive = {
     case msg: GeneratorResponse => //Nachricht vom Generator
-      s.get ! TransformerResponse(msg.data, classOf[String])
+      s.foreach(_ ! TransformerResponse(msg.data, classOf[String]))
 
     case msg: StartTransformation => //Nachricht vom Prozessor
       s = Option(sender())
 
       val params = msg.options.params
 
-      val idtype =
-        if (params.exists(p => p._1 == "type"))
-          params.find(p => p._1 == "type").get._2.asInstanceOf[String]
-        else
-          "long"
+      val idtype = paramValueO("type")(params).getOrElse("long")
 
-      val field =
-        if (params.exists(p => p._1 == "field"))
-          params.find(p => p._1 == "field").get._2.asInstanceOf[String]
-        else
-          "unnamed"
+      val field = paramValueO("field")(params).getOrElse("unnamed")
 
+      val stp = paramValue("start")(params)
       val start =
-        if (params.exists(p => p._1 == "start")) {
-          val value = params.find(p => p._1 == "start").get._2
-          if (value.nonEmpty)
-            value
-          else
-            "0"
-        } else
+        if (stp.nonEmpty)
+          stp
+        else
           "0"
 
       val actor =

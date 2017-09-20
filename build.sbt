@@ -249,6 +249,10 @@ lazy val settings =
   resolverSettings ++
   scalafmtSettings
 
+// The following warts will not be checked.
+// TODO: Try to check for all warts.
+val disabledWarts = Seq(Wart.Any, Wart.DefaultArguments)
+
 lazy val commonSettings =
   Seq(
     headerLicense := Some(HeaderLicense.AGPLv3(s"2014 - $currentYear", "Contributors as noted in the AUTHORS.md file")),
@@ -261,7 +265,7 @@ lazy val commonSettings =
       "-feature",
       "-target:jvm-1.8",
       "-unchecked",
-      "-Xfatal-warnings",
+      //"-Xfatal-warnings",
       "-Xfuture",
       "-Xlint",
       "-Ydelambdafy:method",
@@ -276,7 +280,7 @@ lazy val commonSettings =
       "-source", "1.8",
       "-target", "1.8"
     ),
-    //wartremoverWarnings in (Compile, compile) ++= Warts.unsafe
+    wartremoverWarnings in (Compile, compile) ++= Warts.unsafe.filterNot(w => disabledWarts.contains(w))
   )
 
 lazy val resolverSettings =

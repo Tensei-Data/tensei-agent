@@ -27,7 +27,7 @@ import com.wegtam.tensei.agent.transformers.BaseTransformer.{
 import scalaz._
 
 object TimestampCalibrate {
-  def props: Props = Props(classOf[TimestampCalibrate])
+  def props: Props = Props(new TimestampCalibrate())
 }
 
 /**
@@ -36,8 +36,6 @@ object TimestampCalibrate {
   *
   * Available parameters:
   * `perform` : Add or reduce the value. Values: 'add' -> x*1000 (default), 'reduce' -> x:1000
-  *
-  *
   */
 class TimestampCalibrate extends BaseTransformer {
   override def transform: Receive = {
@@ -46,11 +44,7 @@ class TimestampCalibrate extends BaseTransformer {
 
       val params = msg.options.params
 
-      val perform: String =
-        if (params.exists(p => p._1 == "perform"))
-          params.find(p => p._1 == "perform").get._2.asInstanceOf[String]
-        else
-          ""
+      val perform = paramValue("perform")(params)
 
       val results = msg.src.map { e =>
         \/.fromTryCatch {

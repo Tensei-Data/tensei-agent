@@ -25,6 +25,7 @@ import com.wegtam.tensei.agent.transformers.BaseTransformer.{
 }
 
 import scala.annotation.tailrec
+import scala.util.Try
 
 object Replace {
   def props: Props = Props(classOf[Replace])
@@ -74,32 +75,12 @@ class Replace extends BaseTransformer {
   override def transform: Receive = {
     case msg: StartTransformation =>
       val params = msg.options.params
-      val search: List[String] =
-        if (params.exists(p => p._1 == "search"))
-          params
-            .find(p => p._1 == "search")
-            .get
-            ._2
-            .asInstanceOf[String]
-            .split("'\\s*?,\\s*?'")
-            .map(entry => {
-              entry.replaceAll("\\\\,", ",").trim().replaceFirst("'", "").stripSuffix("'")
-            })
-            .toList
-        else
-          List.empty[String]
-
-      val replace: String =
-        if (params.exists(p => p._1 == "replace"))
-          params.find(p => p._1 == "replace").get._2.asInstanceOf[String]
-        else
-          ""
-
-      val count: Integer =
-        if (params.exists(p => p._1 == "count"))
-          parseInt(params.find(p => p._1 == "count").get._2.asInstanceOf[String])
-        else
-          0
+      val search = paramValueO("search")(params).fold(List.empty[String])(
+        _.split("'\\s*?,\\s*?'").toList
+          .map(_.replaceAll("\\\\,", ",").trim().replaceFirst("'", "").stripSuffix("'"))
+      )
+      val replace    = paramValue("replace")(params)
+      val count: Int = paramValueO("count")(params).flatMap(c => Try(c.toInt).toOption).getOrElse(0)
 
       /**
         * Loop over the list of provided regular expressions and try to
@@ -145,12 +126,4 @@ class Replace extends BaseTransformer {
       context become receive
       sender() ! TransformerResponse(result, classOf[String])
   }
-
-  def parseInt(value: String): Integer =
-    try {
-      value.toInt
-    } catch {
-      case _: Throwable =>
-        0
-    }
 }

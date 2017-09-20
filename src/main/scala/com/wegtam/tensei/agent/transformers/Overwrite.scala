@@ -67,9 +67,8 @@ class Overwrite extends BaseTransformer {
       val response: Option[TransformerResponse] =
         if (msg.src.nonEmpty) {
           val replaceWith: Option[(Any, Class[_])] =
-            params.find(p => p._1 == "type").fold(None: Option[(Any, Class[_])]) { typeDesc =>
-              val (_, t)     = typeDesc
-              val (_, value) = params.find(p => p._1 == "value").getOrElse(("", ""))
+            paramValueO("type")(params).fold(None: Option[(Any, Class[_])]) { t =>
+              val value = paramValue("value")(params)
               t.toLowerCase(Locale.ROOT) match {
                 case "bigdecimal" =>
                   val v = value match {

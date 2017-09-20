@@ -26,7 +26,7 @@ import com.wegtam.tensei.agent.transformers.BaseTransformer.{
 }
 
 object DateTypeConverter {
-  def props: Props = Props(classOf[DateTypeConverter])
+  def props: Props = Props(new DateTypeConverter())
 }
 
 /**
@@ -45,14 +45,11 @@ class DateTypeConverter extends BaseTransformer with DateTypeConverterFunctions 
     case msg: StartTransformation =>
       log.debug("Start DateTypeConverter")
       val params = msg.options.params
+      val tp     = paramValue("target")(params).trim
       val targetType =
-        if (params.exists(p => p._1 == "target")) {
-          val t = params.find(p => p._1 == "target").get._2.trim
-          if (t.nonEmpty)
-            t
-          else
-            DEFAULT_TARGET_TYPE
-        } else
+        if (tp.nonEmpty)
+          tp
+        else
           DEFAULT_TARGET_TYPE
 
       val result =

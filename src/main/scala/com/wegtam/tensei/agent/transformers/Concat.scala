@@ -25,7 +25,7 @@ import akka.actor.Props
 import akka.util.ByteString
 
 object Concat {
-  def props: Props = Props(classOf[Concat])
+  def props: Props = Props(new Concat())
 }
 
 /**
@@ -40,22 +40,10 @@ class Concat extends BaseTransformer {
   override def transform: Receive = {
     case msg: StartTransformation =>
       log.debug("Starting concatenation of sources: {}", msg.src)
-      val params = msg.options.params
-      val separator =
-        if (params.exists(p => p._1 == "separator"))
-          params.find(p => p._1 == "separator").get._2.asInstanceOf[String]
-        else
-          ""
-      val prefix =
-        if (params.exists(p => p._1 == "prefix"))
-          params.find(p => p._1 == "prefix").get._2.asInstanceOf[String]
-        else
-          ""
-      val suffix =
-        if (params.exists(p => p._1 == "suffix"))
-          params.find(p => p._1 == "suffix").get._2.asInstanceOf[String]
-        else
-          ""
+      val params    = msg.options.params
+      val separator = paramValue("separator")(params)
+      val prefix    = paramValue("prefix")(params)
+      val suffix    = paramValue("suffix")(params)
 
       val strings = msg.src.map {
         case bs: ByteString => bs.utf8String

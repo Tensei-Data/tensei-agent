@@ -27,7 +27,7 @@ import com.wegtam.tensei.agent.transformers.BaseTransformer.{
 import scala.language.existentials
 
 object CastStringToLong {
-  def props: Props = Props(classOf[CastStringToLong])
+  def props: Props = Props(new CastStringToLong())
 }
 
 /**
