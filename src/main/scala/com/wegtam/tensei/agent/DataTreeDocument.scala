@@ -47,7 +47,7 @@ object DataTreeDocument {
     * @return The props to generate an actor.
     */
   def props(dfasdl: DFASDL, agentRunIdentifier: Option[String], idWhiteList: Set[String]): Props =
-    Props(classOf[DataTreeDocument], dfasdl, agentRunIdentifier, idWhiteList)
+    Props(new DataTreeDocument(dfasdl, agentRunIdentifier, idWhiteList))
 
   sealed trait DataTreeDocumentMessages
 
@@ -341,22 +341,23 @@ class DataTreeDocument(dfasdl: DFASDL,
         } else {
           // Get the parent sequence id.
           val sequenceData = data.sequenceChildren.find(_._2.contains(elementId))
-          if (sequenceData.isDefined) {
-            val sequenceId = sequenceData.get._1
-            // We need to relay the message to every container that may hold the data.
-            data
-              .sequenceHashes(sequenceId)
-              .map(hash => data.sequenceDataRows(hash._1))
-              .toSet[ActorRef]
-              .foreach(containerRef => containerRef ! hasContentMessage)
-          } else {
-            log.error("No data has been stored yet for '{}'!", elementId)
-            sender() ! new StatusMessage(
-              reporter = Option(reporterPath),
-              message = s"No data has been stored yet for '$elementId'!",
-              statusType = StatusType.FatalError,
-              cause = None
-            )
+          sequenceData match {
+            case None =>
+              log.error("No data has been stored yet for '{}'!", elementId)
+              sender() ! new StatusMessage(
+                reporter = Option(reporterPath),
+                message = s"No data has been stored yet for '$elementId'!",
+                statusType = StatusType.FatalError,
+                cause = None
+              )
+            case Some(sd) =>
+              val sequenceId = sd._1
+              // We need to relay the message to every container that may hold the data.
+              data
+                .sequenceHashes(sequenceId)
+                .map(hash => data.sequenceDataRows(hash._1))
+                .toSet[ActorRef]
+                .foreach(containerRef => containerRef ! hasContentMessage)
           }
         }
       }
@@ -382,12 +383,13 @@ class DataTreeDocument(dfasdl: DFASDL,
             false
           } else {
             val sequenceData = data.sequenceChildren.find(_._2.contains(elementId))
-            if (sequenceData.isDefined) {
-              val sequenceId = sequenceData.get._1
-              data.sequenceHashes.getOrElse(sequenceId, Vector.empty[String]).size > sequenceRow
-                .getOrElse(0L)
-            } else
-              false
+            sequenceData
+              .map(
+                sd =>
+                  data.sequenceHashes.getOrElse(sd._1, Vector.empty[String]).size > sequenceRow
+                    .getOrElse(0L)
+              )
+              .getOrElse(false)
           }
         sender() ! DataTreeDocumentMessages.IsLastDataElementResponse(ref, lastOne, sequenceRow)
       }
@@ -447,32 +449,38 @@ class DataTreeDocument(dfasdl: DFASDL,
       if (referenceElement == null)
         log.error("Reference element with id '{}' not found in DFASDL!", referenceId)
       else {
-        val parentSequence = getParentSequence(referenceElement)
-        if (parentSequence.isDefined) {
-          if (data.sequenceHashes.contains(parentSequence.get.getAttribute("id"))) {
-            val rowHash = data.sequenceHashes(parentSequence.get.getAttribute("id")).last._1
-            data.sequenceDataRows(rowHash) ! DataTreeNodeMessages.CreateSaveDataForReference(
-              elementData.copy(),
-              referenceId,
-              sourceSequenceRow
-            )
-          } else {
-            log.warning("No data was saved on referenced data element '{}'!", referenceId)
-            self ! DataTreeDocumentMessages.SaveData(elementData, elementDataHash)
-          }
-        } else {
-          if (referenceElement.hasAttribute(AttributeNames.STORAGE_PATH)) {
-            log.debug("Replacing data for '{}' with saved data from '{}'.",
-                      elementData.elementId,
-                      referenceId)
-            val dataTreeNodePath =
-              ActorPath.fromString(referenceElement.getAttribute(AttributeNames.STORAGE_PATH))
-            context.actorSelection(dataTreeNodePath) ! DataTreeNodeMessages
-              .CreateSaveDataForReference(elementData.copy(), referenceId, sourceSequenceRow)
-          } else {
-            log.warning("No data was saved on referenced data element '{}'!", referenceId)
-            self ! DataTreeDocumentMessages.SaveData(elementData, elementDataHash)
-          }
+        getParentSequence(referenceElement) match {
+          case None =>
+            if (referenceElement.hasAttribute(AttributeNames.STORAGE_PATH)) {
+              log.debug("Replacing data for '{}' with saved data from '{}'.",
+                        elementData.elementId,
+                        referenceId)
+              val dataTreeNodePath =
+                ActorPath.fromString(referenceElement.getAttribute(AttributeNames.STORAGE_PATH))
+              context.actorSelection(dataTreeNodePath) ! DataTreeNodeMessages
+                .CreateSaveDataForReference(elementData.copy(), referenceId, sourceSequenceRow)
+            } else {
+              log.warning("No data was saved on referenced data element '{}'!", referenceId)
+              self ! DataTreeDocumentMessages.SaveData(elementData, elementDataHash)
+            }
+          case Some(parentSequence) =>
+            if (data.sequenceHashes.contains(parentSequence.getAttribute("id"))) {
+              data.sequenceHashes(parentSequence.getAttribute("id")).lastOption match {
+                case None =>
+                  log.error("Last sequence hash entry for parent sequence '{}' not found!",
+                            parentSequence.getAttribute("id"))
+                case Some(lo) =>
+                  val rowHash = lo._1
+                  data.sequenceDataRows(rowHash) ! DataTreeNodeMessages.CreateSaveDataForReference(
+                    elementData.copy(),
+                    referenceId,
+                    sourceSequenceRow
+                  )
+              }
+            } else {
+              log.warning("No data was saved on referenced data element '{}'!", referenceId)
+              self ! DataTreeDocumentMessages.SaveData(elementData, elementDataHash)
+            }
         }
       }
       stay() using data
@@ -515,57 +523,71 @@ class DataTreeDocument(dfasdl: DFASDL,
           receiver = Option(receiver)
         )
       } else {
-        if (providedHash.isDefined) {
-          // Try to use the defined hash.
-          if (data.sequenceDataRows.contains(providedHash.get))
-            data.sequenceDataRows(providedHash.get) ! DataTreeNodeMessages.ReturnContent(
-              receiver = Option(receiver),
-              sequenceRow = sequenceRow,
-              elementId = Option(elementId)
-            )
-          else {
-            log.error("The hash '{}' does not exist!", providedHash)
-            receiver ! new StatusMessage(reporter = Option(reporterPath),
-                                         message = s"The hash '$providedHash' does not exist!",
-                                         statusType = StatusType.FatalError,
-                                         cause = None)
-          }
-        } else {
-          // Get the parent sequence id.
-          val sequenceData = data.sequenceChildren.find(_._2.contains(elementId))
-          if (sequenceData.isDefined) {
-            val sequenceId = sequenceData.get._1
-            // Calculate the location of the data tree node by considering how many rows are stored within an actor.
-            if (data.sequenceHashes(sequenceId).size > sequenceRow.getOrElse(0L)) {
-              // Relay the message to the sequence node and pass the desired sequence row and element id along.
-              // FIXME This will not work for sequences with more than `Integer.MAX_VALUE * maxSequenceRowsPerActor` rows because we need to use `toInt` on the desired row!!
-              val hash = data.sequenceHashes(sequenceId)(sequenceRow.getOrElse(0L).toInt)
-              data.sequenceDataRows(hash._1) ! DataTreeNodeMessages.ReturnContent(
+        providedHash match {
+          case None =>
+            // Get the parent sequence id.
+            val response: Either[StatusMessage, (ActorRef, DataTreeNodeMessages)] =
+              data.sequenceChildren
+                .find(_._2.contains(elementId))
+                .fold[Either[StatusMessage, (ActorRef, DataTreeNodeMessages)]] {
+                  log.error("No data has been stored for the in sequence element '{}'!", elementId)
+                  Left(
+                    StatusMessage(
+                      reporter = Option(reporterPath),
+                      message = s"No data has been stored for the in sequence element '$elementId'!",
+                      statusType = StatusType.FatalError,
+                      cause = None
+                    )
+                  )
+                } { sequenceData =>
+                  val sequenceId = sequenceData._1
+                  // Calculate the location of the data tree node by considering how many rows are stored within an actor.
+                  if (data.sequenceHashes(sequenceId).size > sequenceRow.getOrElse(0L)) {
+                    // Relay the message to the sequence node and pass the desired sequence row and element id along.
+                    // FIXME This will not work for sequences with more than `Integer.MAX_VALUE * maxSequenceRowsPerActor` rows because we need to use `toInt` on the desired row!!
+                    val hash = data.sequenceHashes(sequenceId)(sequenceRow.getOrElse(0L).toInt)
+                    Right(
+                      (data.sequenceDataRows(hash._1),
+                       DataTreeNodeMessages.ReturnContent(
+                         receiver = Option(receiver),
+                         sequenceRow = Option(sequenceRow.getOrElse(0L)),
+                         elementId = Option(elementId)
+                       ))
+                    )
+                  } else {
+                    log.error("The number of sequence rows ({}) is smaller than {}!",
+                              data.sequenceHashes(sequenceId).size,
+                              sequenceRow)
+                    Left(
+                      StatusMessage(
+                        reporter = Option(reporterPath),
+                        message =
+                          s"The number of sequence rows (${data.sequenceHashes(sequenceId).size}) is smaller than $sequenceRow!",
+                        statusType = StatusType.FatalError,
+                        cause = None
+                      )
+                    )
+                  }
+                }
+            response match {
+              case Left(message)          => receiver ! message
+              case Right((recv, message)) => recv ! message
+            }
+          case Some(hash) =>
+            // Try to use the defined hash.
+            if (data.sequenceDataRows.contains(hash))
+              data.sequenceDataRows(hash) ! DataTreeNodeMessages.ReturnContent(
                 receiver = Option(receiver),
-                sequenceRow = Option(sequenceRow.getOrElse(0L)),
+                sequenceRow = sequenceRow,
                 elementId = Option(elementId)
               )
-            } else {
-              log.error("The number of sequence rows ({}) is smaller than {}!",
-                        data.sequenceHashes(sequenceId).size,
-                        sequenceRow)
-              receiver ! new StatusMessage(
-                reporter = Option(reporterPath),
-                message =
-                  s"The number of sequence rows (${data.sequenceHashes(sequenceId).size}) is smaller than $sequenceRow!",
-                statusType = StatusType.FatalError,
-                cause = None
-              )
+            else {
+              log.error("The hash '{}' does not exist!", hash)
+              receiver ! new StatusMessage(reporter = Option(reporterPath),
+                                           message = s"The hash '$hash' does not exist!",
+                                           statusType = StatusType.FatalError,
+                                           cause = None)
             }
-          } else {
-            log.error("No data has been stored for the in sequence element '{}'!", elementId)
-            receiver ! new StatusMessage(
-              reporter = Option(reporterPath),
-              message = s"No data has been stored for the in sequence element '$elementId'!",
-              statusType = StatusType.FatalError,
-              cause = None
-            )
-          }
         }
       }
     }
@@ -593,43 +615,44 @@ class DataTreeDocument(dfasdl: DFASDL,
       data
     } else {
       // First we need to check if the element is within a sequence.
-      val parentSequence = getParentSequence(containerElement)
-      if (parentSequence.isEmpty && containerElement.hasAttribute(AttributeNames.STORAGE_PATH)) {
-        // We have no parent sequence and the element has already been saved.
-        val message =
-          s"Element '${elementData.elementId}' has already a storage path! Content would be overriden!"
-        log.error(message)
-        sender() ! new StatusMessage(reporter = Option(reporterPath),
-                                     message = message,
-                                     statusType = StatusType.FatalError,
-                                     cause = None)
-        data
-      } else {
-        if (parentSequence.isEmpty) {
-          // Get the next cluster member where we want to store data and create a storage node.
-          val nodeAndMember: (ActorRef, Option[Member]) =
-            GenericHelpers
-              .roundRobinFromSortedSet[Member](clusterMembers, data.lastUsedMember) match {
-              case -\/(failure) =>
-                (context.actorOf(DataTreeNode.props(agentRunIdentifier)), None)
-              case \/-(member) =>
-                val deploy = new Deploy(new RemoteScope(member.address))
-                (context.actorOf(DataTreeNode.props(agentRunIdentifier).withDeploy(deploy)),
-                 Option(member))
-            }
-          val node = nodeAndMember._1
-          // We watch the node to be notified if it dies.
-          context watch node
-          // Simply save the data.
-          node ! DataTreeNodeMessages.AppendData(elementData.copy())
-          // Now we need to save the actor path.
-          containerElement.setAttribute(AttributeNames.STORAGE_PATH,
-                                        node.path.toSerializationFormat)
-          data.copy(lastUsedMember = nodeAndMember._2)
-        } else {
+      getParentSequence(containerElement) match {
+        case None =>
+          if (containerElement.hasAttribute(AttributeNames.STORAGE_PATH)) {
+            // We have no parent sequence and the element has already been saved.
+            val message =
+              s"Element '${elementData.elementId}' has already a storage path! Content would be overriden!"
+            log.error(message)
+            sender() ! new StatusMessage(reporter = Option(reporterPath),
+                                         message = message,
+                                         statusType = StatusType.FatalError,
+                                         cause = None)
+            data
+          } else {
+            // Get the next cluster member where we want to store data and create a storage node.
+            val nodeAndMember: (ActorRef, Option[Member]) =
+              GenericHelpers
+                .roundRobinFromSortedSet[Member](clusterMembers, data.lastUsedMember) match {
+                case -\/(failure) =>
+                  (context.actorOf(DataTreeNode.props(agentRunIdentifier)), None)
+                case \/-(member) =>
+                  val deploy = new Deploy(new RemoteScope(member.address))
+                  (context.actorOf(DataTreeNode.props(agentRunIdentifier).withDeploy(deploy)),
+                   Option(member))
+              }
+            val node = nodeAndMember._1
+            // We watch the node to be notified if it dies.
+            val _ = context.watch(node)
+            // Simply save the data.
+            node ! DataTreeNodeMessages.AppendData(elementData.copy())
+            // Now we need to save the actor path.
+            containerElement.setAttribute(AttributeNames.STORAGE_PATH,
+                                          node.path.toSerializationFormat)
+            data.copy(lastUsedMember = nodeAndMember._2)
+          }
+        case Some(parentSequence) =>
           // We are within a sequence therefore we need to buffer the actor ref
           // to be able to collect all sequence data later on and update the state data.
-          val sequenceId = parentSequence.get.getAttribute("id")
+          val sequenceId = parentSequence.getAttribute("id")
           val storedSequenceRows =
             if (data.sequenceHashes.contains(sequenceId))
               data.sequenceHashes(sequenceId).size
@@ -638,14 +661,17 @@ class DataTreeDocument(dfasdl: DFASDL,
           val maxSequenceRowsPerActorTrigger = storedSequenceRows > 0 && storedSequenceRows % maxSequenceRowsPerActor > 0
 
           // Calculate and get the correct storage actor ref.
-          val containerAndMember: (ActorRef, Option[Member]) =
+          val containerAndMember: (Option[ActorRef], Option[Member]) =
             if (maxSequenceRowsPerActorTrigger || data.sequenceDataRows.contains(elementDataHash)) {
               // Get the container.
               if (data.sequenceDataRows.contains(elementDataHash))
-                (data.sequenceDataRows(elementDataHash), None)
+                (Option(data.sequenceDataRows(elementDataHash)), None)
               else {
-                val previousHash = data.sequenceHashes(sequenceId).last
-                (data.sequenceDataRows(previousHash._1), None)
+                val cRef = data
+                  .sequenceHashes(sequenceId)
+                  .lastOption
+                  .map(previousHash => data.sequenceDataRows(previousHash._1))
+                (cRef, None)
               }
             } else {
               // Get the next cluster member where we want to store data.
@@ -654,47 +680,52 @@ class DataTreeDocument(dfasdl: DFASDL,
                 case -\/(failure) =>
                   val node = context.actorOf(DataTreeNode.props(agentRunIdentifier))
                   // We watch the node to be notified if it dies.
-                  context watch node
-                  (node, None)
+                  (Option(context.watch(node)), None)
                 case \/-(member) =>
                   val deploy = new Deploy(new RemoteScope(member.address))
                   val node =
                     context.actorOf(DataTreeNode.props(agentRunIdentifier).withDeploy(deploy))
                   // We watch the node to be notified if it dies.
-                  context watch node
-                  (node, Option(member))
+                  (Option(context.watch(node)), Option(member))
               }
             }
-          val containerRef: ActorRef = containerAndMember._1
-          // Save the data.
-          containerRef ! DataTreeNodeMessages.AppendData(elementData.copy())
-          // Update the sequence hashes and data rows.
-          data.sequenceDataRows += (elementDataHash -> containerRef)
-          val sequenceHashHelpers =
-            data.sequenceHashesHelpers.getOrElse(sequenceId, Set.empty[Long])
-          if (!sequenceHashHelpers.contains(elementDataHash)) {
-            data.sequenceHashesHelpers(sequenceId) = sequenceHashHelpers + elementDataHash
-            data.sequenceHashes += (sequenceId -> (data.sequenceHashes.getOrElse(
-              sequenceId,
-              Vector.empty[(Long, Long)]
-            ) :+ ((elementDataHash, elementData.sequenceRowCounter))))
-          }
+          containerAndMember match {
+            case (None, _) =>
+              log.error(
+                "Container for sequence data (sequence '{}') not found! No data could be stored!",
+                sequenceId
+              )
+              data
+            case (Some(containerRef), member) =>
+              // Save the data.
+              containerRef ! DataTreeNodeMessages.AppendData(elementData.copy())
+              // Update the sequence hashes and data rows.
+              val ignoreA = data.sequenceDataRows.put(elementDataHash, containerRef)
+              val sequenceHashHelpers =
+                data.sequenceHashesHelpers.getOrElse(sequenceId, Set.empty[Long])
+              if (!sequenceHashHelpers.contains(elementDataHash)) {
+                data.sequenceHashesHelpers(sequenceId) = sequenceHashHelpers + elementDataHash
+                val _ = data.sequenceHashes += (sequenceId -> (data.sequenceHashes.getOrElse(
+                  sequenceId,
+                  Vector.empty[(Long, Long)]
+                ) :+ ((elementDataHash, elementData.sequenceRowCounter))))
+              }
 
-          if (elementData.sequenceRowCounter > 0 && elementData.sequenceRowCounter % 10000 == 0) {
-            log.debug("Saved {} rows for element '{}' in sequence '{}'.",
-                      elementData.sequenceRowCounter,
-                      elementData.elementId,
-                      sequenceId)
-          }
+              if (elementData.sequenceRowCounter > 0 && elementData.sequenceRowCounter % 10000 == 0) {
+                log.debug("Saved {} rows for element '{}' in sequence '{}'.",
+                          elementData.sequenceRowCounter,
+                          elementData.elementId,
+                          sequenceId)
+              }
 
-          val newChildren = data.sequenceChildren
-            .getOrElse(sequenceId, Set.empty[String]) + elementData.elementId
-          data.sequenceChildren += (sequenceId -> newChildren)
-          if (containerAndMember._2.isDefined)
-            data.copy(lastUsedMember = containerAndMember._2)
-          else
-            data
-        }
+              val newChildren = data.sequenceChildren
+                .getOrElse(sequenceId, Set.empty[String]) + elementData.elementId
+              val ignoreB = data.sequenceChildren.put(sequenceId, newChildren)
+              if (containerAndMember._2.isDefined)
+                data.copy(lastUsedMember = containerAndMember._2)
+              else
+                data
+          }
       }
     }
   }

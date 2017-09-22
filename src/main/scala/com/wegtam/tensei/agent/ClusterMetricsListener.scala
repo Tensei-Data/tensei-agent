@@ -57,7 +57,7 @@ object ClusterMetricsListener {
 
   }
 
-  def props: Props = Props(classOf[ClusterMetricsListener])
+  def props: Props = Props(new ClusterMetricsListener())
 
   val name = "ClusterMetricsListener"
 }
@@ -80,6 +80,7 @@ class ClusterMetricsListener extends Actor with ActorLogging {
     */
   override def postStop(): Unit = extension.unsubscribe(self)
 
+  @SuppressWarnings(Array("org.wartremover.warts.Any"))
   override def receive: Receive = {
     case ClusterMetricsListenerMessages.RemoveMetrics(hostname) =>
       log.debug("Got request to remove metrics for {}.", hostname)

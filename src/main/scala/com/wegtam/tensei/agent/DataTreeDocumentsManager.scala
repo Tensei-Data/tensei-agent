@@ -37,7 +37,7 @@ object DataTreeDocumentsManager {
     * @return The props to generate the actor.
     */
   def props(agentRunIdentifier: Option[String]): Props =
-    Props(classOf[DataTreeDocumentsManager], agentRunIdentifier)
+    Props(new DataTreeDocumentsManager(agentRunIdentifier))
 
   sealed trait DataTreeDocumentsManagerMessages
 
@@ -48,7 +48,7 @@ object DataTreeDocumentsManager {
       *
       * @param dfasdl The dfasdl describing the data structure.
       */
-    case class CreateDataTreeDocument(dfasdl: DFASDL) extends DataTreeDocumentsManagerMessages
+    final case class CreateDataTreeDocument(dfasdl: DFASDL) extends DataTreeDocumentsManagerMessages
 
     /**
       * Create a `DataTreeDocument` actor based upon the given dfasdl using the provided id white list.
@@ -56,7 +56,7 @@ object DataTreeDocumentsManager {
       * @param dFASDL      The dfasdl describing the data structure.
       * @param idWhiteList A set of strings holding the ids that are whitelisted for storage.
       */
-    case class CreateDataTreeDocumentWithWhiteList(dFASDL: DFASDL, idWhiteList: Set[String])
+    final case class CreateDataTreeDocumentWithWhiteList(dFASDL: DFASDL, idWhiteList: Set[String])
         extends DataTreeDocumentsManagerMessages
 
     /**
@@ -65,7 +65,7 @@ object DataTreeDocumentsManager {
       * @param dataTreeRef The ref to the created actor.
       * @param dfasdl      The dfasdl that was used to create the actor.
       */
-    case class DataTreeDocumentCreated(dataTreeRef: ActorRef, dfasdl: DFASDL)
+    final case class DataTreeDocumentCreated(dataTreeRef: ActorRef, dfasdl: DFASDL)
         extends DataTreeDocumentsManagerMessages
 
   }
@@ -77,6 +77,7 @@ object DataTreeDocumentsManager {
   *
   * @param agentRunIdentifier An optional agent run identifier which is usually an uuid.
   */
+@SuppressWarnings(Array("org.wartremover.warts.Var"))
 class DataTreeDocumentsManager(agentRunIdentifier: Option[String]) extends Actor with ActorLogging {
   override val log
     : DiagnosticLoggingAdapter = Logging(this) // Override the standard logger to be able to add stuff via MDC.
@@ -94,6 +95,7 @@ class DataTreeDocumentsManager(agentRunIdentifier: Option[String]) extends Actor
     super.postStop()
   }
 
+  @SuppressWarnings(Array("org.wartremover.warts.Any"))
   override def receive: Receive = {
     case DataTreeDocumentsManagerMessages.CreateDataTreeDocument(dfasdl) =>
       log.debug("Got request to create an data tree document for dfasdl '{}'.", dfasdl.id)
