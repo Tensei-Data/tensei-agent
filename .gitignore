@@ -31,3 +31,7 @@ Desktop.ini
 *.log
 # Tensei
 tensei-agent-id.properties
+# Bloop
+.bloop/
+# Metals
+.metals/
